@@ -1,0 +1,49 @@
+payment-submited-page{
+  .tab-header-cls {
+    background: url(../assets/img/splash2.jpg);
+    background-position-y: 140px;
+    color: white;
+    margin: 0 auto;
+    background-size: cover;
+    min-height: 100px;
+  }
+  .logo-icon{
+    height: 42%;
+    ion-row{
+      width:100%
+    }
+    img{
+      width: 110px;
+    }
+    span{
+      font-size: 24px;
+      letter-spacing: 14px;
+      color: #0c86b2;
+      padding-left: 8px;
+    }
+  }
+  .main-text{
+    margin-top: 14%;
+    margin-bottom: 14%;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    color: #787878;
+    ion-row{
+      width: 80%;
+    }
+  }
+  .button-wrap{
+    width: 100%;
+    height: 50px;
+    margin: 5px 0;
+    background-color: #09c;
+    color: white;
+    border-radius: 15px;
+    margin-top: 5%;
+    font-size: 16px;
+  }
+  .bunch-text{
+    margin-top: 5px
+  }
+}

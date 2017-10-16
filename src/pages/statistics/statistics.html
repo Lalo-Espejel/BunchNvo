@@ -1,0 +1,105 @@
+<ion-header class="tab-header-cls">
+  <ion-col>
+    <div class="divImg">
+      <img src="assets/icon/estadisticas-header.png">
+    </div>
+    <div class="titleForm">{{ "StatisticsPage.titleText" | translate }}</div>
+  </ion-col>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row class="histogram-wrap">
+    <ion-row class="left-side">
+      <ion-row class="title">
+        <span>{{ "StatisticsPage.totalPayment" | translate }} {{firstValue}} {{ "StatisticsPage.fromTo" | translate }} {{secondValue}} {{ "StatisticsPage.ofMonth" | translate }}</span>
+      </ion-row>
+      <ion-row class="value">
+        <span>{{priceValue}}</span>
+      </ion-row>
+    </ion-row>
+    <ion-row class="right-side">
+      <ion-row class="left-date">
+        <ion-row class="title">
+          <span>{{ "StatisticsPage.from" | translate }}</span>
+        </ion-row>
+        <ion-row class="date">
+          <span> {{ "StatisticsPage.month" | translate }} 1</span>
+          <!--<ion-select [(ngModel)]="firstValue">-->
+            <!--<ion-option *ngFor = "let item of dateLeftItemList" >-->
+              <!--{{item.monthName + item.day}}-->
+            <!--</ion-option>-->
+          <!--</ion-select>-->
+        </ion-row>
+      </ion-row>
+      <ion-row class="right-date">
+        <ion-row class="title">
+          <span>{{ "StatisticsPage.to" | translate }}</span>
+        </ion-row>
+        <ion-row class="date">
+          <!--<ion-select [(ngModel)]="secondValue">-->
+            <!--<ion-option *ngFor = "let dateItem of dateRightItemList">-->
+              <!--{{dateItem.monthName + dateItem.day}}-->
+            <!--</ion-option>-->
+          <!--</ion-select>-->
+          <span> {{ "StatisticsPage.month" | translate }} 15</span>
+        </ion-row>
+      </ion-row>
+    </ion-row>
+    <!--<ion-row>-->
+      <!--<div *ngfor="let scaleItem of botScale" class="scale-items">-->
+        <!--{{scaleItem}}-->
+      <!--</div>-->
+    <!--</ion-row>-->
+  </ion-row>
+  <ion-row>
+    <ion-row class="item-wrapper" (tap)="goToStatisticProductsPage()">
+      <ion-row align-items-center justify-content-center class="head-icon">
+        <img src="assets/icon/historia-de-productos.png">
+      </ion-row>
+      <ion-row align-items-center justify-content-center class="center">
+        <ion-row class="main-text">
+          <span>{{ "StatisticsPage.productHistory" | translate }}</span>
+        </ion-row>
+      </ion-row>
+      <ion-row align-items-center justify-content-center class="arrow-button">
+        <img src="assets/icon/bt-siguiente.png">
+      </ion-row>
+    </ion-row>
+  </ion-row>
+
+  <ion-row>
+    <ion-row class="item-wrapper">
+      <ion-row align-items-center justify-content-center class="head-icon">
+        <img src="assets/icon/historial-de-clientes.png">
+      </ion-row>
+      <ion-row align-items-center justify-content-center class="center">
+        <ion-row class="main-text">
+          <span>{{ "StatisticsPage.customerHistory" | translate }}</span>
+        </ion-row>
+      </ion-row>
+      <ion-row align-items-center justify-content-center class="arrow-button">
+        <img src="assets/icon/bt-siguiente.png">
+      </ion-row>
+    </ion-row>
+  </ion-row>
+
+  <ion-row>
+    <ion-row class="item-wrapper">
+      <ion-row align-items-center justify-content-center class="head-icon">
+        <img src="assets/icon/promociones.png">
+      </ion-row>
+      <ion-row align-items-center justify-content-center class="center">
+        <ion-row class="main-text">
+          <span>{{ "StatisticsPage.promotion" | translate }}</span>
+        </ion-row>
+      </ion-row>
+      <ion-row align-items-center justify-content-center class="arrow-button">
+        <img src="assets/icon/bt-siguiente.png">
+      </ion-row>
+    </ion-row>
+  </ion-row>
+
+
+</ion-content>

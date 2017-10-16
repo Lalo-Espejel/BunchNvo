@@ -1,0 +1,133 @@
+page-recovery {
+    overflow-y: auto;
+
+    .scroll-content{
+        background-color: #eeeeee;
+    }
+
+    ion-header.header-custom-cls {
+        background: url(../assets/img/splash2.jpg);
+        background-position-y: 140px;
+        color: white;
+        margin: 0 auto;
+        background-size: cover;
+        min-height: 100px;
+
+        .divImg {
+            width: 15%;
+            margin: 5px auto;
+            img {
+                height: 40px !important;
+                margin-top: 15px;
+            }
+        }
+        .titleForm {
+            width: 90%;
+            margin: 5px auto;
+            text-align: center;
+            color: white;
+        }
+        .item-inner {
+            border-bottom: none !important;
+        }
+    }
+    
+    ion-content{
+        background: rgba(245,245,245,255) !important;
+        ion-item {
+            border: 2px solid rgb(175,175,175) !important;
+            border-radius: 10px !important;
+            margin: 10px auto !important;
+        }    
+        .slide-zoom {
+            height: 100% !important;
+        }
+        .toolbar-title {
+            text-align: justify;
+            white-space: initial;
+            padding: 5px 12px;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #424242;
+        }
+        
+        .divRow {
+            width: 100%;
+            margin: 10px auto;
+            text-align: center;
+            border: 1px solid rgba(220,220,220,255);
+            border-radius: 15px;
+            background: white !important;
+            margin-bottom: 12px;
+
+            .email-field { 
+                background: white !important;
+                border: 2px solid white;
+                border-radius: 14px;
+
+                input{
+                    width: 60%;
+                }
+            }
+            .email-field::before {
+                content: url("../assets/icon/correo-fomularios.png");
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 3%;
+                top: 40%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                text-align: center;
+                line-height: 40px;
+                align-items: center;
+            }
+        }
+
+        .recovery-btn {
+            width: 100%;
+        }
+
+        .title-recovery {
+            font-family: RaleText;
+
+        }
+
+        .confirm-recovery-text {
+            margin: 50px 11px 83px;
+            text-align: left;
+            font-weight: 400;
+
+        }
+        .confirm-recovery-btn {
+            width: 99%;
+            border-radius: 25px;
+            height: 40px;
+            max-height: 40px;
+            vertical-align: middle;
+            padding: 1px 0;
+        }
+        .button-back-wrapp {
+            height: 175px;
+            .button-back {
+                color: white;
+                background-color: #488aff;
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                font-size: 20px;
+            }
+        }
+
+    }
+
+    .prossedBtn{
+        border-radius: 50px;
+    }
+    
+    .divImg {
+        width: 15%;
+        margin: 5px auto;
+    }
+
+}

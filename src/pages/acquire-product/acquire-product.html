@@ -1,0 +1,518 @@
+<ion-header class="header-cls">
+
+    <ion-toolbar>
+        <ion-buttons left>
+            <button icon-only ion-button class="backButton" (click)="goBack()">
+                <img src="assets/icon/bt-regresar-menu.png" class="image-left">
+            </button>
+        </ion-buttons>
+
+        <ion-title class="titleStyle">{{ "AcquireProductPage.titleText" | translate }}</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-row>
+        <ion-row class="tabs-swap-wrap">
+            <ion-row align-items-center justify-content-center [ngClass]="{active:topTab == 'Cliente'}">
+                <span>{{ "AcquireProductPage.clientTabText" | translate }}</span>
+            </ion-row>
+            <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" (tap)="changeTab('Producto')">
+                <span>{{ "AcquireProductPage.productTabText" | translate }}</span>
+            </ion-row>
+            <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Compara'}" (tap)="changeTab('Compara')">
+                <span>{{ "AcquireProductPage.compareTabText" | translate }}</span>
+            </ion-row>
+            <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Pago'}" (tap)="changeTab('Pago')">
+                <span>{{ "AcquireProductPage.paymentTabText" | translate }}</span>
+            </ion-row>
+        </ion-row>
+        <ion-row align-items-center justify-content-center class="top-tittle">
+            <span>{{underTabsTitile}}</span>
+        </ion-row>
+        <ion-row class="cliente-tab" [hidden]="topTab != 'Cliente'">
+            <ion-row [hidden] = "productoContinuarShown">
+                <ion-row class="main-text">
+                    <span>{{ "AcquireProductPage.searchCustomer" | translate }}</span>
+                </ion-row>
+                <ion-row class="input-container">
+                    <ion-row class="input-wrapper">
+                        <ion-input [placeholder]='"AcquireProductPage.searchCustomerPlaceholder" | translate'></ion-input>
+                        <ion-icon class="search-icon" name="search" item-right></ion-icon>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userName,[], isEnglish?'Input name':'Ingrese nombre')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.firstName" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userName.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.age" | translate }}</span>
+                        </ion-row>
+                        <ion-item align-items-start class="sub-text">
+                            <ion-datetime placeholder="--/--" pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
+                        </ion-item>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userGender, userGenderList,isEnglish?'Choose gender':'Elija el género')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.gender" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userGender.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userEmail,[], isEnglish?'Input your email':'Ingrese correo electrónico')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.email" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userEmail.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('numInput', userCellPhoneNumber,[], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.cellPhone" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userCellPhoneNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userDiraction, userDiractionList, isEnglish?'Choose address':'Elegir dirección')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.address" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userDiraction.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('numInput', userPostalCode, [], isEnglish?'Input postal code':'Ingrese código postal')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.postalCode" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userPostalCode.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userStreetName, [], isEnglish?'Input street name':'Ingrese el nombre de su calle')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.street" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userStreetName.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userOutdoorNumber, [], isEnglish?'Input outdoor number':'Ingrese número al aire libre')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.outdoorNumber" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userOutdoorNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userInteriorNumber, [], isEnglish?'Input interior number':'Ingrese número interior')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.interiorNumber" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userInteriorNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userColony, userColonyList, isEnglish?'Choose colony':'Elegir colonia')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.colony" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userColony.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userState, userStateList, isEnglish?'Choose state':'Elegir estado')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.state" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userState.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userDelegation, userDelegationList, isEnglish?'Choose delegation':'Elegir delegación')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.delegation" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userDelegation.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Producto','Cliente')">
+                    <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
+                </ion-row>
+            </ion-row>
+
+        </ion-row>
+        <ion-row class="cliente-tab" [hidden]="topTab != 'Producto'">
+            <ion-row [hidden] = "productoContinuarShown">
+                <ion-row class="main-text">
+                    <span>{{ "AcquireProductPage.searchCustomer" | translate }}</span>
+                </ion-row>
+                <ion-row class="input-container">
+                    <ion-row class="input-wrapper">
+                        <ion-input [placeholder]='"AcquireProductPage.searchCustomerPlaceholder" | translate'></ion-input>
+                        <ion-icon class="search-icon" name="search" item-right></ion-icon>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userName, [], isEnglish?'Input name':'Ingrese nombre')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.firstName" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userName.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.age" | translate }}</span>
+                        </ion-row>
+                        <ion-item align-items-start class="sub-text">
+                            <ion-datetime placeholder="--/--" pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
+                        </ion-item>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userGender, userGenderList, isEnglish?'Choose gender':'Elija el género')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.gender" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userGender.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userEmail, [], isEnglish?'Input email':'Ingrese correo electrónico')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.email" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userEmail.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('numInput', userCellPhoneNumber, [], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.cellPhone" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userCellPhoneNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userDiraction, userDiractionList, isEnglish?'Choose address':'Elegir dirección')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.address" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userDiraction.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('numInput', userPostalCode, [], isEnglish?'Input postal code':'Ingrese código postal')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.postalCode" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userPostalCode.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userStreetName, [], isEnglish?'Input street name':'Ingrese nombre de su calle')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.street" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userStreetName.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userOutdoorNumber, [], isEnglish?'Input outdoor number':'Ingrese número al aire libre')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.outdoorNumber" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userOutdoorNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userInteriorNumber, [], isEnglish?'Input interior number':'Ingrese número interior')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.interiorNumber" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userInteriorNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userColony, userColonyList, isEnglish?'Choose colony':'Elegir colonia')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.colony" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userColony.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userState, userStateList, isEnglish?'Choose state':'Elegir estado')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.state" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userState.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userDelegation, userDelegationList, isEnglish?'Choose delegation':'Elegir delegación')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.delegation" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userDelegation.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row align-items-center justify-content-center class="bot-button" (tap)="isClient == 'false'?showProductoContinuarShown(): changeTab('Compara')">
+                    <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
+                </ion-row>
+            </ion-row>
+            <ion-row [hidden] = "!productoContinuarShown">
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userBrand, userBrandList, isEnglish?'Choose brand':'Elegir marca')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.brand" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userBrand.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userModel, userModelList, isEnglish?'Choose model ':'IntElija el modelo')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.model" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userModel.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('radio', userDescription, userDescriptionList, isEnglish?'Choose description':'Elige la descripción')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.description" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userDescription.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input serial number':'Número de serie de entrada')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.serialNumber" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userSerialNumber.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper" (tap)="showAlert('textInput', userPlates, [], isEnglish?'Input plates':'Placas de entrada')">
+                    <ion-row>
+                        <ion-row align-items-end class="main-text">
+                            <span>{{ "AcquireProductPage.plates" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{userPlates.name}}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Compara')">
+                    <span>{{ "AcquireProductPage.following" | translate }}</span>
+                </ion-row>
+            </ion-row>
+        </ion-row>
+        <ion-row class="compara-tab" [hidden]="topTab != 'Compara'">
+            <ion-row *ngIf="!comparaDetailShown">
+                <ion-row align-items-center justify-content-center class="title">
+                    <ion-row align-items-center justify-content-center class="title-wrap">
+                        <ion-row align-items-center justify-content-center class="main-text">
+                            <span>{{ "AcquireProductPage.compareTopText" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-center justify-content-center class="main-text">
+                            <span>{{ "AcquireProductPage.compareMiddleText" | translate }}</span>
+                        </ion-row>
+                        <ion-row align-items-center justify-content-center class="main-text">
+                            <span>{{ "AcquireProductPage.compareEndText" | translate }}</span>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="item-wrapper">
+                    <ion-row>
+                        <ion-row align-items-center class="sub-text">
+                            <span>{{ "AcquireProductPage.improveDescriptionText" | translate }}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-list class="list-wrap">
+                    <ion-item *ngFor="let listItem of comparaList" (tap)="isClient == 'false'? changeTab('Pago') : showComparaItemDetail()">
+                        <ion-row align-items-center justify-content-center  class="img-wrap">
+                            <img [src]="listItem.img">
+                        </ion-row>
+                        <ion-row align-items-center class="text-wrap">
+                            <span class="a-text">{{ "AcquireProductPage.annualCostText" | translate }}</span>
+                            <span class="value">{{listItem.value}}</span>
+                        </ion-row>
+                        <ion-row align-items-center class="arrow-button">
+                            <img src="assets/icon/bt-siguiente.png">
+                        </ion-row>
+                    </ion-item>
+                </ion-list>
+                <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Pago')">
+                    <span>{{ "AcquireProductPage.sendDetailedQuoteToUserText" | translate }}</span>
+                </ion-row>
+            </ion-row>
+            <ion-row *ngIf="comparaDetailShown">
+                <ion-row class="item-wrapper" style="margin-top:10px" (tap)="goToDocumentDetailPage()">
+                    <ion-row>
+                        <ion-row align-items-center class="sub-text">
+                            <span>{{ "AcquireProductPage.uploadDocumentText" | translate }}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row align-items-center class="arrow-button">
+                        <img src="assets/icon/bt-siguiente.png">
+                    </ion-row>
+                </ion-row>
+                <ion-row align-items-center justify-content-center class="bot-button" (tap)="goToPayPolicyPage()">
+                    <span>{{ "AcquireProductPage.sendDetailedQuoteToUserText" | translate }}</span>
+                </ion-row>
+            </ion-row>
+        </ion-row>
+        <ion-row class="pago-tab" [hidden]="topTab != 'Pago'">
+            <ion-row class="citation-wrap">
+                <ion-row class="padding-row">
+                    <ion-row class="top-text-wrap">
+                        <ion-row align-items-end class="main-text">
+                            <span>Chevrolet Aveo 2010</span>
+                        </ion-row>
+                        <ion-row align-items-start class="sub-text">
+                            <span>{{ "AcquireProductPage.carInsuranceText" | translate }}</span>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row class="company-wrap">
+                        <ion-row align-items-center justify-content-center class="img-wrap">
+                            <img src="assets/icon/logo/logo-axa.png">
+                        </ion-row>
+                        <ion-row  class="center-text-wrap">
+                            <ion-row align-items-end justify-content-center class="main-text">
+                                <span>{{ "AcquireProductPage.wideText" | translate }}</span>
+                            </ion-row>
+                            <ion-row align-items-start justify-content-center class="sub-text">
+                                <span>{{ "AcquireProductPage.coverText" | translate }}</span>
+                            </ion-row>
+                        </ion-row>
+                        <ion-row class="end-text-wrap">
+                            <ion-row align-items-end justify-content-center class="main-text">
+                                <span>$6,050</span>
+                            </ion-row>
+                            <ion-row align-items-start justify-content-center class="sub-text">
+                                <span>{{ "AcquireProductPage.annualText" | translate }}</span>
+                            </ion-row>
+                        </ion-row>
+                    </ion-row>
+                    <ion-row>
+                        <ion-row class="main-text-title">
+                            <span>{{ "AcquireProductPage.coveringsText" | translate }}</span>
+                        </ion-row>
+                        <ion-row class="main-info-text-wrap">
+                            <ion-row class="main-text" *ngFor="let listItem of pagoList">
+                                <span>{{listItem.mainText}}</span>
+                                <span class="sub-text">{{listItem.subText}}</span>
+                            </ion-row>
+                        </ion-row>
+                    </ion-row>
+                </ion-row>
+            </ion-row>
+            <ion-row align-items-center justify-content-center class="bot-button" (tap)="goPaymentSubmitedPage()">
+                <span>{{ "AcquireProductPage.submitCollectionRequestText" | translate }}</span>
+            </ion-row>
+        </ion-row>
+    </ion-row>
+</ion-content>

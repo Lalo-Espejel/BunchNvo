@@ -1,0 +1,243 @@
+acquire-product-page{
+    ion-header {
+        .header-cls {
+            min-height: 0 !important;
+        }
+        .backButton{
+            padding-left: 18px !important;
+        }
+        .titleStyle {
+            left: 0;
+            top: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            pointer-events: none;
+            text-align: center;
+        }
+    }
+    ion-item{
+        padding: 0 !important;
+    }
+    .item-inner{
+        border-bottom: none !important
+    }
+    ion-datetime{
+        padding: 0 !important;
+    }
+    .item-block{
+        min-height: 0 !important;
+    }
+    .item-cover {
+        left: -16px;
+        top: -22px;
+        width: 113%;
+        height: 180%;
+    }
+    button {
+        background: transparent !important;
+        img {
+            height: auto !important;
+            max-height: 25px !important;
+            margin-top: 0 !important;
+            .image-left{
+                padding-left: 10px !important;
+            }
+            .image-right{
+                padding-right: 10px !important;
+            }
+        }
+    }
+    .scroll-content{
+        background-color: #eeeeee;
+    }
+    .tabs-swap-wrap{
+        height: 40px;
+        width: 100%;
+        font-size: 14px;
+        color: #9c9c9c;
+        background-color: white;
+        border: solid 1px #9c9c9c;
+        border-radius: 5px;
+        margin-bottom: 6px;
+        margin-top: 6px;
+        overflow: hidden;
+        ion-row{
+            width:25%;
+            border: solid 1px #9c9c9c;
+        }
+        .active{
+            background-color: #09c;
+            color: white;
+            border: solid 1px #09c !important;
+        }
+    }
+    .top-tittle{
+        width: 100%;
+        height: 40px;
+        margin: 5px 0;
+        background-color: #606164;
+        color: white;
+        border-radius: 15px;
+    }
+    .main-text{
+        font-size: 16px;
+        font-weight: 500;
+        width: 100%;
+    }
+    .sub-text{
+        font-size: 14px;
+    }
+    .item-wrapper{
+        background-color: white;
+        width: 100%;
+        height: 50px;
+        border: solid 1px #9c9c9c;
+        border-radius: 8px;
+        margin: 5px 0;
+    }
+    .bot-button{
+        width: 100%;
+        height: 40px;
+        margin: 5px 0;
+        background-color: #09c;
+        color: white;
+        border-radius: 15px;
+    }
+
+    .item-wrapper>ion-row{
+        width: 94%;
+        padding-left: 10px;
+    }
+    .arrow-button{
+        width: 3% !important;
+        padding-left: 0 !important;
+    }
+    .cliente-tab{
+        .input-container {
+            width:100%;
+            .input-wrapper {
+                width: 90%;
+                height: 30px;
+                background-color: white;
+                border: solid 1px #9c9c9c;
+                border-radius: 8px;
+                margin-top: 6px;
+                margin-bottom: 7px;
+                input {
+                    margin: 0px;
+                    padding: 6px;
+                }
+            }
+            .search-icon{
+                color: #09c;
+                position: relative;
+                top: 7px;
+                left: -7px;
+            }
+        }
+    }
+    .compara-tab>ion-row{
+        width: 100%;
+    }
+    .compara-tab{
+        width:100%;
+        .title{
+            border: solid 1px;
+            height: 80px;
+            width: 100%;
+            margin: 8px 0;
+            background-color: white;
+        }
+        .sub-text{
+            font-size: 14px;
+        }
+        .list{
+            width:100%;
+            .item{
+                width: 100%;
+                border: solid 1px;
+                margin: 10px 0;
+                .item-inner{
+                    padding: 0;
+                }
+                .label{
+                    height: 100%;
+                }
+                .img-wrap{
+                    height: 100%;
+                    width: 20%;
+                    float: left;
+                }
+                .text-wrap{
+                    height: 100%;
+                    width:76%;
+                    float: left;
+                    color: #09c;
+                    .a-text{
+                        padding-left: 37px;
+                    }
+                    .value{
+                        font-weight: 600;
+                        padding-left: 4px;
+                    }
+                }
+                .arrow-button{
+                    height: 100%;
+                }
+            }
+        }
+
+    }
+    .pago-tab{
+        .citation-wrap{
+            margin: 20px 0;
+            border: solid 1px;
+            border-radius: 12px;
+            background-color: white;
+            .padding-row{
+                padding: 10px;
+                .top-text-wrap{
+                    width:100%;
+                }
+                .company-wrap{
+                    width: 100%;
+                    margin: 5px 0;
+                    .main-text{
+                        margin-top: 2px;
+                    }
+                    .sub-text{
+                        margin-top: -4px;
+                        width:100%;
+                    }
+                    .img-wrap{
+                        width: 33%;
+                        float: left;
+                    }
+                    .center-text-wrap{
+                        width: 33%;
+                        float: left;
+                        border-left: solid 3px #09c ;
+                        border-right: solid 3px #09c ;
+                    }
+                    .end-text-wrap{
+                        width:33%;
+                    }
+                }
+                .main-text-title{
+                    margin: 5px 0 10px 0;
+                }
+                .main-info-text-wrap{
+                    .main-text{
+                        font-size: 12px;
+                    }
+                    .sub-text{
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

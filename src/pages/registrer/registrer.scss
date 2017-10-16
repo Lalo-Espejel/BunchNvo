@@ -1,0 +1,140 @@
+page-registrer {
+    .scroll-content{
+        background-color: #eeeeee;
+    }
+
+    .divImg {
+        width: 15%;
+        margin: 5px auto;
+    }
+
+    ion-header {
+        background: url(../assets/img/splash2.jpg);
+        background-position-y: 140px;
+        color: white;
+        margin: 0 auto;
+        background-size: cover;
+        min-height: 100px;
+
+        .divImg {
+            width: 15%;
+            margin: 5px auto;
+            img {
+                height: 40px !important;
+                margin-top: 15px;
+            }
+        }
+        .titleForm {
+            width: 90%;
+            margin: 5px auto;
+            text-align: center;
+            color: white;
+        }
+        .item-inner {
+            border-bottom: none !important;
+        }
+    }    
+    .scroll-content {
+        overflow-y: auto;
+    }
+    .divRow {
+        width: 100%;
+        margin: 10px auto;
+        text-align: center;
+        ion-input {
+            background: white !important;
+        }
+    }
+
+    ion-label {
+        text-align: left;
+    }
+    .input-cls {
+        margin: 10px auto;
+        border: 1px solid #acacac;
+        border-radius: 10px;
+        padding-left: 10px;
+        width:100%;
+        background-color: white;
+        .text-wrapp{
+            height: 50px;
+            width: 80%
+        }
+        .radio-button-wrapp{
+            width: 20%;
+            .radioButton{
+                border: gray;
+                background-color: #eeeeee;
+                border-radius: 50%;
+                border: solid 1px #acacac;
+                width: 20px;
+                height: 20px;
+            }
+            .active {
+                background-color: #00bbd3;
+                border-color: #00bbd3;
+            }
+        }
+
+    }
+
+    .titleForm{
+        width: auto;
+        font-family: RaleSubtitle;
+        font-size: 1.4em;
+        text-align: center;
+    }
+
+    .content-cntainer {
+        background: rgb(240,240,240);
+    }
+    .back-btn {
+        margin: 0 auto 10px auto;
+        padding: 0;
+        border-radius: 70%;
+        background: rgb(0,153,204);
+    }
+    .continue-btn {
+        width: 100%;
+        margin: 0 auto;
+        height: 40px;
+        border-radius: 10px;
+        background: rgb(0,153,204);
+        span{
+            padding: 22px 0;
+        }
+    }
+
+    .footerSection {
+        width: 100%;
+        margin-top: 20%;
+        bottom: 0 !important;
+        position: static !important;
+    }
+    .slide-content-layout {
+        height: 100%;
+    }
+    .slide-zoom {
+        height: 100% !important;
+    }
+    .congrats-wrapp{
+        .title-text{
+            margin: 5% 0;
+            font-size: 20px;
+        }
+        .main-text{
+            margin: 10% 9% 18%;
+            font-size: 16px;
+            text-align: justify;
+        }
+        .prossedBtn{
+            border-radius: 50px;
+        }
+    }
+
+    #gender .slide-zoom {
+        height: 100% !important;
+
+    }
+}
+    

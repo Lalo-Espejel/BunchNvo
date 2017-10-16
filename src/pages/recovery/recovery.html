@@ -1,0 +1,32 @@
+<ion-header class="header-custom-cls">
+  <ion-col>
+    <div class="divImg">
+      <img src="assets/icon/contrasena header.png">
+    </div>
+    <div class="titleForm">{{ "RecoveryPage.titleText" | translate}}</div>
+  </ion-col>
+</ion-header>
+      
+
+<ion-content padding>
+  <ion-slides pager="false" swiper-no-swiping="true" #slides parallax spaceBetween=5>
+    <ion-slide>   
+      <ion-title center class="title-recovery">{{ "RecoveryPage.bodyText" | translate}}</ion-title>
+      <div class="divRow">    
+        <ion-input type="text" [placeholder]=' "RecoveryPage.emailInputPlaceholder" | translate' class="email-field"required></ion-input>
+      </div>          
+      <button ion-button (click)="sendRequest()" class="confirm-recovery-btn">{{ "RecoveryPage.buttonText" | translate}}</button>
+    </ion-slide>
+
+    <ion-slide>          
+      <div class="confirm-recovery-text">{{ "RecoveryPage.confirRecoveryText" | translate}}</div>
+      <button ion-button (click)="doneRecovery()" class="confirm-recovery-btn prossedBtn">{{ "RecoveryPage.confirmButtonText" | translate}}</button>
+      <ion-row justify-content-center align-items-end class="button-back-wrapp">
+        <button class="button-back" (tap)="slidePrev()">
+          <ion-icon name="arrow-round-back" ></ion-icon>
+        </button>
+      </ion-row>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

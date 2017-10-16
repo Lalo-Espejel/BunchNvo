@@ -1,0 +1,113 @@
+
+<ion-header>
+  <ion-col>
+    <div class="divImg">
+      <img src="assets/icon/usuario-header.png">
+    </div>
+    <div class="titleForm">{{ "RegisterPage.titleText" | translate}}</div>
+  </ion-col>
+</ion-header>
+
+<ion-content padding class="content-cntainer">
+    <ion-slides inset spaceBetween=5 #slides>
+        <ion-slide>        
+          <ion-label left>{{ "RegisterPage.firstSlide.emailLableText" | translate }}</ion-label>
+          <div class="divRow">
+                <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.firstSlide.emailInputPlaceholderText" | translate' required></ion-input>
+           </div>     
+          <div class="divRow">
+                <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.firstSlide.emailConfirmationInputPlaceholderText" | translate' required></ion-input>
+          </div>              
+            <button ion-button  class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
+        </ion-slide>
+
+        <ion-slide>    
+          <ion-label left>{{"RegisterPage.secondSlide.whatYourNameLableText" | translate}}</ion-label>
+          <div class="divRow">
+            <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.secondSlide.namePlaceholderText" | translate' #name></ion-input>
+          </div>
+          <div class="divRow">
+            <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.secondSlide.lastNamePlaceholderText" | translate' required></ion-input>
+          </div>
+          <div class="divRow">
+            <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.secondSlide.motherLastNamePlaceeholderText" | translate' required></ion-input>
+          </div>
+          <div class="divRow">
+            <button ion-button class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
+          </div>
+          <div class="footerSection">
+            <div class="divRow">
+              <button ion-button class="back-btn"(click)="previousSlide()">
+                <img src="assets/icon/bt-regresar.png"> 
+              </button>
+            </div>
+            <div class="divRow">{{ "RegisterPage.bottomPageCounter.the" | translate }} {{currentStep}} {{ "RegisterPage.bottomPageCounter.from" | translate }} {{maxSlides}}</div>
+          </div>
+        </ion-slide>
+
+        <ion-slide #gender>
+          <ion-label left>{{ "RegisterPage.thirdSlide.genderLableText" | translate }}</ion-label>
+            <ion-row>
+                <ion-row class="input-cls"  (tap)="chnageGenderPick('male')">
+                    <ion-row align-items-center class="text-wrapp">
+                        <span>{{ "RegisterPage.thirdSlide.man" | translate }}</span>
+                    </ion-row>
+                    <ion-row justify-content-center align-items-center class="radio-button-wrapp">
+                        <ion-row  class="radioButton" [ngClass]="{ active:male == true }"></ion-row>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="input-cls" (tap)="chnageGenderPick('female')">
+                    <ion-row align-items-center class="text-wrapp">
+                        <span>{{ "RegisterPage.thirdSlide.woman" | translate }}</span>
+                    </ion-row>
+                    <ion-row justify-content-center align-items-center class="radio-button-wrapp">
+                        <ion-row  class="radioButton" [ngClass]="{ active: female == true }"></ion-row>
+                    </ion-row>
+                </ion-row>
+            </ion-row>
+          <div class="divRow">
+            <button ion-button class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
+          </div>         
+          <div class="footerSection" style="margin-top:40%;">
+            <div class="divRow">
+              <button ion-button class="back-btn"(click)="previousSlide()">
+                <img src="assets/icon/bt-regresar.png"> 
+              </button>
+            </div>
+            <div class="divRow">{{ "RegisterPage.bottomPageCounter.the" | translate }} {{currentStep}} {{ "RegisterPage.bottomPageCounter.from" | translate }} {{maxSlides}}</div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-label left>{{ "RegisterPage.fourthSlide.birthDateLableText" | translate }}</ion-label>
+          <ion-item >
+            <!-- <ion-label>Período</ion-label> -->
+            <div style="width :100%;" (click)="launchPicker()">
+              <span>{{ "RegisterPage.fourthSlide.periodText" | translate }}</span><span style="right: 0; position: absolute;">{{datePicked}}</span>
+            </div>
+              <ion-datetime placeholder="--/-------/----" pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
+          </ion-item>
+           <div class="divRow">
+            <button ion-button class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
+          </div>
+          <div class="footerSection" style="margin-top: 58%;">
+            <div class="divRow">
+              <button ion-button class="back-btn"(click)="previousSlide()">
+                <img src="assets/icon/bt-regresar.png"> 
+              </button>
+            </div>
+            <div class="divRow">{{ "RegisterPage.bottomPageCounter.the" | translate }} {{currentStep}} {{ "RegisterPage.bottomPageCounter.from" | translate }} {{maxSlides}}</div>
+          </div>
+
+        </ion-slide>
+        <ion-slide class="congrats-wrapp">
+          <div class="title-text">{{ "RegisterPage.fifthSlide.congratulationText" | translate }}</div>
+          <div class="main-text">{{ "RegisterPage.fifthSlide.bodyText" | translate }}</div>
+          <div class="divRow">
+            <button ion-button class="continue-btn prossedBtn" (click)="goHome()">{{ "RegisterPage.fifthSlide.startButton" | translate }}</button>
+          </div>  
+        </ion-slide>
+
+    </ion-slides>
+
+</ion-content>

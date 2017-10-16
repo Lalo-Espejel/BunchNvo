@@ -1,0 +1,34 @@
+<ion-content class="login-content" padding>
+  <div class="avatar-row">
+    <div class="avatar-container">
+      <img src="assets/img/perfil.jpg">
+    </div>
+    <ion-title>{{ "LoginPage.titleText" | translate }}</ion-title>
+    <div class="subtitle-text">{{ "LoginPage.subTitle" | translate }}</div>
+  </div>
+
+  <div class="login-box">
+   
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <div class="login-title">{{ "LoginPage.loginTitle" | translate }}</div>
+            <div class="divRow">
+               <ion-input type="text" [placeholder]='"LoginPage.userInputPlaceholderText" | translate' class="user" ></ion-input>
+            </div>
+            <div class="divRow">
+               <ion-input type="text" [placeholder]='"LoginPage.passwordInputPlaceholderText" | translate' class="pass"></ion-input>
+            </div>
+          </ion-list>
+           <button ion-button class="form-btn" (click)="forgotPass()" >{{ "LoginPage.forgotPassText" | translate }}</button>
+           <button ion-button class="form-btn" (click)="createAccount()">{{ "LoginPage.createAccaunText" | translate }}</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <button ion-button class="products-btn" (click)="goProducts()">{{ "LoginPage.buttonText" | translate }}</button>
+      </ion-row>
+      <ion-row>
+        <div class="footer-warn">{{ "LoginPage.footerWarnText" | translate }}</div>
+      </ion-row>
+  </div>
+</ion-content>
