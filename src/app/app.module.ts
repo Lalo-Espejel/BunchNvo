@@ -1,3 +1,10 @@
+import { GetMarcasPage } from './../pages/get-marcas/get-marcas';
+import { GetModelosPage } from './../pages/get-modelos/get-modelos';
+import { GetBuscarPage } from './../pages/get-buscar/get-buscar';
+import { GetDescripcionPage } from './../pages/get-descripcion/get-descripcion';
+import { GetSubDescripcionPage } from './../pages/get-sub-descripcion/get-sub-descripcion';
+import { GetDetallePage } from './../pages/get-detalle/get-detalle';
+import { CarListPage } from './../pages/car-list/car-list';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -5,7 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DatePicker } from '@ionic-native/date-picker';
 import { IonicStorageModule } from '@ionic/storage';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -36,6 +43,7 @@ import { PaymentSubmittedPage } from '../pages/payment-submited/payment-submited
 import { HelpCenterPage} from '../pages/help-center/help-center';
 import { ClienteProductDetailPage } from '../pages/client-mode/cliente-product-detail/cliente-product-detail';
 
+
 import { Localstorage } from './../_helpers/localstorage.controller';
 import { Constants } from './../_helpers/constants.controller';
 
@@ -48,11 +56,19 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
+    CarListPage,
+    GetMarcasPage,
+    GetModelosPage,
+    GetBuscarPage,
+    GetDescripcionPage,
+    GetSubDescripcionPage,
+    GetDetallePage,
     IntroductionPage,
     RecoveryPage,
     RegistrerPage,
@@ -97,6 +113,13 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     MyApp,
     HomePage,
     LoginPage,
+    CarListPage,
+    GetMarcasPage,
+    GetModelosPage,
+    GetBuscarPage,
+    GetDescripcionPage,
+    GetSubDescripcionPage,
+    GetDetallePage,
     IntroductionPage,
     RecoveryPage,
     RegistrerPage,
@@ -131,7 +154,8 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     StatusBar,
     SplashScreen,
     DatePicker,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+
   ]
 })
 export class AppModule {}

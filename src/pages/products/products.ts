@@ -1,3 +1,4 @@
+import { GetMarcasPage } from './../get-marcas/get-marcas';
 import { Localstorage } from './../../_helpers/localstorage.controller';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
@@ -51,4 +52,7 @@ export class ProductsPage {
       localStorage.setItem("isFirstEnterToHomeScreeb", "false");
     }
   }
+  goGetMarcas = () => {
+    this.navCtrl.push(GetMarcasPage, {animate: true});
+  } 
 }

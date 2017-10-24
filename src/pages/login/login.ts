@@ -1,3 +1,4 @@
+import { CarListPage } from './../car-list/car-list';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RecoveryPage } from '../recovery/recovery';
@@ -35,6 +36,10 @@ export class LoginPage {
 
   forgotPass = () => {
     this.navCtrl.push(RecoveryPage, {animate: true});
+  }
+
+  goCarList = () => {
+    this.navCtrl.push(CarListPage, {animate: true});
   }
 
 }

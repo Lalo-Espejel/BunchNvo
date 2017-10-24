@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <div *ngFor = "let item of data">
+        <ion-card>
+          <ion-item>
+            <h2>{{item.Modelo}}</h2>
+          </ion-item>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
