@@ -15,7 +15,21 @@ page-introduction {
     .first-section {
         min-height: 250px;
         width: 100%;
-        background: url("../assets/img/demo.png");
+        background: url("../assets/img/1.png");
+        background-position-y: -68px;
+        background-size: cover; 
+    }
+    .first-sectionb {
+        min-height: 250px;
+        width: 100%;
+        background: url("../assets/img/2.png");
+        background-position-y: -68px;
+        background-size: cover; 
+    }
+    .first-sectionc {
+        min-height: 250px;
+        width: 100%;
+        background: url("../assets/img/3.png");
         background-position-y: -68px;
         background-size: cover; 
     }
@@ -23,6 +37,8 @@ page-introduction {
     .second-section {
         height: auto;
         max-height: 250px;
+        background-position-y: 1px;
+        //background: url("../assets/img/2.png");
         overflow-y: auto;
         font-family: RaleText;
     }

@@ -27019,7 +27019,23 @@ page-introduction .scape-intro-btn {
 page-introduction .first-section {
   min-height: 250px;
   width: 100%;
-  background: url("../assets/img/demo.png");
+  background: url("../assets/img/1.png");
+  background-position-y: -68px;
+  background-size: cover;
+}
+
+page-introduction .first-sectionb {
+  min-height: 250px;
+  width: 100%;
+  background: url("../assets/img/2.png");
+  background-position-y: -68px;
+  background-size: cover;
+}
+
+page-introduction .first-sectionc {
+  min-height: 250px;
+  width: 100%;
+  background: url("../assets/img/3.png");
   background-position-y: -68px;
   background-size: cover;
 }
@@ -27027,6 +27043,7 @@ page-introduction .first-section {
 page-introduction .second-section {
   height: auto;
   max-height: 250px;
+  background-position-y: 1px;
   overflow-y: auto;
   font-family: RaleText;
 }
