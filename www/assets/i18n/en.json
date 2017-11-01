@@ -1,18 +1,18 @@
 {
   "IntroductionPage":{
     "firstSlide":{
-      "titleText": "Lorem Ipsum Title",
-      "bodyText": "Introspection (from Latin \"introspicere\") or internal inspection designates the idea of \"looking inward.\" It is the knowledge that the subject can acquire from their own mental states, that is, designates the situation, for a given subject, to observe and analyze himself, interpreting and characterizing his own cognitive and emotional processes.",
+      "titleText": "Reach your financial goals",
+      "bodyText": "Bunch is a flexible option that helps members achieve their financial goals in a simple way.",
       "buttonText": "Skip"
     },
     "secondSlide":{
-      "titleText": "Lorem Ipsum Title",
-      "bodyText": "Introspection (from Latin \"introspicere\") or internal inspection designates the idea of \"looking inward.\" It is the knowledge that the subject can acquire from their own mental states, that is, designates the situation, for a given subject, to observe and analyze himself, interpreting and characterizing his own cognitive and emotional processes.",
+      "titleText": "Earn money with your friends and family",
+      "bodyText": "Bunch will help you to earn extra income during a family meeting or at dinner with friends",
       "buttonText": "Skip"
     },
     "thirdSlide":{
-      "titleText": "Lorem Ipsum Title",
-      "bodyText": "Introspection (from Latin \"introspicere\") or internal inspection designates the idea of \"looking inward.\" It is the knowledge that the subject can acquire from their own mental states, that is, designates the situation, for a given subject, to observe and analyze himself, interpreting and characterizing his own cognitive and emotional processes.",
+      "titleText": "Be your own boss",
+      "bodyText": "Bunch will help you earn additional income. It depends on you when you want to sell and how much you want to earn. The choice is yours",
       "buttonText": "Skip"
     }
   },

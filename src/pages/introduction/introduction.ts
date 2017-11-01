@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LocalizationModel } from '../../_helpers/localizationModel'
+import { LocalizationModel } from '../../_helpers/localizationModel';
 
 /**
  * Generated class for the IntroductionPage page.

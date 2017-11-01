@@ -1,18 +1,18 @@
 {
   "IntroductionPage":{
     "firstSlide":{
-      "titleText": "Lorem Ipsum Título",
-      "bodyText": "La introspección (del latín « \"introspicere\" (mirar en el interior) ») o inspección interna designa la idea de « mirar al interior ». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea designa la situación, para un sujeto dado, de observarse y analizarse a sí mismo, interpretando y caracterizando sus propios procesos cognitivos y emotivos.",
+      "titleText": "Alcanza tus metas financieras",
+      "bodyText": "Bunch es una opción Flexible que ayuda a sus afiliados a alcanzar su metas financieras de una forma flexible",
       "buttonText": "Saltar"
     },
     "secondSlide":{
-      "titleText": "Lorem Ipsum Título",
-      "bodyText": "La introspección (del latín « \"introspicere\" (mirar en el interior) ») o inspección interna designa la idea de « mirar al interior ». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea designa la situación, para un sujeto dado, de observarse y analizarse a sí mismo, interpretando y caracterizando sus propios procesos cognitivos y emotivos.",
+      "titleText": "Gana con tus amigos y familiares.",
+      "bodyText": "Con Bunch puedes estar en una reunión familiar o una cena con amigos y aprovechar para generar un ingreso extra.",
       "buttonText": "Saltar"
     },
     "thirdSlide":{
-      "titleText": "Lorem Ipsum Título",
-      "bodyText": "La introspección (del latín « \"introspicere\" (mirar en el interior) ») o inspección interna designa la idea de « mirar al interior ». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea designa la situación, para un sujeto dado, de observarse y analizarse a sí mismo, interpretando y caracterizando sus propios procesos cognitivos y emotivos.",
+      "titleText": "Que mejor que ser tu propio jefe.",
+      "bodyText": "Bunch es una forma nueva de ganar dinero extra. Tu decide cuando quieres vender y cuanto quieres ganar. La desición es tuya.",
       "buttonText": "Saltar"
     }
   },
