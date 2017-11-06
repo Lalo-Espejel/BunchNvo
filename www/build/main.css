@@ -27017,7 +27017,7 @@ page-introduction .scape-intro-btn {
 }
 
 page-introduction .first-section {
-  min-height: 400px;
+  min-height: 350px;
   width: 100%;
   background: url("../assets/img/1.jpg");
   background-position-y: -68px;
@@ -27027,7 +27027,7 @@ page-introduction .first-section {
 }
 
 page-introduction .first-sectionb {
-  min-height: 400px;
+  min-height: 350px;
   width: 100%;
   background: url("../assets/img/2.jpg");
   background-position-y: -68px;
@@ -27037,7 +27037,7 @@ page-introduction .first-sectionb {
 }
 
 page-introduction .first-sectionc {
-  min-height: 400px;
+  min-height: 350px;
   width: 100%;
   background: url("../assets/img/3.jpg");
   background-position-y: -68px;
