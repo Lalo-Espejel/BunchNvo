@@ -14,6 +14,7 @@ page-introduction {
         position: absolute;
         left: 15px;
         bottom: 40px;
+        z-index: 1px;
     }
     .first-section {
         min-height: 325px;
@@ -45,7 +46,7 @@ page-introduction {
 
     .second-section {
         height: auto;
-        max-height: 200px;
+        max-height: 175px;
         background-position-y: 1px;
         overflow-y: auto;
         font-family: RaleText;
