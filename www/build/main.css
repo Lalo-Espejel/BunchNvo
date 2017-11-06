@@ -27019,7 +27019,7 @@ page-introduction .scape-intro-btn {
 page-introduction .first-section {
   min-height: 350px;
   width: 100%;
-  background: url("../assets/img/1.jpg");
+  background: url("../assets/img/11.png");
   background-position-y: -68px;
   background-size: cover;
   background-position: center;
@@ -27029,7 +27029,7 @@ page-introduction .first-section {
 page-introduction .first-sectionb {
   min-height: 350px;
   width: 100%;
-  background: url("../assets/img/2.jpg");
+  background: url("../assets/img/22.png");
   background-position-y: -68px;
   background-size: cover;
   background-position: center;
@@ -27039,7 +27039,7 @@ page-introduction .first-sectionb {
 page-introduction .first-sectionc {
   min-height: 350px;
   width: 100%;
-  background: url("../assets/img/3.jpg");
+  background: url("../assets/img/33.png");
   background-position-y: -68px;
   background-size: cover;
   background-position: center;
@@ -27059,10 +27059,12 @@ page-introduction .title-text {
   text-align: left;
   width: 100%;
   font-family: RaleTitle;
+  color: gray;
 }
 
 page-introduction .body-text {
   text-align: left;
+  color: gray;
   font-family: RaleCondition;
   max-height: 40%;
 }
