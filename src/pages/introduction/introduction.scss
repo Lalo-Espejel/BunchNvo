@@ -1,7 +1,9 @@
 page-introduction {
     background-color: rgba(245,245,245,255) !important;
 
-    
+    .button-bottom{
+        background: url("../assets/img/11.png");
+    }
 
     .scape-intro-btn {
         color:black;
@@ -16,7 +18,7 @@ page-introduction {
         bottom: 30px;
     }
     .first-section {
-        min-height: 325px;
+        min-height: 60%;
         width: 100%;
         background: url("../assets/img/11.png");
         background-position-y: -68px;
@@ -44,8 +46,7 @@ page-introduction {
     }
 
     .second-section {
-        height: auto;
-        max-height: 175px;
+        max-height: 30%;
         background-position-y: 1px;
         overflow-y: auto;
         font-family: RaleText;

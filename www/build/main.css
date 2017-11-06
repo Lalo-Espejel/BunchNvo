@@ -27006,6 +27006,10 @@ page-introduction {
   background-color: whitesmoke !important;
 }
 
+page-introduction .button-bottom {
+  background: url("../assets/img/11.png");
+}
+
 page-introduction .scape-intro-btn {
   color: black;
   width: 90%;
@@ -27020,7 +27024,7 @@ page-introduction .scape-intro-btn {
 }
 
 page-introduction .first-section {
-  min-height: 325px;
+  min-height: 60%;
   width: 100%;
   background: url("../assets/img/11.png");
   background-position-y: -68px;
@@ -27050,8 +27054,7 @@ page-introduction .first-sectionc {
 }
 
 page-introduction .second-section {
-  height: auto;
-  max-height: 175px;
+  max-height: 30%;
   background-position-y: 1px;
   overflow-y: auto;
   font-family: RaleText;

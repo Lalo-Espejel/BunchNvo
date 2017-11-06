@@ -10,11 +10,11 @@
           <div class="title-text">{{ 'IntroductionPage.firstSlide.titleText' | translate}}</div>
           <div class="body-text">{{ 'IntroductionPage.firstSlide.bodyText' | translate}}</div>
         </ion-row>
-        <ion-row>
-            <button ion-button (click)="navHome()" class="scape-intro-btn">{{ 'IntroductionPage.firstSlide.buttonText' | translate}}</button>  
+        <div class="button-bottom">
             <ion-item-divider>
               </ion-item-divider>  
-        </ion-row>   
+            <button ion-button (click)="navHome()" class="scape-intro-btn">{{ 'IntroductionPage.firstSlide.buttonText' | translate}}</button>  
+        </div>   
       </div>
     </ion-slide>
 
