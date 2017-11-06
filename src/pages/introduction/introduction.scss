@@ -11,7 +11,8 @@ page-introduction {
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: none;
-        bottom: -20%;
+        position: static;
+        bottom: 0px;
     }
     .first-section {
         min-height: 350px;
