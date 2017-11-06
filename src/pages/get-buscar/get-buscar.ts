@@ -23,6 +23,8 @@ export class GetBuscarPage {
   data2:string;
   marca:string;
   anio:string;
+  displayPrimaTotal:any;
+  displayAseguradora:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.detalle=this.navParams.get('firstPassed').Detalle;
     this.url=this.navParams.get('secondPassed');
@@ -35,19 +37,34 @@ export class GetBuscarPage {
   }
   
   loadCotizacion(aseguradora, clave, descripcionAseguradora, marca, anio, descripcion, subdescripcion, detalle){
-    var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"19/11/1988","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"04100","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":28,"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+marca+'","Modelo":"'+anio+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';
-    console.log('este sera el url a consultar '+'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion');
-    this.http.get('http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion')
-    .map(res=> res.json())  
-    .subscribe(data2=>{
-      this.data2 = data2;
-      console.log("OBJECT "+ data2);
-    },err =>{
-      console.log(err);
-    });
+    var str="";
+    var strJ="";  
+    var conta=0;
     
+    var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"19/11/1988","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"04100","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":28,"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+marca+'","Modelo":"'+anio+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';
+      //console.log('este sera el url a consultar '+'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion');
+      this.http.get('http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion')
+      .map(res2=> res2.json().Cotizacion.PrimaTotal)  
+      .subscribe(data2=>{
+        this.data2 = data2;
+        str = JSON.stringify(this.data2);
+        this.displayPrimaTotal = str.replace('"','');
+        this.displayPrimaTotal = this.displayPrimaTotal.replace('"','');
+        this.displayAseguradora=aseguradora;
+
+        var node = document.createElement('ion-list');
+        var textnode = document.createTextNode("se tiene a la aseguradora: "+aseguradora +"con la prima total de: "+this.displayPrimaTotal);
+        node.appendChild(textnode);
+        document.getElementById('myList').appendChild(node);
+        console.log("esta es la response "+this.displayPrimaTotal);
+      },err =>{
+        console.log(err);
+      });
   }
 
+  public items:any[] = [];
+  
+ 
   loadDetalle(descripcion, url){
     var clave="";
     var aseguradora="";
@@ -58,7 +75,7 @@ export class GetBuscarPage {
     .map(res=> res.json())  
     .subscribe(data=>{
       this.data = data.Catalogo;
-      console.log(data.Catalogo);
+      //console.log(data.Catalogo);
       //console.log(data.Catalogo[0].CatDescripciones[0].clave);
       //clave = JSON.stringify(data.Catalogo[0].CatDescripciones[0].clave);
       for(let result of this.data){

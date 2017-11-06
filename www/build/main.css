@@ -27017,27 +27017,30 @@ page-introduction .scape-intro-btn {
 }
 
 page-introduction .first-section {
-  min-height: 250px;
+  min-height: 500px;
   width: 100%;
-  background: url("../assets/img/1.png");
+  background: url("../assets/img/1.jpg");
   background-position-y: -68px;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 page-introduction .first-sectionb {
-  min-height: 250px;
+  min-height: 500px;
   width: 100%;
-  background: url("../assets/img/2.png");
+  background: url("../assets/img/2.jpg");
   background-position-y: -68px;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 page-introduction .first-sectionc {
-  min-height: 250px;
+  min-height: 500px;
   width: 100%;
-  background: url("../assets/img/3.png");
+  background: url("../assets/img/3.jpg");
   background-position-y: -68px;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 page-introduction .second-section {
