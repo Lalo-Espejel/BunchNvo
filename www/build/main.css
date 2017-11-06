@@ -27016,8 +27016,7 @@ page-introduction .scape-intro-btn {
   text-transform: none;
   position: absolute;
   left: 15px;
-  bottom: 40px;
-  z-index: 1px;
+  bottom: 30px;
 }
 
 page-introduction .first-section {
