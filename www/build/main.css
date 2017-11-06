@@ -27014,6 +27014,7 @@ page-introduction .scape-intro-btn {
   -webkit-box-shadow: none;
   box-shadow: none;
   text-transform: none;
+  bottom: -20%;
 }
 
 page-introduction .first-section {

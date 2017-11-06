@@ -11,6 +11,7 @@ page-introduction {
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: none;
+        bottom: -20%;
     }
     .first-section {
         min-height: 350px;
@@ -44,7 +45,6 @@ page-introduction {
         height: auto;
         max-height: 250px;
         background-position-y: 1px;
-        //background: url("../assets/img/2.png");
         overflow-y: auto;
         font-family: RaleText;
     }
