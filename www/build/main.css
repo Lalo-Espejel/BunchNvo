@@ -3817,25 +3817,25 @@ ion-icon::before {
 
 @font-face {
   font-family: RaleTitle;
-  src: url("../assets/fonts/Raleway-Bold.ttf");
+  src: url("../assets/fonts/Quicksand/Quicksand-Bold.ttf");
   font-size: 24px;
 }
 
 @font-face {
   font-family: RaleSubtitle;
-  src: url("../assets/fonts/Raleway-Regular.ttf");
+  src: url("../assets/fonts/Quicksand/Quicksand-Regular.ttf");
   font-size: 18px;
 }
 
 @font-face {
   font-family: RaleText;
-  src: url("../assets/fonts/Raleway-Regular.ttf");
+  src: url("../assets/fonts/Quicksand/Quicksand-Regular.ttf");
   font-size: 14px;
 }
 
 @font-face {
   font-family: RaleCondition;
-  src: url("../assets/fonts/Raleway-Regular.ttf");
+  src: url("../assets/fonts/Quicksand/Quicksand-Regular.ttf");
   font-size: 10px;
 }
 
