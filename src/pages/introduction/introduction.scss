@@ -20,7 +20,8 @@ page-introduction {
         background-repeat: no-repeat; 
     }
     .first-sectionb {
-        min-height: 350px;
+        position: absolute;
+        height: 50%;
         width: 100%;
         background: url("../assets/img/222.png");
         background-position-y: -68px;
@@ -29,7 +30,8 @@ page-introduction {
         background-repeat: no-repeat; 
     }
     .first-sectionc {
-        min-height: 350px;
+        position: absolute;
+        height: 50%;
         width: 100%;
         background: url("../assets/img/333.png");
         background-position-y: -68px;
@@ -51,6 +53,7 @@ page-introduction {
         position:relative;
         top:82%;
         color:black;
+        font-family: RaleNext;
     }
 
     .title-text {        

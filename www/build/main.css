@@ -3834,8 +3834,8 @@ ion-icon::before {
 }
 
 @font-face {
-  font-family: RaleCondition;
-  src: url("../assets/fonts/Quicksand/Quicksand-Regular.ttf");
+  font-family: RaleNext;
+  src: url("../assets/fonts/Quicksand/Quicksand-Light.ttf");
   font-size: 10px;
 }
 
@@ -27028,7 +27028,8 @@ page-introduction .first-section {
 }
 
 page-introduction .first-sectionb {
-  min-height: 350px;
+  position: absolute;
+  height: 50%;
   width: 100%;
   background: url("../assets/img/222.png");
   background-position-y: -68px;
@@ -27038,7 +27039,8 @@ page-introduction .first-sectionb {
 }
 
 page-introduction .first-sectionc {
-  min-height: 350px;
+  position: absolute;
+  height: 50%;
   width: 100%;
   background: url("../assets/img/333.png");
   background-position-y: -68px;
@@ -27061,6 +27063,7 @@ page-introduction .third-section {
   position: relative;
   top: 82%;
   color: black;
+  font-family: RaleNext;
 }
 
 page-introduction .title-text {
