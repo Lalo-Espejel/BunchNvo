@@ -27007,8 +27007,7 @@ page-introduction {
 }
 
 page-introduction .barra {
-  top: 75%;
-  background-color: yellow;
+  padding: 0px;
 }
 
 page-introduction .scape-intro-btn {
