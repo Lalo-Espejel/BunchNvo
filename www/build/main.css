@@ -27006,6 +27006,11 @@ page-introduction {
   background-color: whitesmoke !important;
 }
 
+page-introduction .barra {
+  top: 75%;
+  background-color: yellow;
+}
+
 page-introduction .scape-intro-btn {
   width: 90%;
   border: none;
@@ -27061,13 +27066,6 @@ page-introduction .third-section {
   position: relative;
   top: 85%;
   color: black;
-}
-
-page-introduction .fourth-section {
-  position: relative;
-  top: 90%;
-  background-color: black;
-  z-index: 1px;
 }
 
 page-introduction .title-text {

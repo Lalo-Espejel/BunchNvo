@@ -1,6 +1,9 @@
 page-introduction {
     background-color: rgba(245,245,245,255) !important;
-
+    .barra{
+        top:75%;
+        background-color: yellow;
+    }
     .scape-intro-btn {
         width: 90%;
         border: none;
@@ -52,12 +55,6 @@ page-introduction {
         position:relative;
         top:85%;
         color:black;
-    }
-    .fourth-section {
-        position:relative;
-        top:90%;
-        background-color:black;
-        z-index: 1px;
     }
 
     .title-text {        
