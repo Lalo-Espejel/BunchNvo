@@ -27049,6 +27049,7 @@ page-introduction .first-sectionc {
 
 page-introduction .second-section {
   position: absolute;
+  text-align: center;
   top: 50%;
   height: 25%;
   background-position-y: 1px;
@@ -27064,7 +27065,7 @@ page-introduction .third-section {
 
 page-introduction .title-text {
   margin: 15px auto;
-  text-align: left;
+  text-align: center;
   width: 100%;
   font-family: RaleTitle;
   color: gray;
