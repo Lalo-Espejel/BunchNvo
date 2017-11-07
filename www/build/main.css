@@ -27063,6 +27063,13 @@ page-introduction .third-section {
   color: black;
 }
 
+page-introduction .fourth-section {
+  position: relative;
+  top: 90%;
+  background-color: black;
+  z-index: 1px;
+}
+
 page-introduction .title-text {
   margin: 15px auto;
   text-align: center;

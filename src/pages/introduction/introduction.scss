@@ -53,6 +53,12 @@ page-introduction {
         top:85%;
         color:black;
     }
+    .fourth-section {
+        position:relative;
+        top:90%;
+        background-color:black;
+        z-index: 1px;
+    }
 
     .title-text {        
         margin: 15px auto;
