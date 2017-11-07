@@ -27006,6 +27006,10 @@ page-introduction {
   background-color: whitesmoke !important;
 }
 
+page-introduction .item-divider-md {
+  background-color: red;
+}
+
 page-introduction .scape-intro-btn {
   width: 90%;
   border: none;
