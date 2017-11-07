@@ -1,8 +1,6 @@
 page-introduction {
     background-color: rgba(245,245,245,255) !important;
-    .barra{
-        padding:0px;
-    }
+
     .scape-intro-btn {
         width: 90%;
         border: none;
@@ -65,7 +63,7 @@ page-introduction {
     }
 
     .body-text {        
-        text-align: left;
+        text-align: center;
         color: gray;
         font-family: RaleCondition;
         max-height: 40%;

@@ -27006,10 +27006,6 @@ page-introduction {
   background-color: whitesmoke !important;
 }
 
-page-introduction .barra {
-  padding: 0px;
-}
-
 page-introduction .scape-intro-btn {
   width: 90%;
   border: none;
@@ -27076,7 +27072,7 @@ page-introduction .title-text {
 }
 
 page-introduction .body-text {
-  text-align: left;
+  text-align: center;
   color: gray;
   font-family: RaleCondition;
   max-height: 40%;
