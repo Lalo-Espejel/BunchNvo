@@ -17,7 +17,6 @@
     </ion-slide>
 
     <ion-slide>
-      <div style="height:100%;">
       <ion-row>  
           <div class="first-sectionb"></div>
         </ion-row>
@@ -25,14 +24,14 @@
           <div class="title-text">{{ 'IntroductionPage.secondSlide.titleText' | translate}}</div>
           <div class="body-text">{{ 'IntroductionPage.secondSlide.bodyText' | translate}}</div>
         </ion-row>
-        <ion-item-divider>
-          </ion-item-divider>
-      </div>  
-        <button ion-button (click)="navHome()" class="scape-intro-btn">{{ 'IntroductionPage.secondSlide.buttonText' | translate}}</button>
+        <div class="third-section">  
+          <button ion-button (click)="navHome()" class="scape-intro-btn">{{ 'IntroductionPage.secondSlide.buttonText' | translate}}</button>
+          <ion-item-divider>
+          </ion-item-divider>      
+        </div>
     </ion-slide>
 
     <ion-slide>
-      <div style="height:100%;">
       <ion-row>  
           <div class="first-sectionc"></div>
         </ion-row>
@@ -40,8 +39,11 @@
           <div class="title-text">{{ 'IntroductionPage.thirdSlide.titleText' | translate}}</div>
           <div class="body-text">{{ 'IntroductionPage.thirdSlide.bodyText' | translate}}</div>
         </ion-row>
-      </div>  
-      <button ion-button (click)="navHome()" class="scape-intro-btn">{{ 'IntroductionPage.thirdSlide.buttonText' | translate}}</button>
+        <div class="third-section">  
+          <button ion-button (click)="navHome()" class="scape-intro-btn">{{ 'IntroductionPage.thirdSlide.buttonText' | translate}}</button>
+          <ion-item-divider>
+          </ion-item-divider>      
+        </div>
     </ion-slide>
   </ion-slides>
 </ion-content>
