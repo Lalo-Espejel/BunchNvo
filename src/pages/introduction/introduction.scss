@@ -1,26 +1,21 @@
 page-introduction {
     background-color: rgba(245,245,245,255) !important;
 
-    .button-bottom{
-        background: url("../assets/img/11.png");
-    }
-
     .scape-intro-btn {
-        color:black;
         width: 90%;
         border: none;
         background: transparent;
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: none;
-        position: absolute;
-        left: 15px;
-        bottom: 30px;
+        position: relative;
     }
     .first-section {
-        min-height: 350px;
+        position: absolute;
+        background-color: black;
+        height: 50%;
         width: 100%;
-        background: url("../assets/img/11.png");
+        //background: url("../assets/img/11.png");
         background-position-y: -68px;
         background-size: cover;
         background-position: center;
@@ -46,10 +41,17 @@ page-introduction {
     }
 
     .second-section {
-        max-height: 30%;
+        position:absolute;
+        top:50%;
+        height: 25%;
         background-position-y: 1px;
         overflow-y: auto;
         font-family: RaleText;
+    }
+    .third-section {
+        position:relative;
+        top:85%;
+        background-color: yellow;
     }
 
     .title-text {        
