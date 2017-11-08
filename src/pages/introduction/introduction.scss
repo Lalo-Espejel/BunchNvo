@@ -9,13 +9,21 @@ page-introduction {
         text-transform: none;
         position: relative;
     }
+    .scape-intro-btn-3rd {
+        width: 90%;
+        border: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        text-transform: none;
+        position: relative;
+    }
     .first-section {
         position: absolute;
         height: 50%;
         width: 100%;
         background: url("../assets/img/111.png");
         background-position-y: -68px;
-        background-size: cover;
+        background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat; 
     }
@@ -25,7 +33,7 @@ page-introduction {
         width: 100%;
         background: url("../assets/img/222.png");
         background-position-y: -68px;
-        background-size: cover; 
+        background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat; 
     }
@@ -35,7 +43,7 @@ page-introduction {
         width: 100%;
         background: url("../assets/img/333.png");
         background-position-y: -68px;
-        background-size: cover; 
+        background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat; 
     }
@@ -67,7 +75,6 @@ page-introduction {
     .body-text {        
         text-align: center;
         color: gray;
-        font-family: RaleCondition;
         max-height: 40%;
     }
 
