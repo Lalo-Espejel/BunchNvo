@@ -1,10 +1,10 @@
 page-home {
     .ion-ios-notification-outline,.ion-ios-notification,.ion-md-notification,.ion-md-notification-outline {
-        content: url('../assets/icon/alertas-menu-off.png');
+        content: url('../assets/icon/alerta0.png');
     }
-    /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
-        content: url('../assets/icon/alertas-menu-on.png');        
-    }*/
+    .tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
+        content: url('../assets/icon/alerta1.png');        
+    }
 
     .ion-ios-texting-outline,.ion-ios-texting,.ion-md-texting,.ion-md-texting-outline {
         content: url('../assets/icon/mensajes-menu-off.png');

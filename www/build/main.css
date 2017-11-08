@@ -26947,9 +26947,6 @@ help-center-page .container-wrapper .citation-wrap .padding-row .main-text-title
 }
 
 page-home {
-  /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
-        content: url('../assets/icon/alertas-menu-on.png');        
-    }*/
   /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="texting"] {
         content: url('../assets/icon/mensajes-menu-on.png');        
     }*/
@@ -26971,7 +26968,11 @@ page-home {
 }
 
 page-home .ion-ios-notification-outline, page-home .ion-ios-notification, page-home .ion-md-notification, page-home .ion-md-notification-outline {
-  content: url("../assets/icon/alertas-menu-off.png");
+  content: url("../assets/icon/alerta0.png");
+}
+
+page-home .tabs-ios, page-home .tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
+  content: url("../assets/icon/alerta1.png");
 }
 
 page-home .ion-ios-texting-outline, page-home .ion-ios-texting, page-home .ion-md-texting, page-home .ion-md-texting-outline {
