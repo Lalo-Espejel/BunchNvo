@@ -26971,6 +26971,10 @@ page-home .ion-ios-notification-outline, page-home .ion-ios-notification, page-h
   content: url("../assets/icon/alerta0.png");
 }
 
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
+  content: url("../assets/icon/alerta1.png");
+}
+
 page-home .ion-ios-texting-outline, page-home .ion-ios-texting, page-home .ion-md-texting, page-home .ion-md-texting-outline {
   content: url("../assets/icon/mensajes-menu-off.png");
 }
@@ -26997,10 +27001,6 @@ page-home .ion-ios-products-outline, page-home .ion-ios-products, page-home .ion
 
 page-home .hideTab {
   display: none !important;
-}
-
-.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
-  content: url("../assets/icon/alerta1.png");
 }
 
 page-introduction {
