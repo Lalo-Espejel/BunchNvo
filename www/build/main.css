@@ -26972,7 +26972,7 @@ page-home .ion-ios-notification-outline, page-home .ion-ios-notification, page-h
 }
 
 page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
-  content: url("../assets/icon/icono2.jpg");
+  content: url("../assets/icon/svg.svg");
 }
 
 page-home .ion-ios-texting-outline, page-home .ion-ios-texting, page-home .ion-md-texting, page-home .ion-md-texting-outline {
