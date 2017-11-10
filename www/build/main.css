@@ -26947,6 +26947,12 @@ help-center-page .container-wrapper .citation-wrap .padding-row .main-text-title
 }
 
 page-home {
+  /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="products"] {
+        content: url('../assets/icon/productos-menu-on.png');        
+    }*/
+  /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="menu"] {
+        content: url('../assets/icon/termometro-menu-on.png');        
+    }*/
   /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="texting"] {
         content: url('../assets/icon/mensajes-menu-on.png');        
     }*/
@@ -26959,44 +26965,69 @@ page-home {
   /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="profile"] {
         content: url('../assets/icon/perfil-menu-on.png');        
     }*/
-  /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="menu"] {
-        content: url('../assets/icon/termometro-menu-on.png');        
-    }*/
   /*.tabs-ios,.tabs-md .tab-button[aria-selected=true] .tab-button-icon[aria-label="products"] {
         content: url('../assets/icon/productos-menu-on.png');        
     }*/
 }
 
 page-home .ion-ios-notification-outline, page-home .ion-ios-notification, page-home .ion-md-notification, page-home .ion-md-notification-outline {
-  content: url("../assets/icon/icono1.png");
+  content: url("../assets/icon/alertas0.svg");
 }
 
 page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="notification"] {
-  content: url("../assets/icon/new.svg");
+  content: url("../assets/icon/alertas1.svg");
 }
 
 page-home .ion-ios-texting-outline, page-home .ion-ios-texting, page-home .ion-md-texting, page-home .ion-md-texting-outline {
-  content: url("../assets/icon/mensajes-menu-off.png");
+  content: url("../assets/icon/mensajes.svg");
+}
+
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="texting"] {
+  content: url("../assets/icon/mensajes1.svg");
 }
 
 page-home .ion-ios-advertisement-outline, page-home .ion-ios-advertisement, page-home .ion-md-advertisement, page-home .ion-md-advertisement-outline {
-  content: url("../assets/icon/anuncios-menu-off.png");
+  content: url("../assets/icon/anuncios0.svg");
+}
+
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="advertisement"] {
+  content: url("../assets/icon/anuncios1.svg");
 }
 
 page-home .ion-ios-statistics-outline, page-home .ion-ios-statistics, page-home .ion-md-statistics, page-home .ion-md-statistics-outline {
-  content: url("../assets/icon/estadisticas-menu-off.png");
+  content: url("../assets/icon/estadisticas0.svg");
+}
+
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="statistics"] {
+  content: url("../assets/icon/estadisticas1.svg");
 }
 
 page-home .ion-ios-profile-outline, page-home .ion-ios-profile, page-home .ion-md-profile, page-home .ion-md-profile-outline {
-  content: url("../assets/icon/perfil-menu-off.png");
+  content: url("../assets/icon/perfil0.svg");
+}
+
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="profile"] {
+  content: url("../assets/icon/perfil1.svg");
 }
 
 page-home .ion-ios-menu-outline, page-home .ion-ios-menu, page-home .ion-md-menu, page-home .ion-md-menu-outline {
-  content: url("../assets/icon/termometro-menu-off.png");
+  content: url("../assets/icon/termometro0.svg");
+}
+
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="menu"] {
+  content: url("../assets/icon/termometro1.scg");
 }
 
 page-home .ion-ios-products-outline, page-home .ion-ios-products, page-home .ion-md-products, page-home .ion-md-products-outline {
-  content: url("../assets/icon/productos-menu-off.png");
+  content: url("../assets/icon/productos0.svg");
+}
+
+page-home .tab-button[aria-selected=true] .tab-button-icon[aria-label="products"] {
+  content: url("../assets/icon/productos1.svg");
+}
+
+page-home .ion-ios-products-outline, page-home .ion-ios-products, page-home .ion-md-products, page-home .ion-md-products-outline {
+  content: url("../assets/icon/productos0.svg");
 }
 
 page-home .hideTab {
