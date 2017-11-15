@@ -1,3 +1,4 @@
+import { IntroductionPage } from './../introduction/introduction';
 import { CarListPage } from './../car-list/car-list';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -24,12 +25,6 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  goProducts = () => {
-    localStorage.setItem("isClient","false");
-    localStorage.setItem("isFirstEnterToHomeScreeb","true");
-    this.navCtrl.push(HomePage, null, {animate: true});
-  }
-
   createAccount = () => {
     this.navCtrl.push(RegistrerPage, {animate: true});
   }
@@ -40,6 +35,9 @@ export class LoginPage {
 
   goCarList = () => {
     this.navCtrl.push(CarListPage, {animate: true});
+  }
+  goIntro = () => {
+    this.navCtrl.push(IntroductionPage, {animate: true});
   }
 
 }

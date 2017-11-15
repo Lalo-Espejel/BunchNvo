@@ -12,7 +12,7 @@ import { LocalizationModel } from '../_helpers/localizationModel';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = IntroductionPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform,
               statusBar: StatusBar,

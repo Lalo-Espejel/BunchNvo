@@ -1,8 +1,10 @@
+import { HomePage } from './../home/home';
+import { ProductsPage } from './../products/products';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalizationModel } from '../../_helpers/localizationModel';
+
 
 /**
  * Generated class for the IntroductionPage page.
@@ -68,8 +70,11 @@ export class IntroductionPage {
     });
     prompt.present();
   }
-  public navHome  = () =>{
-   this.navCtrl.setRoot(LoginPage, false, {animate: true});
+
+  goHome = () => {
+    localStorage.setItem("isClient","false");
+    localStorage.setItem("isFirstEnterToHomeScreeb","true");
+    this.navCtrl.push(HomePage, null, {animate: true});
   }
 
 }

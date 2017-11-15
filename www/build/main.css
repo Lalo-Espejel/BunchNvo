@@ -26028,7 +26028,7 @@ page-advertisement .scroll-content {
 }
 
 page-advertisement .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -26715,7 +26715,7 @@ page-create-advertisement .full-wrapper .upper-panel .upper-panel-right-panel .s
 }
 
 filter-page .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -27138,8 +27138,7 @@ page-login ion-title div {
 }
 
 page-login .login-content {
-  background: url("../assets/img/splash2.jpg") no-repeat;
-  background-size: cover;
+  background-color: black;
   color: white !important;
   text-align: center;
 }
@@ -27347,7 +27346,7 @@ page-new-advertisement .scroll-content {
 }
 
 page-new-advertisement .tab-header-cls {
-  background: url("../assets/img/splash2.jpg");
+  background-color: #2492ff;
   background-position-y: bottom;
   color: white;
   margin: 0 auto;
@@ -27404,7 +27403,7 @@ page-new-advertisement .scroll-content {
 }
 
 page-notification .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -27538,7 +27537,7 @@ page-notification-detail .continue-wrap .button-continue {
 }
 
 payment-submited-page .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -27689,7 +27688,7 @@ page-profile ion-label {
 }
 
 page-profile .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -27924,7 +27923,7 @@ page-recovery .scroll-content {
 }
 
 page-recovery ion-header.header-custom-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -28068,7 +28067,7 @@ page-registrer .divImg {
 }
 
 page-registrer ion-header {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -28212,7 +28211,7 @@ page-registrer #gender .slide-zoom {
 }
 
 .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -28614,7 +28613,7 @@ page-texting ion-content {
 }
 
 page-texting .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
