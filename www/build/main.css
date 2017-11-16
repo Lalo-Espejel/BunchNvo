@@ -27408,17 +27408,17 @@ page-notification .tab-header-cls {
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  height: 75px;
 }
 
 page-notification .tab-header-cls div.divImg {
-  width: 15%;
-  margin: 5px auto;
+  width: 10%;
+  height: 10%;
+  margin: -5px auto;
 }
 
 page-notification .tab-header-cls div.divImg img {
   height: 40px !important;
-  margin-top: 15px;
 }
 
 page-notification .scroll-content {
@@ -27448,6 +27448,7 @@ page-notification .item-wrapper {
 }
 
 page-notification .titleForm {
+  word-wrap: normal;
   width: 90%;
   margin: 5px auto;
   text-align: center;
