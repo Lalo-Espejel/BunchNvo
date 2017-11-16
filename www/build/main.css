@@ -26033,17 +26033,19 @@ page-advertisement .tab-header-cls {
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
-page-advertisement .tab-header-cls .divImg {
-  width: 15%;
-  margin: 5px auto;
+page-advertisement .tab-header-cls div.divImg {
+  position: relative;
+  width: 25%;
+  height: 10%;
 }
 
-page-advertisement .tab-header-cls .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+page-advertisement .tab-header-cls div.divImg img {
+  background-color: transparent;
+  height: 140px !important;
 }
 
 page-advertisement .tab-header-cls .titleForm {
@@ -27133,6 +27135,11 @@ page-login {
   overflow: hidden;
 }
 
+page-login .logo {
+  width: 66%;
+  height: 66%;
+}
+
 page-login ion-title div {
   color: white !important;
 }
@@ -27414,7 +27421,6 @@ page-notification .tab-header-cls {
 
 page-notification .tab-header-cls div.divImg {
   position: relative;
-  top: -65px;
   width: 25%;
   height: 10%;
 }
@@ -27685,7 +27691,6 @@ page-profile .tab-header-cls {
 
 page-profile .tab-header-cls div.divImg {
   position: relative;
-  top: -65px;
   width: 25%;
   height: 10%;
 }
@@ -28205,17 +28210,23 @@ page-registrer #gender .slide-zoom {
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
-.tab-header-cls .divImg {
-  width: 15%;
+.tab-header-cls div.divImg {
+  width: 25%;
+  height: 10%;
   margin: 5px auto;
 }
 
-.tab-header-cls .divImg img {
-  height: 40px !important;
+.tab-header-cls div.divImg img {
+  position: relative;
+  top: -65px;
+  height: 140px !important;
   margin-top: 15px;
+  background-color: transparent;
+  z-index: -1px;
 }
 
 .tab-header-cls .titleForm {
@@ -28613,7 +28624,6 @@ page-texting .tab-header-cls {
 
 page-texting .tab-header-cls div.divImg {
   position: relative;
-  top: -65px;
   width: 25%;
   height: 10%;
 }
