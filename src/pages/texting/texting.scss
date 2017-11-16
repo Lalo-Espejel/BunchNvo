@@ -9,14 +9,19 @@ page-texting {
         color: white;
         margin: 0 auto;
         background-size: cover;
-        min-height: 100px;
+        min-height:20px; 
+        max-height: 70px;
 
-        .divImg {
-            width: 15%;
-            margin: 5px auto;
+        div.divImg {
+            position:relative;
+            top: -65px;
+            width: 25%;
+            height: 10%;
+            //margin: -25px auto;
             img {
-                height: 40px !important;            
-                margin-top: 15px;
+                background-color: transparent;
+                height: 140px !important;
+                //margin-top: 15px;
             }
         }
         
