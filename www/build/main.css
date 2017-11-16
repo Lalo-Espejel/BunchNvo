@@ -27414,13 +27414,14 @@ page-notification .tab-header-cls {
 
 page-notification .tab-header-cls div.divImg {
   position: relative;
-  top: -35px;
-  width: 10%;
+  top: -65px;
+  width: 25%;
   height: 10%;
 }
 
 page-notification .tab-header-cls div.divImg img {
-  height: 40px !important;
+  background-color: transparent;
+  height: 140px !important;
 }
 
 page-notification .scroll-content {

@@ -11,12 +11,13 @@ page-notification {
 
         div.divImg {
             position:relative;
-            top: -35px;
-            width: 10%;
+            top: -65px;
+            width: 25%;
             height: 10%;
             //margin: -25px auto;
             img {
-                height: 40px !important;
+                background-color: transparent;
+                height: 140px !important;
                 //margin-top: 15px;
             }
         }
