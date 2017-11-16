@@ -27408,7 +27408,8 @@ page-notification .tab-header-cls {
   color: white;
   margin: 0 auto;
   background-size: cover;
-  height: 75px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
 page-notification .tab-header-cls div.divImg {
@@ -27448,9 +27449,10 @@ page-notification .item-wrapper {
 }
 
 page-notification .titleForm {
+  background-color: green;
+  position: relative;
   word-wrap: normal;
   width: 90%;
-  margin: 5px auto;
   text-align: center;
 }
 
