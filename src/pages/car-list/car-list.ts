@@ -1,9 +1,12 @@
+import { TextingPage } from './../texting/texting';
+import { AdvertisementPage } from './../advertisement/advertisement';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { NgFor } from '@angular/common';
 import { SoapService } from './soap.service';
+
 
 /**
  * Generated class for the CarListPage page.
@@ -17,6 +20,8 @@ import { SoapService } from './soap.service';
   templateUrl: 'car-list.html'
 })
 export class CarListPage {
+    tab1Root = AdvertisementPage;
+    tab2Root = TextingPage;
   url:string;
   data:string;
   constructor(public navCtrl: NavController, public http: Http) {

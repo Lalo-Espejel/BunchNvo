@@ -180,7 +180,7 @@
   },
   "AcquireProductPage":{
     "titleText": "Acquire product",
-    "clientTabText":"Client",
+    "clientTabText":"Info",
     "productTabText":"Product",
     "compareTabText":"Compare",
     "paymentTabText":"Payment",

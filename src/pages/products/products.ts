@@ -7,11 +7,15 @@ import { NewAdvertisementPage } from './../new-advertisement/new-advertisement'
 import { TextingPage } from './../texting/texting'
 
 
+
+
 @Component({
   selector: 'page-products',
   templateUrl: 'products.html',
 })
 export class ProductsPage {
+  tab1Root = AdvertisementPage;
+  tab2Root = TextingPage;
 
   public isClient: boolean;
   public prevPage: any;

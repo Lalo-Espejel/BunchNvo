@@ -1,3 +1,4 @@
+import { AcquireProductPage } from './../acquire-product/acquire-product';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { NewAdvertisementPage } from './../new-advertisement/new-advertisement';
@@ -41,7 +42,10 @@ export class AdvertisementPage {
  }
 
  public newAdv = () => {
-   this.navCtrl.push(NewAdvertisementPage, null, {animate: true});
- }
+  this.navCtrl.push(NewAdvertisementPage, null, {animate: true});
+}
+public goAcquireProduct = () => {
+  this.navCtrl.push(AcquireProductPage, null, {animate: true});
+}
 
 }
