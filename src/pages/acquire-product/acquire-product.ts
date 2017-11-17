@@ -8,6 +8,8 @@ import { ClienteProductDetailPage } from '../client-mode/cliente-product-detail/
 import { AlertService } from '../../_helpers/alert.service'
 import { LocalizationModel } from '../../_helpers/localizationModel'
 
+import { IonicPage, Events } from 'ionic-angular';
+import { Http, Headers } from '@angular/http';
 /**
  * Generated class for the AdvertisementPage page.
  *
@@ -19,8 +21,32 @@ import { LocalizationModel } from '../../_helpers/localizationModel'
     templateUrl: 'acquire-product.html',
 })
 export class AcquireProductPage {
+    url:string;
+    data:string;
+    public userBrandList =  ['Elegible','Elegible1','Elegible2'];
 
-
+    ionViewDidLoad(){
+        var str="";
+        var cont=0;
+        this.http.get('http://test.alimx.mx/WebService.asmx/GetMarcasJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017')
+        .map(res=> res.json())
+        .subscribe(data=>{
+            this.data = data.ListadoMarcas;
+            for (let key of this.data ) {
+                console.log ('key: ' +  JSON.stringify(key) + ',  value: ' + JSON.stringify(data.ListadoMarcas[cont].Marca));
+                this.userBrandList.push(JSON.stringify(data.ListadoMarcas[cont].Marca));
+                cont++;
+                console.log(this.userBrandList);
+            }
+            /*for (let item of this.data){
+                console.log(data.keys(response));
+                this.userBrandList.push(JSON.stringify(item));
+                console.log("RES "+ this.userBrandList);
+            }/**/
+        },err =>{
+            console.log(err);
+        });     
+    }    
     datePickerNames:any;
     public datePicked: string ;
     private topTab = 'Cliente';
@@ -102,7 +128,6 @@ export class AcquireProductPage {
     private userDelegation = {name:'Ciudad de México'}; //d
     private userDelegationList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
     private userBrand = {name:'Elegible'}; //d
-    private userBrandList =  ['Elegible','Elegible1','Elegible2'];
     private userModel = {name:'2015'}; //d
     private userModelList = ['2015','2014','2013'];
     private userDescription = {name:'Jetta'}; //d
@@ -113,10 +138,10 @@ export class AcquireProductPage {
     private userPlatesList = ['HEM987','HEM9','HE87'];
 
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertSrv: AlertService, private localizationModal: LocalizationModel) {
+    constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, private modalCtrl: ModalController, private alertSrv: AlertService, private localizationModal: LocalizationModel) {
         this.prevPage = this.navParams.get("prevPage");
         this.isClient = localStorage.getItem("isClient");
-        this.prevPage == "chat"? this.topTab ="Compara" : this.isClient=="true"?this.topTab ="Producto":this.topTab ="Cliente";
+        this.prevPage == "chat"? this.topTab ="Compara" : this.isClient=="true"?this.topTab ="Producto":this.topTab ="Producto";
         this.datePickerNames = this.localizationModal.getDatesNames();
     }
 
