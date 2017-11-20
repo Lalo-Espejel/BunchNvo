@@ -8,6 +8,7 @@ import { ClienteProductDetailPage } from '../client-mode/cliente-product-detail/
 import { AlertService } from '../../_helpers/alert.service'
 import { LocalizationModel } from '../../_helpers/localizationModel'
 
+
 import { IonicPage, Events } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 /**
@@ -23,6 +24,11 @@ import { Http, Headers } from '@angular/http';
 export class AcquireProductPage {
     url:string;
     data:string;
+    Marca:string;
+    Modelo:string;
+    Descripcion:string;
+    SubDescripcion:string;
+    Detalle:string;
     public userBrandList =  ['Elegible','Elegible1','Elegible2'];
 
     ionViewDidLoad(){
@@ -34,7 +40,7 @@ export class AcquireProductPage {
             this.data = data.ListadoMarcas;
             for (let key of this.data ) {
                 console.log ('key: ' +  JSON.stringify(key) + ',  value: ' + JSON.stringify(data.ListadoMarcas[cont].Marca));
-                this.userBrandList.push(JSON.stringify(data.ListadoMarcas[cont].Marca));
+                this.userBrandList.push(JSON.stringify(data.ListadoMarcas[cont].Marca).replace(/"/g,''));
                 cont++;
                 console.log(this.userBrandList);
             }
@@ -46,7 +52,230 @@ export class AcquireProductPage {
         },err =>{
             console.log(err);
         });     
+    }   
+    showAlertMarca( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+    
+        for (let Marca of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: Marca,
+                 value: Marca
+            });
+         }
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Marca").innerHTML=testRadioResult;
+            this.userModelList = [];
+            this.Marca=testRadioResult;
+            this.getModelo();
+        }
+        });
+        alert.present();
+
+    }
+    getModelo(){
+        var url2="";
+        var cont=0;
+        url2=('http://test.alimx.mx/WebService.asmx/GetModelosJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&marca='+this.Marca+'');
+        this.http.get(url2)
+        .map(res=> res.json())  
+        .subscribe(data=>{
+          this.data = data.ListadoDescripciones;
+          for (let key of this.data ) {
+            console.log ('key: ' +  JSON.stringify(key) + ',  value: ' + JSON.stringify(data.ListadoDescripciones[cont].Modelo));
+            this.userModelList.push(JSON.stringify(data.ListadoDescripciones[cont].Modelo).replace(/"/g,''));
+            cont++;
+            console.log(this.userModelList);
+        }
+        },err =>{
+          console.log(err);
+        });        
+    }
+    showAlertModelo( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+    
+        for (let Modelo of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: Modelo,
+                 value: Modelo
+            });
+         }
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Modelo").innerHTML=testRadioResult;
+            this.Modelo=testRadioResult;
+            this.userDescriptionList = [];
+            this.getDescripcion();
+        }
+        });
+        alert.present();
+    }
+    getDescripcion(){
+        var url2="";
+        var cont=0;
+        url2=('http://test.alimx.mx/WebService.asmx/GetDescripcionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&marca='+this.Marca+'&modelo='+this.Modelo);
+        this.http.get(url2)
+        .map(res=> res.json())  
+        .subscribe(data=>{
+          this.data = data.ListadoDescripciones;
+          for (let key of this.data ) {
+            console.log ('key: ' +  JSON.stringify(key) + ',  value: ' + JSON.stringify(data.ListadoDescripciones[cont].Descripcion));
+            this.userDescriptionList.push(JSON.stringify(data.ListadoDescripciones[cont].Descripcion).replace(/"/g,''));
+            cont++;
+            console.log(this.userDescriptionList);
+        }
+        },err =>{
+          console.log(err);
+        });        
+    }
+    showAlertDescripcion( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+    
+        for (let Descripcion of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: Descripcion,
+                 value: Descripcion
+            });
+         }
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Descripcion").innerHTML=testRadioResult;
+            this.Descripcion=testRadioResult;
+            this.getSubDescripcion();
+        }
+        });
+        alert.present();
     }    
+    getSubDescripcion(){
+        var url2="";
+        var cont=0;
+        url2=('http://test.alimx.mx/WebService.asmx/GetSubDescripcionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&marca='+this.Marca+'&modelo='+this.Modelo+'&descripcion='+this.Descripcion);
+        this.http.get(url2)
+        .map(res=> res.json())  
+        .subscribe(data=>{
+          this.data = data.ListadoSubDescripciones;
+          for (let key of this.data ) {
+            console.log ('key: ' +  JSON.stringify(key) + ',  value: ' + JSON.stringify(data.ListadoSubDescripciones[cont].SubDescripcion));
+            this.userSubDescriptionList.push(JSON.stringify(data.ListadoSubDescripciones[cont].SubDescripcion).replace(/"/g,''));
+            cont++;
+            console.log(this.userSubDescriptionList);
+        }
+        },err =>{
+          console.log(err);
+        });        
+    }
+    showAlertSubDescripcion( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+    
+        for (let SubDescripcion of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: SubDescripcion,
+                 value: SubDescripcion
+            });
+         }
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("SubDescripcion").innerHTML=testRadioResult;
+            this.SubDescripcion=testRadioResult;
+            this.getDetalle();
+        }
+        });
+        alert.present();
+    }   
+    getDetalle(){
+        var url2="";
+        var cont=0;
+        url2=('http://test.alimx.mx/WebService.asmx/GetDetalleJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&marca='+this.Marca+'&modelo='+this.Modelo+'&descripcion='+this.Descripcion+'&subdescripcion='+this.SubDescripcion);
+        this.http.get(url2)
+        .map(res=> res.json())  
+        .subscribe(data=>{
+          this.data = data.ListadoDetalles;
+          for (let key of this.data ) {
+            console.log ('key: ' +  JSON.stringify(key) + ',  value: ' + JSON.stringify(data.ListadoDetalles[cont].Detalle));
+            this.userDetalleList.push(JSON.stringify(data.ListadoDetalles[cont].Detalle).replace(/"/g,''));
+            cont++;
+            console.log(this.userDetalleList);
+        }
+        },err =>{
+          console.log(err);
+        });        
+    }  
+    showAlertDetalle( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+    
+        for (let Detalle of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: Detalle,
+                 value: Detalle
+            });
+         }
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Detalle").innerHTML=testRadioResult;
+            this.Detalle=testRadioResult;
+            //this.getDetalle();
+        }
+        });
+        alert.present();
+    }             
+
+    
+    
     datePickerNames:any;
     public datePicked: string ;
     private topTab = 'Cliente';
@@ -129,24 +358,22 @@ export class AcquireProductPage {
     private userDelegationList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
     private userBrand = {name:'Elegible'}; //d
     private userModel = {name:'2015'}; //d
-    private userModelList = ['2015','2014','2013'];
+    private userModelList = [];
     private userDescription = {name:'Jetta'}; //d
-    private userDescriptionList = ['Jetta','Jetta1','Jetta2'];
+    private userDescriptionList = [];
+    private userDetalleList = [];
+    private userSubDescriptionList = [];
     private userSerialNumber = {name:'HEAH876542KLOP'}; //d
     private userSerialNumberList = ['HEAH876542KLOP','HEAH87LOP','HEKLOP'];
     private userPlates = {name:'HEM987'}; //d
     private userPlatesList = ['HEM987','HEM9','HE87'];
 
 
-    constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, private modalCtrl: ModalController, private alertSrv: AlertService, private localizationModal: LocalizationModel) {
+    constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public alertSrv: AlertService, public localizationModal: LocalizationModel, public alertCtrl: AlertController) {
         this.prevPage = this.navParams.get("prevPage");
         this.isClient = localStorage.getItem("isClient");
         this.prevPage == "chat"? this.topTab ="Compara" : this.isClient=="true"?this.topTab ="Producto":this.topTab ="Producto";
         this.datePickerNames = this.localizationModal.getDatesNames();
-    }
-
-    showAlert( value, mode, modelList = [], massage=""){
-        this.alertSrv.showAlert(value, mode, modelList, massage);
     }
 
     ionViewDidEnter(){
