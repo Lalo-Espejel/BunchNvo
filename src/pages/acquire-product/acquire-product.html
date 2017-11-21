@@ -190,7 +190,7 @@
                 <!-- SECCION DE PRODUCTO -->
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Producto'">
                     <ion-row [hidden] = "productoContinuarShown">
-                        <ion-row class="item-wrapper" (tap)="showAlertMarca('radio', userBrand, userBrandList, isEnglish?'Choose brand':'Elegir marca')">
+                        <ion-row class="item-wrapper" (tap)="showAlertMarca('radio', userBrand, userBrandList, isEnglish?'Choose brand':'Elija la marca')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.brand" | translate }}</span>
@@ -204,7 +204,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertModelo('radio', userModel, userModelList, isEnglish?'Choose model ':'IntElija el modelo')">
+                        <ion-row class="item-wrapper" (tap)="showAlertModelo('radio', userModel, userModelList, isEnglish?'Choose model ':'Elija el modelo')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.model" | translate }}</span>
@@ -217,7 +217,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertDescripcion('radio', userDescription, userDescriptionList, isEnglish?'Choose description':'Elige la descripción')">
+                        <ion-row class="item-wrapper" (tap)="showAlertDescripcion('radio', userDescription, userDescriptionList, isEnglish?'Choose description':'Elija la descripción')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.description" | translate }}</span>
@@ -230,42 +230,48 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertSubDescripcion('radio', userDescription, userSubDescriptionList, isEnglish?'Choose description':'Elige la sub descripción')">
+                        <ion-row class="item-wrapper" (tap)="showAlertSubDescripcion('radio', userSubDescription, userSubDescriptionList, isEnglish?'Choose description':'Elija la sub descripción')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
-                                    <span>{{ "AcquireProductPage.description" | translate }}</span>
+                                    <span>Sub Descripción</span>
                                 </ion-row>
                                 <ion-row align-items-start class="sub-text" id="SubDescripcion">
-                                    <span>{{userDescription.name}}</span>
+                                    <span>Seleccione la Sub Descripción</span>
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertDetalle('radio', userDescription, userDetalleList, isEnglish?'Choose description':'Elige la sub descripción')">
+                        <ion-row class="item-wrapper" (tap)="showAlertDetalle('radio', userDescription, userDetalleList, isEnglish?'Choose description':'Elige el detalle')">
                                 <ion-row>
                                     <ion-row align-items-end class="main-text">
                                         <span>Detalle</span>
                                     </ion-row>
                                     <ion-row align-items-start class="sub-text" id="Detalle">
-                                        <span>Selecciona el detalle</span>
+                                        <span>Seleccione el detalle</span>
                                     </ion-row>
                                 </ion-row>
                                 <ion-row align-items-center class="arrow-button">
                                     <img src="assets/icon/bt-siguiente.png">
                                 </ion-row>
                         </ion-row>                                                
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input serial number':'Número de serie de entrada')">
+                        <!--<ion-row class="item-wrapper"(tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input serial number':'Número de serie de entrada')">-->
+                        <ion-row class="item-wrapper">
                             <ion-row>
-                                <ion-row align-items-end class="main-text">
-                                    <span>{{ "AcquireProductPage.serialNumber" | translate }}</span>
-                                </ion-row>
-                                <ion-row align-items-start class="sub-text">
-                                    <span>{{userSerialNumber.name}}</span>
-                                </ion-row>
+                                <ion-row align-items-start class="main-text">
+                                        <ion-input placeholder="Número de serie" clearInput></ion-input>
+                                </ion-row>                               
                             </ion-row>
                         </ion-row>
+                        <ion-row class="item-wrapper">
+                                <ion-row>
+                                    <ion-row align-items-start class="sub-text">
+                                            <ion-input placeholder="Placas" clearInput></ion-input>
+                                    </ion-row>                               
+                                </ion-row>
+                            </ion-row>                        
+                        <!--
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userPlates, [], isEnglish?'Input plates':'Placas de entrada')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
@@ -276,6 +282,7 @@
                                 </ion-row>
                             </ion-row>
                         </ion-row>
+                        -->
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Compara')">
                             <span>{{ "AcquireProductPage.following" | translate }}</span>
                         </ion-row>

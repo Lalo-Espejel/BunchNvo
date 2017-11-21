@@ -29,7 +29,7 @@ export class AcquireProductPage {
     Descripcion:string;
     SubDescripcion:string;
     Detalle:string;
-    public userBrandList =  ['Elegible','Elegible1','Elegible2'];
+    public userBrandList =  [];
 
     ionViewDidLoad(){
         var str="";
@@ -268,12 +268,99 @@ export class AcquireProductPage {
             console.log("se ha cicleado el valor: "+testRadioResult);
             document.getElementById("Detalle").innerHTML=testRadioResult;
             this.Detalle=testRadioResult;
-            //this.getDetalle();
+            this.getBuscar();
         }
         });
         alert.present();
     }             
+    getBuscar(){
+        var url2="";
+        var cont=0;
+        var aseguradora="";
+        var clave="";
+        var descripcionAseguradora="";
+        url2=('http://test.alimx.mx/WebService.asmx/BuscarJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&marca='+this.Marca+'&modelo='+this.Modelo+'&descripcion='+this.Descripcion+'&subdescripcion='+this.SubDescripcion+'&detalle='+this.Detalle);
+        this.http.get(url2)
+        .map(res=> res.json())  
+        .subscribe(data=>{
+          this.data = data.Catalogo;
+          for(let key of this.data){
+            aseguradora=JSON.stringify(data.Catalogo[cont].Aseguradora);
+            clave=JSON.stringify(data.Catalogo[cont].CatDescripciones[0].clave);
+            descripcionAseguradora=JSON.stringify(data.Catalogo[cont].CatDescripciones[0].Descripcion);
+            cont++;
+            console.log("con el contador "+cont+" tenemos la aseguradora: "+aseguradora+" con la clave: "+clave+" con la descripcion: "+descripcionAseguradora);
+            this.loadCotizacion(aseguradora, clave, descripcionAseguradora);
+          }
+        },err =>{
+          console.log(err);
+        });        
+    }  
 
+    loadCotizacion(aseguradora, clave, descripcionAseguradora){
+        var str="";
+        var strJ="";  
+        var conta=0;
+        var data2="";
+        var displayPrimaTotal="";
+        
+        var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"19/11/1988","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"04100","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":28,"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';
+          //console.log('este sera el url a consultar '+'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion');
+          this.http.get('http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion')
+          .map(res2=> res2.json().Cotizacion.PrimaTotal)  
+          .subscribe(data2=>{
+            data2 = data2;
+            str = JSON.stringify(data2);
+            displayPrimaTotal = str.replace(/"/g,'');
+    
+            console.log("esta es la response "+displayPrimaTotal+"con la asegturadora "+aseguradora);
+            aseguradora=aseguradora.replace(/"/g,'');
+            if(aseguradora==='ABA'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-aba.png",
+                    value: displayPrimaTotal
+                });
+            }
+            if(aseguradora==='ANA'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-ana.png",
+                    value: displayPrimaTotal
+                });
+            }
+            if(aseguradora==='AXA'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-axa.png",
+                    value: displayPrimaTotal
+                });
+            }  
+            if(aseguradora==='BANORTE'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-banorte.png",
+                    value: displayPrimaTotal
+                });
+            }    
+            if(aseguradora==='GNP' && displayPrimaTotal!=="null"){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-gnp.png",
+                    value: displayPrimaTotal
+                });
+            }   
+            if(aseguradora==='HDI'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-hdi.png",
+                    value: displayPrimaTotal
+                });
+            }  
+            if(aseguradora==='QUALITAS'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/logo-qualitas.png",
+                    value: displayPrimaTotal
+                });
+            }                                                                           
+          },err =>{
+            console.log(err);
+          });
+      }    
     
     
     datePickerNames:any;
@@ -284,28 +371,7 @@ export class AcquireProductPage {
     private productoContinuarShown: boolean = false;
     private underTabsTitile = localStorage.getItem("language") == "en"?'Car insurance':'Seguro de Auto';
     private isEnglish = localStorage.getItem("language") == "en";
-    private comparaList = [
-    {
-        img: "assets/icon/logo/logo-aba.png",
-        value: "$5,499"
-    },
-    {
-        img: "assets/icon/logo/logo-axa.png",
-        value: "$5,499"
-    },
-    {
-        img: "assets/icon/logo/logo-gnp.png",
-        value: "$5,499"
-    },
-    {
-        img: "assets/icon/logo/logo-mapfre.png",
-        value: "$5,499"
-    },
-    {
-        img: "assets/icon/logo/logo-qualitas.png",
-        value: "$5,499"
-    }
-];
+    private comparaList = [];
     private pagoList = [
         {
             mainText: localStorage.getItem("language") == "en"?"MATERIAL DAMAGE:":"DAÑOS MATERIALES: ",
@@ -356,10 +422,11 @@ export class AcquireProductPage {
     private userStateList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
     private userDelegation = {name:'Ciudad de México'}; //d
     private userDelegationList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
-    private userBrand = {name:'Elegible'}; //d
-    private userModel = {name:'2015'}; //d
+    private userBrand = {name:'Seleccione la marca'}; //d
+    private userModel = {name:'Seleccione el modelo'}; //d
     private userModelList = [];
-    private userDescription = {name:'Jetta'}; //d
+    private userDescription = {name:'Seleccione la descripcion'}; //d
+    private userSubDescription = {name:'Seleccione la sub descripcion'}; //d
     private userDescriptionList = [];
     private userDetalleList = [];
     private userSubDescriptionList = [];
