@@ -1,11 +1,19 @@
 page-advertisement {
-    #new{
-        background-color: black;
+    div.toolbar-background.toolbar-background-md{
+        background-color: rgb(220,220,220);
+    }
+    .segment-ios-primary div.toolbar-background.toolbar-background-md{
+        background-color: rgb(220,220,220);
     }
     .segment-ios-primary .segment-button{
-        background-color:transparent;
+        background-color: rgb(220,220,220);
         min-width:34%;
         font-size: 10px;
+    }
+    .segment-md .segment-button{
+        background-color: rgb(220,220,220);
+        font-size:10px;
+        min-width:37%;
     }
     .scroll-content{
         background-color: #eeeeee;
