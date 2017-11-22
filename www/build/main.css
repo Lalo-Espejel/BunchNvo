@@ -26023,8 +26023,14 @@ ad-detail-page .post-wrap {
   height: 45px;
 }
 
-page-advertisement .new {
-  background-color: green;
+page-advertisement #new {
+  background-color: black;
+}
+
+page-advertisement .segment-ios-primary .segment-button {
+  background-color: transparent;
+  min-width: 34%;
+  font-size-adjust: auto;
 }
 
 page-advertisement .scroll-content {

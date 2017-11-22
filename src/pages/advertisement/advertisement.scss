@@ -1,6 +1,11 @@
 page-advertisement {
-    .new{
-        background-color: green;
+    #new{
+        background-color: black;
+    }
+    .segment-ios-primary .segment-button{
+        background-color:transparent;
+        min-width:34%;
+        font-size-adjust: auto;
     }
     .scroll-content{
         background-color: #eeeeee;

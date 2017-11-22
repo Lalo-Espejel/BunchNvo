@@ -340,7 +340,7 @@ export class AcquireProductPage {
             if(aseguradora==='BANORTE'){
                 this.comparaList.push({      
                     img: "assets/icon/logo/asegurdoras-banorte.svg",
-                    value: displayPrimaTotal.replace('$','')
+                    value: displayPrimaTotal
                 });
             }  
             if(aseguradora==='GMX' && displayPrimaTotal!=="null"){

@@ -11,7 +11,7 @@
 
 <ion-content padding>
   <div class="new">
-    <ion-toolbar class="new">
+    <ion-toolbar>
         <ion-segment color="primary" >
           <ion-segment-button value="auto" >
             Seguro de Auto
@@ -25,6 +25,7 @@
         </ion-segment>
       </ion-toolbar>   
     </div>  
+    <!--
   <ion-list no-border>
     <ion-list-header class="list-header-cls">{{ "AdvertisementPage.publishedText" | translate }}</ion-list-header>
   <ion-item no-lines *ngFor="let adv of publishedAdvs" class="ionitem-cls" (click)="detailAdv(adv)">
@@ -50,7 +51,10 @@
       <button class="detail-btn-cls"><img src="assets/icon/bt-siguiente.png"></button>
     </ion-buttons>
   </ion-item>
+  </ion-list>
+  -->
   <button ion-button full class="publish-adv-btn" (click)="newAdv()">{{ "AdvertisementPage.postButtonText" | translate }}</button>
   <button ion-button full class="publish-adv-btn" (click)="goAcquireProduct()">Cotizar Ahora</button>
-</ion-list>
+
+
 </ion-content>
