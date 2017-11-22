@@ -1,3 +1,4 @@
+import { AcquireProductPage } from './../acquire-product/acquire-product';
 import { GetMarcasPage } from './../get-marcas/get-marcas';
 import { Localstorage } from './../../_helpers/localstorage.controller';
 import { Component } from '@angular/core';
@@ -14,9 +15,7 @@ import { TextingPage } from './../texting/texting'
   templateUrl: 'products.html',
 })
 export class ProductsPage {
-  tab1Root = AdvertisementPage;
-  tab2Root = TextingPage;
-
+  tab1Root:GetMarcasPage;
   public isClient: boolean;
   public prevPage: any;
 
@@ -54,9 +53,10 @@ export class ProductsPage {
     } else {
       this.navCtrl.push(NewAdvertisementPage, null, {animate: false});
       localStorage.setItem("isFirstEnterToHomeScreeb", "false");
-    }
+    }     
   }
   goGetMarcas = () => {
-    this.navCtrl.push(GetMarcasPage, {animate: true});
-  } 
+    this.navCtrl.push(AcquireProductPage, {animate: true});
+  }
+ 
 }

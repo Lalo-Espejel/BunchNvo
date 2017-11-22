@@ -243,6 +243,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
+                        
                         <ion-row class="item-wrapper" (tap)="showAlertDetalle('radio', userDescription, userDetalleList, isEnglish?'Choose description':'Elige el detalle')">
                                 <ion-row>
                                     <ion-row align-items-end class="main-text">
@@ -255,22 +256,21 @@
                                 <ion-row align-items-center class="arrow-button">
                                     <img src="assets/icon/bt-siguiente.png">
                                 </ion-row>
-                        </ion-row>                                                
-                        <!--<ion-row class="item-wrapper"(tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input serial number':'Número de serie de entrada')">-->
-                        <ion-row class="item-wrapper">
+                        </ion-row> 
+                        <ion-row class="item-wrapper" (tap)="showAlertEdad('radio', userEdad, userEdadList, isEnglish?'Choose your age':'Elija su edad')">
                             <ion-row>
-                                <ion-row align-items-start class="main-text">
-                                        <ion-input placeholder="Número de serie" clearInput></ion-input>
-                                </ion-row>                               
-                            </ion-row>
-                        </ion-row>
-                        <ion-row class="item-wrapper">
-                                <ion-row>
-                                    <ion-row align-items-start class="sub-text">
-                                            <ion-input placeholder="Placas" clearInput></ion-input>
-                                    </ion-row>                               
+                                <ion-row align-items-end class="main-text">
+                                    <span>Edad</span>
                                 </ion-row>
-                            </ion-row>                        
+                                <ion-row align-items-start class="sub-text" id="Edad">
+                                    <span>Seleccione su edad</span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>
+                        </ion-row>                                                                        
+                        <!--<ion-row class="item-wrapper"(tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input serial number':'Número de serie de entrada')">-->                   
                         <!--
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userPlates, [], isEnglish?'Input plates':'Placas de entrada')">
                             <ion-row>

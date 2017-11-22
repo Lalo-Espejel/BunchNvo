@@ -1,3 +1,4 @@
+import { AcquireProductPage } from './../acquire-product/acquire-product';
 import { TextingPage } from './../texting/texting';
 import { AdvertisementPage } from './../advertisement/advertisement';
 import { Component } from '@angular/core';
@@ -20,7 +21,7 @@ import { SoapService } from './soap.service';
   templateUrl: 'car-list.html'
 })
 export class CarListPage {
-    tab1Root = AdvertisementPage;
+    tab1Root = AcquireProductPage;
     tab2Root = TextingPage;
   url:string;
   data:string;

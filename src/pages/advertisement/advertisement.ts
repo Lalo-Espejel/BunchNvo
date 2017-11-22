@@ -18,6 +18,7 @@ import { ProductsPage } from '../products/products';
 })
 export class AdvertisementPage {
 
+  //to do poner los links de productos e inversiones
   public publishedAdvs: Array<{ id:string, img:string, paymentType: string, bank:string, accountType:string, bunch: string }>;
   public draftAdvs: Array<{ id:string, img:string, paymentType: string, bank:string, accountType:string, bunch: string }>;
   

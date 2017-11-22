@@ -29,6 +29,7 @@ export class AcquireProductPage {
     Descripcion:string;
     SubDescripcion:string;
     Detalle:string;
+    Edad:string;
     public userBrandList =  [];
 
     ionViewDidLoad(){
@@ -361,7 +362,35 @@ export class AcquireProductPage {
             console.log(err);
           });
       }    
+
+      showAlertEdad( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
     
+        for (let Edad of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: Edad,
+                 value: Edad
+            });
+         }
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Edad").innerHTML=testRadioResult;
+            this.Edad=testRadioResult;
+        }
+        });
+        alert.present();
+    }  
     
     datePickerNames:any;
     public datePicked: string ;
@@ -428,6 +457,8 @@ export class AcquireProductPage {
     private userDescription = {name:'Seleccione la descripcion'}; //d
     private userSubDescription = {name:'Seleccione la sub descripcion'}; //d
     private userDescriptionList = [];
+    private userEdad = {name:'Seleccione la edad descripcion'}; //d
+    private userEdadList = [18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70];   
     private userDetalleList = [];
     private userSubDescriptionList = [];
     private userSerialNumber = {name:'HEAH876542KLOP'}; //d
