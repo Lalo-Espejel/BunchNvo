@@ -1,3 +1,4 @@
+import { AcquireProductPage } from './../acquire-product/acquire-product';
 import { ProductsPage } from './../products/products';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Events, Tabs, Tab  } from 'ionic-angular';
@@ -7,6 +8,7 @@ import { TextingPage } from '../../pages/texting/texting';
 import { ProfilePage } from '../../pages/profile/profile';
 import { StatisticsPage } from './../statistics/statistics';
 import { FilterPage } from './../filter-page/filter-page';
+
 
 @Component({
   selector: 'page-home',
@@ -88,4 +90,5 @@ export class HomePage {
       }
     }
   }
+
 }

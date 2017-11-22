@@ -38,6 +38,7 @@ export class ProductsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductsPage');
+    this.goGetMarcas();
   }
 
   public throwTopicPage(num = 1) {
@@ -56,7 +57,7 @@ export class ProductsPage {
     }     
   }
   goGetMarcas = () => {
-    this.navCtrl.push(AcquireProductPage, {animate: true});
+    this.navCtrl.push(AdvertisementPage, {animate: true});
   }
  
 }

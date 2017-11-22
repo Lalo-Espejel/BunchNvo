@@ -312,10 +312,11 @@ export class AcquireProductPage {
           .subscribe(data2=>{
             data2 = data2;
             str = JSON.stringify(data2);
-            displayPrimaTotal = str.replace(/"/g,'');
+            displayPrimaTotal = str.replace(/",/g,'');
     
             console.log("esta es la response "+displayPrimaTotal+"con la asegturadora "+aseguradora);
             aseguradora=aseguradora.replace(/"/g,'');
+            document.getElementById("nombreAuto").innerHTML=this.Marca+' '+this.Modelo;
             if(aseguradora==='ABA'){
                 this.comparaList.push({      
                     img: "assets/icon/logo/logo-aba.png",

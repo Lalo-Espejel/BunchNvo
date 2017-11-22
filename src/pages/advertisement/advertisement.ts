@@ -48,5 +48,8 @@ export class AdvertisementPage {
 public goAcquireProduct = () => {
   this.navCtrl.push(AcquireProductPage, null, {animate: true});
 }
+goGetMarcas = () => {
+  this.navCtrl.push(AcquireProductPage, {animate: true});
+}
 
 }

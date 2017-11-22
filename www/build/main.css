@@ -26023,6 +26023,10 @@ ad-detail-page .post-wrap {
   height: 45px;
 }
 
+page-advertisement .new {
+  background-color: green;
+}
+
 page-advertisement .scroll-content {
   background-color: #eeeeee;
 }
@@ -26040,12 +26044,11 @@ page-advertisement .tab-header-cls {
 page-advertisement .tab-header-cls div.divImg {
   position: relative;
   width: 25%;
-  height: 10%;
+  max-height: 60px;
 }
 
 page-advertisement .tab-header-cls div.divImg img {
   background-color: transparent;
-  height: 140px !important;
 }
 
 page-advertisement .tab-header-cls .titleForm {
@@ -27601,6 +27604,10 @@ payment-submited-page .button-wrap {
 
 payment-submited-page .bunch-text {
   margin-top: 5px;
+}
+
+page-products {
+  background-color: white;
 }
 
 page-profile ion-content {

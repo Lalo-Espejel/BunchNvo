@@ -1,14 +1,30 @@
 <ion-header class="tab-header-cls">
   <ion-col>
     <div class="divImg">
-      <img src="assets/icon/anuncios0.svg">
+      <img src="assets/icon/anuncios2.svg">
     </div>
     <!--
     <div class="titleForm">{{ "AdvertisementPage.titleText" | translate }}</div>-->
   </ion-col>
+  
 </ion-header>
 
 <ion-content padding>
+  <div class="new">
+    <ion-toolbar class="new">
+        <ion-segment color="primary" >
+          <ion-segment-button value="auto" >
+            Seguro de Auto
+          </ion-segment-button>
+          <ion-segment-button value="credito">
+            Tarjetas de Crédito
+          </ion-segment-button>
+          <ion-segment-button value="inversion">
+            Inversiones
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>   
+    </div>  
   <ion-list no-border>
     <ion-list-header class="list-header-cls">{{ "AdvertisementPage.publishedText" | translate }}</ion-list-header>
   <ion-item no-lines *ngFor="let adv of publishedAdvs" class="ionitem-cls" (click)="detailAdv(adv)">
