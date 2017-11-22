@@ -336,7 +336,7 @@ export class AcquireProductPage {
             }  
             if(aseguradora==='BANORTE'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-banorte.png",
+                    img: "assets/icon/logo/banorte-logo.png",
                     value: displayPrimaTotal
                 });
             }    
