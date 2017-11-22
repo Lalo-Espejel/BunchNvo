@@ -312,50 +312,70 @@ export class AcquireProductPage {
           .subscribe(data2=>{
             data2 = data2;
             str = JSON.stringify(data2);
-            displayPrimaTotal = str.replace(/",/g,'');
+            displayPrimaTotal = str.replace(/"|,|\$/g,'');
     
             console.log("esta es la response "+displayPrimaTotal+"con la asegturadora "+aseguradora);
             aseguradora=aseguradora.replace(/"/g,'');
             document.getElementById("nombreAuto").innerHTML=this.Marca+' '+this.Modelo;
+            document.getElementById("descrAuto").innerHTML=this.Descripcion+' '+this.SubDescripcion;
+            document.getElementById("subDescrAuto").innerHTML=this.Detalle;
             if(aseguradora==='ABA'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-aba.png",
+                    img: "assets/icon/logo/asegurdoras-aba.svg",
                     value: displayPrimaTotal
                 });
             }
             if(aseguradora==='ANA'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-ana.png",
+                    img: "assets/icon/logo/asegurdoras-ana.svg",
                     value: displayPrimaTotal
                 });
             }
             if(aseguradora==='AXA'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-axa.png",
+                    img: "assets/icon/logo/asegurdoras-axa.svg",
                     value: displayPrimaTotal
                 });
             }  
             if(aseguradora==='BANORTE'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/banorte-logo.png",
+                    img: "assets/icon/logo/asegurdoras-banorte.svg",
+                    value: displayPrimaTotal.replace('$','')
+                });
+            }  
+            if(aseguradora==='GMX' && displayPrimaTotal!=="null"){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/asegurdoras-gmx.svg",
                     value: displayPrimaTotal
                 });
-            }    
+            }                 
             if(aseguradora==='GNP' && displayPrimaTotal!=="null"){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-gnp.png",
+                    img: "assets/icon/logo/asegurdoras-gnp.svg",
                     value: displayPrimaTotal
                 });
-            }   
+            }
+            if(aseguradora==='GREAT' && displayPrimaTotal!=="null"){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/asegurdoras-great.svg",
+                    value: displayPrimaTotal
+                });
+            }                 
             if(aseguradora==='HDI'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-hdi.png",
+                    img: "assets/icon/logo/asegurdoras-hdi.svg",
                     value: displayPrimaTotal
                 });
             }  
+            if(aseguradora==='MAPFRE'){
+                this.comparaList.push({      
+                    img: "assets/icon/logo/asegurdoras-mapfre.svg",
+                    value: displayPrimaTotal
+                });
+            }              
             if(aseguradora==='QUALITAS'){
                 this.comparaList.push({      
-                    img: "assets/icon/logo/logo-qualitas.png",
+                    img: "assets/icon/logo/asegurdoras-qualitas.svg",
                     value: displayPrimaTotal
                 });
             }                                                                           
