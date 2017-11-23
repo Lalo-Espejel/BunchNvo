@@ -26023,24 +26023,29 @@ ad-detail-page .post-wrap {
   height: 45px;
 }
 
+page-advertisement ion-segment.segment.segment-ios.segment-ios-primary {
+  background-color: #eeeeee;
+}
+
 page-advertisement div.toolbar-background.toolbar-background-md {
-  background-color: gainsboro;
+  background-color: #eeeeee;
 }
 
 page-advertisement .segment-ios-primary div.toolbar-background.toolbar-background-md {
-  background-color: gainsboro;
+  background-color: #eeeeee;
 }
 
 page-advertisement .segment-ios-primary .segment-button {
-  background-color: gainsboro;
+  background-color: #eeeeee;
   min-width: 34%;
   font-size: 10px;
 }
 
 page-advertisement .segment-md .segment-button {
-  background-color: gainsboro;
+  background-color: #eeeeee;
   font-size: 10px;
   min-width: 37%;
+  text-transform: none;
 }
 
 page-advertisement .scroll-content {
