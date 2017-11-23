@@ -26025,7 +26025,7 @@ ad-detail-page .post-wrap {
 
 page-advertisement .toolbar-md {
   top: -20px;
-  z-index: 1;
+  z-index: 10;
 }
 
 page-advertisement ion-segment.segment.segment-ios.segment-ios-primary {
