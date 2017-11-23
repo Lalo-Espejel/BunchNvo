@@ -418,7 +418,35 @@ export class AcquireProductPage {
         }
         });
         alert.present();
-    }  
+    } 
+    showAlertPrima( value, valor, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        console.log("el valor es "+JSON.stringify(valor.value));
+        alert.setTitle(massage);
+    
+        
+            alert.addInput({
+                 type: 'radio',
+                 label: JSON.stringify(valor.value).replace(/"/g,''),
+            });
+         
+    
+        alert.addButton('Cancel');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Edad").innerHTML=testRadioResult;
+            this.Edad=testRadioResult;
+        }
+        });
+        alert.present();
+    }       
     
     datePickerNames:any;
     public datePicked: string ;

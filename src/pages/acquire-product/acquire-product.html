@@ -317,18 +317,20 @@
                             </ion-row>
                         </ion-row>
                         <ion-list class="list-wrap">
-                            <ion-item *ngFor="let listItem of comparaList" (tap)="isClient == 'false'? changeTab('Pago') : showComparaItemDetail()">
+                            <!--<ion-item *ngFor="let listItem of comparaList" (tap)="isClient == 'false'? changeTab('Pago') : showComparaItemDetail()">-->
+                            <ion-grid>        
+                            <ion-item *ngFor="let listItem of comparaList" (tap)="showAlertPrima('radio', listItem, userEdad, comparaList, isEnglish?'Information':'Información adicional')">                                
                                 <ion-row align-items-center justify-content-center  class="img-wrap">
                                     <img [src]="listItem.img">
                                 </ion-row>
                                 <ion-row align-items-center class="text-wrap">
-                                    <span class="a-text">{{ "AcquireProductPage.annualCostText" | translate }}</span>
-                                    <span class="value">{{listItem.value}}</span>
+                                    <span class="value" id="valor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listItem.value}}</span>
                                 </ion-row>
                                 <ion-row align-items-center class="arrow-button">
                                     <img src="assets/icon/bt-siguiente.png">
                                 </ion-row>
                             </ion-item>
+                            </ion-grid>
                         </ion-list>
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Pago')">
                             <span>{{ "AcquireProductPage.sendDetailedQuoteToUserText" | translate }}</span>
