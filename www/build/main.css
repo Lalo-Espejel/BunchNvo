@@ -26023,6 +26023,11 @@ ad-detail-page .post-wrap {
   height: 45px;
 }
 
+page-advertisement .toolbar-md {
+  top: -20px;
+  z-index: 1;
+}
+
 page-advertisement ion-segment.segment.segment-ios.segment-ios-primary {
   background-color: #eeeeee;
 }
@@ -26066,6 +26071,7 @@ page-advertisement .tab-header-cls div.divImg {
   position: relative;
   width: 25%;
   max-height: 60px;
+  z-index: -99;
 }
 
 page-advertisement .tab-header-cls div.divImg img {
@@ -27157,6 +27163,11 @@ page-introduction .slide-zoom {
 
 page-login {
   overflow: hidden;
+}
+
+page-login input.text-input.text-input-ios {
+  padding: 0;
+  width: 65%;
 }
 
 page-login .logo {

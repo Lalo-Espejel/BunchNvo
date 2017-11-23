@@ -1,4 +1,8 @@
 page-advertisement {
+    .toolbar-md{
+        top:-20px;
+        z-index: 1;
+    }
     ion-segment.segment.segment-ios.segment-ios-primary{
         background-color: #eeeeee;
     }
@@ -39,6 +43,7 @@ page-advertisement {
             //top: -65px;
             width: 25%;
             max-height: 60px;
+            z-index:-99;
             //margin: -25px auto;
             img {
                 background-color: transparent;
