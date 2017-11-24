@@ -27189,7 +27189,7 @@ page-login .login-content {
 }
 
 page-login .login-content ion-item {
-  border-radius: 15px !important;
+  border-radius: 3px !important;
   padding: 0;
   margin: 10px auto;
 }
@@ -27255,7 +27255,7 @@ page-login .login-content .login-box .divRow {
   width: 100%;
   margin: 10px auto;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 1px solid;
   background: white !important;
 }
@@ -27263,7 +27263,7 @@ page-login .login-content .login-box .divRow {
 page-login .login-content .login-box .divRow ion-input {
   background: white !important;
   border: 1px solid white;
-  border-radius: 13px;
+  border-radius: 5px;
   color: black;
 }
 
@@ -27328,7 +27328,7 @@ page-login .login-content .products-btn {
   font-size: 0.8em;
   width: 90%;
   margin: 5px auto 0 auto;
-  border: 2px white solid;
+  border: 1px white solid;
   font-size: 20px;
   border-radius: 5px;
   background: #0099cc;
