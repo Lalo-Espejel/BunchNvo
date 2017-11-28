@@ -281,6 +281,7 @@ export class AcquireProductPage {
         var clave="";
         var descripcionAseguradora="";
         url2=('http://test.alimx.mx/WebService.asmx/BuscarJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&marca='+this.Marca+'&modelo='+this.Modelo+'&descripcion='+this.Descripcion+'&subdescripcion='+this.SubDescripcion+'&detalle='+this.Detalle);
+        console.log("ESTO ESTA MANDANDO: "+url2);
         this.http.get(url2)
         .map(res=> res.json())  
         .subscribe(data=>{
@@ -300,90 +301,116 @@ export class AcquireProductPage {
 
     loadCotizacion(aseguradora, clave, descripcionAseguradora){
         var str="";
+        var str2="";
         var strJ="";  
         var conta=0;
         var data2="";
+        var data3="";
         var displayPrimaTotal="";
         var displayPrimaTotalInt=0;
+        var displayDanosMateriales="";
+        var displayDefensaJuridica="";
         
         var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"19/11/1988","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"04100","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":28,"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';
           console.log('este sera el url a consultar '+'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion');
           this.http.get('http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion')
-          .map(res2=> res2.json().Cotizacion.PrimaTotal)  
+          .map(res2=> res2.json() )  
           .subscribe(data2=>{
-            data2 = data2;
+            data3 = data2.Coberturas[0].DanosMateriales;
+            displayDanosMateriales=JSON.stringify(data3);
+            
+            //seccion para la recepcion de la primaTotal y su conversion a int
+            data2 = data2.Cotizacion.PrimaTotal;
             str = JSON.stringify(data2);
             displayPrimaTotal = str.replace(/"|,|\$/g,'');
             displayPrimaTotalInt=Math.ceil(parseInt(displayPrimaTotal));
             displayPrimaTotal=displayPrimaTotalInt.toLocaleString();
             displayPrimaTotal='$'+displayPrimaTotal;
-            console.log("el valor del int es "+displayPrimaTotal);
+            console.log("la aseguradora: "+aseguradora+ "el valor del int es "+displayPrimaTotal+" DANOS MATERIALES: "+displayDanosMateriales);
 
-            
-    
-            console.log("esta es la response "+displayPrimaTotal+"con la asegturadora "+aseguradora);
             aseguradora=aseguradora.replace(/"/g,'');
             document.getElementById("nombreAuto").innerHTML=this.Marca+' '+this.Modelo;
             document.getElementById("descrAuto").innerHTML=this.Descripcion;
             document.getElementById("subDescrAuto").innerHTML=this.SubDescripcion;
-            if(aseguradora==='ABA'){
-                this.comparaList.push({      
+            if(aseguradora==='ABA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({  
+                    asegur: aseguradora,  
                     img: "assets/icon/logo/asegurdoras-aba.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
+
                 });
             }
-            if(aseguradora==='ANA'){
-                this.comparaList.push({      
+            if(aseguradora==='ANA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-ana.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }
-            if(aseguradora==='AXA'){
-                this.comparaList.push({      
+            if(aseguradora==='AXA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-axa.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }  
-            if(aseguradora==='BANORTE'){
-                this.comparaList.push({      
+            if(aseguradora==='BANORTE' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({  
+                    asegur: aseguradora,     
                     img: "assets/icon/logo/asegurdoras-banorte.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }  
-            if(aseguradora==='GMX' && displayPrimaTotal!=="null"){
-                this.comparaList.push({      
+            if(aseguradora==='GMX' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-gmx.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }                 
-            if(aseguradora==='GNP' && displayPrimaTotal!=="null"){
-                this.comparaList.push({      
+            if(aseguradora==='GNP' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-gnp.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }
-            if(aseguradora==='GREAT' && displayPrimaTotal!=="null"){
-                this.comparaList.push({      
+            if(aseguradora==='GREAT' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-great.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }                 
-            if(aseguradora==='HDI'){
-                this.comparaList.push({      
+            if(aseguradora==='HDI' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-hdi.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }  
-            if(aseguradora==='MAPFRE'){
-                this.comparaList.push({      
+            if(aseguradora==='MAPFRE' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({ 
+                    asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-mapfre.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }              
-            if(aseguradora==='QUALITAS'){
-                this.comparaList.push({      
+            if(aseguradora==='QUALITAS' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
+                this.comparaList.push({  
+                    asegur: aseguradora,     
                     img: "assets/icon/logo/asegurdoras-qualitas.svg",
-                    value: displayPrimaTotal
+                    value: displayPrimaTotal,
+                    danosMateriales: displayDanosMateriales
                 });
             }                                                                           
           },err =>{
@@ -425,14 +452,12 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         console.log("el valor es "+JSON.stringify(valor.value));
-        alert.setTitle(massage);
+        alert.setTitle(valor.asegur);
+        alert.setMessage(
+            'Prima total:' +valor.value +'<br\>'+
+            'Daños materiales:' +valor.danosMateriales
+        );
     
-        
-            alert.addInput({
-                 type: 'radio',
-                 label: JSON.stringify(valor.value).replace(/"/g,''),
-            });
-         
     
         alert.addButton('Cancel');
         alert.addButton({
@@ -441,7 +466,6 @@ export class AcquireProductPage {
             testRadioOpen = false;
             testRadioResult = data;
             console.log("se ha cicleado el valor: "+testRadioResult);
-            document.getElementById("Edad").innerHTML=testRadioResult;
             this.Edad=testRadioResult;
         }
         });

@@ -275,7 +275,7 @@
                                 <ion-row align-items-end class="main-text">
                                     <span>Código Postal</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text" id="Edad">
+                                <ion-row align-items-start class="sub-text" id="CP">
                                     <ion-input placeholder="Introduzca el CP"></ion-input>
                                 </ion-row>
                             </ion-row>
@@ -301,6 +301,7 @@
                         </ion-row>
                     </ion-row>
                 </ion-row>
+
                 <ion-row class="compara-tab" [hidden]="topTab != 'Compara'">
                     <ion-row *ngIf="!comparaDetailShown">
                         <ion-row align-items-center justify-content-center class="title">
@@ -315,6 +316,15 @@
                                     <span id="subDescrAuto"></span>
                                 </ion-row>
                             </ion-row>
+                        </ion-row>
+                        <ion-row align-items-center justify-content-center >
+                            <ion-col class="top-tittlex">
+                                <span>Aseguradora</span>
+                            </ion-col>
+                            <ion-col class="top-tittlex">
+                                <span>Prima Total</span>
+                            </ion-col>
+                            
                         </ion-row>
                         <ion-list class="list-wrap">
                             <!--<ion-item *ngFor="let listItem of comparaList" (tap)="isClient == 'false'? changeTab('Pago') : showComparaItemDetail()">-->

@@ -1,4 +1,7 @@
 acquire-product-page{
+    img{
+        margin-left:110px;
+    }
     ion-header {
         .header-cls {
             min-height: 0 !important;
@@ -81,6 +84,14 @@ acquire-product-page{
         background-color: #606164;
         color: white;
         border-radius: 15px;
+    }
+    .top-tittlex{
+        width: 40%;
+        height: 20px;
+        background-color: #2492ff;
+        color: white;
+        border-radius: 15px;
+        margin-left:50px;
     }
     .main-text{
         font-size: 16px;
@@ -214,7 +225,7 @@ acquire-product-page{
                     }
                     .img-wrap{
                         width: 33%;
-                        float: left;
+                        margin-left:110px;
                     }
                     .center-text-wrap{
                         width: 33%;
