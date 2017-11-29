@@ -1,7 +1,9 @@
 acquire-product-page{
-    
-    img{
-        margin-left:110px;
+
+    ion-row{
+        img{
+            margin-left:110px;
+        }
     }
     ion-header {
         .header-cls {
@@ -46,6 +48,7 @@ acquire-product-page{
             height: auto !important;
             max-height: 25px !important;
             margin-top: 0 !important;
+            
             .image-left{
                 padding-left: 10px !important;
             }
@@ -89,9 +92,7 @@ acquire-product-page{
     .top-tittlex{
         width: 40%;
         height: 20px;
-        background-color: #2492ff;
-        color: white;
-        border-radius: 15px;
+        color: black;
         margin-left:50px;
     }
     .main-text{
@@ -181,7 +182,7 @@ acquire-product-page{
                 .img-wrap{
                     height: 100%;
                     width: 20%;
-                    float: left;
+                    float: left;                   
                 }
                 .text-wrap{
                     height: 100%;
@@ -226,7 +227,7 @@ acquire-product-page{
                     }
                     .img-wrap{
                         width: 33%;
-                        margin-left:110px;
+
                     }
                     .center-text-wrap{
                         width: 33%;

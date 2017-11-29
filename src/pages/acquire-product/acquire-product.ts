@@ -69,7 +69,7 @@ export class AcquireProductPage {
             });
          }
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
           text: 'OK',
           handler: data => {
@@ -118,7 +118,7 @@ export class AcquireProductPage {
             });
          }
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
           text: 'OK',
           handler: data => {
@@ -166,7 +166,7 @@ export class AcquireProductPage {
             });
          }
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
           text: 'OK',
           handler: data => {
@@ -213,7 +213,7 @@ export class AcquireProductPage {
             });
          }
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
           text: 'OK',
           handler: data => {
@@ -260,7 +260,7 @@ export class AcquireProductPage {
             });
          }
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
           text: 'OK',
           handler: data => {
@@ -505,7 +505,7 @@ export class AcquireProductPage {
             });
          }
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
           text: 'OK',
           handler: data => {
@@ -518,16 +518,19 @@ export class AcquireProductPage {
         });
         alert.present();
     } 
+    showAlert( value, mode, modelList = [], massage=""){
+        this.alertSrv.showAlert(value, mode, modelList, massage);
+    }
     showAlertPrima( value, valor, mode, modelList = [], massage=""){
         //this.alertSrv.showAlert(value, mode, modelList, massage);
         var testRadioOpen=false;
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         console.log("el valor es "+JSON.stringify(valor.value));
-        alert.setTitle(valor.asegur);
+        alert.setTitle('<center>'+valor.asegur+'</center>');
         alert.setMessage(
             '<table>'+
-            '<tr><img src="'+valor.img+'"></tr>'+
+            '<tr><center><img src="'+valor.img+'" height="40%" width="40%"></center></tr>'+
             '<tr><td><strong>Prima total</strong></str><td>' +valor.value +'</td></tr>'+
             '<tr><td><strong>Daños materiales</strong><td>' +valor.danosMateriales+'</td></tr>'+
             '<tr><td><strong>Robo Total</strong><td>' +valor.roboTotal+'</td></tr>'+
@@ -538,14 +541,31 @@ export class AcquireProductPage {
         );
     
     
-        alert.addButton('Cancel');
+        alert.addButton('Cancelar');
         alert.addButton({
-          text: 'OK',
+          text: 'Seleccionar',
           handler: data => {
             testRadioOpen = false;
             testRadioResult = data;
             console.log("se ha cicleado el valor: "+testRadioResult);
             this.Edad=testRadioResult;
+            document.getElementById("marcaF").innerHTML=valor.asegur;
+            document.getElementById("primaF").innerHTML=valor.value;
+            var myAnchor = document.getElementById("imgF");
+            var mySpan = document.createElement("IMG");
+            mySpan.setAttribute("src", valor.img);
+            mySpan.setAttribute("id", "imgF");
+            mySpan.setAttribute("width", "40");
+            mySpan.setAttribute("height", "40");
+            mySpan.setAttribute("margin-left", "-30");
+            myAnchor.parentNode.replaceChild(mySpan, myAnchor);
+            this.pagoList[0].subText=valor.danosMateriales;
+            this.pagoList[1].subText=valor.roboTotal;
+            this.pagoList[2].subText=valor.RCPersonas;
+            this.pagoList[3].subText=valor.RC;
+            this.pagoList[4].subText=valor.DefensaJuridica;
+            this.pagoList[5].subText=valor.GastosMedicosOcupantes;
+            this.changeTab('Cliente');
         }
         });
         alert.present();
@@ -582,12 +602,8 @@ export class AcquireProductPage {
             subText: localStorage.getItem("language") == "en"?"AMPARAD":"AMPARADA"
         },
         {
-            mainText: localStorage.getItem("language") == "en"?"MEDICAL EXPENSES:":"GASTOS MÉDICOS: ",
+            mainText: localStorage.getItem("language") == "en"?"MEDICAL EXPENSES:":"GASTOS MÉDICOS OC: ",
             subText: localStorage.getItem("language") == "en"?"50.000.0":"50,000.00"
-        },
-        {
-            mainText: localStorage.getItem("language") == "en"?"ROADSIDE ASSISTANCE:":"ASISTENCIA VIAL: ",
-            subText: localStorage.getItem("language") == "en"?"AMPARAD":"AMPARADA"
         },
     ];
     private prevPage:any;

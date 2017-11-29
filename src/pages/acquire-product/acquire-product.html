@@ -21,7 +21,7 @@
                     <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Compara'}" (tap)="changeTab('Compara')">
                         <span>{{ "AcquireProductPage.compareTabText" | translate }}</span>
                     </ion-row>
-                    <ion-row align-items-center justify-content-center [ngClass]="{active:topTab == 'Cliente'}">
+                    <ion-row align-items-center justify-content-center [ngClass]="{active:topTab == 'Cliente'}" (tap)="changeTab('Cliente')">
                             <span>{{ "AcquireProductPage.clientTabText" | translate }}</span>
                     </ion-row>                    
                     <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Pago'}" (tap)="changeTab('Pago')">
@@ -181,9 +181,16 @@
                                 </ion-row>
                             </ion-row>
                         </ion-row>
+                        <!--
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Producto','Cliente')">
+                                
                             <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
                         </ion-row>
+                        -->
+                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Pago')">   
+                            <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
+                        </ion-row>
+                        
                     </ion-row>
         
                 </ion-row>
@@ -301,7 +308,7 @@
                         </ion-row>
                     </ion-row>
                 </ion-row>
-
+                <!--SECCION DE COMPARAR-->
                 <ion-row class="compara-tab" [hidden]="topTab != 'Compara'">
                     <ion-row *ngIf="!comparaDetailShown">
                         <ion-row align-items-center justify-content-center class="title">
@@ -319,10 +326,10 @@
                         </ion-row>
                         <ion-row align-items-center justify-content-center >
                             <ion-col class="top-tittlex">
-                                <span>Aseguradora</span>
+                                <span><strong>Aseguradora</strong></span>
                             </ion-col>
                             <ion-col class="top-tittlex">
-                                <span>Prima Total</span>
+                                <span><strong>Prima Total</strong></span>
                             </ion-col>
                             
                         </ion-row>
@@ -334,7 +341,7 @@
                                     <img [src]="listItem.img">
                                 </ion-row>
                                 <ion-row align-items-center class="text-wrap">
-                                    <span class="value" id="valor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listItem.value}}</span>
+                                    <span class="value" id="valor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listItem.value}}</span>
                                 </ion-row>
                                 <ion-row align-items-center class="arrow-button">
                                     <img src="assets/icon/bt-siguiente.png">
@@ -342,10 +349,13 @@
                             </ion-item>
                             </ion-grid>
                         </ion-list>
+                        <!--
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Pago')">
                             <span>{{ "AcquireProductPage.sendDetailedQuoteToUserText" | translate }}</span>
                         </ion-row>
+                        -->
                     </ion-row>
+                
                     <ion-row *ngIf="comparaDetailShown">
                         <ion-row class="item-wrapper" style="margin-top:10px" (tap)="goToDocumentDetailPage()">
                             <ion-row>
@@ -357,17 +367,20 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
+                        <!--
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="goToPayPolicyPage()">
                             <span>{{ "AcquireProductPage.sendDetailedQuoteToUserText" | translate }}</span>
                         </ion-row>
+                        -->
                     </ion-row>
+                <!--SECCION DE PAGO-->
                 </ion-row>
                 <ion-row class="pago-tab" [hidden]="topTab != 'Pago'">
                     <ion-row class="citation-wrap">
                         <ion-row class="padding-row">
                             <ion-row class="top-text-wrap">
                                 <ion-row align-items-end class="main-text">
-                                    <span>Chevrolet Aveo 2010</span>
+                                    <span id="marcaF"></span>
                                 </ion-row>
                                 <ion-row align-items-start class="sub-text">
                                     <span>{{ "AcquireProductPage.carInsuranceText" | translate }}</span>
@@ -375,7 +388,7 @@
                             </ion-row>
                             <ion-row class="company-wrap">
                                 <ion-row align-items-center justify-content-center class="img-wrap">
-                                    <img src="assets/icon/logo/logo-axa.png">
+                                    <img src="assets/icon/logo/logo-axa.png" id="imgF">
                                 </ion-row>
                                 <ion-row  class="center-text-wrap">
                                     <ion-row align-items-end justify-content-center class="main-text">
@@ -387,7 +400,7 @@
                                 </ion-row>
                                 <ion-row class="end-text-wrap">
                                     <ion-row align-items-end justify-content-center class="main-text">
-                                        <span>$6,050</span>
+                                        <span id="primaF"></span>
                                     </ion-row>
                                     <ion-row align-items-start justify-content-center class="sub-text">
                                         <span>{{ "AcquireProductPage.annualText" | translate }}</span>

@@ -25223,7 +25223,7 @@ ion-navbar.toolbar {
   }
 }
 
-acquire-product-page img {
+acquire-product-page ion-row img {
   margin-left: 110px;
 }
 
@@ -25328,9 +25328,7 @@ acquire-product-page .top-tittle {
 acquire-product-page .top-tittlex {
   width: 40%;
   height: 20px;
-  background-color: #2492ff;
-  color: white;
-  border-radius: 15px;
+  color: black;
   margin-left: 50px;
 }
 
@@ -25493,7 +25491,6 @@ acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .sub-te
 
 acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .img-wrap {
   width: 33%;
-  margin-left: 110px;
 }
 
 acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .center-text-wrap {
@@ -28039,7 +28036,9 @@ page-recovery .divImg {
 }
 
 page-registrer .scroll-content {
-  background-color: #eeeeee;
+  background: url(../assets/img/fondo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 page-registrer .divImg {
