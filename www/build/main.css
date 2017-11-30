@@ -25224,7 +25224,7 @@ ion-navbar.toolbar {
 }
 
 .definida .alert-radio-label {
-  white-space: normal;
+  white-space: normal !important;
   font-size: 12px;
 }
 
@@ -25234,6 +25234,7 @@ ion-navbar.toolbar {
 
 .definida .alert-head {
   min-width: 100%;
+  background-color: #2492ff;
 }
 
 .definida .alert-message {
@@ -28068,22 +28069,36 @@ page-registrer ion-label {
 
 page-registrer ion-label-ios {
   color: white;
+  margin-left: 30px;
+}
+
+page-registrer .label-ios {
+  font-size: 20px;
+  font-family: RaleNext;
+}
+
+page-registrer .label-md {
+  font-size: 20px;
+  font-family: RaleNext;
 }
 
 page-registrer .item-md {
   background-color: transparent !important;
   color: white;
+  margin-left: -10px;
 }
 
 page-registrer .item-ios {
   background-color: transparent !important;
   color: white;
+  margin-left: -10px;
 }
 
 page-registrer .scroll-content {
   background: url(../assets/img/fondo.png);
   background-size: cover;
   background-repeat: no-repeat;
+  top: .5%;
 }
 
 page-registrer .divImg {
@@ -28097,7 +28112,7 @@ page-registrer ion-header {
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  height: 70px;
 }
 
 page-registrer ion-header .divImg {
@@ -28107,7 +28122,7 @@ page-registrer ion-header .divImg {
 
 page-registrer ion-header .divImg img {
   height: 40px !important;
-  margin-top: 15px;
+  margin-top: -10px;
 }
 
 page-registrer ion-header .titleForm {
