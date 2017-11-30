@@ -3,10 +3,13 @@ page-registrer {
     .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary{
         color:white !important;
         font-size: unset;
+        font-family: RaleNext;
+        
     }
     .label-ios-primary, .item-input .label-ios-primary, .item-select .label-ios-primary, .item-datetime .label-ios-primary{
         color:white !important;
         font-size:unset;
+        font-family: RaleNext;
     }
     ion-label {
         color: white;  
@@ -19,11 +22,11 @@ page-registrer {
     //pára el titulo de cual es tu correo electronico
     .label-ios{
         font-size: 20px;
-        font-family: RaleNext;
+        font-family: RaleTitle;
     }
     .label-md{
         font-size: 20px;
-        font-family: RaleNext;
+        font-family: RaleTitle;
     }
     //para los campos de correo y confirma
     .item-md{
@@ -35,9 +38,10 @@ page-registrer {
         background-color: transparent !important;
         color: white;
         margin-left:-10px;
+
     }
     .scroll-content{
-        background:url(../assets/img/splash1.jpg);
+        background:url(../assets/img/Fondo-jpg.jpg);
         background-size:cover;
         background-repeat: no-repeat;
         top: .5%;

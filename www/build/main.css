@@ -28056,11 +28056,13 @@ page-recovery .divImg {
 page-registrer .label-md-primary, page-registrer .item-input .label-md-primary, page-registrer .item-select .label-md-primary, page-registrer .item-datetime .label-md-primary {
   color: white !important;
   font-size: unset;
+  font-family: RaleNext;
 }
 
 page-registrer .label-ios-primary, page-registrer .item-input .label-ios-primary, page-registrer .item-select .label-ios-primary, page-registrer .item-datetime .label-ios-primary {
   color: white !important;
   font-size: unset;
+  font-family: RaleNext;
 }
 
 page-registrer ion-label {
@@ -28074,12 +28076,12 @@ page-registrer ion-label-ios {
 
 page-registrer .label-ios {
   font-size: 20px;
-  font-family: RaleNext;
+  font-family: RaleTitle;
 }
 
 page-registrer .label-md {
   font-size: 20px;
-  font-family: RaleNext;
+  font-family: RaleTitle;
 }
 
 page-registrer .item-md {
@@ -28095,7 +28097,7 @@ page-registrer .item-ios {
 }
 
 page-registrer .scroll-content {
-  background: url(../assets/img/splash1.jpg);
+  background: url(../assets/img/Fondo-jpg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   top: .5%;
