@@ -2,13 +2,13 @@ page-registrer {
     //para los campos de correo y confirma
     .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary{
         color:white !important;
-        font-size: unset;
+        font-size: 20px;
         font-family: RaleNext;
         
     }
     .label-ios-primary, .item-input .label-ios-primary, .item-select .label-ios-primary, .item-datetime .label-ios-primary{
         color:white !important;
-        font-size:unset;
+        font-size:20px;
         font-family: RaleNext;
     }
     ion-label {
@@ -21,12 +21,14 @@ page-registrer {
     }
     //pára el titulo de cual es tu correo electronico
     .label-ios{
-        font-size: 20px;
+        font-size: 25px;
         font-family: RaleTitle;
+        white-space: normal;
     }
     .label-md{
-        font-size: 20px;
+        font-size: 25px;
         font-family: RaleTitle;
+        white-space: normal;
     }
     //para los campos de correo y confirma
     .item-md{
@@ -138,6 +140,8 @@ page-registrer {
         padding: 0;
         border-radius: 70%;
         background: rgb(0,153,204);
+        width:80px;
+        height: 80px;
     }
     .continue-btn {
         width: 100%;
