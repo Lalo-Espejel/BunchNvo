@@ -52,7 +52,7 @@
       "from": " de "
     },
     "firstSlide":{
-      "emailLableText":"¿Cual es tu correo electronico?",
+      "emailLableText":"¿Cuál es tu correo electrónico?",
       "emailInputPlaceholderText": "Correo electrónico",
       "emailConfirmationInputPlaceholderText": "Confirma correo electrónico"
     },

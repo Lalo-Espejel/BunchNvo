@@ -15,4 +15,19 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-
+.definida {
+    .alert-radio-label{
+        white-space: normal;
+        font-size: 12px;
+    }
+    .alert-wrapper{
+        min-width:100%;
+    }
+    .alert-head {
+        min-width: 100%;
+        //background-color: #2492ff;
+    }
+    .alert-message {
+        font-size: 10px;
+    }
+}

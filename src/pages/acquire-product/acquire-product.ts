@@ -251,6 +251,7 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
+        alert.setCssClass('definida');
     
         for (let Detalle of modelList) {
             alert.addInput({
@@ -334,12 +335,12 @@ export class AcquireProductPage {
             data7 = data2.Coberturas[0].DefensaJuridica;
             data8 = data2.Coberturas[0].GastosMedicosOcupantes;
 
-            displayDanosMateriales=JSON.stringify(data3);
-            displayRoboTotal=JSON.stringify(data4);
-            displayRCPersonas=JSON.stringify(data5);
-            displayRC=JSON.stringify(data6);
-            displayDefensaJuridica=JSON.stringify(data7);
-            displayGastosMedicosOcupantes=JSON.stringify(data8);
+            displayDanosMateriales=(JSON.stringify(data3)).replace(/"|-N|-S|-D|DAÑOS|MATERIALES/g,'');
+            displayRoboTotal=(JSON.stringify(data4)).replace(/"|-N|-S|-D|ROBO|TOTAL/g,'');
+            displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|-D|NRC|PERSONAS|RC/g,'');
+            displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL/g,'');
+            displayDefensaJuridica=(JSON.stringify(data7)).replace(/"|-N|-S|-D|GASTOS|LEGALES/g,'');
+            displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"/g,'');
 
             //seccion para la recepcion de la primaTotal y su conversion a int
             data2 = data2.Cotizacion.PrimaTotal;
@@ -557,14 +558,14 @@ export class AcquireProductPage {
             mySpan.setAttribute("id", "imgF");
             mySpan.setAttribute("width", "40");
             mySpan.setAttribute("height", "40");
-            mySpan.setAttribute("margin-left", "-30");
+            mySpan.setAttribute("margin-left", "-40");
             myAnchor.parentNode.replaceChild(mySpan, myAnchor);
-            this.pagoList[0].subText=valor.danosMateriales;
-            this.pagoList[1].subText=valor.roboTotal;
-            this.pagoList[2].subText=valor.RCPersonas;
-            this.pagoList[3].subText=valor.RC;
-            this.pagoList[4].subText=valor.DefensaJuridica;
-            this.pagoList[5].subText=valor.GastosMedicosOcupantes;
+            this.pagoList[0].subText=(valor.danosMateriales).replace(/"|-N|-S|-D|DAÑOS|MATERIALES/g,'');
+            this.pagoList[1].subText=(valor.roboTotal).replace(/"|-N|-S|-D|ROBO|TOTAL/g,'');
+            this.pagoList[2].subText=(valor.RCPersonas).replace(/"|-N|-S|-D|NRC|PERSONAS|RC/g,'');
+            this.pagoList[3].subText=(valor.RC).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL/g,'');
+            this.pagoList[4].subText=(valor.DefensaJuridica).replace(/"|-N|-S|-D|GASTOS|LEGALES/g,'');
+            this.pagoList[5].subText=(valor.GastosMedicosOcupantes).replace(/"/g,'');
             this.changeTab('Cliente');
         }
         });

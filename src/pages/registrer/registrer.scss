@@ -1,4 +1,27 @@
 page-registrer {
+    .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary{
+        color:white !important;
+        font-size:unset;
+    }
+    .label-ios-primary, .item-input .label-ios-primary, .item-select .label-ios-primary, .item-datetime .label-ios-primary{
+        color:white !important;
+        font-size:unset;
+    }
+    ion-label {
+        color: white;
+        
+    }
+    ion-label-ios {
+        color: white;
+    }
+      .item-md{
+        background-color: transparent !important;
+        color: white;
+    }
+    .item-ios{
+        background-color: transparent !important;
+        color: white;
+    }
     .scroll-content{
         background:url(../assets/img/fondo.png);
         background-size:cover;
@@ -110,9 +133,9 @@ page-registrer {
 
     .footerSection {
         width: 100%;
-        margin-top: 20%;
+        margin-top: 80%;
         bottom: 0 !important;
-        position: static !important;
+        position: absolute !important;
     }
     .slide-content-layout {
         height: 100%;

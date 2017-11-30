@@ -10,39 +10,47 @@
 
 <ion-content padding class="content-cntainer">
     <ion-slides inset spaceBetween=5 #slides>
+        <!--PRIMER SLIDE CORREO ELECTRONICO-->
         <ion-slide>        
           <ion-label left>{{ "RegisterPage.firstSlide.emailLableText" | translate }}</ion-label>
-          <div class="divRow">
-                <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.firstSlide.emailInputPlaceholderText" | translate' required></ion-input>
-           </div>     
-          <div class="divRow">
-                <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.firstSlide.emailConfirmationInputPlaceholderText" | translate' required></ion-input>
-          </div>              
-            <button ion-button  class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
-        </ion-slide>
-
-        <ion-slide>    
-          <ion-label left>{{"RegisterPage.secondSlide.whatYourNameLableText" | translate}}</ion-label>
-          <div class="divRow">
-            <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.secondSlide.namePlaceholderText" | translate' #name></ion-input>
-          </div>
-          <div class="divRow">
-            <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.secondSlide.lastNamePlaceholderText" | translate' required></ion-input>
-          </div>
-          <div class="divRow">
-            <ion-input class="input-cls" type="text" [placeholder]='"RegisterPage.secondSlide.motherLastNamePlaceeholderText" | translate' required></ion-input>
-          </div>
-          <div class="divRow">
-            <button ion-button class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
-          </div>
+          <ion-item>
+            <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailInputPlaceholderText" | translate}}</ion-label>
+            <ion-input type="email" required> </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailConfirmationInputPlaceholderText" | translate}}</ion-label>
+            <ion-input type="email" required> </ion-input>
+          </ion-item>
           <div class="footerSection">
             <div class="divRow">
-              <button ion-button class="back-btn"(click)="previousSlide()">
-                <img src="assets/icon/bt-regresar.png"> 
+              <button ion-button class="back-btn"(click)="nextSlide()">
+                <img src="assets/icon/bt-continuar.png"> 
               </button>
             </div>
-            <div class="divRow">{{ "RegisterPage.bottomPageCounter.the" | translate }} {{currentStep}} {{ "RegisterPage.bottomPageCounter.from" | translate }} {{maxSlides}}</div>
-          </div>
+          </div>                          
+        </ion-slide>
+        <!--SEGUNDO SLIDE NOMBRE-->
+        <ion-slide>    
+          <ion-label left>{{"RegisterPage.secondSlide.whatYourNameLableText" | translate}}</ion-label>
+          <ion-item>
+              <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.namePlaceholderText" | translate}}</ion-label>
+              <ion-input type="text" required> </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.lastNamePlaceholderText" | translate}}</ion-label>
+              <ion-input type="text" required> </ion-input>
+            </ion-item> 
+            <ion-item>
+              <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.motherLastNamePlaceeholderText" | translate}}</ion-label>
+              <ion-input type="text" required> </ion-input>
+            </ion-item>                      
+          <div class="footerSection">
+              <div class="divRow">
+                <button ion-button class="back-btn"(click)="nextSlide()">
+                  <img src="assets/icon/bt-continuar.png"> 
+                </button>
+              </div>
+            </div>
         </ion-slide>
 
         <ion-slide #gender>

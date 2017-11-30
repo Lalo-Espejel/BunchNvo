@@ -25223,6 +25223,23 @@ ion-navbar.toolbar {
   }
 }
 
+.definida .alert-radio-label {
+  white-space: normal;
+  font-size: 12px;
+}
+
+.definida .alert-wrapper {
+  min-width: 100%;
+}
+
+.definida .alert-head {
+  min-width: 100%;
+}
+
+.definida .alert-message {
+  font-size: 10px;
+}
+
 acquire-product-page ion-row img {
   margin-left: 110px;
 }
@@ -28035,6 +28052,34 @@ page-recovery .divImg {
   margin: 5px auto;
 }
 
+page-registrer .label-md-primary, page-registrer .item-input .label-md-primary, page-registrer .item-select .label-md-primary, page-registrer .item-datetime .label-md-primary {
+  color: white !important;
+  font-size: unset;
+}
+
+page-registrer .label-ios-primary, page-registrer .item-input .label-ios-primary, page-registrer .item-select .label-ios-primary, page-registrer .item-datetime .label-ios-primary {
+  color: white !important;
+  font-size: unset;
+}
+
+page-registrer ion-label {
+  color: white;
+}
+
+page-registrer ion-label-ios {
+  color: white;
+}
+
+page-registrer .item-md {
+  background-color: transparent !important;
+  color: white;
+}
+
+page-registrer .item-ios {
+  background-color: transparent !important;
+  color: white;
+}
+
 page-registrer .scroll-content {
   background: url(../assets/img/fondo.png);
   background-size: cover;
@@ -28158,9 +28203,9 @@ page-registrer .continue-btn span {
 
 page-registrer .footerSection {
   width: 100%;
-  margin-top: 20%;
+  margin-top: 80%;
   bottom: 0 !important;
-  position: static !important;
+  position: absolute !important;
 }
 
 page-registrer .slide-content-layout {
