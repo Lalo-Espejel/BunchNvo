@@ -121,5 +121,8 @@ export class RegistrerPage {
   public goHome = () => {
     this.navCtrl.setRoot(LoginPage, false, {animate: true});
   }
-
+  public goBack(){
+    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.popToRoot();
+  }
 }

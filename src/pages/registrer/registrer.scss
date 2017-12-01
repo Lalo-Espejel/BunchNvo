@@ -1,4 +1,27 @@
 page-registrer {
+    //estilo para el botón de cual es tu genero
+    ion-row.radioButton.row.active{
+        background-color: #0099cc;
+        border-color: #0099cc
+    }
+    //estilo para el campo de cuál es tu género
+    ion-row.input-cls.row{
+        background-color: transparent;
+        border: none;
+        font-size:22px;
+        color: white;
+        border-bottom-style: solid;
+        border-width: 1px;
+    }
+
+    //clase para el boton de arriba de back ios
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios{
+        background-color: transparent;
+        margin-top:-30px;
+    }
+    .bar-button-ios[icon-only]{
+        margin-top:-180%;
+    }
     //para los campos de correo y confirma
     .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary{
         color:white !important;
@@ -59,6 +82,7 @@ page-registrer {
     .divImg {
         width: 15%;
         margin: 5px auto;
+        margin-left:-10%;
     }
 
     ion-header {

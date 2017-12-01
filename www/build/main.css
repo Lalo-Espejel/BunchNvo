@@ -28053,6 +28053,29 @@ page-recovery .divImg {
   margin: 5px auto;
 }
 
+page-registrer ion-row.radioButton.row.active {
+  background-color: #0099cc;
+  border-color: #0099cc;
+}
+
+page-registrer ion-row.input-cls.row {
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  color: white;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+
+page-registrer .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+  background-color: transparent;
+  margin-top: -30px;
+}
+
+page-registrer .bar-button-ios[icon-only] {
+  margin-top: -180%;
+}
+
 page-registrer .label-md-primary, page-registrer .item-input .label-md-primary, page-registrer .item-select .label-md-primary, page-registrer .item-datetime .label-md-primary {
   color: white !important;
   font-size: 20px;
@@ -28116,6 +28139,7 @@ page-registrer .scroll-content {
 page-registrer .divImg {
   width: 15%;
   margin: 5px auto;
+  margin-left: -10%;
 }
 
 page-registrer ion-header {

@@ -1,9 +1,18 @@
 
 <ion-header>
   <ion-col>
-    <div class="divImg">
-      <img src="assets/icon/crear.svg">
-    </div>
+
+    <ion-toolbar>
+        <div class="divImg">
+            <img src="assets/icon/crear.svg">
+          </div>
+
+        <ion-buttons left>
+            <button icon-only ion-button (click)="previousSlide()">
+                <img src="assets/icon/flecha-regresar.svg">
+            </button>
+        </ion-buttons>
+    </ion-toolbar>    
     <!--
     <div class="titleForm">{{ "RegisterPage.titleText" | translate}}</div>-->
   </ion-col>
@@ -50,10 +59,10 @@
                 <button ion-button class="back-btn"(click)="nextSlide()">
                   <img src="assets/icon/bt-continuar.png"> 
                 </button>
-              </div>
             </div>
+          </div>
         </ion-slide>
-
+        <!--TERCER SLIDE GÉNERO-->
         <ion-slide #gender>
           <ion-label left>{{ "RegisterPage.thirdSlide.genderLableText" | translate }}</ion-label>
             <ion-row>
@@ -73,17 +82,13 @@
                         <ion-row  class="radioButton" [ngClass]="{ active: female == true }"></ion-row>
                     </ion-row>
                 </ion-row>
-            </ion-row>
-          <div class="divRow">
-            <button ion-button class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
-          </div>         
-          <div class="footerSection" style="margin-top:40%;">
-            <div class="divRow">
-              <button ion-button class="back-btn"(click)="previousSlide()">
-                <img src="assets/icon/bt-regresar.png"> 
-              </button>
+            </ion-row>    
+          <div class="footerSection">
+              <div class="divRow">
+                <button ion-button class="back-btn"(click)="nextSlide()">
+                  <img src="assets/icon/bt-continuar.png"> 
+                </button>
             </div>
-            <div class="divRow">{{ "RegisterPage.bottomPageCounter.the" | translate }} {{currentStep}} {{ "RegisterPage.bottomPageCounter.from" | translate }} {{maxSlides}}</div>
           </div>
         </ion-slide>
 
@@ -96,16 +101,12 @@
             </div>
               <ion-datetime placeholder="--/-------/----" pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
           </ion-item>
-           <div class="divRow">
-            <button ion-button class="continue-btn" (click)="nextSlide()">{{ "RegisterPage.continueButtonText" | translate }}</button>
-          </div>
-          <div class="footerSection" style="margin-top: 58%;">
-            <div class="divRow">
-              <button ion-button class="back-btn"(click)="previousSlide()">
-                <img src="assets/icon/bt-regresar.png"> 
-              </button>
+          <div class="footerSection">
+              <div class="divRow">
+                <button ion-button class="back-btn"(click)="nextSlide()">
+                  <img src="assets/icon/bt-continuar.png"> 
+                </button>
             </div>
-            <div class="divRow">{{ "RegisterPage.bottomPageCounter.the" | translate }} {{currentStep}} {{ "RegisterPage.bottomPageCounter.from" | translate }} {{maxSlides}}</div>
           </div>
 
         </ion-slide>
