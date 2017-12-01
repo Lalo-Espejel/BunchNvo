@@ -11,6 +11,11 @@ page-registrer {
         font-size:20px;
         font-family: RaleNext;
     }
+    .item-label-stacked .text-input-md, .item-label-floating .text-input-md{
+        color:white;
+        font-family: RaleTitle;
+        font-size: 25px;
+    }
     ion-label {
         color: white;  
      
@@ -140,8 +145,8 @@ page-registrer {
         padding: 0;
         border-radius: 70%;
         background: rgb(0,153,204);
-        width: 100px;
-        height: 100px;
+        width: 45px;
+        height: 45px;
     }
     .continue-btn {
         width: 100%;

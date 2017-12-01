@@ -28065,6 +28065,12 @@ page-registrer .label-ios-primary, page-registrer .item-input .label-ios-primary
   font-family: RaleNext;
 }
 
+page-registrer .item-label-stacked .text-input-md, page-registrer .item-label-floating .text-input-md {
+  color: white;
+  font-family: RaleTitle;
+  font-size: 25px;
+}
+
 page-registrer ion-label {
   color: white;
 }
@@ -28206,8 +28212,8 @@ page-registrer .back-btn {
   padding: 0;
   border-radius: 70%;
   background: #0099cc;
-  width: 100px;
-  height: 100px;
+  width: 45px;
+  height: 45px;
 }
 
 page-registrer .continue-btn {
