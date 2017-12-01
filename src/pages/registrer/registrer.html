@@ -99,7 +99,7 @@
             <div style="width :100%;" (click)="launchPicker()">
               <span>{{ "RegisterPage.fourthSlide.periodText" | translate }}</span><span style="right: 0; position: absolute;">{{datePicked}}</span>
             </div>
-              <ion-datetime placeholder="--/-------/----" pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
+              <ion-datetime  pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
           </ion-item>
           <div class="footerSection">
               <div class="divRow">
