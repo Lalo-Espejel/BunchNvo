@@ -28053,6 +28053,17 @@ page-recovery .divImg {
   margin: 5px auto;
 }
 
+page-registrer .bar-button-md[icon-only] {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-top: -30px;
+}
+
+page-registrer .toolbar-background-md {
+  background-color: transparent;
+}
+
 page-registrer ion-row.radioButton.row.active {
   background-color: #0099cc;
   border-color: #0099cc;
@@ -28159,6 +28170,7 @@ page-registrer ion-header .divImg {
 page-registrer ion-header .divImg img {
   height: 100% !important;
   margin-top: -15px;
+  margin-left: -25px;
   width: 100%;
 }
 
