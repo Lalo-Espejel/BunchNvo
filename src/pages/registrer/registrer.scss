@@ -8,7 +8,7 @@ page-registrer {
     }
     .label-ios-primary, .item-input .label-ios-primary, .item-select .label-ios-primary, .item-datetime .label-ios-primary{
         color:white !important;
-        font-size:22px;
+        font-size:21px;
         font-family: RaleNext;
     }
     .item-label-stacked .text-input-md, .item-label-floating .text-input-md{
@@ -69,11 +69,12 @@ page-registrer {
         height:70px;
 
         .divImg {
-            width: 15%;
+            width: 25%;
             margin: 5px auto;
             img {
-                height: 40px !important;
-                margin-top: -10px;
+                height: 100% !important;
+                margin-top: -15px;
+                width:100%;
             }
         }
         .titleForm {
@@ -145,8 +146,9 @@ page-registrer {
         padding: 0;
         border-radius: 70%;
         background: rgb(0,153,204);
-        width: 45px;
-        height: 45px;
+        width: 55px;
+        height: 55px;
+        margin-left:80%;
     }
     .continue-btn {
         width: 100%;

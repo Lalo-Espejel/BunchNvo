@@ -28061,7 +28061,7 @@ page-registrer .label-md-primary, page-registrer .item-input .label-md-primary, 
 
 page-registrer .label-ios-primary, page-registrer .item-input .label-ios-primary, page-registrer .item-select .label-ios-primary, page-registrer .item-datetime .label-ios-primary {
   color: white !important;
-  font-size: 22px;
+  font-size: 21px;
   font-family: RaleNext;
 }
 
@@ -28126,13 +28126,14 @@ page-registrer ion-header {
 }
 
 page-registrer ion-header .divImg {
-  width: 15%;
+  width: 25%;
   margin: 5px auto;
 }
 
 page-registrer ion-header .divImg img {
-  height: 40px !important;
-  margin-top: -10px;
+  height: 100% !important;
+  margin-top: -15px;
+  width: 100%;
 }
 
 page-registrer ion-header .titleForm {
@@ -28212,8 +28213,9 @@ page-registrer .back-btn {
   padding: 0;
   border-radius: 70%;
   background: #0099cc;
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
+  margin-left: 80%;
 }
 
 page-registrer .continue-btn {
