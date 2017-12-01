@@ -28068,7 +28068,7 @@ page-registrer .label-ios-primary, page-registrer .item-input .label-ios-primary
 page-registrer .item-label-stacked .text-input-md, page-registrer .item-label-floating .text-input-md {
   color: white;
   font-family: RaleTitle;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 page-registrer ion-label {
@@ -28102,6 +28102,7 @@ page-registrer .item-ios {
   background-color: transparent !important;
   color: white;
   margin-left: -10px;
+  font-size: 22px;
 }
 
 page-registrer .scroll-content {
