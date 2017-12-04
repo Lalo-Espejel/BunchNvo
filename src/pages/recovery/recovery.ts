@@ -21,6 +21,7 @@ export class RecoveryPage {
     
   }
 
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecoveryPage ');
     this.slides.lockSwipes(true);
