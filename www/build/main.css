@@ -25241,6 +25241,21 @@ ion-navbar.toolbar {
   font-size: 10px;
 }
 
+acquire-product-page .text-input-md {
+  margin-top: 30px;
+  font-size: 15px;
+}
+
+acquire-product-page .label-md-primary, acquire-product-page .item-input .label-md-primary, acquire-product-page .item-select .label-md-primary, acquire-product-page .item-datetime .label-md-primary {
+  color: black;
+  margin-top: -10px;
+  margin-left: 9px;
+  position: absolute;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: visible;
+}
+
 acquire-product-page ion-row img {
   margin-left: 110px;
 }

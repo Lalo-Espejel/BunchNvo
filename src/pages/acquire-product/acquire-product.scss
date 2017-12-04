@@ -1,4 +1,18 @@
 acquire-product-page{
+    .text-input-md{
+        margin-top: 30px;
+        font-size: 15px;
+    }
+    //para el campo del CP en android
+    .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary{
+        color: black;
+        margin-top:-10px;
+        margin-left: 9px;
+        position: absolute;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: visible;
+    }
     ion-row{
         img{
             margin-left:110px;
