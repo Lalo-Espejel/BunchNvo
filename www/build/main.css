@@ -27929,6 +27929,15 @@ page-recovery {
   overflow-y: auto;
 }
 
+page-recovery .regresar {
+  background-color: transparent !important;
+  margin-top: 7%;
+  margin-left: 2%;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
 page-recovery ion-input, page-recovery ion-textarea {
   background-color: transparent;
   border: none;
@@ -28088,6 +28097,8 @@ page-recovery ion-content .confirm-recovery-text {
   margin: 50px 11px 83px;
   text-align: left;
   font-weight: 400;
+  color: white;
+  font-family: RaleTitle;
 }
 
 page-recovery ion-content .confirm-recovery-btn {

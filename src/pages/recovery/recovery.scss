@@ -1,4 +1,13 @@
 page-recovery {
+    //para el boton de back
+    .regresar{
+        background-color: transparent !important;
+        margin-top:7%;
+        margin-left:2%;
+        position: absolute;
+        width:30px;
+        height: 30px;
+    }
     ion-input, ion-textarea{
         background-color: transparent;
         border: none;
@@ -150,6 +159,9 @@ page-recovery {
             margin: 50px 11px 83px;
             text-align: left;
             font-weight: 400;
+            color: white;
+            font-family: RaleTitle;
+            
 
         }
         .confirm-recovery-btn {
