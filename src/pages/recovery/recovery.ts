@@ -28,6 +28,9 @@ export class RecoveryPage {
   }
 
   public sendRequest = () => {
+    if (this.slides.getActiveIndex()===1){
+      this.doneRecovery();
+    }
     this.slides.lockSwipeToNext(false);
     this.slides.slideNext(300);
   }

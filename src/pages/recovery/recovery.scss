@@ -1,8 +1,57 @@
 page-recovery {
+    ion-input, ion-textarea{
+        background-color: transparent;
+        border: none;
+        font-size:22px;
+        color: white;
+        border-bottom-style: solid;
+        border-width: 1px;
+    }
+    .back-btn {
+
+        margin: 0 auto 10px auto;
+        padding: 0;
+        border-radius: 70%;
+        background: rgb(0,153,204);
+        width: 55px;
+        height: 55px;
+        margin-left:80%;
+        top:310px;
+    }
+    .back-btnx {       
+        margin: 0 auto 10px auto;
+        padding: 0;
+        border-radius: 70%;
+        background: rgb(0,153,204);
+        width: 55px;
+        height: 55px;
+        margin-left:80%;
+        top:249px;
+    }
+    
+    input.text-input.text-input-ios {
+        color:white;
+    }
+    input.text-input.text-input-md {
+        color:white;
+    }
+    //cambiar el cuadro de texto ingresa tu correo ... para ios
+    div.toolbar-title.toolbar-title-ios{
+        color: white !important;
+        font-family: RaleTitle;
+    }
+    //cambiar el cuadro de texto ingresa tu correo ... para android
+    div.toolbar-title.toolbar-title-md{
+        color: white !important;
+        font-family: RaleTitle;
+    }
     overflow-y: auto;
 
     .scroll-content{
-        background-color: #eeeeee;
+        background:url(../assets/img/Fondo-jpg.jpg);
+        background-size:cover;
+        background-repeat: no-repeat;
+        top: .5%;
     }
 
     ion-header.header-custom-cls {
@@ -12,14 +61,17 @@ page-recovery {
         color: white;
         margin: 0 auto;
         background-size: cover;
-        min-height: 100px;
+        height: 70px;
 
         .divImg {
             width: 15%;
             margin: 5px auto;
             img {
-                height: 40px !important;
-                margin-top: 15px;
+                height: 100% !important;
+                margin-top: -15px;
+                margin-left: -15px;
+
+               // width:100%;
             }
         }
         .titleForm {
@@ -56,9 +108,9 @@ page-recovery {
             width: 100%;
             margin: 10px auto;
             text-align: center;
-            border: 1px solid rgba(220,220,220,255);
+            border: none;
             border-radius: 15px;
-            background: white !important;
+            background: transparent;
             margin-bottom: 12px;
 
             .email-field { 

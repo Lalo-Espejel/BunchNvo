@@ -27929,8 +27929,60 @@ page-recovery {
   overflow-y: auto;
 }
 
+page-recovery ion-input, page-recovery ion-textarea {
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  color: white;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+
+page-recovery .back-btn {
+  margin: 0 auto 10px auto;
+  padding: 0;
+  border-radius: 70%;
+  background: #0099cc;
+  width: 55px;
+  height: 55px;
+  margin-left: 80%;
+  top: 310px;
+}
+
+page-recovery .back-btnx {
+  margin: 0 auto 10px auto;
+  padding: 0;
+  border-radius: 70%;
+  background: #0099cc;
+  width: 55px;
+  height: 55px;
+  margin-left: 80%;
+  top: 249px;
+}
+
+page-recovery input.text-input.text-input-ios {
+  color: white;
+}
+
+page-recovery input.text-input.text-input-md {
+  color: white;
+}
+
+page-recovery div.toolbar-title.toolbar-title-ios {
+  color: white !important;
+  font-family: RaleTitle;
+}
+
+page-recovery div.toolbar-title.toolbar-title-md {
+  color: white !important;
+  font-family: RaleTitle;
+}
+
 page-recovery .scroll-content {
-  background-color: #eeeeee;
+  background: url(../assets/img/Fondo-jpg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: .5%;
 }
 
 page-recovery ion-header.header-custom-cls {
@@ -27939,7 +27991,7 @@ page-recovery ion-header.header-custom-cls {
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  height: 70px;
 }
 
 page-recovery ion-header.header-custom-cls .divImg {
@@ -27948,8 +28000,9 @@ page-recovery ion-header.header-custom-cls .divImg {
 }
 
 page-recovery ion-header.header-custom-cls .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+  height: 100% !important;
+  margin-top: -15px;
+  margin-left: -15px;
 }
 
 page-recovery ion-header.header-custom-cls .titleForm {
@@ -27990,9 +28043,9 @@ page-recovery ion-content .divRow {
   width: 100%;
   margin: 10px auto;
   text-align: center;
-  border: 1px solid gainsboro;
+  border: none;
   border-radius: 15px;
-  background: white !important;
+  background: transparent;
   margin-bottom: 12px;
 }
 

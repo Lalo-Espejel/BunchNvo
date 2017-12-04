@@ -7,7 +7,7 @@
           </div>
 
         <ion-buttons left>
-            <button icon-only ion-button (click)="previousSlide()">
+            <button icon-only ion-button (click)="previousSlide()" >
                 <img src="assets/icon/flecha-regresar.svg">
             </button>
         </ion-buttons>
@@ -18,7 +18,7 @@
 </ion-header>
 
 <ion-content padding class="content-cntainer">
-    <ion-slides inset spaceBetween=5 #slides>
+    <ion-slides inset spaceBetween=5 #slides >
         <!--PRIMER SLIDE CORREO ELECTRONICO-->
         <ion-slide>        
           <form #f="ngForm" name="myForm">
@@ -30,12 +30,13 @@
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailConfirmationInputPlaceholderText" | translate}}</ion-label>
               <ion-input type="email" ngModel name="email2" required email> </ion-input>
-            </ion-item>     
-            <p>Form State: {{f.valid?'VALID':'INVALID'}}</p>
+            </ion-item>
+            <!--     
+            <p>Form State: {{f.valid?'VALID':'INVALID'}}</p>-->
           </form>
           <div class="footerSection">
             
-              <button [disabled]="!f.valid" ion-button class="back-btn"(click)="nextSlide()">
+              <button [disabled]="!f.valid" ion-button class="back-btn"(click)="nextSlide()" >
                 <img src="assets/icon/boton03.svg"> 
               </button>
             

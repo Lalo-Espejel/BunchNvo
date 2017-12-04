@@ -74,7 +74,10 @@ export class RegistrerPage {
   }
 
   public previousSlide = () => {
-   this.slides.lockSwipeToPrev(false);
+    if (this.slides.getActiveIndex()===0){
+      this.goHome();
+    }
+    this.slides.lockSwipeToPrev(false);
     this.slides.slidePrev(300);
     this.currentStep -= 1;
   }
