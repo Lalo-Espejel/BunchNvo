@@ -1,4 +1,37 @@
 page-recovery {
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios{
+        background-color: transparent;
+    }
+    header header-md{
+        height:100px;
+    }
+    .toolbar-background-md{
+        background-color: #2492ff;
+    }
+    ion-header{
+        background-color: #2492ff;
+    }
+    .bar-button-md[icon-only]{
+        background-color: transparent;
+        width: 30px;
+        height: 30px;
+        margin-top:-30px;
+    }
+    .divImg {
+        width: 25%;
+        margin: 5px auto;
+        img {
+            height: 100% !important;
+            margin-top: -15px;
+            margin-left: -15px;
+
+            width:100%;
+        }
+    }
+    //para el box en android de la flecha de regresar
+    .button-md{
+        box-shadow: none;
+    }
     //para el boton de back
     .regresar{
         background-color: transparent !important;
@@ -16,6 +49,7 @@ page-recovery {
         border-bottom-style: solid;
         border-width: 1px;
     }
+    //para la flecha de siguiente
     .back-btn {
 
         margin: 0 auto 10px auto;
@@ -55,32 +89,34 @@ page-recovery {
         font-family: RaleTitle;
     }
     overflow-y: auto;
-
+    ion-slides{
+        top:50%;
+    }
     .scroll-content{
         background:url(../assets/img/Fondo-jpg.jpg);
         background-size:cover;
         background-repeat: no-repeat;
-        top: .5%;
+        top: 2%;
     }
 
-    ion-header.header-custom-cls {
+    ion-header {
         //background: url(../assets/img/splash2.jpg);
-		background-color: #2492ff;
+        background-color: #2492ff;
         background-position-y: 140px;
         color: white;
         margin: 0 auto;
         background-size: cover;
-        height: 70px;
+        height:70px;
 
         .divImg {
-            width: 15%;
+            width: 25%;
             margin: 5px auto;
             img {
                 height: 100% !important;
                 margin-top: -15px;
                 margin-left: -15px;
 
-               // width:100%;
+                width:100%;
             }
         }
         .titleForm {
@@ -92,7 +128,7 @@ page-recovery {
         .item-inner {
             border-bottom: none !important;
         }
-    }
+    } 
     
     ion-content{
         background: rgba(245,245,245,255) !important;
@@ -161,6 +197,7 @@ page-recovery {
             font-weight: 400;
             color: white;
             font-family: RaleTitle;
+            font-size: 25px;
             
 
         }

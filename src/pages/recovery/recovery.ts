@@ -21,7 +21,7 @@ export class RecoveryPage {
     
   }
 
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecoveryPage ');
     this.slides.lockSwipes(true);
@@ -36,6 +36,9 @@ export class RecoveryPage {
     this.slides.slideNext(300);
   }
   public slidePrev(){
+    if (this.slides.getActiveIndex()===0){
+      this.doneRecovery();
+    }
     this.slides.lockSwipeToPrev(false);
     this.slides.slidePrev(300);
   }

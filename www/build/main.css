@@ -27929,6 +27929,46 @@ page-recovery {
   overflow-y: auto;
 }
 
+page-recovery .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+  background-color: transparent;
+}
+
+page-recovery header header-md {
+  height: 100px;
+}
+
+page-recovery .toolbar-background-md {
+  background-color: #2492ff;
+}
+
+page-recovery ion-header {
+  background-color: #2492ff;
+}
+
+page-recovery .bar-button-md[icon-only] {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-top: -30px;
+}
+
+page-recovery .divImg {
+  width: 25%;
+  margin: 5px auto;
+}
+
+page-recovery .divImg img {
+  height: 100% !important;
+  margin-top: -15px;
+  margin-left: -15px;
+  width: 100%;
+}
+
+page-recovery .button-md {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 page-recovery .regresar {
   background-color: transparent !important;
   margin-top: 7%;
@@ -27987,14 +28027,18 @@ page-recovery div.toolbar-title.toolbar-title-md {
   font-family: RaleTitle;
 }
 
+page-recovery ion-slides {
+  top: 50%;
+}
+
 page-recovery .scroll-content {
   background: url(../assets/img/Fondo-jpg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  top: .5%;
+  top: 2%;
 }
 
-page-recovery ion-header.header-custom-cls {
+page-recovery ion-header {
   background-color: #2492ff;
   background-position-y: 140px;
   color: white;
@@ -28003,25 +28047,26 @@ page-recovery ion-header.header-custom-cls {
   height: 70px;
 }
 
-page-recovery ion-header.header-custom-cls .divImg {
-  width: 15%;
+page-recovery ion-header .divImg {
+  width: 25%;
   margin: 5px auto;
 }
 
-page-recovery ion-header.header-custom-cls .divImg img {
+page-recovery ion-header .divImg img {
   height: 100% !important;
   margin-top: -15px;
   margin-left: -15px;
+  width: 100%;
 }
 
-page-recovery ion-header.header-custom-cls .titleForm {
+page-recovery ion-header .titleForm {
   width: 90%;
   margin: 5px auto;
   text-align: center;
   color: white;
 }
 
-page-recovery ion-header.header-custom-cls .item-inner {
+page-recovery ion-header .item-inner {
   border-bottom: none !important;
 }
 
@@ -28099,6 +28144,7 @@ page-recovery ion-content .confirm-recovery-text {
   font-weight: 400;
   color: white;
   font-family: RaleTitle;
+  font-size: 25px;
 }
 
 page-recovery ion-content .confirm-recovery-btn {
@@ -28364,13 +28410,17 @@ page-registrer .slide-zoom {
 
 page-registrer .congrats-wrapp .title-text {
   margin: 5% 0;
-  font-size: 20px;
+  font-size: 55px;
+  color: white;
+  font-family: RaleTitle;
 }
 
 page-registrer .congrats-wrapp .main-text {
   margin: 10% 9% 18%;
-  font-size: 16px;
+  font-size: 20px;
   text-align: justify;
+  color: white;
+  font-family: RaleNext;
 }
 
 page-registrer .congrats-wrapp .prossedBtn {
