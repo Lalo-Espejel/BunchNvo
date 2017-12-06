@@ -99,6 +99,7 @@ export class RegistrerPage {
       this.male = false;
     }
   }
+  
   /*
   public launchPicker = () => {
      console.log('2212');
