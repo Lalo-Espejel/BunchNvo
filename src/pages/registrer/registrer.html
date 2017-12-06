@@ -21,7 +21,7 @@
     <ion-slides inset spaceBetween=5 #slides >
         <!--PRIMER SLIDE CORREO ELECTRONICO-->
         <ion-slide>        
-          <form #f="ngForm" name="myForm">
+          <form #a="ngForm" name="myForm">
             <ion-label left>{{ "RegisterPage.firstSlide.emailLableText" | translate }}</ion-label>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailInputPlaceholderText" | translate}}</ion-label>
@@ -36,56 +36,56 @@
           </form>
           <div class="footerSection">
             
-              <button [disabled]="!f.valid" ion-button class="back-btn"(click)="nextSlide()" >
+              <button [disabled]="!a.valid" ion-button class="back-btn"(click)="nextSlide()" >
                 <img src="assets/icon/boton03.svg"> 
               </button>
             
           </div>                          
         </ion-slide>
         <!--SEGUNDO SLIDE NOMBRE-->
-        <ion-slide>    
-          <ion-label left>{{"RegisterPage.secondSlide.whatYourNameLableText" | translate}}</ion-label>
-          <ion-item>
+        <ion-slide>
+          <form #b="ngForm" name="myForm">    
+            <ion-label left>{{"RegisterPage.secondSlide.whatYourNameLableText" | translate}}</ion-label>
+            <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.namePlaceholderText" | translate}}</ion-label>
-              <ion-input type="text" required> </ion-input>
+              <ion-input type="text" ngModel name="text1" required text> </ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.lastNamePlaceholderText" | translate}}</ion-label>
-              <ion-input type="text" required> </ion-input>
+              <ion-input type="text" ngModel name="text2" required text> </ion-input>
             </ion-item> 
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.motherLastNamePlaceeholderText" | translate}}</ion-label>
-              <ion-input type="text" required> </ion-input>
-            </ion-item>                      
+              <ion-input type="text" ngModel name="text3" required text> </ion-input>
+            </ion-item> 
+          </form>                       
           <div class="footerSection">
-              <div class="divRow">
-                <button ion-button class="back-btn"(click)="nextSlide()">
+                <button [disabled]="!b.valid" ion-button class="back-btn"(click)="nextSlide()" >
                   <img src="assets/icon/boton03.svg"> 
-                </button>
-            </div>
-          </div>
+                </button>   
+            </div>   
         </ion-slide>
         <!--TERCER SLIDE GÉNERO-->
         <ion-slide #gender>
           <ion-label left>{{ "RegisterPage.thirdSlide.genderLableText" | translate }}</ion-label>
-            <ion-row>
-                <ion-row class="input-cls"  (tap)="chnageGenderPick('male')">
-                    <ion-row align-items-center class="text-wrapp">
-                        <span>{{ "RegisterPage.thirdSlide.man" | translate }}</span>
-                    </ion-row>
-                    <ion-row justify-content-center align-items-center class="radio-button-wrapp">
-                        <ion-row  class="radioButton" [ngClass]="{ active:male == true }"></ion-row>
-                    </ion-row>
-                </ion-row>
-                <ion-row class="input-cls" (tap)="chnageGenderPick('female')">
-                    <ion-row align-items-center class="text-wrapp">
-                        <span>{{ "RegisterPage.thirdSlide.woman" | translate }}</span>
-                    </ion-row>
-                    <ion-row justify-content-center align-items-center class="radio-button-wrapp">
-                        <ion-row  class="radioButton" [ngClass]="{ active: female == true }"></ion-row>
-                    </ion-row>
-                </ion-row>
-            </ion-row>    
+          <ion-row>
+              <ion-row class="input-cls"  (tap)="chnageGenderPick('male')">
+                  <ion-row align-items-center class="text-wrapp">
+                      <span>{{ "RegisterPage.thirdSlide.man" | translate }}</span>
+                  </ion-row>
+                  <ion-row justify-content-center align-items-center class="radio-button-wrapp">
+                      <ion-row  class="radioButton" [ngClass]="{ active:male == true }"></ion-row>
+                  </ion-row>
+              </ion-row>
+              <ion-row class="input-cls" (tap)="chnageGenderPick('female')">
+                  <ion-row align-items-center class="text-wrapp">
+                      <span>{{ "RegisterPage.thirdSlide.woman" | translate }}</span>
+                  </ion-row>
+                  <ion-row justify-content-center align-items-center class="radio-button-wrapp">
+                      <ion-row  class="radioButton" [ngClass]="{ active: female == true }"></ion-row>
+                  </ion-row>
+              </ion-row>
+          </ion-row>    
           <div class="footerSection">
               <div class="divRow">
                 <button ion-button class="back-btn"(click)="nextSlide()">
@@ -94,19 +94,21 @@
             </div>
           </div>
         </ion-slide>
-
+        <!-- CUARTO SLIDE CUAL ES TU FECHA DE NACIMIENTO-->
         <ion-slide>
-          <ion-label left>{{ "RegisterPage.fourthSlide.birthDateLableText" | translate }}</ion-label>
-          <ion-item >
-            <!-- <ion-label>Período</ion-label> -->
-            <div style="width :100%;" (click)="launchPicker()">
-              <span>{{ "RegisterPage.fourthSlide.periodText" | translate }}</span><span style="right: 0; position: absolute;">{{datePicked}}</span>
-            </div>
-              <ion-datetime  pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
-          </ion-item>
+          <form #c="ngForm" name="myForm">
+            <ion-label left>{{ "RegisterPage.fourthSlide.birthDateLableText" | translate }}</ion-label>
+            <ion-item >
+              <!-- <ion-label>Período</ion-label> -->
+              <div style="width :100%;" (click)="launchPicker()">
+                <span>{{ "RegisterPage.fourthSlide.periodText" | translate }}</span><span style="right: 0; position: absolute;">{{datePicked}}</span>
+              </div>
+                <ion-datetime  pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" ngModel name="datePicked" required datePicked ></ion-datetime>
+            </ion-item>
+          </form>
           <div class="footerSection">
               <div class="divRow">
-                <button ion-button class="back-btn"(click)="nextSlide()">
+                <button [disabled]="!c.valid" ion-button class="back-btn"(click)="nextSlide()">
                   <img src="assets/icon/boton03.svg"> 
                 </button>
             </div>

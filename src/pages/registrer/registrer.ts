@@ -99,28 +99,28 @@ export class RegistrerPage {
       this.male = false;
     }
   }
-
-  // public launchPicker = () => {
-  //   console.log('2212');
-  //   this.dPicker.show({
-  //     mode: 'date',
-  //     androidTheme: this.dPicker.ANDROID_THEMES.THEME_HOLO_DARK,
-  //     date: new Date(),
-  //     okText: "Aceptar",
-  //     cancelText: "Cancelar"
-  //   }).then(
-  //     date =>{
-  //       let aux = "";
-  //       if(date.getMonth() < 10){
-  //         aux = `0${date.getMonth()}`;
-  //       } else {
-  //         aux = `${date.getMonth()}`;
-  //       }
-  //       this.datePicked= `${date.getDate()}/${aux}/${date.getFullYear()}`;
-  //     },
-  //     err => console.log('Error occurred while getting date: ', err))
-  // }
-
+  /*
+  public launchPicker = () => {
+     console.log('2212');
+     this.dPicker.show({
+       mode: 'date',
+       androidTheme: this.dPicker.ANDROID_THEMES.THEME_HOLO_DARK,
+       date: new Date(),
+       okText: "Aceptar",
+       cancelText: "Cancelar"
+     }).then(
+       date =>{
+         let aux = "";
+         if(date.getMonth() < 10){
+           aux = `0${date.getMonth()}`;
+         } else {
+           aux = `${date.getMonth()}`;
+         }
+         this.datePicked= `${date.getDate()}/${aux}/${date.getFullYear()}`;
+       },
+       err => console.log('Error occurred while getting date: ', err))
+   }
+   */
   public goHome = () => {
     this.navCtrl.setRoot(LoginPage, false, {animate: true});
   }

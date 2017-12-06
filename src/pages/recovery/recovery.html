@@ -37,6 +37,7 @@
     <ion-slide> 
               
       <div class="confirm-recovery-text">{{ "RecoveryPage.confirRecoveryText" | translate}}</div>
+      
       <!--
       <button ion-button (click)="doneRecovery()" class="confirm-recovery-btn prossedBtn">{{ "RecoveryPage.confirmButtonText" | translate}}</button>
       <ion-row justify-content-center align-items-end class="button-back-wrapp">
@@ -45,9 +46,7 @@
         </button>
       </ion-row>-->
       <div class="footerSection">        
-        <button ion-button class="back-btn"(click)="doneRecovery()" >
-          <img src="assets/icon/boton03.svg"> 
-        </button>         
+        <button ion-button (click)="doneRecovery()" class="confirm-recovery-btn prossedBtn">{{ "RecoveryPage.confirmButtonText" | translate}}</button>         
       </div>      
     </ion-slide>
 
