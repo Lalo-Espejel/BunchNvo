@@ -627,11 +627,11 @@ export class AcquireProductPage {
     private userStateList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
     private userDelegation = {name:'Ciudad de México'}; //d
     private userDelegationList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
-    private userBrand = {name:'Seleccione la marca'}; //d
-    private userModel = {name:'Seleccione el modelo'}; //d
+    private userBrand = {name:''}; // Seleccione la marca
+    private userModel = {name:''}; //d Seleccione el modelo
     private userModelList = [];
-    private userDescription = {name:'Seleccione la descripcion'}; //d
-    private userSubDescription = {name:'Seleccione la sub descripcion'}; //d
+    private userDescription = {name:''}; //d Seleccione la descripcion
+    private userSubDescription = {name:''}; //d Seleccione la sub descripcion
     private userDescriptionList = [];
     private userEdad = {name:'Seleccione la edad descripcion'}; //d
     private userEdadList = [18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70];   

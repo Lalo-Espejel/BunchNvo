@@ -25,7 +25,7 @@
     "forgotPassText":"¿Olvidaste tu usuario ó constraseña?",
     "createAccaunText":"Crear cuenta",
     "buttonText":"Iniciar Sesión",
-    "footerWarnText":"Al iniciar sesión o crear una cuenta, acepto los terminos y condiciones, aviso de privacidad, políticas de uso y políticas de pago de Bunch.com"
+    "footerWarnText":"Al iniciar sesión o crear una cuenta, acepto los términos y condiciones, aviso de privacidad, políticas de uso y políticas de pago de Bunch"
   },
   "ProductsPage":{
     "titleText":"Selecciona la vertical de tu anuncio",
@@ -52,7 +52,7 @@
       "from": " de "
     },
     "firstSlide":{
-      "emailLableText":"¿Cual es tu correo electronico?",
+      "emailLableText":"¿Cuál es tu correo electrónico?",
       "emailInputPlaceholderText": "Correo electrónico",
       "emailConfirmationInputPlaceholderText": "Confirma correo electrónico"
     },
@@ -180,7 +180,7 @@
   },
   "AcquireProductPage":{
     "titleText": "Adquirir producto",
-    "clientTabText":"Cliente",
+    "clientTabText":"Datos",
     "productTabText":"Producto",
     "compareTabText":"Comparar",
     "paymentTabText":"Pago",
@@ -202,20 +202,20 @@
     "saveAndContinue":"Guardar y continuar",
     "brand":"Marca",
     "model":"Modelo",
-    "description":"Descripción",
+    "description":"Submarca",
     "serialNumber":"número de serie",
     "plates":"Platos",
-    "following":"Siguiendo",
+    "following":"Siguiente",
     "compareTopText":"Jetta 2014",
     "compareMiddleText":"Descripción 4 ptas, ATM,",
     "compareEndText":"Etc.",
     "improveDescriptionText":"Mejorar la descripción",
-    "annualCostText":"Costo anual",
+    "annualCostText":"",
     "uploadDocumentText":"Cargar un documento",
     "sendDetailedQuoteToUserText":"Enviar cotización detallada al usuario",
     "carInsuranceText":"Seguro de Auto",
     "wideText":"Amplia",
-    "coverText":"Covertura",
+    "coverText":"Cobertura",
     "annualText":"Anual",
     "coveringsText":"COBERTURAS",
     "submitCollectionRequestText":"Enviar solicitud de cobro"

@@ -28,9 +28,6 @@
                         <span>{{ "AcquireProductPage.paymentTabText" | translate }}</span>
                     </ion-row>
                 </ion-row>
-                <ion-row align-items-center justify-content-center class="top-tittle">
-                    <span>{{underTabsTitile}}</span>
-                </ion-row>
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Cliente'">
                     <ion-row [hidden] = "productoContinuarShown">
                         <ion-row class="main-text">
@@ -197,6 +194,31 @@
                 <!-- SECCION DE PRODUCTO -->
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Producto'">
                     <ion-row [hidden] = "productoContinuarShown">
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input ZIP code':'Código Postal')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Código Postal</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text" id="CP">      
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                         
+                        </ion-row> 
+                        <ion-row class="item-wrapper" (tap)="showAlertEdad('radio', userEdad, userEdadList, isEnglish?'Choose your age':'Elija su edad')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Edad</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text" id="Edad">      
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>
+                        </ion-row>                        
+                        
                         <ion-row class="item-wrapper" (tap)="showAlertMarca('radio', userBrand, userBrandList, isEnglish?'Choose brand':'Elija la marca')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
@@ -240,10 +262,10 @@
                         <ion-row class="item-wrapper" (tap)="showAlertSubDescripcion('radio', userSubDescription, userSubDescriptionList, isEnglish?'Choose description':'Elija la sub descripción')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
-                                    <span>Sub Descripción</span>
+                                    <span>Descripción</span>
                                 </ion-row>
                                 <ion-row align-items-start class="sub-text" id="SubDescripcion">
-                                    <span>Seleccione la Sub Descripción</span>
+                                    
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
@@ -254,35 +276,18 @@
                         <ion-row class="item-wrapper" (tap)="showAlertDetalle('radio', userDescription, userDetalleList, isEnglish?'Choose description':'Elige el detalle')">
                                 <ion-row>
                                     <ion-row align-items-end class="main-text">
-                                        <span>Detalle</span>
+                                        <span>Sub Descripción</span>
                                     </ion-row>
                                     <ion-row align-items-start class="sub-text" id="Detalle">
-                                        <span>Seleccione el detalle</span>
+                                        
                                     </ion-row>
                                 </ion-row>
                                 <ion-row align-items-center class="arrow-button">
                                     <img src="assets/icon/bt-siguiente.png">
                                 </ion-row>
                         </ion-row> 
-                        <ion-row class="item-wrapper" (tap)="showAlertEdad('radio', userEdad, userEdadList, isEnglish?'Choose your age':'Elija su edad')">
-                            <ion-row>
-                                <ion-row align-items-end class="main-text">
-                                    <span>Edad</span>
-                                </ion-row>
-                                <ion-row align-items-start class="sub-text" id="Edad">
-                                    <span>Seleccione su edad</span>
-                                </ion-row>
-                            </ion-row>
-                            <ion-row align-items-center class="arrow-button">
-                                <img src="assets/icon/bt-siguiente.png">
-                            </ion-row>
-                        </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input ZIP code':'Código Postal')">
-                            <ion-item>
-                                <ion-label color="primary" fixed>Código Postal</ion-label>
-                                <ion-input placeholder="Introduzca el CP"></ion-input>
-                            </ion-item>
-                        </ion-row>                                                                                              
+
+                                                                                            
                         <!--<ion-row class="item-wrapper"(tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input serial number':'Número de serie de entrada')">-->                   
                         <!--
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userPlates, [], isEnglish?'Input plates':'Placas de entrada')">

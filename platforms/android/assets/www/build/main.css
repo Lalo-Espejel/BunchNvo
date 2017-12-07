@@ -25223,6 +25223,56 @@ ion-navbar.toolbar {
   }
 }
 
+.definida .alert-radio-label {
+  white-space: normal !important;
+  font-size: 12px;
+}
+
+.definida .alert-wrapper {
+  min-width: 100%;
+}
+
+.definida .alert-head {
+  min-width: 100%;
+  background-color: #2492ff;
+}
+
+.definida .alert-message {
+  font-size: 10px;
+}
+
+acquire-product-page ion-header {
+  font-family: RaleTitle;
+}
+
+acquire-product-page ion-row.item-wrapper.row {
+  background-color: transparent !important;
+  border: none;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-bottom-color: #0099cc;
+  font-family: RaleTitle;
+}
+
+acquire-product-page .text-input-md {
+  margin-top: 30px;
+  font-size: 15px;
+}
+
+acquire-product-page .label-md-primary, acquire-product-page .item-input .label-md-primary, acquire-product-page .item-select .label-md-primary, acquire-product-page .item-datetime .label-md-primary {
+  color: black;
+  margin-top: -10px;
+  margin-left: 9px;
+  position: absolute;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+acquire-product-page ion-row img {
+  margin-left: 110px;
+}
+
 acquire-product-page ion-header .header-cls {
   min-height: 0 !important;
 }
@@ -25319,6 +25369,13 @@ acquire-product-page .top-tittle {
   background-color: #606164;
   color: white;
   border-radius: 15px;
+}
+
+acquire-product-page .top-tittlex {
+  width: 40%;
+  height: 20px;
+  color: black;
+  margin-left: 50px;
 }
 
 acquire-product-page .main-text {
@@ -25480,7 +25537,6 @@ acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .sub-te
 
 acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .img-wrap {
   width: 33%;
-  float: left;
 }
 
 acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .center-text-wrap {
@@ -26023,27 +26079,62 @@ ad-detail-page .post-wrap {
   height: 45px;
 }
 
+page-advertisement .toolbar-md {
+  top: -20px;
+  z-index: 10;
+}
+
+page-advertisement ion-segment.segment.segment-ios.segment-ios-primary {
+  background-color: #eeeeee;
+}
+
+page-advertisement div.toolbar-background.toolbar-background-md {
+  background-color: #eeeeee;
+}
+
+page-advertisement .segment-ios-primary div.toolbar-background.toolbar-background-md {
+  background-color: #eeeeee;
+}
+
+page-advertisement .segment-ios-primary .segment-button {
+  background-color: #eeeeee;
+  min-width: 34%;
+  font-size: 10px;
+}
+
+page-advertisement .segment-md .segment-button {
+  background-color: #eeeeee;
+  font-size: 10px;
+  min-width: 37%;
+  text-transform: none;
+}
+
 page-advertisement .scroll-content {
   background-color: #eeeeee;
 }
 
 page-advertisement .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
-page-advertisement .tab-header-cls .divImg {
-  width: 15%;
-  margin: 5px auto;
+page-advertisement .tab-header-cls div.divImg {
+  position: relative;
+  width: 25%;
+  max-height: 50px;
 }
 
-page-advertisement .tab-header-cls .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+page-advertisement .tab-header-cls div.divImg img {
+  position: relative;
+  width: 100px !important;
+  height: 100px !important;
+  top: -50px;
+  background-color: transparent;
 }
 
 page-advertisement .tab-header-cls .titleForm {
@@ -26715,7 +26806,7 @@ page-create-advertisement .full-wrapper .upper-panel .upper-panel-right-panel .s
 }
 
 filter-page .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -27133,19 +27224,28 @@ page-login {
   overflow: hidden;
 }
 
+page-login input.text-input.text-input-ios {
+  padding: 0;
+  width: 65%;
+}
+
+page-login .logo {
+  width: 66%;
+  height: 66%;
+}
+
 page-login ion-title div {
   color: white !important;
 }
 
 page-login .login-content {
-  background: url("../assets/img/splash2.jpg") no-repeat;
-  background-size: cover;
+  background-color: black;
   color: white !important;
   text-align: center;
 }
 
 page-login .login-content ion-item {
-  border-radius: 15px !important;
+  border-radius: 3px !important;
   padding: 0;
   margin: 10px auto;
 }
@@ -27211,7 +27311,7 @@ page-login .login-content .login-box .divRow {
   width: 100%;
   margin: 10px auto;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 1px solid;
   background: white !important;
 }
@@ -27219,7 +27319,7 @@ page-login .login-content .login-box .divRow {
 page-login .login-content .login-box .divRow ion-input {
   background: white !important;
   border: 1px solid white;
-  border-radius: 13px;
+  border-radius: 5px;
   color: black;
 }
 
@@ -27284,7 +27384,7 @@ page-login .login-content .products-btn {
   font-size: 0.8em;
   width: 90%;
   margin: 5px auto 0 auto;
-  border: 2px white solid;
+  border: 1px white solid;
   font-size: 20px;
   border-radius: 5px;
   background: #0099cc;
@@ -27347,7 +27447,7 @@ page-new-advertisement .scroll-content {
 }
 
 page-new-advertisement .tab-header-cls {
-  background: url("../assets/img/splash2.jpg");
+  background-color: #2492ff;
   background-position-y: bottom;
   color: white;
   margin: 0 auto;
@@ -27404,22 +27504,24 @@ page-new-advertisement .scroll-content {
 }
 
 page-notification .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
 page-notification .tab-header-cls div.divImg {
-  width: 15%;
-  margin: 5px auto;
+  position: relative;
+  width: 25%;
+  height: 10%;
 }
 
 page-notification .tab-header-cls div.divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+  background-color: transparent;
+  height: 140px !important;
 }
 
 page-notification .scroll-content {
@@ -27449,8 +27551,10 @@ page-notification .item-wrapper {
 }
 
 page-notification .titleForm {
+  background-color: green;
+  position: relative;
+  word-wrap: normal;
   width: 90%;
-  margin: 5px auto;
   text-align: center;
 }
 
@@ -27538,7 +27642,7 @@ page-notification-detail .continue-wrap .button-continue {
 }
 
 payment-submited-page .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
@@ -27593,95 +27697,12 @@ payment-submited-page .bunch-text {
   margin-top: 5px;
 }
 
-.header-cls {
-  min-height: initial;
-  background: none;
-}
-
-.header-cls ion-navbar {
-  padding-top: 0px !important;
-}
-
 page-products {
-  background: gainsboro;
-}
-
-page-products .toolbar-background {
-  margin-top: 0px !important;
-}
-
-page-products .row {
-  background: transparent !important;
-}
-
-page-products .row .column-prod {
-  background: transparent !important;
-}
-
-page-products .row .product-cntr {
-  min-height: 145px;
-  width: 48%;
-  margin: 5px auto;
-  border: 1px solid gainsboro;
-  border-radius: 10px;
-  background: white !important;
-}
-
-page-products .row .product-cntr ion-row {
-  width: 100%;
-  height: 50%;
-  margin: 16px 0 0;
-}
-
-page-products .grid {
-  text-align: center;
-  margin-top: 25px;
-}
-
-page-products ion-col {
-  background: white;
-}
-
-page-products ion-col div {
-  display: inline-block;
-}
-
-page-products .titlePage {
-  font-family: RaleTitle;
-  text-align: center;
-  margin-top: 20px;
-}
-
-page-products .product-title {
-  text-align: center;
-  width: 100%;
-}
-
-page-products .image-cntainer {
-  margin-top: 5px;
+  background-color: white;
 }
 
 page-profile ion-content {
   background-color: #e6e6e6 !important;
-}
-
-page-profile img {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-page-profile ion-avatar {
-  max-width: 16%;
-  margin: 11px auto 12px;
-  border-radius: 50%;
-}
-
-page-profile ion-avatar img {
-  width: auto !important;
-  height: 50px !important;
-  -webkit-transform: scale(1.4);
-  transform: scale(1.4);
-  border: 2px solid white;
 }
 
 page-profile ion-label {
@@ -27689,22 +27710,24 @@ page-profile ion-label {
 }
 
 page-profile .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
-page-profile .tab-header-cls .divImg {
-  width: 15%;
-  margin: 5px auto;
+page-profile .tab-header-cls div.divImg {
+  position: relative;
+  width: 25%;
+  height: 10%;
 }
 
-page-profile .tab-header-cls .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+page-profile .tab-header-cls div.divImg img {
+  background-color: transparent;
+  height: 140px !important;
 }
 
 page-profile .tab-header-cls .titleForm {
@@ -27919,37 +27942,144 @@ page-recovery {
   overflow-y: auto;
 }
 
-page-recovery .scroll-content {
-  background-color: #eeeeee;
+page-recovery .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+  background-color: transparent;
 }
 
-page-recovery ion-header.header-custom-cls {
-  background: url(../assets/img/splash2.jpg);
+page-recovery header header-md {
+  height: 100px;
+}
+
+page-recovery .toolbar-background-md {
+  background-color: #2492ff;
+}
+
+page-recovery ion-header {
+  background-color: #2492ff;
+}
+
+page-recovery .bar-button-md[icon-only] {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-top: -30px;
+}
+
+page-recovery .divImg {
+  width: 25%;
+  margin: 5px auto;
+}
+
+page-recovery .divImg img {
+  height: 100% !important;
+  margin-top: -15px;
+  margin-left: -15px;
+  width: 100%;
+}
+
+page-recovery .button-md {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+page-recovery .regresar {
+  background-color: transparent !important;
+  margin-top: 7%;
+  margin-left: 2%;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
+page-recovery ion-input, page-recovery ion-textarea {
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  color: white;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+
+page-recovery .back-btn {
+  margin: 0 auto 10px auto;
+  padding: 0;
+  border-radius: 70%;
+  background: #0099cc;
+  width: 55px;
+  height: 55px;
+  margin-left: 80%;
+  top: 310px;
+}
+
+page-recovery .back-btnx {
+  margin: 0 auto 10px auto;
+  padding: 0;
+  border-radius: 70%;
+  background: #0099cc;
+  width: 55px;
+  height: 55px;
+  margin-left: 80%;
+  top: 249px;
+}
+
+page-recovery input.text-input.text-input-ios {
+  color: white;
+}
+
+page-recovery input.text-input.text-input-md {
+  color: white;
+}
+
+page-recovery div.toolbar-title.toolbar-title-ios {
+  color: white !important;
+  font-family: RaleTitle;
+}
+
+page-recovery div.toolbar-title.toolbar-title-md {
+  color: white !important;
+  font-family: RaleTitle;
+}
+
+page-recovery ion-slides {
+  top: 50%;
+}
+
+page-recovery .scroll-content {
+  background: url(../assets/img/Fondo-jpg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 2%;
+}
+
+page-recovery ion-header {
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  height: 70px;
 }
 
-page-recovery ion-header.header-custom-cls .divImg {
-  width: 15%;
+page-recovery ion-header .divImg {
+  width: 25%;
   margin: 5px auto;
 }
 
-page-recovery ion-header.header-custom-cls .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+page-recovery ion-header .divImg img {
+  height: 100% !important;
+  margin-top: -15px;
+  margin-left: -15px;
+  width: 100%;
 }
 
-page-recovery ion-header.header-custom-cls .titleForm {
+page-recovery ion-header .titleForm {
   width: 90%;
   margin: 5px auto;
   text-align: center;
   color: white;
 }
 
-page-recovery ion-header.header-custom-cls .item-inner {
+page-recovery ion-header .item-inner {
   border-bottom: none !important;
 }
 
@@ -27980,9 +28110,9 @@ page-recovery ion-content .divRow {
   width: 100%;
   margin: 10px auto;
   text-align: center;
-  border: 1px solid gainsboro;
+  border: none;
   border-radius: 15px;
-  background: white !important;
+  background: transparent;
   margin-bottom: 12px;
 }
 
@@ -28025,6 +28155,9 @@ page-recovery ion-content .confirm-recovery-text {
   margin: 50px 11px 83px;
   text-align: left;
   font-weight: 400;
+  color: white;
+  font-family: RaleTitle;
+  font-size: 25px;
 }
 
 page-recovery ion-content .confirm-recovery-btn {
@@ -28058,32 +28191,125 @@ page-recovery .divImg {
   margin: 5px auto;
 }
 
+page-registrer .bar-button-md[icon-only] {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-top: -30px;
+}
+
+page-registrer .toolbar-background-md {
+  background-color: transparent;
+}
+
+page-registrer ion-row.radioButton.row.active {
+  background-color: #0099cc;
+  border-color: #0099cc;
+}
+
+page-registrer ion-row.input-cls.row {
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  color: white;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
+
+page-registrer .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+  background-color: transparent;
+  margin-top: -30px;
+}
+
+page-registrer .bar-button-ios[icon-only] {
+  margin-top: -180%;
+}
+
+page-registrer .label-md-primary, page-registrer .item-input .label-md-primary, page-registrer .item-select .label-md-primary, page-registrer .item-datetime .label-md-primary {
+  color: white !important;
+  font-size: 20px;
+  font-family: RaleNext;
+}
+
+page-registrer .label-ios-primary, page-registrer .item-input .label-ios-primary, page-registrer .item-select .label-ios-primary, page-registrer .item-datetime .label-ios-primary {
+  color: white !important;
+  font-size: 20px;
+  font-family: RaleNext;
+  font-size: 22px;
+}
+
+page-registrer .item-label-stacked .text-input-md, page-registrer .item-label-floating .text-input-md {
+  color: white;
+  font-family: RaleTitle;
+  font-size: 22px;
+}
+
+page-registrer ion-label {
+  color: white;
+}
+
+page-registrer ion-label-ios {
+  color: white;
+  margin-left: 30px;
+}
+
+page-registrer .label-ios {
+  font-size: 25px;
+  font-family: RaleTitle;
+  white-space: normal;
+}
+
+page-registrer .label-md {
+  font-size: 25px;
+  font-family: RaleTitle;
+  white-space: normal;
+}
+
+page-registrer .item-md {
+  background-color: transparent !important;
+  color: white;
+  margin-left: -10px;
+}
+
+page-registrer .item-ios {
+  background-color: transparent !important;
+  color: white;
+  margin-left: -10px;
+  font-size: 18px;
+}
+
 page-registrer .scroll-content {
-  background-color: #eeeeee;
+  background: url(../assets/img/Fondo-jpg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: .5%;
 }
 
 page-registrer .divImg {
   width: 15%;
   margin: 5px auto;
+  margin-left: -10%;
 }
 
 page-registrer ion-header {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  height: 70px;
 }
 
 page-registrer ion-header .divImg {
-  width: 15%;
+  width: 25%;
   margin: 5px auto;
 }
 
 page-registrer ion-header .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+  height: 100% !important;
+  margin-top: -15px;
+  margin-left: -15px;
+  width: 100%;
 }
 
 page-registrer ion-header .titleForm {
@@ -28163,6 +28389,9 @@ page-registrer .back-btn {
   padding: 0;
   border-radius: 70%;
   background: #0099cc;
+  width: 55px;
+  height: 55px;
+  margin-left: 80%;
 }
 
 page-registrer .continue-btn {
@@ -28179,9 +28408,9 @@ page-registrer .continue-btn span {
 
 page-registrer .footerSection {
   width: 100%;
-  margin-top: 20%;
+  margin-top: 80%;
   bottom: 0 !important;
-  position: static !important;
+  position: absolute !important;
 }
 
 page-registrer .slide-content-layout {
@@ -28194,13 +28423,17 @@ page-registrer .slide-zoom {
 
 page-registrer .congrats-wrapp .title-text {
   margin: 5% 0;
-  font-size: 20px;
+  font-size: 55px;
+  color: white;
+  font-family: RaleTitle;
 }
 
 page-registrer .congrats-wrapp .main-text {
   margin: 10% 9% 18%;
-  font-size: 16px;
+  font-size: 20px;
   text-align: justify;
+  color: white;
+  font-family: RaleNext;
 }
 
 page-registrer .congrats-wrapp .prossedBtn {
@@ -28212,22 +28445,28 @@ page-registrer #gender .slide-zoom {
 }
 
 .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
-.tab-header-cls .divImg {
-  width: 15%;
+.tab-header-cls div.divImg {
+  width: 25%;
+  height: 10%;
   margin: 5px auto;
 }
 
-.tab-header-cls .divImg img {
-  height: 40px !important;
+.tab-header-cls div.divImg img {
+  position: relative;
+  top: -65px;
+  height: 140px !important;
   margin-top: 15px;
+  background-color: transparent;
+  z-index: -1px;
 }
 
 .tab-header-cls .titleForm {
@@ -28614,22 +28853,24 @@ page-texting ion-content {
 }
 
 page-texting .tab-header-cls {
-  background: url(../assets/img/splash2.jpg);
+  background-color: #2492ff;
   background-position-y: 140px;
   color: white;
   margin: 0 auto;
   background-size: cover;
-  min-height: 100px;
+  min-height: 20px;
+  max-height: 70px;
 }
 
-page-texting .tab-header-cls .divImg {
-  width: 15%;
-  margin: 5px auto;
+page-texting .tab-header-cls div.divImg {
+  position: relative;
+  width: 25%;
+  height: 10%;
 }
 
-page-texting .tab-header-cls .divImg img {
-  height: 40px !important;
-  margin-top: 15px;
+page-texting .tab-header-cls div.divImg img {
+  background-color: transparent;
+  height: 140px !important;
 }
 
 page-texting .tab-header-cls .titleForm {

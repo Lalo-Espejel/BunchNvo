@@ -25241,6 +25241,19 @@ ion-navbar.toolbar {
   font-size: 10px;
 }
 
+acquire-product-page ion-header {
+  font-family: RaleTitle;
+}
+
+acquire-product-page ion-row.item-wrapper.row {
+  background-color: transparent !important;
+  border: none;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-bottom-color: #0099cc;
+  font-family: RaleTitle;
+}
+
 acquire-product-page .text-input-md {
   margin-top: 30px;
   font-size: 15px;
@@ -28358,6 +28371,8 @@ page-registrer .input-cls .radio-button-wrapp .radioButton {
 page-registrer .input-cls .radio-button-wrapp .active {
   background-color: #00bbd3;
   border-color: #00bbd3;
+  width: 30px;
+  height: 30px;
 }
 
 page-registrer .titleForm {
