@@ -14,8 +14,8 @@
         
         <ion-content padding>
             <ion-row>
-                <ion-row class="tabs-swap-wrap">
-                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" (tap)="changeTab('Producto')">
+                <ion-row class="tabs-swap-wrap" >
+                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" id="nuevo"(tap)="changeTab('Producto')" [ngStyle]="{'color': color, 'font-size': size + 'px'}" >
                         <span>{{ "AcquireProductPage.productTabText" | translate }}</span>
                     </ion-row>
                     <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Compara'}" (tap)="changeTab('Compara')">
@@ -301,7 +301,13 @@
                             </ion-row>
                         </ion-row>
                         -->
-                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Compara')">
+                        <div [ngStyle]="{'color': color, 'font-size': size + 'px'}">
+                            style using ngStyle
+                          </div>
+                          <input [(ngModel)]="color" />
+                          <button (click)="size = size + 1">+</button>
+                          <button (click)="size = size - 1">-</button>
+                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Compara')" >
                             <span>{{ "AcquireProductPage.following" | translate }}</span>
                         </ion-row>
                     </ion-row>

@@ -1,5 +1,14 @@
 acquire-product-page{
-
+    .one {
+        color: green;
+    }
+    .toolbar-title-ios,.toolbar-title-md{
+        color:white;
+    }
+    //para el color del header
+    .toolbar-background-md, .toolbar-background-ios{
+        background-color:#2492ff;
+    }
     ion-header{
         font-family: RaleTitle;
 
@@ -87,27 +96,33 @@ acquire-product-page{
     .scroll-content{
         background-color: #eeeeee;
     }
+
     .tabs-swap-wrap{
-        height: 40px;
+        height: 30px;
         width: 100%;
         font-size: 14px;
         color: #9c9c9c;
         background-color: white;
-        border: solid 1px #9c9c9c;
-        border-radius: 5px;
+        border: solid 1px #09c;
+        border-radius: 75px;
         margin-bottom: 6px;
         margin-top: 6px;
         overflow: hidden;
         ion-row{
             width:25%;
-            border: solid 1px #9c9c9c;
+            border: none;
+            border-radius:75px;
         }
         .active{
+            
+            border-right:40px;
             background-color: #09c;
-            color: white;
             border: solid 1px #09c !important;
+            border-radius: 75px;
+            color:#09c;
         }
     }
+
     .top-tittle{
         width: 100%;
         height: 40px;
@@ -115,20 +130,23 @@ acquire-product-page{
         background-color: #606164;
         color: white;
         border-radius: 15px;
+        font-family: RaleTitle;
     }
     .top-tittlex{
         width: 40%;
         height: 20px;
         color: black;
         margin-left:50px;
+        font-family: RaleTitle;
     }
     .main-text{
         font-size: 16px;
         font-weight: 500;
         width: 100%;
+        font-family: RaleTitle;
     }
     .sub-text{
-        font-size: 14px;
+        font-size: 12px;
     }
     .item-wrapper{
         background-color: white;
@@ -145,6 +163,7 @@ acquire-product-page{
         background-color: #09c;
         color: white;
         border-radius: 15px;
+        font-family: RaleTitle;
     }
 
     .item-wrapper>ion-row{
@@ -181,6 +200,7 @@ acquire-product-page{
     }
     .compara-tab>ion-row{
         width: 100%;
+        font-family: RaleNext;
     }
     .compara-tab{
         width:100%;

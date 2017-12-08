@@ -25224,21 +25224,57 @@ ion-navbar.toolbar {
 }
 
 .definida .alert-radio-label {
+  font-family: RaleTitle;
   white-space: normal !important;
   font-size: 12px;
 }
 
 .definida .alert-wrapper {
   min-width: 100%;
+  font-family: RaleTitle;
 }
 
 .definida .alert-head {
   min-width: 100%;
   background-color: #2492ff;
+  font-family: RaleTitle;
+  color: white;
 }
 
 .definida .alert-message {
   font-size: 10px;
+}
+
+.definidaX .alert-radio-label {
+  font-family: RaleTitle;
+  white-space: normal !important;
+  font-size: 14px;
+}
+
+.definidaX .alert-wrapper {
+  font-family: RaleTitle;
+}
+
+.definidaX .alert-head {
+  background-color: #2492ff;
+  font-family: RaleTitle;
+  color: white;
+}
+
+.definidaX .alert-message {
+  font-size: 12px;
+}
+
+acquire-product-page .one {
+  color: green;
+}
+
+acquire-product-page .toolbar-title-ios, acquire-product-page .toolbar-title-md {
+  color: white;
+}
+
+acquire-product-page .toolbar-background-md, acquire-product-page .toolbar-background-ios {
+  background-color: #2492ff;
 }
 
 acquire-product-page ion-header {
@@ -25339,13 +25375,13 @@ acquire-product-page .scroll-content {
 }
 
 acquire-product-page .tabs-swap-wrap {
-  height: 40px;
+  height: 30px;
   width: 100%;
   font-size: 14px;
   color: #9c9c9c;
   background-color: white;
-  border: solid 1px #9c9c9c;
-  border-radius: 5px;
+  border: solid 1px #09c;
+  border-radius: 75px;
   margin-bottom: 6px;
   margin-top: 6px;
   overflow: hidden;
@@ -25353,13 +25389,16 @@ acquire-product-page .tabs-swap-wrap {
 
 acquire-product-page .tabs-swap-wrap ion-row {
   width: 25%;
-  border: solid 1px #9c9c9c;
+  border: none;
+  border-radius: 75px;
 }
 
 acquire-product-page .tabs-swap-wrap .active {
+  border-right: 40px;
   background-color: #09c;
-  color: white;
   border: solid 1px #09c !important;
+  border-radius: 75px;
+  color: #09c;
 }
 
 acquire-product-page .top-tittle {
@@ -25369,6 +25408,7 @@ acquire-product-page .top-tittle {
   background-color: #606164;
   color: white;
   border-radius: 15px;
+  font-family: RaleTitle;
 }
 
 acquire-product-page .top-tittlex {
@@ -25376,16 +25416,18 @@ acquire-product-page .top-tittlex {
   height: 20px;
   color: black;
   margin-left: 50px;
+  font-family: RaleTitle;
 }
 
 acquire-product-page .main-text {
   font-size: 16px;
   font-weight: 500;
   width: 100%;
+  font-family: RaleTitle;
 }
 
 acquire-product-page .sub-text {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 acquire-product-page .item-wrapper {
@@ -25404,6 +25446,7 @@ acquire-product-page .bot-button {
   background-color: #09c;
   color: white;
   border-radius: 15px;
+  font-family: RaleTitle;
 }
 
 acquire-product-page .item-wrapper > ion-row {
@@ -25444,6 +25487,7 @@ acquire-product-page .cliente-tab .input-container .search-icon {
 
 acquire-product-page .compara-tab > ion-row {
   width: 100%;
+  font-family: RaleNext;
 }
 
 acquire-product-page .compara-tab {
@@ -28369,10 +28413,10 @@ page-registrer .input-cls .radio-button-wrapp .radioButton {
 }
 
 page-registrer .input-cls .radio-button-wrapp .active {
-  background-color: #00bbd3;
-  border-color: #00bbd3;
-  width: 30px;
-  height: 30px;
+  background-color: #0099cc;
+  border-color: #0099cc;
+  width: 25px;
+  height: 25px;
 }
 
 page-registrer .titleForm {

@@ -22,6 +22,8 @@ import { Http, Headers } from '@angular/http';
     templateUrl: 'acquire-product.html',
 })
 export class AcquireProductPage {
+    color = 'pink';
+    size = 16;
     url:string;
     data:string;
     Marca:string;
@@ -60,6 +62,7 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
+        alert.setCssClass('definidaX');
     
         for (let Marca of modelList) {
             alert.addInput({
@@ -109,6 +112,7 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
+        alert.setCssClass('definidaX');
     
         for (let Modelo of modelList) {
             alert.addInput({
@@ -157,7 +161,7 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
-    
+        alert.setCssClass('definidaX');
         for (let Descripcion of modelList) {
             alert.addInput({
                  type: 'radio',
@@ -204,6 +208,7 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
+        alert.setCssClass('definidaX');
     
         for (let SubDescripcion of modelList) {
             alert.addInput({
@@ -252,6 +257,7 @@ export class AcquireProductPage {
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
         alert.setCssClass('definida');
+        alert.setCssClass('definidaX');
     
         for (let Detalle of modelList) {
             alert.addInput({
@@ -497,7 +503,8 @@ export class AcquireProductPage {
         var testRadioResult="";
         let alert = this.alertCtrl.create();
         alert.setTitle(massage);
-    
+        alert.setCssClass('definidaX');
+
         for (let Edad of modelList) {
             alert.addInput({
                  type: 'radio',
@@ -520,13 +527,34 @@ export class AcquireProductPage {
         alert.present();
     } 
     showAlert( value, mode, modelList = [], massage=""){
-        this.alertSrv.showAlert(value, mode, modelList, massage);
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {
+                  name: 'username',
+                  id: 'cp'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('CP').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
     }
     showAlertPrima( value, valor, mode, modelList = [], massage=""){
         //this.alertSrv.showAlert(value, mode, modelList, massage);
         var testRadioOpen=false;
         var testRadioResult="";
         let alert = this.alertCtrl.create();
+        alert.setCssClass('definida');
         console.log("el valor es "+JSON.stringify(valor.value));
         alert.setTitle('<center>'+valor.asegur+'</center>');
         alert.setMessage(
@@ -670,6 +698,10 @@ export class AcquireProductPage {
         }
     }
     changeTab(tabName, tabFrom = ''){
+       console.log("la tab que se selecciona"+tabName);
+       document.getElementById("nuevo").style.color = "green";
+
+       var background_color='red !important';
        tabName == 'Pago'? this.underTabsTitile = localStorage.getItem("language") == "en"?'Summary':'Resumen': this.underTabsTitile = localStorage.getItem("language") == "en"?'Car insurance':'Seguro de Auto';
        tabFrom == 'Cliente'?this.showProductoContinuarShown():'';
        this.topTab = tabName;
