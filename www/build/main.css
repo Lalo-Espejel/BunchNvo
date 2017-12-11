@@ -25230,7 +25230,7 @@ ion-navbar.toolbar {
 }
 
 .definida .alert-wrapper {
-  min-width: 100%;
+  min-width: 110%;
   font-family: RaleTitle;
 }
 
@@ -25243,6 +25243,30 @@ ion-navbar.toolbar {
 
 .definida .alert-message {
   font-size: 10px;
+}
+
+.definida .alert-message table, .definida .alert-message th, .definida .alert-message td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.definida .alert-message th {
+  padding: 3px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: bold !important;
+  color: black;
+}
+
+.definida .alert-message td {
+  padding: 3px;
+  font-size: 13px;
+  color: black;
+  font-family: RaleNext;
+}
+
+.definida .img {
+  margin-left: -50%;
 }
 
 .definidaX .alert-radio-label {

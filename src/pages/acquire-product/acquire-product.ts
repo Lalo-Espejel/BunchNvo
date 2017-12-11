@@ -346,7 +346,7 @@ export class AcquireProductPage {
             displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|-D|NRC|PERSONAS|RC/g,'');
             displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL/g,'');
             displayDefensaJuridica=(JSON.stringify(data7)).replace(/"|-N|-S|-D|GASTOS|LEGALES/g,'');
-            displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"/g,'');
+            displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS/g,'');
 
             //seccion para la recepcion de la primaTotal y su conversion a int
             data2 = data2.Cotizacion.PrimaTotal;
@@ -559,20 +559,23 @@ export class AcquireProductPage {
         alert.setTitle('<center>'+valor.asegur+'</center>');
         alert.setMessage(
             '<table>'+
-            '<tr><center><img src="'+valor.img+'" height="40%" width="40%"></center></tr>'+
-            '<tr><td><strong>Prima total</strong></str><td>' +valor.value +'</td></tr>'+
-            '<tr><td><strong>Daños materiales</strong><td>' +valor.danosMateriales+'</td></tr>'+
-            '<tr><td><strong>Robo Total</strong><td>' +valor.roboTotal+'</td></tr>'+
-            '<tr><td><strong>RC Personas</strong><td>' +valor.RCPersonas+'</td></tr>'+
-            '<tr><td><strong>RC</strong><td>' +valor.RC+'</td></tr>'+
-            '<tr><td><strong>Def. Jurídica</strong><td>' +valor.DefensaJuridica+'</td></tr>'+
-            '<tr><td><strong>Gastos Médicos Oc.</strong><td>' +valor.GastosMedicosOcupantes+'</td></tr>'
+            '<tr><th></th><th><strong>Suma Asegurada</strong></th><th><strong>Deducible</strong></th></tr>'+
+            '<tr><img src="'+valor.img+'" height="40%" width="40%"></tr>'+
+            '<tr><td><strong>Prima total</strong></str><td><strong>' +valor.value +'</strong></td></tr>'+
+            '<tr><td><strong>Daños materiales</strong><td><strong>' +valor.danosMateriales+'</strong></td></tr>'+
+            '<tr><td><strong>Robo Total</strong><td><strong>' +valor.roboTotal+'</strong></td></tr>'+
+            '<tr><td><strong>RC Personas</strong><td><strong>' +valor.RCPersonas+'</strong></td></tr>'+
+            '<tr><td><strong>RC</strong><td><strong>' +valor.RC+'</strong></td></tr>'+
+            '<tr><td><strong>Def. Jurídica</strong><td><strong>' +valor.DefensaJuridica+'</strong></td></tr>'+
+            '<tr><td><strong>Gastos Médicos Oc.</strong><td><strong>' +valor.GastosMedicosOcupantes+'<strong></td></tr>'+
+            '</table>'+
+            '<hr>'
         );
     
     
-        alert.addButton('Cancelar');
+        alert.addButton('Regresar');
         alert.addButton({
-          text: 'Seleccionar',
+          text: 'Contratar',
           handler: data => {
             testRadioOpen = false;
             testRadioResult = data;
@@ -593,7 +596,7 @@ export class AcquireProductPage {
             this.pagoList[2].subText=(valor.RCPersonas).replace(/"|-N|-S|-D|NRC|PERSONAS|RC/g,'');
             this.pagoList[3].subText=(valor.RC).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL/g,'');
             this.pagoList[4].subText=(valor.DefensaJuridica).replace(/"|-N|-S|-D|GASTOS|LEGALES/g,'');
-            this.pagoList[5].subText=(valor.GastosMedicosOcupantes).replace(/"/g,'');
+            this.pagoList[5].subText=(valor.GastosMedicosOcupantes).replace(/"|GASTOS|MEDICOS/g,'');
             this.changeTab('Cliente');
         }
         });
