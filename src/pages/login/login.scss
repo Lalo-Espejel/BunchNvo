@@ -137,15 +137,26 @@ page-login {
     }
 
     .form-btn {
+      margin-top:14px;
+      margin-bottom: 10px;
       font-size: 14px;
       font-weight: 100;
       background: transparent;
       border: none;
       box-shadow: none !important;
       text-transform: none !important;
-      height: auto;
-      
+      height: auto; 
     }
+    .form-btnX {
+      margin-top: 30px; 
+      font-size: 14px;
+      font-weight: 100;
+      background: transparent;
+      border: none;
+      box-shadow: none !important;
+      text-transform: none !important;
+      height: auto; 
+    }    
  
     .products-btn {
       color: #ffffff;
@@ -166,6 +177,7 @@ page-login {
     }
 
     .footer-warn{
+      margin-top:20px;
       font-size: 10px;
       width: 100%;
       text-align: center;

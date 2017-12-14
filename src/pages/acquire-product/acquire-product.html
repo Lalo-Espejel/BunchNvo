@@ -3,7 +3,7 @@
             <ion-toolbar>
                 <ion-buttons left>
                     <button icon-only ion-button class="backButton" (click)="goBack()">
-                        <img src="assets/icon/bt-regresar-menu.png" class="image-left">
+                        <img src="assets/icon/flecha-regresar.svg" class="image-left">
                     </button>
                 </ion-buttons>
         
@@ -15,7 +15,7 @@
         <ion-content padding>
             <ion-row>
                 <ion-row class="tabs-swap-wrap" >
-                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" id="nuevo"(tap)="changeTab('Producto')" [ngStyle]="{'color': color, 'font-size': size + 'px'}" >
+                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" id="nuevo"(tap)="changeTab('Producto')" >
                         <span>{{ "AcquireProductPage.productTabText" | translate }}</span>
                     </ion-row>
                     <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Compara'}" (tap)="changeTab('Compara')">
@@ -23,7 +23,10 @@
                     </ion-row>
                     <ion-row align-items-center justify-content-center [ngClass]="{active:topTab == 'Cliente'}" (tap)="changeTab('Cliente')">
                             <span>{{ "AcquireProductPage.clientTabText" | translate }}</span>
-                    </ion-row>                    
+                    </ion-row>  
+                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Tarjeta'}" (tap)="changeTab('Tarjeta')">
+                        <span>Tarjeta</span>
+                    </ion-row>                                      
                     <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Pago'}" (tap)="changeTab('Pago')">
                         <span>{{ "AcquireProductPage.paymentTabText" | translate }}</span>
                     </ion-row>
@@ -95,16 +98,36 @@
                                 </ion-row>
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('radio', userDiraction, userDiractionList, isEnglish?'Choose address':'Elegir dirección')">
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userRFC, userRFCList, isEnglish?'Choose your ID':'Elegir RFC')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
-                                    <span>{{ "AcquireProductPage.address" | translate }}</span>
+                                    <span>{{ "AcquireProductPage.RFC" | translate }}</span>
                                 </ion-row>
                                 <ion-row align-items-start class="sub-text">
-                                    <span>{{userDiraction.name}}</span>
+                                    <span>{{userRFC.name}}</span>
                                 </ion-row>
                             </ion-row>
                         </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userNacionalidad, userNacionalidadList, isEnglish?'Choose your nationality':'Elegir tu nacionalidad')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>{{ "AcquireProductPage.nationality" | translate }}</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>{{userNacionalidad.name}}</span>
+                                </ion-row>
+                            </ion-row>
+                        </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userLugarNac, userLugarNacList, isEnglish?'Choose your place of birth':'Elegir tu lugar de nacimiento')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>{{ "AcquireProductPage.placeOfBirth" | translate }}</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>{{userLugarNac.name}}</span>
+                                </ion-row>
+                            </ion-row>
+                        </ion-row>                                                  
                         <ion-row class="item-wrapper" (tap)="showAlert('numInput', userPostalCode, [], isEnglish?'Input postal code':'Ingrese código postal')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
@@ -191,6 +214,100 @@
                     </ion-row>
         
                 </ion-row>
+                <!-- SECCION DE TARJETA -->
+                <ion-row class="cliente-tab" [hidden]="topTab != 'Tarjeta'">
+                    <ion-row [hidden] = "productoContinuarShown">
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userName,[], isEnglish?'Input the type of card card':'Ingrese el tipo de tarjeta')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Tipo de tarjeta</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>Crédito</span>
+                                </ion-row>
+                            </ion-row>
+                        </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userGender, userGenderList,isEnglish?'Name of the owner':'Nombre del titular')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Titular</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>Juan Perez Lopez</span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>
+                        </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlert('numInput', userEmail,[], isEnglish?'Input your credit card number':'Ingrese el número de tarjeta')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Número de Tarjeta</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>0000 0000 0000 0000</span>
+                                </ion-row>
+                            </ion-row>
+                        </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userCellPhoneNumber,[], isEnglish?'Input the bank':'Ingrese el banco')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Banco</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>Santander</span>
+                                </ion-row>
+                            </ion-row>
+                        </ion-row>
+                        <ion-row >
+                                <ion-row align-items-end class="main-text">
+                                        <span>&nbsp;&nbsp;Carrier</span>
+                                    </ion-row>
+                            <div class = "button-bar">
+                                <a class = "tarjetas"><img src="../assets/icon/tdc/Amex.svg"></a>
+                                <a class = "tarjetas"><img src="../assets/icon/tdc/MasterCard.svg"></a>
+                                <a class = "tarjetas"><img src="../assets/icon/tdc/Visa.svg"></a>
+                             </div> 
+                        </ion-row>
+                        <ion-row class="item-wrapper">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Vigencia</span>
+                                </ion-row>
+                                <ion-item align-items-start class="sub-text">
+                                    <ion-datetime pickerFormat="YYYY MMMM" displayFormat="YYYY MMMM"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
+                                </ion-item>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>
+                        </ion-row> 
+                        <ion-row >
+                            <ul class = "list">                                 
+                                <li class = "item item-checkbox  checkbox-positive">
+                                    <label class = "checkbox">
+                                        <input type = "checkbox" />
+                                        Acepto expresamente que se realicen los cobros de mi póliza a la tarjeta bancaria registrada y que los pagos subsecuentes sean domiciliados a la misma.
+                                    </label>
+                                </li>
+                            </ul>
+                        </ion-row>                                             
+                        <!--
+                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Producto','Cliente')">
+                                
+                            <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
+                        </ion-row>
+                        -->
+                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Pago')">   
+                            <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
+                        </ion-row>
+                        
+                    </ion-row>
+        
+                </ion-row>
+             
+                
                 <!-- SECCION DE PRODUCTO -->
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Producto'">
                     <ion-row [hidden] = "productoContinuarShown">
@@ -300,13 +417,13 @@
                                 </ion-row>
                             </ion-row>
                         </ion-row>
-                        -->
+                        
                         <div [ngStyle]="{'color': color, 'font-size': size + 'px'}">
                             style using ngStyle
                           </div>
                           <input [(ngModel)]="color" />
                           <button (click)="size = size + 1">+</button>
-                          <button (click)="size = size - 1">-</button>
+                          <button (click)="size = size - 1">-</button>-->
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Compara')" >
                             <span>{{ "AcquireProductPage.following" | translate }}</span>
                         </ion-row>
@@ -428,6 +545,8 @@
                         <span>{{ "AcquireProductPage.submitCollectionRequestText" | translate }}</span>
                     </ion-row>
                 </ion-row>
+
+                
             </ion-row>
         </ion-content>
         

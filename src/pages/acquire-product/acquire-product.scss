@@ -1,4 +1,31 @@
 acquire-product-page{
+    //para el capo de datetime
+    .item-md{
+        background-color:  #eeeeee;
+    }
+    //para el campo de datetime
+    .item-ios{
+        background-color:  #eeeeee;
+    }
+    .button-bar{
+        width: 100% !important;
+        top:10px;
+        bottom:10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    li{
+        margin-left: -11%;
+    }
+    .tarjetas{
+        width:20%;
+        height: 40%;
+        img{
+            margin-left:2% !important;
+            width:30%;
+            height:100%;
+        }
+    }
     .one {
         color: green;
     }
@@ -15,7 +42,7 @@ acquire-product-page{
 
     }
     //clase para las casillas 
-    ion-row.item-wrapper.row{
+    ion-row.item-wrapper.row{ 
        background-color: transparent !important; 
        border: none;
        border-bottom-style: solid;
@@ -48,6 +75,9 @@ acquire-product-page{
         }
         .backButton{
             padding-left: 18px !important;
+            img{
+                max-width: none;
+            }
         }
         .titleStyle {
             left: 0;
@@ -80,7 +110,6 @@ acquire-product-page{
         height: 180%;
     }
     button {
-        background: transparent !important;
         img {
             height: auto !important;
             max-height: 25px !important;
@@ -102,7 +131,8 @@ acquire-product-page{
         height: 30px;
         width: 100%;
         font-size: 14px;
-        color: #9c9c9c;
+        //color: #9c9c9c;
+        color:white;
         background-color: white;
         border: solid 1px #09c;
         border-radius: 75px;
@@ -110,7 +140,7 @@ acquire-product-page{
         margin-top: 6px;
         overflow: hidden;
         ion-row{
-            width:25%;
+            width:20%;
             border: none;
             border-radius:75px;
         }
@@ -120,7 +150,7 @@ acquire-product-page{
             background-color: #09c;
             border: solid 1px #09c !important;
             border-radius: 75px;
-            color:#09c;
+            color:white;
         }
     }
 
@@ -150,7 +180,7 @@ acquire-product-page{
         font-size: 12px;
     }
     .item-wrapper{
-        background-color: white;
+        background-color: #9c9c9c;
         width: 100%;
         height: 50px;
         border: solid 1px #9c9c9c;

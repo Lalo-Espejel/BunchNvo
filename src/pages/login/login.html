@@ -16,13 +16,15 @@
                <ion-input type="text" [placeholder]='"LoginPage.passwordInputPlaceholderText" | translate' class="pass"></ion-input>
             </div>
           </ion-list>
-           <button ion-button class="form-btn" (click)="forgotPass()" >{{ "LoginPage.forgotPassText" | translate }}</button>
            <button ion-button class="form-btn" (click)="createAccount()">{{ "LoginPage.createAccaunText" | translate }}</button>
         </ion-col>
       </ion-row>
       <ion-row>
         <button ion-button class="products-btn" (click)="goIntro()">{{ "LoginPage.buttonText" | translate }}</button>
       </ion-row>
+      
+        <button ion-button class="form-btnX" (click)="forgotPass()" >{{ "LoginPage.forgotPassText" | translate }}</button>  
+      
       <!--
       <ion-row>
           <button ion-button class="products-btn" (click)="goCarList()">{{ "LoginPage.buttonText" | translate }}</button>

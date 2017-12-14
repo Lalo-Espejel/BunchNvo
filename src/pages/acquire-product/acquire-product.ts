@@ -328,6 +328,14 @@ export class AcquireProductPage {
         var displayRC="";
         var displayDefensaJuridica="";
         var displayGastosMedicosOcupantes="";
+
+        //Variables para los deducibles
+        var displayDanosMaterialesD="";
+        var displayRoboTotalD="";
+        var displayRCPersonasD="";
+        var displayRCD="";
+        var displayDefensaJuridicaD="";
+        var displayGastosMedicosOcupantesD="";       
         
         var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"19/11/1988","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"04100","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":28,"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';
           console.log('este sera el url a consultar '+'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion');
@@ -341,12 +349,12 @@ export class AcquireProductPage {
             data7 = data2.Coberturas[0].DefensaJuridica;
             data8 = data2.Coberturas[0].GastosMedicosOcupantes;
 
-            displayDanosMateriales=(JSON.stringify(data3)).replace(/"|-N|-S|-D|DAÑOS|MATERIALES/g,'');
-            displayRoboTotal=(JSON.stringify(data4)).replace(/"|-N|-S|-D|ROBO|TOTAL/g,'');
-            displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|-D|NRC|PERSONAS|RC/g,'');
-            displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL/g,'');
-            displayDefensaJuridica=(JSON.stringify(data7)).replace(/"|-N|-S|-D|GASTOS|LEGALES/g,'');
-            displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS/g,'');
+            displayDanosMateriales=(JSON.stringify(data3)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
+            displayRoboTotal=(JSON.stringify(data4)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
+            displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-/g,'');
+            displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA/g,'');
+            displayDefensaJuridica=(JSON.stringify(data7)).replace(/"|-N|-S|-D|GASTOS|ES|ASISTENCIA|LEGAL|PROVIAL|LEGALES/g,'');
+            displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS|OCUPANTES/g,'');
 
             //seccion para la recepcion de la primaTotal y su conversion a int
             data2 = data2.Cotizacion.PrimaTotal;
@@ -355,23 +363,86 @@ export class AcquireProductPage {
             displayPrimaTotalInt=Math.ceil(parseInt(displayPrimaTotal));
             displayPrimaTotal=displayPrimaTotalInt.toLocaleString();
             displayPrimaTotal='$'+displayPrimaTotal;
+
+            //para los daños materiales
+            displayDanosMaterialesD=displayDanosMateriales.split('-D')[1];
+            displayDanosMateriales=parseInt(displayDanosMateriales.split('-D')[0]).toLocaleString();
+            displayDanosMateriales='$'+displayDanosMateriales;
+            if(displayDanosMateriales==='$NaN'){
+                displayDanosMateriales='-';
+            }
+
+            //para el robo total
+            displayRoboTotalD=displayRoboTotal.split('-D')[1];
+            displayRoboTotal=parseInt(displayRoboTotal.split('-D')[0]).toLocaleString();
+            displayRoboTotal='$'+displayRoboTotal;
+            if(displayRoboTotal==='$NaN'){
+                displayRoboTotal='-';
+            }
+
+            //Def juridica
+            //displayDefensaJuridicaD=displayDefensaJuridica.split('-D')[1];
+            displayDefensaJuridica=parseInt(displayDefensaJuridica.split('-D')[0]).toLocaleString();
+            displayDefensaJuridica='$'+displayDefensaJuridica; 
+            if(displayDefensaJuridica==='$NaN'){
+                displayDefensaJuridica='-';
+            } 
+            
+            //Gastos medicos ocupantes
+            displayGastosMedicosOcupantesD=displayGastosMedicosOcupantes.split('-D')[0];
+            if(displayGastosMedicosOcupantesD==='  Amparada')
+                displayGastosMedicosOcupantes='Amparada';
+            else{
+                displayGastosMedicosOcupantes=parseInt(displayGastosMedicosOcupantes.split('-D')[0]).toLocaleString();
+                displayGastosMedicosOcupantes='$'+displayGastosMedicosOcupantes;             
+            }
+            if(displayGastosMedicosOcupantes==='$NaN'){
+                displayGastosMedicosOcupantes='-';
+            }
+
+            //RC Personas          
+            if(displayRCPersonasD==='  Amparada -')
+                displayRCPersonasD='Amparada';
+            else   
+                displayRCPersonasD='$'+displayRCPersonasD;
+
+
+/*
+            //RC Personas
+            displayRCPersonasD=displayRCPersonas.split('-D')[1];
+            displayRCPersonas=parseInt(displayRCPersonas.split('-D')[0]).toLocaleString();
+            displayRCPersonas='$'+displayRCPersonas;
+
+            //RC
+            displayRCD=displayRC.split('-D')[1];
+            displayRC=parseInt(displayRC.split('-D')[0]).toLocaleString();
+            displayRC='$'+displayRC;
+            
+
+*/
             console.log("la aseguradora: "+aseguradora+ "el valor del int es "+displayPrimaTotal+" DANOS MATERIALES: "+displayDanosMateriales);
 
             aseguradora=aseguradora.replace(/"/g,'');
             document.getElementById("nombreAuto").innerHTML=this.Marca+' '+this.Modelo;
             document.getElementById("descrAuto").innerHTML=this.Descripcion;
-            document.getElementById("subDescrAuto").innerHTML=this.SubDescripcion;
+            document.getElementById("subDescrAuto").innerHTML=this.SubDescripcion; 
             if(aseguradora==='ABA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({  
                     asegur: aseguradora,  
                     img: "assets/icon/logo/asegurdoras-aba.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
 
                 });
             }
@@ -381,11 +452,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-ana.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes                    
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD                  
                 });
             }
             if(aseguradora==='AXA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -394,11 +471,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-axa.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes                    
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD                  
                 });
             }  
             if(aseguradora==='BANORTE' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -407,11 +490,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-banorte.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes                    
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD                  
                 });
             }  
             if(aseguradora==='GMX' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -420,11 +509,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-gmx.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
                 });
             }                 
             if(aseguradora==='GNP' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -433,11 +528,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-gnp.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
                 });
             }
             if(aseguradora==='GREAT' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -446,11 +547,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-great.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
                 });
             }                 
             if(aseguradora==='HDI' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -459,11 +566,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-hdi.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
                 });
             }  
             if(aseguradora==='MAPFRE' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -472,11 +585,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-mapfre.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
                 });
             }              
             if(aseguradora==='QUALITAS' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
@@ -485,11 +604,17 @@ export class AcquireProductPage {
                     img: "assets/icon/logo/asegurdoras-qualitas.svg",
                     value: displayPrimaTotal,
                     danosMateriales: displayDanosMateriales,
+                    danosMaterialesD: displayDanosMaterialesD,
                     roboTotal: displayRoboTotal,
+                    roboTotalD: displayRoboTotalD,
                     RCPersonas: displayRCPersonas,
+                    RCPersonasD: displayRCPersonasD,
                     RC:displayRC,
+                    RCD:displayRCD,
                     DefensaJuridica:displayDefensaJuridica,
-                    GastosMedicosOcupantes: displayGastosMedicosOcupantes
+                    DefensaJuridicaD:displayDefensaJuridicaD,
+                    GastosMedicosOcupantes: displayGastosMedicosOcupantes,
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD
                 });
             }                                                                           
           },err =>{
@@ -558,16 +683,36 @@ export class AcquireProductPage {
         console.log("el valor es "+JSON.stringify(valor.value));
         alert.setTitle('<center>'+valor.asegur+'</center>');
         alert.setMessage(
+            '<table class="tablaModal">'+
+            '<tr>'+
+            '  <td>'+
+            '  <img src="'+valor.img+'">'+
+            '  </td>'+
+            '  <td>'+
+            '    <table class="tablaModal">'+
+               '   <tr>'+
+                    '<th>Cobertura</th>'+
+                    '<th>Periodicidad</th>'+
+                  '</tr>'+
+                  '<tr>'+
+                    '<td>Amplia</td>'+
+                    '<td>Anual</td>'+
+                  '</tr>'+
+                '</table>'+
+              '</td>'+
+            '</tr>'+
+         ' </table>'+
+            
             '<table>'+
-            '<tr><th></th><th><strong>Suma Asegurada</strong></th><th><strong>Deducible</strong></th></tr>'+
-            '<tr><img src="'+valor.img+'" height="40%" width="40%"></tr>'+
-            '<tr><td><strong>Prima total</strong></str><td><strong>' +valor.value +'</strong></td></tr>'+
-            '<tr><td><strong>Daños materiales</strong><td><strong>' +valor.danosMateriales+'</strong></td></tr>'+
-            '<tr><td><strong>Robo Total</strong><td><strong>' +valor.roboTotal+'</strong></td></tr>'+
-            '<tr><td><strong>RC Personas</strong><td><strong>' +valor.RCPersonas+'</strong></td></tr>'+
-            '<tr><td><strong>RC</strong><td><strong>' +valor.RC+'</strong></td></tr>'+
-            '<tr><td><strong>Def. Jurídica</strong><td><strong>' +valor.DefensaJuridica+'</strong></td></tr>'+
-            '<tr><td><strong>Gastos Médicos Oc.</strong><td><strong>' +valor.GastosMedicosOcupantes+'<strong></td></tr>'+
+            '<tr><th></th><th><strong>Suma Asegurada</strong></th>'+
+            '<th><strong>Deducible</strong></th></tr>'+
+            '<tr><td><strong>Prima total</strong></str><td><center><strong>' +valor.value +'</strong></center></td><td><center><strong>'+'</strong></center></td></tr>'+
+            '<tr><td><strong>Daños materiales</strong><td><center><strong>' +valor.danosMateriales+'</strong></center></td><td><center><strong>'+valor.danosMaterialesD+'-</strong></center></td></tr>'+
+            '<tr><td><strong>Robo Total</strong><td><center><strong>' +valor.roboTotal+'</strong></center></td><td><center><strong>'+valor.roboTotalD+'</strong></center></td></tr>'+
+            '<tr><td><strong>RC Personas</strong><td><center><strong>' +valor.RCPersonas+'-</strong></center></td><td><center><strong>'+valor.RCPersonasD+'-</strong></center></td></tr>'+
+            '<tr><td><strong>RC</strong><td><center><strong>' +valor.RC+'</strong></center></td><td><center><strong>'+valor.RCD+'</strong></center></td></tr>'+
+            '<tr><td><strong>Def. Jurídica</strong><td><center><strong>' +valor.DefensaJuridica+'</strong></center></td><td><center><strong>'/*+valor.defensaJuridicaD*/+'-</strong></center></td></tr>'+
+            '<tr><td><strong>Gastos Médicos Oc.</strong><td><center><strong>' +valor.GastosMedicosOcupantes+'<strong></center></td><td><center><strong>'/*+valor.GastosMedicosOcupantesD*/+'-</strong></center></td></tr>'+
             '</table>'+
             '<hr>'
         );
@@ -649,9 +794,13 @@ export class AcquireProductPage {
     private userInteriorNumber = {name:'12 a'};
 
     private userGender = {name:'Male'}; //d
-    private userGenderList = ['Male','Female']
-    private userDiraction = {name:'Hacienda Montecillo 19'}; //d
-    private userDiractionList = ['Hacienda Montecillo 19','Hacienda Montecillo 18','Hacienda Montecillo 17'];
+    private userGenderList = ['Male','Female'];
+    private userRFC = {name:'EEEE000000111'}; //d
+    private userRFCList = ['EEEE000000111'];
+    private userLugarNac = {name:'CDMX'}; //d
+    private userLugarNacList = ['CDMX'];
+    private userNacionalidad = {name:'Mexicana'}; //d
+    private userNacionalidadList = ['Mexicana'];    
     private userColony = {name:'Villa Coapa'}; //d
     private userColonyList = ['Villa Coapa','Villa Coapa1','Villa Coapa2'];
     private userState = {name:'Ciudad de México'}; //d
@@ -702,7 +851,7 @@ export class AcquireProductPage {
     }
     changeTab(tabName, tabFrom = ''){
        console.log("la tab que se selecciona"+tabName);
-       document.getElementById("nuevo").style.color = "green";
+       //document.getElementById("nuevo").style.color = "green";
 
        var background_color='red !important';
        tabName == 'Pago'? this.underTabsTitile = localStorage.getItem("language") == "en"?'Summary':'Resumen': this.underTabsTitile = localStorage.getItem("language") == "en"?'Car insurance':'Seguro de Auto';

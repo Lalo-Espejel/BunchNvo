@@ -15,8 +15,13 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+
 .definida {
-    
+    .alert-message{
+        height: 40% !important;
+        max-height: 60%;
+        
+    }
     .alert-radio-label{
         font-family: RaleTitle;
         white-space: normal !important;
@@ -34,8 +39,9 @@
     }
     .alert-message {
         font-size: 10px; 
+        min-height:70% !important;
         table, th, td {
-            border: 1px solid black;
+            border: 1px solid#b8b894;
             border-collapse: collapse;
 
         }
@@ -52,11 +58,35 @@
             color:black;
             font-family: RaleNext;
         }
+        .tablaModal{
+            border: 0px;
+            th{
+                border: none;
+                border-bottom: 1px solid #b8b894; //red;
+            }
+        }
     }
     .img{
         margin-left:-50%;
     }
+
 }
+.tablaModal{
+    td, table{
+        border:0 solid white !important;
+        font-size: 20px;
+    }
+    img{
+        width:70%;
+        height: 70%;
+
+    }
+    td{
+        color:black !important;
+        text-align: center;
+        font-size: 20px;
+    }
+} 
 .definidaX {
         
         .alert-radio-label{
