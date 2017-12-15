@@ -33,7 +33,24 @@ export class AcquireProductPage {
     Detalle:string;
     Edad:string;
     public userBrandList =  [];
-
+    master(){
+        console.log("master");
+        document.getElementById("master").style.opacity = "1";
+        document.getElementById("visa").style.opacity = ".5";
+        document.getElementById("amex").style.opacity = ".5";
+    }
+    amex(){
+        console.log("amex");
+        document.getElementById("master").style.opacity = ".5";
+        document.getElementById("visa").style.opacity = ".5";
+        document.getElementById("amex").style.opacity = "1";
+    }
+    visa(){
+        console.log("visa");
+        document.getElementById("master").style.opacity = ".5";
+        document.getElementById("visa").style.opacity = "1";
+        document.getElementById("amex").style.opacity = ".5";
+    }
     ionViewDidLoad(){
         var str="";
         var cont=0;
@@ -654,7 +671,8 @@ export class AcquireProductPage {
     showAlert( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
-                {
+                {   
+                  //type: 'number',   
                   name: 'username',
                   id: 'cp'      
                 }
@@ -851,6 +869,7 @@ export class AcquireProductPage {
     }
     changeTab(tabName, tabFrom = ''){
        console.log("la tab que se selecciona"+tabName);
+
        //document.getElementById("nuevo").style.color = "green";
 
        var background_color='red !important';

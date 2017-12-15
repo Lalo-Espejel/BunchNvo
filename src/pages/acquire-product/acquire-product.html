@@ -15,19 +15,19 @@
         <ion-content padding>
             <ion-row>
                 <ion-row class="tabs-swap-wrap" >
-                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" id="nuevo"(tap)="changeTab('Producto')" >
+                    <ion-row align-items-center justify-content-center [ngClass]="{active:topTab == 'Producto'}" (tap)="changeTab('Producto')" >
                         <span>{{ "AcquireProductPage.productTabText" | translate }}</span>
                     </ion-row>
-                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Compara'}" (tap)="changeTab('Compara')">
+                    <ion-row  align-items-center justify-content-center [ngClass]="{activeX:topTab == 'Compara'}" (tap)="changeTab('Compara')">
                         <span>{{ "AcquireProductPage.compareTabText" | translate }}</span>
                     </ion-row>
-                    <ion-row align-items-center justify-content-center [ngClass]="{active:topTab == 'Cliente'}" (tap)="changeTab('Cliente')">
+                    <ion-row align-items-center justify-content-center [ngClass]="{activeY:topTab == 'Cliente'}" (tap)="changeTab('Cliente')">
                             <span>{{ "AcquireProductPage.clientTabText" | translate }}</span>
                     </ion-row>  
-                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Tarjeta'}" (tap)="changeTab('Tarjeta')">
+                    <ion-row  align-items-center justify-content-center [ngClass]="{activeZ:topTab == 'Tarjeta'}" (tap)="changeTab('Tarjeta')">
                         <span>Tarjeta</span>
                     </ion-row>                                      
-                    <ion-row  align-items-center justify-content-center [ngClass]="{active:topTab == 'Pago'}" (tap)="changeTab('Pago')">
+                    <ion-row  align-items-center justify-content-center [ngClass]="{activeM:topTab == 'Pago'}" (tap)="changeTab('Pago')">
                         <span>{{ "AcquireProductPage.paymentTabText" | translate }}</span>
                     </ion-row>
                 </ion-row>
@@ -51,13 +51,16 @@
                                     <span>{{userName.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper">
+                        <ion-row class="item-wrapper" >
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.age" | translate }}</span>
                                 </ion-row>
-                                <ion-item align-items-start class="sub-text">
+                                <ion-item align-items-start class="sub-text" id="firstname">
                                     <ion-datetime placeholder="--/--" pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
                                 </ion-item>
                             </ion-row>
@@ -87,6 +90,9 @@
                                     <span>{{userEmail.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('numInput', userCellPhoneNumber,[], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
                             <ion-row>
@@ -97,6 +103,9 @@
                                     <span>{{userCellPhoneNumber.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userRFC, userRFCList, isEnglish?'Choose your ID':'Elegir RFC')">
                             <ion-row>
@@ -107,6 +116,9 @@
                                     <span>{{userRFC.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userNacionalidad, userNacionalidadList, isEnglish?'Choose your nationality':'Elegir tu nacionalidad')">
                             <ion-row>
@@ -117,6 +129,9 @@
                                     <span>{{userNacionalidad.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userLugarNac, userLugarNacList, isEnglish?'Choose your place of birth':'Elegir tu lugar de nacimiento')">
                             <ion-row>
@@ -127,6 +142,9 @@
                                     <span>{{userLugarNac.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>                                                  
                         <ion-row class="item-wrapper" (tap)="showAlert('numInput', userPostalCode, [], isEnglish?'Input postal code':'Ingrese código postal')">
                             <ion-row>
@@ -137,6 +155,9 @@
                                     <span>{{userPostalCode.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userStreetName, [], isEnglish?'Input street name':'Ingrese el nombre de su calle')">
                             <ion-row>
@@ -147,6 +168,9 @@
                                     <span>{{userStreetName.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userOutdoorNumber, [], isEnglish?'Input outdoor number':'Ingrese número al aire libre')">
                             <ion-row>
@@ -157,6 +181,9 @@
                                     <span>{{userOutdoorNumber.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userInteriorNumber, [], isEnglish?'Input interior number':'Ingrese número interior')">
                             <ion-row>
@@ -167,6 +194,9 @@
                                     <span>{{userInteriorNumber.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('radio', userColony, userColonyList, isEnglish?'Choose colony':'Elegir colonia')">
                             <ion-row>
@@ -190,6 +220,9 @@
                                     <span>{{userState.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('radio', userDelegation, userDelegationList, isEnglish?'Choose delegation':'Elegir delegación')">
                             <ion-row>
@@ -200,6 +233,9 @@
                                     <span>{{userDelegation.name}}</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <!--
                         <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Producto','Cliente')">
@@ -207,7 +243,7 @@
                             <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
                         </ion-row>
                         -->
-                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Pago')">   
+                        <ion-row align-items-center justify-content-center class="bot-button" (tap)="changeTab('Tarjeta')">   
                             <span>{{ "AcquireProductPage.saveAndContinue" | translate }}</span>
                         </ion-row>
                         
@@ -226,6 +262,9 @@
                                     <span>Crédito</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userGender, userGenderList,isEnglish?'Name of the owner':'Nombre del titular')">
                             <ion-row>
@@ -249,6 +288,9 @@
                                     <span>0000 0000 0000 0000</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userCellPhoneNumber,[], isEnglish?'Input the bank':'Ingrese el banco')">
                             <ion-row>
@@ -259,35 +301,51 @@
                                     <span>Santander</span>
                                 </ion-row>
                             </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
                         </ion-row>
                         <ion-row >
                                 <ion-row align-items-end class="main-text">
                                         <span>&nbsp;&nbsp;Carrier</span>
                                     </ion-row>
                             <div class = "button-bar">
-                                <a class = "tarjetas"><img src="../assets/icon/tdc/Amex.svg"></a>
-                                <a class = "tarjetas"><img src="../assets/icon/tdc/MasterCard.svg"></a>
-                                <a class = "tarjetas"><img src="../assets/icon/tdc/Visa.svg"></a>
+                                <a class = "tarjetas" ><img src="../assets/icon/tdc/Amex.svg" id="amex" (click)="amex()"></a>
+                                <a class = "tarjetas" ><img src="../assets/icon/tdc/MasterCard.svg" id="master"(click)="master()"></a>
+                                <a class = "tarjetas" ><img src="../assets/icon/tdc/Visa.svg" id= "visa" (click)="visa()"></a>
                              </div> 
                         </ion-row>
-                        <ion-row class="item-wrapper">
+                        <ion-row class="item-wrapper" id="tarjeta">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>Vigencia</span>
                                 </ion-row>
-                                <ion-item align-items-start class="sub-text">
+                                <ion-item align-items-start class="sub-text" id="firstname">
                                     <ion-datetime pickerFormat="YYYY MMMM" displayFormat="YYYY MMMM"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
                                 </ion-item>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
-                        </ion-row> 
+                        </ion-row>
+                        <ion-row class="item-wrapper" id="tarjeta2" (tap)="showAlert('numInput', userCellPhoneNumber,[], isEnglish?'Input the CVV':'Ingrese el CVV')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>CVV</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text">
+                                    <span>000</span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>
+                        </ion-row>                          
                         <ion-row >
                             <ul class = "list">                                 
                                 <li class = "item item-checkbox  checkbox-positive">
                                     <label class = "checkbox">
-                                        <input type = "checkbox" />
+                                        <input type = "checkbox"/>
                                         Acepto expresamente que se realicen los cobros de mi póliza a la tarjeta bancaria registrada y que los pagos subsecuentes sean domiciliados a la misma.
                                     </label>
                                 </li>

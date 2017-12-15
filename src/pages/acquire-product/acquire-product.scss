@@ -1,11 +1,28 @@
 acquire-product-page{
-    //para el capo de datetime
-    .item-md{
-        background-color:  #eeeeee;
+
+    //para la vigencia
+    #tarjeta{
+        width:30%;
     }
-    //para el campo de datetime
+    //para el cvv
+    #tarjeta2{
+        position:absolute;
+        width:30%;
+        margin-left:57%;
+        margin-top:103%;
+    }    
+
+    //para que el fondo del campo de año se vea igual al background
+    #firstname{
+        background-color: #eeeeee !important;
+    }
+    //para el capo de datetime y del las aseguradoras
+    .item-md{
+        background-color:  white;
+    }
+    //para el campo de datetime  y del las aseguradoras
     .item-ios{
-        background-color:  #eeeeee;
+        background-color:  white;
     }
     .button-bar{
         width: 100% !important;
@@ -95,7 +112,7 @@ acquire-product-page{
         padding: 0 !important;
     }
     .item-inner{
-        border-bottom: none !important
+        border-bottom: none !important;
     }
     ion-datetime{
         padding: 0 !important;
@@ -150,8 +167,45 @@ acquire-product-page{
             background-color: #09c;
             border: solid 1px #09c !important;
             border-radius: 75px;
-            color:white;
+            //color:white;
+            color: #09c;
         }
+        .activeX{
+            margin-left: -20%;
+            width: 40%;
+            background-color: #09c;
+            border: solid 1px #09c !important;
+            border-radius: 75px;
+            //color:white;
+            color: #09c;
+        }  
+        .activeY{
+            margin-left: -40%;
+            width: 60%;
+            background-color: #09c;
+            border: solid 1px #09c !important;
+            border-radius: 75px;
+            //color:white;
+            color: #09c;
+        }     
+        .activeZ{
+            margin-left: -60%;
+            width: 80%;
+            background-color: #09c;
+            border: solid 1px #09c !important;
+            border-radius: 75px;
+            //color:white;
+            color: #09c;
+        }    
+        .activeM{
+            margin-left: -80%;
+            width: 100%;
+            background-color: #09c;
+            border: solid 1px #09c !important;
+            border-radius: 75px;
+            //color:white;
+            color: #09c;
+        }                           
     }
 
     .top-tittle{
@@ -202,8 +256,8 @@ acquire-product-page{
         padding-left: 10px;
     }
     .arrow-button{
-        width: 3% !important;
-        padding-left: 0 !important;
+        width: 30% !important;
+        margin-left: -120px !important;
     }
     .cliente-tab{
         .input-container {
