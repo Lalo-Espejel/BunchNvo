@@ -1,5 +1,16 @@
 acquire-product-page{
-
+    .mystyle{
+        color:red;
+        input:disabled{
+            background-color: black;
+        }
+    }
+    // para los pasos
+    .steps{
+        margin-left:77%;  
+        margin-top: -1%;
+        font-size:12px;  
+    }
     //para la vigencia
     #tarjeta{
         width:30%;
@@ -229,7 +240,13 @@ acquire-product-page{
         font-weight: 500;
         width: 100%;
         font-family: RaleTitle;
-    }
+    } 
+    .main-textX{
+        font-size: 16px;
+        font-weight: 500;
+        width: 100%;
+        font-family: RaleNext;
+    }    
     .sub-text{
         font-size: 12px;
     }
@@ -373,6 +390,7 @@ acquire-product-page{
                 }
                 .main-text-title{
                     margin: 5px 0 10px 0;
+                    font-weight: 800;
                 }
                 .main-info-text-wrap{
                     .main-text{

@@ -31,6 +31,9 @@
                         <span>{{ "AcquireProductPage.paymentTabText" | translate }}</span>
                     </ion-row>
                 </ion-row>
+                <ion-row  class="steps" id="steps">
+                    <span>Paso 1 de 5</span>
+                </ion-row>                
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Cliente'">
                     <ion-row [hidden] = "productoContinuarShown">
                         <ion-row class="main-text">
@@ -42,19 +45,58 @@
                                 <ion-icon class="search-icon" name="search" item-right></ion-icon>
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userName,[], isEnglish?'Input name':'Ingrese nombre')">
+                        <ion-row class="item-wrapper" (tap)="showAlertEmail('textInput', userEmail,[], isEnglish?'Input your email':'Ingrese correo electrónico')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>{{ "AcquireProductPage.email" | translate }}</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text" id="emailModal">
+                                    <span>{{userEmail.name}}</span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
+                        </ion-row>                        
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabled ? '1' : '.5') }" (tap)="showAlertNombre('textInput', userNameModal,[], isEnglish?'Input name':'Ingrese nombre')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.firstName" | translate }}</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
-                                    <span>{{userName.name}}</span>
+                                <ion-row align-items-start class="sub-text" id="nombre">
+                                    <span>{{userNameModal.name}}</span>
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlertApellidoP('textInput', userNameModalP,[], isEnglish?'Input name':'Ingrese apellido paterno')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>{{ "AcquireProductPage.paterno" | translate }}</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text" id="paterno">
+                                    <span>{{userNameModalP.name}}</span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
+                        </ion-row>
+                        <ion-row class="item-wrapper" (tap)="showAlertApellidoM('textInput', userNameModalM,[], isEnglish?'Input name':'Ingrese apellido materno')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>{{ "AcquireProductPage.materno" | translate }}</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text" id="materno">
+                                    <span>{{userNameModalM.name}}</span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
+                        </ion-row>                                                
                         <ion-row class="item-wrapper" >
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
@@ -68,7 +110,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('radio', userGender, userGenderList,isEnglish?'Choose gender':'Elija el género')">
+                        <ion-row class="item-wrapper"  *ngFor="let listItem of userGenderList" (tap)="showAlertGenero('radio', userGender, userGenderList,isEnglish?'Choose gender':'Elija el género')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.gender" | translate }}</span>
@@ -81,25 +123,25 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userEmail,[], isEnglish?'Input your email':'Ingrese correo electrónico')">
+                        <ion-row class="item-wrapper" (tap)="showAlertTelefonoCasa('numInput', userHomePhoneNumber,[], isEnglish?'Input home number':'Ingrese número de teléfono de casa')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
-                                    <span>{{ "AcquireProductPage.email" | translate }}</span>
+                                    <span>Teléfono de casa</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
-                                    <span>{{userEmail.name}}</span>
+                                <ion-row align-items-start class="sub-text" id="telefonoCasaModal">
+                                    <span>{{userCellPhoneNumber.name}}</span>
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
-                        </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('numInput', userCellPhoneNumber,[], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
+                        </ion-row>                        
+                        <ion-row class="item-wrapper" (tap)="showAlertTelefonoMovil('numInput', userCellPhoneNumber,[], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.cellPhone" | translate }}</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
+                                <ion-row align-items-start class="sub-text" id="telefonoMovilModal">
                                     <span>{{userCellPhoneNumber.name}}</span>
                                 </ion-row>
                             </ion-row>
@@ -107,12 +149,12 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userRFC, userRFCList, isEnglish?'Choose your ID':'Elegir RFC')">
+                        <ion-row class="item-wrapper" (tap)="showAlertRFC('textInput', userRFC, userRFCList, isEnglish?'Choose your ID':'Elegir RFC')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.RFC" | translate }}</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
+                                <ion-row align-items-start class="sub-text" id="rfc">
                                     <span>{{userRFC.name}}</span>
                                 </ion-row>
                             </ion-row>
@@ -253,13 +295,26 @@
                 <!-- SECCION DE TARJETA -->
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Tarjeta'">
                     <ion-row [hidden] = "productoContinuarShown">
+                        <ion-row class="item-wrapper" (tap)="showAlertTarjeta('numInput', userCreditCard,[], isEnglish?'Input your credit card number':'Ingrese el número de tarjeta')">
+                            <ion-row>
+                                <ion-row align-items-end class="main-text">
+                                    <span>Número de Tarjeta</span>
+                                </ion-row>
+                                <ion-row align-items-start class="sub-text" id="noTarjeta">
+                                    <span></span>
+                                </ion-row>
+                            </ion-row>
+                            <ion-row align-items-center class="arrow-button">
+                                <img src="assets/icon/bt-siguiente.png">
+                            </ion-row>                            
+                        </ion-row>                        
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userName,[], isEnglish?'Input the type of card card':'Ingrese el tipo de tarjeta')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>Tipo de tarjeta</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
-                                    <span>Crédito</span>
+                                <ion-row align-items-start class="sub-text" id="type">
+                                    <span></span>
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
@@ -279,26 +334,13 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('numInput', userEmail,[], isEnglish?'Input your credit card number':'Ingrese el número de tarjeta')">
-                            <ion-row>
-                                <ion-row align-items-end class="main-text">
-                                    <span>Número de Tarjeta</span>
-                                </ion-row>
-                                <ion-row align-items-start class="sub-text">
-                                    <span>0000 0000 0000 0000</span>
-                                </ion-row>
-                            </ion-row>
-                            <ion-row align-items-center class="arrow-button">
-                                <img src="assets/icon/bt-siguiente.png">
-                            </ion-row>                            
-                        </ion-row>
                         <ion-row class="item-wrapper" (tap)="showAlert('textInput', userCellPhoneNumber,[], isEnglish?'Input the bank':'Ingrese el banco')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>Banco</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
-                                    <span>Santander</span>
+                                <ion-row align-items-start class="sub-text" id="bank">
+                                    <span></span>
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
@@ -321,19 +363,19 @@
                                     <span>Vigencia</span>
                                 </ion-row>
                                 <ion-item align-items-start class="sub-text" id="firstname">
-                                    <ion-datetime pickerFormat="YYYY MMMM" displayFormat="YYYY MMMM"  [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
+                                    <ion-datetime pickerFormat="MMM YY" displayFormat="MM/YY" min="2017" max="2030" [monthNames]="datePickerNames.month" [(ngModel)]="datePicked"></ion-datetime>
                                 </ion-item>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" id="tarjeta2" (tap)="showAlert('numInput', userCellPhoneNumber,[], isEnglish?'Input the CVV':'Ingrese el CVV')">
+                        <ion-row class="item-wrapper" id="tarjeta2" (tap)="showAlertCvv('numInput', userCvv,[], isEnglish?'Input the CVV':'Ingrese el CVV')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>CVV</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
+                                <ion-row align-items-start class="sub-text" id="cvv">
                                     <span>000</span>
                                 </ion-row>
                             </ion-row>
@@ -489,9 +531,12 @@
                 </ion-row>
                 <!--SECCION DE COMPARAR-->
                 <ion-row class="compara-tab" [hidden]="topTab != 'Compara'">
+                    <ion-row class="main-text">
+                        <span>Descripción del auto</span>
+                    </ion-row>  
                     <ion-row *ngIf="!comparaDetailShown">
                         <ion-row align-items-center justify-content-center class="title">
-                            <ion-row align-items-center justify-content-center class="title-wrap">
+                            <ion-row align-items-center justify-content-center class="title-wrap">                              
                                 <ion-row align-items-center justify-content-center class="main-text">
                                     <span id="nombreAuto"></span>
                                 </ion-row>
@@ -555,6 +600,9 @@
                 <!--SECCION DE PAGO-->
                 </ion-row>
                 <ion-row class="pago-tab" [hidden]="topTab != 'Pago'">
+                <ion-row class="main-textX">
+                    <span>Resumen de compra</span>
+                </ion-row>      
                     <ion-row class="citation-wrap">
                         <ion-row class="padding-row">
                             <ion-row class="top-text-wrap">
@@ -595,8 +643,74 @@
                                         <span>{{listItem.mainText}}</span>
                                         <span class="sub-text">{{listItem.subText}}</span>
                                     </ion-row>
-                                </ion-row>
+                                </ion-row>                                                             
                             </ion-row>
+                            <ion-row>
+                                <ion-row class="main-text-title">
+                                    <span>Datos del vehículo</span>
+                                </ion-row>
+                                <ion-row class="main-info-text-wrap">
+                                    <ion-row class="main-text" >
+                                        <span>Marca: </span>
+                                        <span class="sub-text" id="marcaU"></span>
+                                    </ion-row>
+                                    <ion-row class="main-text" >
+                                        <span>Submarca: </span>
+                                        <span class="sub-text" id="submarcaU">1</span>
+                                    </ion-row>   
+                                    <ion-row class="main-text" >
+                                        <span>Modelo: </span>
+                                        <span class="sub-text" id="modeloU">2</span>
+                                    </ion-row> 
+                                    <ion-row class="main-text" >
+                                        <span>Descripción: </span>
+                                        <span class="sub-text" id="descripcionU">3</span>
+                                    </ion-row>                                                                                                            
+                                </ion-row>                                                             
+                            </ion-row>                             
+                            <ion-row>
+                                <ion-row class="main-text-title">
+                                    <span>Datos del contratante</span>
+                                </ion-row>
+                                <ion-row class="main-info-text-wrap">
+                                    <ion-row class="main-text" >
+                                        <span>Nombre: </span>
+                                        <span class="sub-text" id="nombreU"></span>
+                                    </ion-row>
+                                    <ion-row class="main-text" >
+                                        <span>Apellido paterno: </span>
+                                        <span class="sub-text" id="paternoU"></span>
+                                    </ion-row>  
+                                    <ion-row class="main-text" >
+                                        <span>Apellido materno: </span>
+                                        <span class="sub-text" id="maternoU"></span>
+                                    </ion-row>                                                                      
+                                    <ion-row class="main-text" >
+                                        <span>Email: </span>
+                                        <span class="sub-text" id="emailU">1</span>
+                                    </ion-row>   
+                                    <ion-row class="main-text" >
+                                        <span>Domicilio: </span>
+                                        <span class="sub-text" id="domicilioU">2</span>
+                                    </ion-row> 
+                                    <ion-row class="main-text" >
+                                        <span>Teléfono casa: </span>
+                                        <span class="sub-text" id="telefonoCasaU">3</span>
+                                    </ion-row>
+                                    <ion-row class="main-text" >
+                                        <span>Teléfono móvil: </span>
+                                        <span class="sub-text" id="telefonoMovilU">3</span>
+                                    </ion-row>                                    
+                                    <ion-row class="main-text" >
+                                        <span>Género: </span>
+                                        <span class="sub-text" id="generoU">3</span>
+                                    </ion-row>  
+                                    <ion-row class="main-text" >
+                                        <span>RFC: </span>
+                                        <span class="sub-text" id="rfcU">3</span>
+                                    </ion-row>                                                                                                                                                                                      
+                                </ion-row>                                                            
+                            </ion-row>                                                                                         
                         </ion-row>
                     </ion-row>
                     <ion-row align-items-center justify-content-center class="bot-button" (tap)="goPaymentSubmitedPage()">

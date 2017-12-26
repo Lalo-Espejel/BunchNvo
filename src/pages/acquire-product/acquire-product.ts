@@ -33,6 +33,8 @@ export class AcquireProductPage {
     Detalle:string;
     Edad:string;
     public userBrandList =  [];
+    isEnabled:boolean;
+
     master(){
         console.log("master");
         document.getElementById("master").style.opacity = "1";
@@ -52,6 +54,7 @@ export class AcquireProductPage {
         document.getElementById("amex").style.opacity = ".5";
     }
     ionViewDidLoad(){
+        this.isEnabled=true;
         var str="";
         var cont=0;
         this.http.get('http://test.alimx.mx/WebService.asmx/GetMarcasJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017')
@@ -97,6 +100,7 @@ export class AcquireProductPage {
             testRadioResult = data;
             console.log("se ha cicleado el valor: "+testRadioResult);
             document.getElementById("Marca").innerHTML=testRadioResult;
+            document.getElementById("marcaU").innerHTML=testRadioResult;
             this.userModelList = [];
             this.Marca=testRadioResult;
             this.getModelo();
@@ -147,6 +151,7 @@ export class AcquireProductPage {
             testRadioResult = data;
             console.log("se ha cicleado el valor: "+testRadioResult);
             document.getElementById("Modelo").innerHTML=testRadioResult;
+            document.getElementById("modeloU").innerHTML=testRadioResult;
             this.Modelo=testRadioResult;
             this.userDescriptionList = [];
             this.getDescripcion();
@@ -195,6 +200,7 @@ export class AcquireProductPage {
             testRadioResult = data;
             console.log("se ha cicleado el valor: "+testRadioResult);
             document.getElementById("Descripcion").innerHTML=testRadioResult;
+            document.getElementById("submarcaU").innerHTML=testRadioResult;
             this.Descripcion=testRadioResult;
             this.getSubDescripcion();
         }
@@ -243,6 +249,7 @@ export class AcquireProductPage {
             testRadioResult = data;
             console.log("se ha cicleado el valor: "+testRadioResult);
             document.getElementById("SubDescripcion").innerHTML=testRadioResult;
+            document.getElementById("descripcionU").innerHTML=testRadioResult;
             this.SubDescripcion=testRadioResult;
             this.getDetalle();
         }
@@ -368,8 +375,8 @@ export class AcquireProductPage {
 
             displayDanosMateriales=(JSON.stringify(data3)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
             displayRoboTotal=(JSON.stringify(data4)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
-            displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-/g,'');
-            displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA/g,'');
+            displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-|D|-/g,'');
+            displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA|No|aplica/g,'');
             displayDefensaJuridica=(JSON.stringify(data7)).replace(/"|-N|-S|-D|GASTOS|ES|ASISTENCIA|LEGAL|PROVIAL|LEGALES/g,'');
             displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS|OCUPANTES/g,'');
 
@@ -417,11 +424,15 @@ export class AcquireProductPage {
                 displayGastosMedicosOcupantes='-';
             }
 
-            //RC Personas          
+            //RC Personas         
             if(displayRCPersonasD==='  Amparada -')
                 displayRCPersonasD='Amparada';
             else   
                 displayRCPersonasD='$'+displayRCPersonasD;
+            if(displayRCPersonasD==='$')
+                displayRCPersonasD='-';
+
+            //RC
 
 
 /*
@@ -674,6 +685,188 @@ export class AcquireProductPage {
                 {   
                   //type: 'number',   
                   name: 'username',
+                  id: 'nombre'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('nombre').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
+    }
+    showAlertTelefonoCasa( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'nombre'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('telefonoCasaModal').innerHTML=data.username;
+                document.getElementById('telefonoCasaU').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
+    } 
+    showAlertTelefonoMovil( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'nombre'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('telefonoMovilModal').innerHTML=data.username;
+                document.getElementById('telefonoMovilU').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
+    }        
+    showAlertRFC( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'nombre'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('rfc').innerHTML=data.username;
+                document.getElementById('rfcU').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
+    }    
+    showAlertEmail( value, mode, modelList = [], massage=""){
+
+        var status='';
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'nombre'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                document.getElementById('emailModal').innerHTML=data.username;
+                document.getElementById('emailU').innerHTML=data.username;   
+                var encodedString = btoa(data.username);             
+                var url2='http://services.bunch.guru/WebService.asmx/validarCliente?param='+encodedString;
+                console.log("ESTO ESTA MANDANDO para checar el correo: "+url2);
+                this.http.get(url2)
+                .map(res=> res.json())  
+                .subscribe(data=>{
+                  console.log(data);
+                  status=(JSON.stringify(data.status)).replace(/"/g,'');
+                  if(status==='1'){
+                    console.log("no existe, habilitar todos los campos");
+                    this.isEnabled=true;
+                  }
+                  if(status==='2'){
+                    console.log("Existe, pero faltan datos. Completar los campos faltantes");
+                    this.isEnabled=false;
+                  }
+                  if(status==='3'){
+                    console.log("Se cuenta con toda la info, sólo tener el campo del domicilio");
+                    this.isEnabled=false;
+                  }                                       
+
+                },err =>{
+                  console.log(err);
+                });                 
+        }
+        });
+        alert.present();
+        
+    }    
+    showAlertGenero( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+        alert.setCssClass('definidaX');
+    
+        for (let item of this.userGenderList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: item,
+                 value: item
+            });
+         }
+    
+        alert.addButton('Cancelar');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor: "+testRadioResult);
+            document.getElementById("Marca").innerHTML=testRadioResult;
+            document.getElementById("marcaU").innerHTML=testRadioResult;
+            this.userModelList = [];
+            this.Marca=testRadioResult;
+            this.getModelo();
+        }
+        });
+        alert.present();
+
+    }   
+    showAlertNombre( value, mode, modelList = [], massage=""){
+        if (this.isEnabled==true){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
                   id: 'cp'      
                 }
               ]
@@ -686,12 +879,169 @@ export class AcquireProductPage {
             handler: data => {
                 console.log(JSON.stringify(data)); //to see the object
                 console.log(data.username);
-                document.getElementById('CP').innerHTML=data.username;
+                document.getElementById('nombre').innerHTML=data.username;
+                document.getElementById('nombreU').innerHTML=data.username;
+        }
+        });
+        alert.present();
+    }
+        
+    }
+    showAlertApellidoP( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'cp'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('paterno').innerHTML=data.username;
+                document.getElementById('paternoU').innerHTML=data.username;
         }
         });
         alert.present();
         
     }
+    showAlertApellidoM( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'cp'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('materno').innerHTML=data.username;
+                document.getElementById('maternoU').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
+    }        
+    showAlertCvv( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'cvvModal'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('cvv').innerHTML=data.username;
+        }
+        });
+        alert.present();
+        
+    }
+    showAlertTarjeta( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'noTarjetaModal'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                var tdc='';
+                var scheme='';
+                var type='';
+                var bank='';
+                var flag=0;
+                //console.log("se ha dado la tarjeta"+(<HTMLInputElement>document.getElementById('noTarjetaModal')).value); 
+                tdc=(<HTMLInputElement>document.getElementById('noTarjetaModal')).value;
+                document.getElementById("noTarjeta").innerHTML=(<HTMLInputElement>document.getElementById('noTarjetaModal')).value;
+                this.http.get('https://lookup.binlist.net/'+tdc)
+                .map(res=> res.json())
+                .subscribe(data=>{
+                    this.data = data;
+                    console.log(this.data);
+                    scheme=JSON.stringify(data.scheme).replace(/"/g,'');
+                    type=JSON.stringify(data.type).replace(/"/g,'');
+                    
+                    try {
+                        bank=((JSON.stringify(data.bank.name)).replace(/"/g,''));
+                    } catch (exception) {
+                        flag=1;
+                        console.log("se insertara amex");
+                    }                    
+                    //Para quitar caracteres especiales al banco y dejarlo en minus, pero con la primera letra en mayus
+                    if (flag===1){
+                        bank='Amex';
+                    }
+                    else{
+                        bank=bank.toLowerCase();
+                        bank=bank.charAt(0).toUpperCase() + bank.slice(1);
+                    }
+
+                    console.log("el scheme es" +scheme+"el nombre del carrier es "+bank+"el typee es "+type);
+                    if (scheme==='MASTERCARD'){
+                        document.getElementById("cvv").innerHTML="123";
+                        this.master();
+                    }
+                    if (scheme==='AMEX'){
+                        document.getElementById("cvv").innerHTML="1234";
+                        this.amex();
+                    } 
+                    if (scheme==='VISA'){
+                        document.getElementById("cvv").innerHTML="123";
+                        this.visa();
+                    }                                       
+                    //conversion a espanol lo que devuelve el ws
+                    if(type==='CREDIT'){
+                        type='Crédito';
+                    } 
+                    else{
+                        type='Débito';
+                    }
+                    //
+                    //Inserción de los datos anteriores en la página
+                    document.getElementById("type").innerHTML=type;
+                    document.getElementById("bank").innerHTML=bank;
+                    
+                },err =>{
+                    console.log(err);
+                });                  
+        }
+        });
+        alert.present();
+        
+    }
+
     showAlertPrima( value, valor, mode, modelList = [], massage=""){
         //this.alertSrv.showAlert(value, mode, modelList, massage);
         var testRadioOpen=false;
@@ -725,9 +1075,9 @@ export class AcquireProductPage {
             '<tr><th></th><th><strong>Suma Asegurada</strong></th>'+
             '<th><strong>Deducible</strong></th></tr>'+
             '<tr><td><strong>Prima total</strong></str><td><center><strong>' +valor.value +'</strong></center></td><td><center><strong>'+'</strong></center></td></tr>'+
-            '<tr><td><strong>Daños materiales</strong><td><center><strong>' +valor.danosMateriales+'</strong></center></td><td><center><strong>'+valor.danosMaterialesD+'-</strong></center></td></tr>'+
+            '<tr><td><strong>Daños materiales</strong><td><center><strong>' +valor.danosMateriales+'</strong></center></td><td><center><strong>'+valor.danosMaterialesD+'</strong></center></td></tr>'+
             '<tr><td><strong>Robo Total</strong><td><center><strong>' +valor.roboTotal+'</strong></center></td><td><center><strong>'+valor.roboTotalD+'</strong></center></td></tr>'+
-            '<tr><td><strong>RC Personas</strong><td><center><strong>' +valor.RCPersonas+'-</strong></center></td><td><center><strong>'+valor.RCPersonasD+'-</strong></center></td></tr>'+
+            '<tr><td><strong>RC Personas</strong><td><center><strong>' +valor.RCPersonas+'</strong></center></td><td><center><strong>'+valor.RCPersonasD+'</strong></center></td></tr>'+
             '<tr><td><strong>RC</strong><td><center><strong>' +valor.RC+'</strong></center></td><td><center><strong>'+valor.RCD+'</strong></center></td></tr>'+
             '<tr><td><strong>Def. Jurídica</strong><td><center><strong>' +valor.DefensaJuridica+'</strong></center></td><td><center><strong>'/*+valor.defensaJuridicaD*/+'-</strong></center></td></tr>'+
             '<tr><td><strong>Gastos Médicos Oc.</strong><td><center><strong>' +valor.GastosMedicosOcupantes+'<strong></center></td><td><center><strong>'/*+valor.GastosMedicosOcupantesD*/+'-</strong></center></td></tr>'+
@@ -777,15 +1127,15 @@ export class AcquireProductPage {
     private comparaList = [];
     private pagoList = [
         {
-            mainText: localStorage.getItem("language") == "en"?"MATERIAL DAMAGE:":"DAÑOS MATERIALES: ",
-            subText: localStorage.getItem("language") == "en"?"5% V. TRADE":"5% V. COMERCIAL"
+            mainText: localStorage.getItem("language") == "en"?"Material damage:":"Daños materiales: ",
+            subText: localStorage.getItem("language") == "en"?"5% V. trade":"5% V. comercial"
         },
         {
-            mainText: localStorage.getItem("language") == "en"?"TOTAL THEFT:":"ROBO TOTAL: ",
-            subText: localStorage.getItem("language") == "en"?"10% V. COMMERCE":"10% V. COMERCIAL"
+            mainText: localStorage.getItem("language") == "en"?"Total theft:":"Robo Total: ",
+            subText: localStorage.getItem("language") == "en"?"10% V. commerce":"10% V. comercial"
         },
         {
-            mainText: localStorage.getItem("language") == "en"?"RC PEOPLE:":"RC PERSONAS: ",
+            mainText: localStorage.getItem("language") == "en"?"RC people:":"RC personas: ",
             subText: localStorage.getItem("language") == "en"?"3,000,000.0":"3,000,000.00"
         },
         {
@@ -793,26 +1143,32 @@ export class AcquireProductPage {
             subText: localStorage.getItem("language") == "en"?"800,000.0":"800,000.00"
         },
         {
-            mainText: localStorage.getItem("language") == "en"?"LEGAL DEFENSE:":"DEFENSA LEGAL: ",
+            mainText: localStorage.getItem("language") == "en"?"Legal defense:":"Defensa legal: ",
             subText: localStorage.getItem("language") == "en"?"AMPARAD":"AMPARADA"
         },
         {
-            mainText: localStorage.getItem("language") == "en"?"MEDICAL EXPENSES:":"GASTOS MÉDICOS OC: ",
+            mainText: localStorage.getItem("language") == "en"?"Medical expenses:":"Gastos médicos OC: ",
             subText: localStorage.getItem("language") == "en"?"50.000.0":"50,000.00"
         },
     ];
     private prevPage:any;
 
     private userName = {name:'Miguel Ivan Hernández'};
+    private userNameModal = {name:'Miguel Ivan'};
+    private userNameModalP = {name:'Hernandez'};
+    private userNameModalM = {name:'Materno'};
+    private userCreditCard = {name:''};
     private userEmail = {name:'mivan2021g@gmail.com'};
     private userCellPhoneNumber: any = {name:'5529558232'}; //n
+    private userHomePhoneNumber: any = {name:'554655055'}; //
+    private userCvv: any = {name:'5529558232'}; //n
     private userPostalCode = {name:'14390'}; //n
     private userStreetName = {name:'Hda Montecillo'};
     private userOutdoorNumber = {name:'128 b'};
     private userInteriorNumber = {name:'12 a'};
 
     private userGender = {name:'Male'}; //d
-    private userGenderList = ['Male','Female'];
+    private userGenderList = ['Masculino','Femenino'];
     private userRFC = {name:'EEEE000000111'}; //d
     private userRFCList = ['EEEE000000111'];
     private userLugarNac = {name:'CDMX'}; //d
@@ -868,8 +1224,22 @@ export class AcquireProductPage {
         }
     }
     changeTab(tabName, tabFrom = ''){
-       console.log("la tab que se selecciona"+tabName);
-
+        console.log("la tab que se selecciona"+tabName);
+        if(tabName==='Producto'){
+            document.getElementById("steps").innerHTML="Paso 1 de 5";
+        }
+        if(tabName==='Compara'){
+            document.getElementById("steps").innerHTML="Paso 2 de 5";
+        }   
+        if(tabName==='Cliente'){
+            document.getElementById("steps").innerHTML="Paso 3 de 5";
+        }       
+        if(tabName==='Tarjeta'){
+            document.getElementById("steps").innerHTML="Paso 4 de 5";
+        }   
+        if(tabName==='Pago'){
+            document.getElementById("steps").innerHTML="Paso 5 de 5";
+        }                      
        //document.getElementById("nuevo").style.color = "green";
 
        var background_color='red !important';

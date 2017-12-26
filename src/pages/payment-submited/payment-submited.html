@@ -1,6 +1,3 @@
-<ion-header class="tab-header-cls">
-</ion-header>
-
 <ion-content padding>
     <ion-row justify-content-center align-items-center class="logo-icon">
         <ion-row justify-content-center align-items-center>
@@ -11,10 +8,13 @@
         </ion-row>
     </ion-row>
     <ion-row justify-content-center align-items-center class="main-text">
-        <span>{{ "PaymentSubmitedPage.congratulation" | translate }} {{paymentNumber}}!</span>
+        <span class="negras">¡{{ "PaymentSubmitedPage.congratulation" | translate }}!</span>
         <ion-row justify-content-center align-items-center>
             <span>{{ "PaymentSubmitedPage.bodyText" | translate }}</span>
         </ion-row>
+        <ion-row justify-content-center align-items-center>
+            <span>{{ "PaymentSubmitedPage.bodyText2" | translate }}</span>
+        </ion-row>        
     </ion-row>
     <ion-row class="button-wrap" justify-content-center align-items-center (tap)='goToProducts()' >
         <span>{{ "PaymentSubmitedPage.goHomeButtonText" | translate }}</span>

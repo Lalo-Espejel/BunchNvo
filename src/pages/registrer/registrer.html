@@ -21,7 +21,6 @@
     <ion-slides inset spaceBetween=5 #slides >
         <!--PRIMER SLIDE CORREO ELECTRONICO-->
         <ion-slide>        
-          <form #a="ngForm" name="myForm">
             <ion-label left>{{ "RegisterPage.firstSlide.emailLableText" | translate }}</ion-label>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailInputPlaceholderText" | translate}}</ion-label>
@@ -29,34 +28,54 @@
             </ion-item>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailConfirmationInputPlaceholderText" | translate}}</ion-label>
-              <ion-input type="email" ngModel name="email2" required email> </ion-input>
-            </ion-item>
+              <ion-input type="email" ngModel name="email2" [(ngModel)]="emailUser" required email> </ion-input>
+            </ion-item>                    
             <!--     
             <p>Form State: {{f.valid?'VALID':'INVALID'}}</p>-->
-          </form>
           <div class="footerSection">
             
-              <button [disabled]="!a.valid" ion-button class="back-btn"(click)="nextSlide()" >
+              <button ion-button class="back-btn"(click)="nextSlide()" >
                 <img src="assets/icon/boton03.svg"> 
               </button>
-            
+
           </div>                          
         </ion-slide>
-        <!--SEGUNDO SLIDE NOMBRE-->
+        <!--SEGUNDO SLIDE CONTRASEÑA-->
+        <ion-slide>
+           
+            <ion-label left>Elije una nueva contraseña</ion-label>
+            <ion-item>
+              <ion-label color="primary" stacked>Contraseña</ion-label>
+              <ion-input type="text" ngModel name="password" required text> </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="primary" stacked>Confirma contraseña</ion-label>
+              <ion-input type="text"  id="passwordEnviar" [(ngModel)]="passwordUser"> </ion-input>
+              <input type="text" id="prueba"><br>
+            </ion-item>    
+          
+                                
+          <div class="footerSection">
+                <button ion-button class="back-btn"(click)="nextSlide()" >
+                  <img src="assets/icon/boton03.svg"> 
+                </button>   
+            </div>   
+        </ion-slide>        
+        <!--TERCER SLIDE NOMBRE-->
         <ion-slide>
           <form #b="ngForm" name="myForm">    
             <ion-label left>{{"RegisterPage.secondSlide.whatYourNameLableText" | translate}}</ion-label>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.namePlaceholderText" | translate}}</ion-label>
-              <ion-input type="text" ngModel name="text1" required text> </ion-input>
+              <ion-input type="text" ngModel name="text1" [(ngModel)]="nombreUser" required text> </ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.lastNamePlaceholderText" | translate}}</ion-label>
-              <ion-input type="text" ngModel name="text2" required text> </ion-input>
+              <ion-input type="text" ngModel name="text2" [(ngModel)]="apellidoPUser"required text> </ion-input>
             </ion-item> 
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.secondSlide.motherLastNamePlaceeholderText" | translate}}</ion-label>
-              <ion-input type="text" ngModel name="text3" required text> </ion-input>
+              <ion-input type="text" ngModel name="text3"[(ngModel)]="apellidoMUser" required text> </ion-input>
             </ion-item> 
           </form>                       
           <div class="footerSection">
@@ -65,7 +84,7 @@
                 </button>   
             </div>   
         </ion-slide>
-        <!--TERCER SLIDE GÉNERO-->
+        <!--CUARTO SLIDE GÉNERO-->
         <ion-slide #gender>
           <ion-label left>{{ "RegisterPage.thirdSlide.genderLableText" | translate }}</ion-label>
           <ion-row>
@@ -94,7 +113,7 @@
             </div>
           </div>
         </ion-slide>
-        <!-- CUARTO SLIDE CUAL ES TU FECHA DE NACIMIENTO-->
+        <!-- QUINTO SLIDE CUAL ES TU FECHA DE NACIMIENTO-->
         <ion-slide>
           <form #c="ngForm" name="myForm">
             <ion-label left>{{ "RegisterPage.fourthSlide.birthDateLableText" | translate }}</ion-label>
@@ -103,7 +122,7 @@
               <div style="width :100%;" (click)="launchPicker()">
                 <span>{{ "RegisterPage.fourthSlide.periodText" | translate }}</span><span style="right: 0; position: absolute;">{{datePicked}}</span>
               </div>
-                <ion-datetime  pickerFormat="YYYY MMMM DD" displayFormat="YYYY MMMM DD"  [monthNames]="datePickerNames.month" ngModel name="datePicked" required datePicked ></ion-datetime>
+                <ion-datetime  pickerFormat="DD MMMM YYYY" displayFormat="DD/MMMM/YYYY" [(ngModel)]="fechaUser" [monthNames]="datePickerNames.month" ngModel name="datePicked" required datePicked ></ion-datetime>
             </ion-item>
           </form>
           <div class="footerSection">

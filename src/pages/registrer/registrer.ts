@@ -3,7 +3,9 @@ import { NavController, NavParams, Slides, Platform } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
 import { Keyboard } from '@ionic-native/keyboard';
 import { LoginPage } from '../login/login';
-import { LocalizationModel } from '../../_helpers/localizationModel'
+import { LocalizationModel } from '../../_helpers/localizationModel';
+import { Http, Headers } from '@angular/http';
+
 /**
  * Generated class for the RegistrerPage page.
  *
@@ -17,7 +19,7 @@ import { LocalizationModel } from '../../_helpers/localizationModel'
   
 })
 export class RegistrerPage {
-
+  @ViewChild('prueba2') prueba2 ;
   @ViewChild('slides') slides: Slides;
   @ViewChild('name') nameHTML: any;
 
@@ -40,12 +42,23 @@ export class RegistrerPage {
               public dPicker: DatePicker,
               private kBoard: Keyboard,
               private platform: Platform,
-              private localizationModal: LocalizationModel) {
+              private localizationModal: LocalizationModel,
+              public http: Http) {
 
     this.datePicked = "Tap me"
     this.datePickerNames = this.localizationModal.getDatesNames();
 
   }
+  private codeEnviar:string;
+  private cotSeguridadEnviar:string;
+
+  emailUser:any;
+  passwordUser:any;
+  nombreUser:any;
+  apellidoPUser:any;
+  apellidoMUser:any;
+  generoUser:any;
+  fechaUser:any;
 
   ionViewDidLoad() {
      //console.log('number of slides' ,this.slides.length());
@@ -65,9 +78,84 @@ export class RegistrerPage {
      
     });
   }
-
-
+  getCotSeguridad(code){
+    this.http.get('http://services.bunch.guru/WebService.asmx/GetCotSeguridad?param='+code)
+    .map(res=> res.json())
+    .subscribe(data=>{
+      console.log("esta es la response del segundo "+data);
+      this.cotSeguridadEnviar=data;
+    },err =>{
+      console.log(err);
+    });
+  }
+  getCode(){
+    console.log("correo"+this.emailUser);
+    var code='';
+    this.http.get('http://services.bunch.guru/WebService.asmx/CrearCuenta?param='+this.emailUser)
+    .map(res=> res.json())
+    .subscribe(data=>{
+      console.log(data);
+      code=data;
+      this.getCotSeguridad(code);
+      this.codeEnviar=code;
+    },err =>{
+      console.log(err);
+    });
+  }
+  getUpdateContactoCuenta(){
+    var code='';
+    //cambiar
+    var encodedString = btoa("id="+this.codeEnviar+"&nombre="+this.nombreUser+"&app="+this.apellidoPUser+"&apm="+this.apellidoMUser+"&genero="+this.generoUser+"&FNac="+this.fechaUser);
+    console.log("el encoded btoa antes de añadir cod seguridad "+encodedString);
+    encodedString = encodedString+this.cotSeguridadEnviar;   
+    this.http.get('http://services.bunch.guru/WebService.asmx/UpdateContactoCuenta?param='+encodedString)
+    .map(res=> res.json())
+    .subscribe(data=>{
+      console.log(data);
+      code=data;
+      this.getCotSeguridad(code);
+      this.codeEnviar=code;
+    },err =>{
+      console.log(err);
+    });    
+  }
+  getUpdateContasenaCuenta(){
+    console.log('password',this.passwordUser);
+    var newCode='';
+    var encodedString = btoa("id="+this.codeEnviar+"&password="+this.passwordUser);
+    console.log("el encoded btoa antes de añadir cod seguridad "+encodedString);
+    var encodedString = encodedString+this.cotSeguridadEnviar;
+    console.log("el encoded btoa despues "+encodedString);
+    this.http.get('http://services.bunch.guru/WebService.asmx/UpdateContasenaCuenta?param1='+encodedString)
+    .map(res=> res.json())
+    .subscribe(data=>{
+      console.log(data);
+    },err =>{
+      console.log(err);
+    });
+  }    
+  updateNombre(){
+    console.log("nombre"+this.nombreUser+"   paterno"+this.apellidoPUser+"   materno"+this.apellidoMUser+"   genero"+this.generoUser+"   fechanac"+this.fechaUser);
+    
+  }
   public nextSlide = () => {
+    if (this.slides.getActiveIndex()===0){
+      this.getCode();
+    } 
+    if (this.slides.getActiveIndex()===1){
+      console.log("se ha mandado a llamar el terce método");
+      this.getUpdateContasenaCuenta();
+    }
+    if (this.slides.getActiveIndex()===4){
+      var d = new Date(this.fechaUser);
+      var curr_date = d.getDate();
+      var curr_month = d.getMonth() + 1;
+      var curr_year = d.getFullYear();
+      this.fechaUser=curr_date + "/" + curr_month + "/" + curr_year;
+      console.log("esta es la fecha "+this.fechaUser);
+  
+      this.getUpdateContactoCuenta();
+    }                   
     this.slides.lockSwipeToNext(false);
     this.slides.slideNext(300);
     this.currentStep += 1;
@@ -93,10 +181,12 @@ export class RegistrerPage {
   chnageGenderPick(value){
     if(value == "male") {
       this.male = true;
-      this.female = false
+      this.female = false;
+      this.generoUser="MASCULINO";
     } else {
       this.female = true;
       this.male = false;
+      this.generoUser="FEMENINO";
     }
   }
   

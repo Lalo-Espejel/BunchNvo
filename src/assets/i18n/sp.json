@@ -98,7 +98,7 @@
     "opportunitiesText": "Oportunidades",
     "continueButtonText": "Continuar",
     "updationText": "Actualizado",
-    "coveringText": "COBERTURAS",
+    "coveringText": "Coberturas",
     "redistributeButtonText": "Volver a cotizar",
     "messgePlaceholderText" : "Mensaje..."
   },
@@ -187,7 +187,9 @@
     "searchCustomer":"Buscar cliente",
     "searchCustomerPlaceholder":"Revisa si tu amigo esta registrado",
     "firstName":"Nombre",
-    "age":"Años",
+    "paterno":"Apellido paterno",
+    "materno":"Apellido materno",
+    "age":"Fecha de nacimiento",
     "gender":"Género",
     "email":"Email",
     "cellPhone":"Teléfono móvil",
@@ -219,8 +221,8 @@
     "wideText":"Amplia",
     "coverText":"Cobertura",
     "annualText":"Anual",
-    "coveringsText":"COBERTURAS",
-    "submitCollectionRequestText":"Enviar solicitud de cobro"
+    "coveringsText":"Coberturas",
+    "submitCollectionRequestText":"Finalizar compra"
   },
   "ClienteProductDetailPage":{
     "titleText": "Detalle del producto",
@@ -233,8 +235,9 @@
   },
   "PaymentSubmitedPage":{
     "congratulation":"Felicitaciones",
-    "bodyText":"Envió la solicitud de pago a su amigo espera la confirmación de la transacción en su ventana de alertas.",
-    "goHomeButtonText":"Ir a casa"
+    "bodyText":"Haz concluido la compra de la póliza de tu amigo, le ha llegado un correo electrónico con las indicaciones para descargar su póliza. ",
+    "bodyText2":"Recuerda que cuando lo requieras puedes revisarla y  enviarla nuevamente desde la historia de productos en la sección de estadísticas.",
+    "goHomeButtonText":"Ir a productos"
   },
   "DocumentDetailPage":{
     "guard": "Documentos guardados",

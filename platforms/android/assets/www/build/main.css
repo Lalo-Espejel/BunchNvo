@@ -25320,12 +25320,33 @@ ion-navbar.toolbar {
   font-size: 12px;
 }
 
+acquire-product-page .steps {
+  margin-left: 77%;
+  margin-top: -1%;
+  font-size: 12px;
+}
+
+acquire-product-page #tarjeta {
+  width: 30%;
+}
+
+acquire-product-page #tarjeta2 {
+  position: absolute;
+  width: 30%;
+  margin-left: 57%;
+  margin-top: 103%;
+}
+
+acquire-product-page #firstname {
+  background-color: #eeeeee !important;
+}
+
 acquire-product-page .item-md {
-  background-color: #eeeeee;
+  background-color: white;
 }
 
 acquire-product-page .item-ios {
-  background-color: #eeeeee;
+  background-color: white;
 }
 
 acquire-product-page .button-bar {
@@ -25484,7 +25505,43 @@ acquire-product-page .tabs-swap-wrap .active {
   background-color: #09c;
   border: solid 1px #09c !important;
   border-radius: 75px;
-  color: white;
+  color: #09c;
+}
+
+acquire-product-page .tabs-swap-wrap .activeX {
+  margin-left: -20%;
+  width: 40%;
+  background-color: #09c;
+  border: solid 1px #09c !important;
+  border-radius: 75px;
+  color: #09c;
+}
+
+acquire-product-page .tabs-swap-wrap .activeY {
+  margin-left: -40%;
+  width: 60%;
+  background-color: #09c;
+  border: solid 1px #09c !important;
+  border-radius: 75px;
+  color: #09c;
+}
+
+acquire-product-page .tabs-swap-wrap .activeZ {
+  margin-left: -60%;
+  width: 80%;
+  background-color: #09c;
+  border: solid 1px #09c !important;
+  border-radius: 75px;
+  color: #09c;
+}
+
+acquire-product-page .tabs-swap-wrap .activeM {
+  margin-left: -80%;
+  width: 100%;
+  background-color: #09c;
+  border: solid 1px #09c !important;
+  border-radius: 75px;
+  color: #09c;
 }
 
 acquire-product-page .top-tittle {
@@ -25541,8 +25598,8 @@ acquire-product-page .item-wrapper > ion-row {
 }
 
 acquire-product-page .arrow-button {
-  width: 3% !important;
-  padding-left: 0 !important;
+  width: 30% !important;
+  margin-left: -120px !important;
 }
 
 acquire-product-page .cliente-tab .input-container {

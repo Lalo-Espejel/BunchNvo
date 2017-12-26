@@ -187,6 +187,8 @@
     "searchCustomer":"Search Customer",
     "searchCustomerPlaceholder":"Check if your friend is registered",
     "firstName":"First name",
+    "paterno":"Father's last name",
+    "materno":"Mother's last name",
     "age":"Years",
     "gender":"Gender",
     "email":"E-mail",
@@ -235,7 +237,8 @@
   "PaymentSubmitedPage":{
     "congratulation":"Congratulations",
     "bodyText":"Sent the request for payment to his friend awaits confirmation of the transaction in his window of alerts.",
-    "goHomeButtonText":"Go to Home"
+    "bodyText2":"Sent the request for payment to his friend awaits confirmation of the transaction in his window of alerts.",
+    "goHomeButtonText":"Go to products"
   },
   "DocumentDetailPage":{
     "guard": "Saved Documents",

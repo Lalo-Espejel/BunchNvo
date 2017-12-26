@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { RecoveryPage } from '../recovery/recovery';
 import { RegistrerPage } from '../registrer/registrer';
 import { HomePage } from '../home/home';
+import { Http, Headers } from '@angular/http';
 
 /**
  * Generated class for the LoginPage page.
@@ -18,8 +19,11 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
   }
+
+  email:string;
+  pass:string;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -37,7 +41,19 @@ export class LoginPage {
     this.navCtrl.push(CarListPage, {animate: true});
   }
   goIntro = () => {
-    this.navCtrl.push(IntroductionPage, {animate: true});
+    var encodedString = btoa("usuario="+this.email+"&password="+this.pass);
+    console.log("el encoded para mandar"+encodedString);
+    this.http.get('http://services.bunch.guru/WebService.asmx/Login?param='+encodedString)
+    .map(res=> res.json())
+    .subscribe(data=>{
+      console.log("esta es la resputa"+data);
+      if(data===true){
+        this.navCtrl.push(IntroductionPage, {animate: true});
+      }
+    },err =>{
+      console.log("el usuario no existe");
+    });    
+    
   }
 
 }
