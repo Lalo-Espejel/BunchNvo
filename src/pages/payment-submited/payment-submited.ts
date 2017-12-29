@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProductsPage } from '../products/products';
+import { HomePage } from './../home/home';
 
 @Component({
     selector: 'payment-submited-page',
@@ -15,7 +16,7 @@ export class PaymentSubmittedPage {
     }
 
     goToProducts(){
-       this.navCtrl.push(ProductsPage, {prevPage: this.prevPage}, {animate: true});
+       this.navCtrl.push(HomePage, {prevPage: this.prevPage}, {animate: true});
     }
     goBack(){
         this.navCtrl.pop();

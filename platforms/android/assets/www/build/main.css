@@ -25320,6 +25320,14 @@ ion-navbar.toolbar {
   font-size: 12px;
 }
 
+acquire-product-page .mystyle {
+  color: red;
+}
+
+acquire-product-page .mystyle input:disabled {
+  background-color: black;
+}
+
 acquire-product-page .steps {
   margin-left: 77%;
   margin-top: -1%;
@@ -25526,7 +25534,7 @@ acquire-product-page .tabs-swap-wrap .activeY {
   color: #09c;
 }
 
-acquire-product-page .tabs-swap-wrap .activeZ {
+acquire-product-page .tabs-swap-wrap .activeM {
   margin-left: -60%;
   width: 80%;
   background-color: #09c;
@@ -25535,7 +25543,7 @@ acquire-product-page .tabs-swap-wrap .activeZ {
   color: #09c;
 }
 
-acquire-product-page .tabs-swap-wrap .activeM {
+acquire-product-page .tabs-swap-wrap .activeZ {
   margin-left: -80%;
   width: 100%;
   background-color: #09c;
@@ -25567,6 +25575,22 @@ acquire-product-page .main-text {
   font-weight: 500;
   width: 100%;
   font-family: RaleTitle;
+}
+
+acquire-product-page .main-textX {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  font-family: RaleNext;
+}
+
+acquire-product-page .main-textSeparador {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  font-family: RaleNext;
+  margin-left: 3%;
+  margin-top: 8%;
 }
 
 acquire-product-page .sub-text {
@@ -25739,6 +25763,7 @@ acquire-product-page .pago-tab .citation-wrap .padding-row .company-wrap .end-te
 
 acquire-product-page .pago-tab .citation-wrap .padding-row .main-text-title {
   margin: 5px 0 10px 0;
+  font-weight: 800;
 }
 
 acquire-product-page .pago-tab .citation-wrap .padding-row .main-info-text-wrap .main-text {
@@ -27858,13 +27883,8 @@ page-notification-detail .continue-wrap .button-continue {
   margin: 2%;
 }
 
-payment-submited-page .tab-header-cls {
-  background-color: #2492ff;
-  background-position-y: 140px;
-  color: white;
-  margin: 0 auto;
-  background-size: cover;
-  min-height: 100px;
+payment-submited-page .negras {
+  font-weight: 800;
 }
 
 payment-submited-page .logo-icon {
@@ -27887,10 +27907,11 @@ payment-submited-page .logo-icon span {
 }
 
 payment-submited-page .main-text {
-  margin-top: 14%;
+  font-family: RaleNext;
+  margin-top: 5%;
   margin-bottom: 14%;
-  font-size: 20px;
-  text-align: center;
+  font-size: 17px;
+  text-align: justify;
   font-weight: 500;
   color: #787878;
 }
@@ -27900,6 +27921,7 @@ payment-submited-page .main-text ion-row {
 }
 
 payment-submited-page .button-wrap {
+  font-family: RaleTitle;
   width: 100%;
   height: 50px;
   margin: 5px 0;

@@ -25534,7 +25534,7 @@ acquire-product-page .tabs-swap-wrap .activeY {
   color: #09c;
 }
 
-acquire-product-page .tabs-swap-wrap .activeZ {
+acquire-product-page .tabs-swap-wrap .activeM {
   margin-left: -60%;
   width: 80%;
   background-color: #09c;
@@ -25543,7 +25543,7 @@ acquire-product-page .tabs-swap-wrap .activeZ {
   color: #09c;
 }
 
-acquire-product-page .tabs-swap-wrap .activeM {
+acquire-product-page .tabs-swap-wrap .activeZ {
   margin-left: -80%;
   width: 100%;
   background-color: #09c;
@@ -25582,6 +25582,15 @@ acquire-product-page .main-textX {
   font-weight: 500;
   width: 100%;
   font-family: RaleNext;
+}
+
+acquire-product-page .main-textSeparador {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  font-family: RaleNext;
+  margin-left: 3%;
+  margin-top: 8%;
 }
 
 acquire-product-page .sub-text {

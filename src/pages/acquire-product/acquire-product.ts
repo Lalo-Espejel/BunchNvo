@@ -28,12 +28,51 @@ export class AcquireProductPage {
     data:string;
     Marca:string;
     Modelo:string;
+    Gender:string;
     Descripcion:string;
     SubDescripcion:string;
     Detalle:string;
     Edad:string;
     public userBrandList =  [];
     isEnabled:boolean;
+
+    aseguradoraCot:string;
+    edadCot:string;
+    emailCot:string;
+    nombreCot:string;
+    apellidoPCot:string;
+    apellidoMCot:string;
+    generoCot:string;
+    movilCot:string;
+    rfcCot:string;
+    noDePlacasCot:string;
+    noDeSerieCot:string;
+    noDeMotorCot:string;
+    lugarDeNacimientoCot:string;
+    cpCot:string;
+    calleCot:string;
+    noExtCot:string;
+    noIntCot:string;
+    coloniaCot:string;
+    delegacionCot:string;
+    estadoCot:string;
+    telefonoCasaCot:string;
+    claveCot:string;
+    noTarjetaCot:string;
+    titularCot:string;
+    bancoCot:string;
+    tipoCot:string;  
+    cvvCot:string;  
+    mesCot:string;
+    anioCot:string;
+    carrierCot:string;
+    idCliCot:string;
+    idDirCot:string;
+    idContCot:string;
+
+
+
+
 
     master(){
         console.log("master");
@@ -127,6 +166,36 @@ export class AcquireProductPage {
           console.log(err);
         });        
     }
+    showAlertColony( value, mode, modelList = [], massage=""){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioResult;
+        var testRadioOpen=false;
+        let alert = this.alertCtrl.create();
+        alert.setTitle(massage);
+        alert.setCssClass('definidaX');
+    
+        for (let item of modelList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: item,
+                 value: item
+            });
+         }
+    
+        alert.addButton('Cancelar');
+        alert.addButton({
+          text: 'OK',
+          handler: data => {
+            testRadioOpen = false;
+            testRadioResult = data;
+            console.log("se ha cicleado el valor de la colonia: "+testRadioResult);
+            document.getElementById("colonia").innerHTML=testRadioResult;
+            this.coloniaCot=testRadioResult;
+        }
+        });
+        alert.present();
+
+    }    
     showAlertModelo( value, mode, modelList = [], massage=""){
         //this.alertSrv.showAlert(value, mode, modelList, massage);
         var testRadioOpen=false;
@@ -456,6 +525,7 @@ export class AcquireProductPage {
             document.getElementById("subDescrAuto").innerHTML=this.SubDescripcion; 
             if(aseguradora==='ABA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({  
+                    clave: clave,
                     asegur: aseguradora,  
                     img: "assets/icon/logo/asegurdoras-aba.svg",
                     value: displayPrimaTotal,
@@ -474,8 +544,50 @@ export class AcquireProductPage {
 
                 });
             }
-            if(aseguradora==='ANA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
-                this.comparaList.push({ 
+            if(aseguradora==='ANA'){
+                var primaAna='';
+                var enStr='';
+                //console.log('se buscará ANA YOFO'+'http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion');
+                //this.http.get('http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion')
+                console.log("el atob antes"+':'+'usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion');
+                enStr=btoa('usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion');
+                console.log("el atob es"+enStr);
+                this.http.get('http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?param='+enStr)
+                .map(res3=> res3.json())  
+                .subscribe(data3=>{
+                  console.log('debugg'+JSON.stringify(data3));
+
+                  //para la primatotal
+                  primaAna= data3.Cotizacion.PrimaTotal;
+                  displayPrimaTotal = primaAna.replace(/"|,|\$/g,'');
+                  displayPrimaTotalInt=Math.ceil(parseInt(displayPrimaTotal));
+                  displayPrimaTotal=displayPrimaTotalInt.toLocaleString();
+                  displayPrimaTotal='$'+displayPrimaTotal;
+
+                  displayDanosMateriales=(JSON.stringify(data3.Coberturas[0].DanosMateriales)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
+                  displayRoboTotal=(JSON.stringify(data3.Coberturas[0].RoboTotal)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
+                  displayRCPersonas=(JSON.stringify(data3.Coberturas[0].RCPersonas)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-|D|-/g,'');
+                  displayRC=(JSON.stringify(data3.Coberturas[0].RC)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA|No|aplica/g,'');
+                  displayDefensaJuridica=(JSON.stringify(data3.Coberturas[0].DefensaJuridica)).replace(/"|-N|-S|-D|GASTOS|ES|ASISTENCIA|LEGAL|PROVIAL|LEGALES/g,'');
+                  displayGastosMedicosOcupantes=(JSON.stringify(data3.Coberturas[0].GastosMedicosOcupantes)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS|OCUPANTES/g,'');
+
+                  displayDanosMaterialesD=displayDanosMateriales.split('-D')[1];
+                  displayDanosMateriales=parseInt(displayDanosMateriales.split('-D')[0]).toLocaleString();
+                  displayDanosMateriales='$'+displayDanosMateriales;
+                  if(displayDanosMateriales==='$NaN'){
+                      displayDanosMateriales='-';
+                  }
+
+                    //para el robo total
+                    displayRoboTotalD=displayRoboTotal.split('-D')[1];
+                    displayRoboTotal=parseInt(displayRoboTotal.split('-D')[0]).toLocaleString();
+                    displayRoboTotal='$'+displayRoboTotal;
+                    if(displayRoboTotal==='$NaN'){
+                        displayRoboTotal='-';
+                    }                  
+
+                  this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-ana.svg",
                     value: displayPrimaTotal,
@@ -490,11 +602,29 @@ export class AcquireProductPage {
                     DefensaJuridica:displayDefensaJuridica,
                     DefensaJuridicaD:displayDefensaJuridicaD,
                     GastosMedicosOcupantes: displayGastosMedicosOcupantes,
-                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD                  
+                    GastosMedicosOcupantesD: displayGastosMedicosOcupantesD             
+                });                   
+                  //data10 = data3.Coberturas[0].DanosMateriales;
+                  /*data4 = data3.Coberturas[0].RoboTotal;
+                  data5 = data3.Coberturas[0].RCPersonas;
+                  data6 = data3.Coberturas[0].RC;
+                  data7 = data3.Coberturas[0].DefensaJuridica;
+                  data8 = data3.Coberturas[0].GastosMedicosOcupantes;
+                  data9 =/**/
+      
+                  //displayDanosMateriales=(JSON.stringify(data10)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
+                  /*displayRoboTotal=(JSON.stringify(data4)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
+                  displayRCPersonas=(JSON.stringify(data5)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-|D|-/g,'');
+                  displayRC=(JSON.stringify(data6)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA|No|aplica/g,'');
+                  displayDefensaJuridica=(JSON.stringify(data7)).replace(/"|-N|-S|-D|GASTOS|ES|ASISTENCIA|LEGAL|PROVIAL|LEGALES/g,'');
+                  displayGastosMedicosOcupantes=(JSON.stringify(data8)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS|OCUPANTES/g,'');
+                  data9=(JSON.stringify(data9));*/
+
                 });
             }
             if(aseguradora==='AXA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-axa.svg",
                     value: displayPrimaTotal,
@@ -514,6 +644,7 @@ export class AcquireProductPage {
             }  
             if(aseguradora==='BANORTE' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({  
+                    clave: clave,
                     asegur: aseguradora,     
                     img: "assets/icon/logo/asegurdoras-banorte.svg",
                     value: displayPrimaTotal,
@@ -533,6 +664,7 @@ export class AcquireProductPage {
             }  
             if(aseguradora==='GMX' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-gmx.svg",
                     value: displayPrimaTotal,
@@ -552,6 +684,7 @@ export class AcquireProductPage {
             }                 
             if(aseguradora==='GNP' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-gnp.svg",
                     value: displayPrimaTotal,
@@ -571,6 +704,7 @@ export class AcquireProductPage {
             }
             if(aseguradora==='GREAT' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-great.svg",
                     value: displayPrimaTotal,
@@ -590,6 +724,7 @@ export class AcquireProductPage {
             }                 
             if(aseguradora==='HDI' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-hdi.svg",
                     value: displayPrimaTotal,
@@ -609,6 +744,7 @@ export class AcquireProductPage {
             }  
             if(aseguradora==='MAPFRE' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
+                    clave: clave,
                     asegur: aseguradora,      
                     img: "assets/icon/logo/asegurdoras-mapfre.svg",
                     value: displayPrimaTotal,
@@ -628,6 +764,7 @@ export class AcquireProductPage {
             }              
             if(aseguradora==='QUALITAS' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({  
+                    clave: clave,
                     asegur: aseguradora,     
                     img: "assets/icon/logo/asegurdoras-qualitas.svg",
                     value: displayPrimaTotal,
@@ -675,10 +812,12 @@ export class AcquireProductPage {
             console.log("se ha cicleado el valor: "+testRadioResult);
             document.getElementById("Edad").innerHTML=testRadioResult;
             this.Edad=testRadioResult;
+            this.edadCot=testRadioResult;
         }
         });
         alert.present();
     } 
+   
     showAlert( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
@@ -703,13 +842,13 @@ export class AcquireProductPage {
         alert.present();
         
     }
-    showAlertTelefonoCasa( value, mode, modelList = [], massage=""){
+    showAlertTitular( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
                 {   
                   //type: 'number',   
                   name: 'username',
-                  id: 'nombre'      
+                  id: 'titularModal'      
                 }
               ]
         });
@@ -721,8 +860,60 @@ export class AcquireProductPage {
             handler: data => {
                 console.log(JSON.stringify(data)); //to see the object
                 console.log(data.username);
+                document.getElementById('titular').innerHTML=data.username;
+                this.titularCot=data.username;
+        }
+        });
+        alert.present();
+        
+    }   
+    tipoTres(status){
+        //this.alertSrv.showAlert(value, mode, modelList, massage);
+        var testRadioOpen=false;
+        var testRadioResult="";
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Deseas seleccionar una de las siguientes direcciones? Presiona no para agregar una nueva');
+        alert.setCssClass('definida');  
+        for (let Marca of this.userStateList) {
+            alert.addInput({
+                 type: 'radio',
+                 label: Marca,
+                 value: Marca
+            });
+        }   
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+                handler: data => {
+                    testRadioOpen = false;
+                    testRadioResult = data;
+                    console.log("se ha cicleado el valor: "+testRadioResult);
+                }
+        });
+        alert.present();
+    }        
+    showAlertTelefonoCasa( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  type: 'tel',
+                  name: 'username',
+                  id: 'telefonoCasaModal'      
+                }
+              ]
+        });
+        document.getElementById('telefonoCasaModal').setAttribute('maxlength', '3');
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
                 document.getElementById('telefonoCasaModal').innerHTML=data.username;
                 document.getElementById('telefonoCasaU').innerHTML=data.username;
+                this.telefonoCasaCot=data.username;
         }
         });
         alert.present();
@@ -748,6 +939,7 @@ export class AcquireProductPage {
                 console.log(data.username);
                 document.getElementById('telefonoMovilModal').innerHTML=data.username;
                 document.getElementById('telefonoMovilU').innerHTML=data.username;
+                this.movilCot=data.username;
         }
         });
         alert.present();
@@ -773,11 +965,57 @@ export class AcquireProductPage {
                 console.log(data.username);
                 document.getElementById('rfc').innerHTML=data.username;
                 document.getElementById('rfcU').innerHTML=data.username;
+                this.rfcCot=data.username;
         }
         });
         alert.present();
         
     }    
+    showAlertCodigoPostal( value, mode, modelList = [], massage=""){      
+        var status='';
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'nombre'      
+                }
+                ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                var cont=0;
+                document.getElementById('codigoPostal').innerHTML=data.username;    
+                this.cpCot=data.username;          
+                var url2='http://services.bunch.guru/WebService.asmx/ConsultaCP?CPostal='+data.username;
+                console.log("ESTO ESTA MANDANDO para checar el cp: "+url2);
+                this.userColonyList=[];
+                this.http.get(url2)
+                .map(res=> res.json())  
+                .subscribe(data=>{
+                    console.log(data);
+                    document.getElementById('delegacion').innerHTML=JSON.stringify(data.Municipio).replace(/"/g,''); 
+                    this.delegacionCot=JSON.stringify(data.Municipio).replace(/"/g,'');
+                    document.getElementById('estado').innerHTML=JSON.stringify(data.Estado).replace(/"/g,''); 
+                    this.estadoCot=JSON.stringify(data.Estado).replace(/"/g,'');
+                    for (let key of data.Colonias ) {
+                        this.userColonyList.push(JSON.stringify(data.Colonias[cont].Colonia).replace(/"/g,''));
+                        cont++;
+                        console.log("las colonias avalaible" +this.userColonyList);
+                    } 
+
+                },err =>{
+                    console.log(err);
+                });                 
+        }
+        });
+        alert.present();
+        
+    }     
     showAlertEmail( value, mode, modelList = [], massage=""){
 
         var status='';
@@ -797,7 +1035,8 @@ export class AcquireProductPage {
             text: 'OK',
             handler: data => {
                 document.getElementById('emailModal').innerHTML=data.username;
-                document.getElementById('emailU').innerHTML=data.username;   
+                document.getElementById('emailU').innerHTML=data.username; 
+                this.emailCot=data.username;  
                 var encodedString = btoa(data.username);             
                 var url2='http://services.bunch.guru/WebService.asmx/validarCliente?param='+encodedString;
                 console.log("ESTO ESTA MANDANDO para checar el correo: "+url2);
@@ -813,10 +1052,13 @@ export class AcquireProductPage {
                   if(status==='2'){
                     console.log("Existe, pero faltan datos. Completar los campos faltantes");
                     this.isEnabled=false;
+                    this.retrieveData(encodedString);
+                    this.tipoTres(status);//eliminar
                   }
                   if(status==='3'){
                     console.log("Se cuenta con toda la info, sólo tener el campo del domicilio");
                     this.isEnabled=false;
+                    this.tipoTres(status);
                   }                                       
 
                 },err =>{
@@ -828,97 +1070,129 @@ export class AcquireProductPage {
         
     }    
     showAlertGenero( value, mode, modelList = [], massage=""){
-        //this.alertSrv.showAlert(value, mode, modelList, massage);
-        var testRadioOpen=false;
-        var testRadioResult="";
-        let alert = this.alertCtrl.create();
-        alert.setTitle(massage);
-        alert.setCssClass('definidaX');
-    
-        for (let item of this.userGenderList) {
-            alert.addInput({
-                 type: 'radio',
-                 label: item,
-                 value: item
+        if (this.isEnabled==true){
+            //this.alertSrv.showAlert(value, mode, modelList, massage);
+            var testRadioOpen=false;
+            var testRadioResult="";
+            let alert = this.alertCtrl.create();
+            alert.setTitle(massage);
+            alert.setCssClass('definidaX');
+        
+            for (let item of this.userGenderList) {
+                alert.addInput({
+                    type: 'radio',
+                    label: item,
+                    value: item
+                });
+            }
+        
+            alert.addButton('Cancelar');
+            alert.addButton({
+            text: 'OK',
+            handler: data => {
+                testRadioOpen = false;
+                testRadioResult = data;
+                console.log("se ha cicleado el valor: "+testRadioResult);
+                document.getElementById("genero").innerHTML=testRadioResult;
+                this.Gender=testRadioResult;
+                this.generoCot=testRadioResult;
+            }
             });
-         }
-    
-        alert.addButton('Cancelar');
-        alert.addButton({
-          text: 'OK',
-          handler: data => {
-            testRadioOpen = false;
-            testRadioResult = data;
-            console.log("se ha cicleado el valor: "+testRadioResult);
-            document.getElementById("Marca").innerHTML=testRadioResult;
-            document.getElementById("marcaU").innerHTML=testRadioResult;
-            this.userModelList = [];
-            this.Marca=testRadioResult;
-            this.getModelo();
+            alert.present();
         }
-        });
-        alert.present();
 
     }   
     showAlertNombre( value, mode, modelList = [], massage=""){
         if (this.isEnabled==true){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'cp'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('nombre').innerHTML=data.username;
-                document.getElementById('nombreU').innerHTML=data.username;
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'cp'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('nombre').innerHTML=data.username;
+                    document.getElementById('nombreU').innerHTML=data.username;
+                    this.nombreCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
-    }
         
     }
     showAlertApellidoP( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'cp'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('paterno').innerHTML=data.username;
-                document.getElementById('paternoU').innerHTML=data.username;
+        if (this.isEnabled==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'cp'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('paterno').innerHTML=data.username;
+                    document.getElementById('paternoU').innerHTML=data.username;
+                    this.apellidoPCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
         
     }
     showAlertApellidoM( value, mode, modelList = [], massage=""){
+        if (this.isEnabled==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'cp'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('materno').innerHTML=data.username;
+                    document.getElementById('maternoU').innerHTML=data.username;
+                    this.apellidoMCot=data.username;
+            }
+            });
+            alert.present();
+        }    
+        
+    }       
+    showAlertLugarDeNacimiento( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
                 {   
                   //type: 'number',   
                   name: 'username',
-                  id: 'cp'      
+                  id: 'lugarNac'      
                 }
               ]
         });
@@ -930,13 +1204,13 @@ export class AcquireProductPage {
             handler: data => {
                 console.log(JSON.stringify(data)); //to see the object
                 console.log(data.username);
-                document.getElementById('materno').innerHTML=data.username;
-                document.getElementById('maternoU').innerHTML=data.username;
+                document.getElementById('lugarNac').innerHTML=data.username;
+                this.lugarDeNacimientoCot=data.username;
         }
         });
         alert.present();
         
-    }        
+    }     
     showAlertCvv( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
@@ -956,11 +1230,162 @@ export class AcquireProductPage {
                 console.log(JSON.stringify(data)); //to see the object
                 console.log(data.username);
                 document.getElementById('cvv').innerHTML=data.username;
+                this.cvvCot=data.username;
         }
         });
         alert.present();
         
     }
+    showAlertNumeroDeSerie( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'numeroDeSerie'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('noSerie').innerHTML=data.username;
+                this.noDeSerieCot=data.username;
+        }
+        });
+        alert.present();
+        
+    }
+    showAlertNumeroDePlacas( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'numeroDePlacas'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('noPlacas').innerHTML=data.username;
+                this.noDePlacasCot=data.username;
+        }
+        });
+        alert.present();
+        
+    }
+    showAlertNumeroDeMotor( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'numeroDeMotor'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('noMotor').innerHTML=data.username;
+                this.noDeMotorCot=data.username;
+        }
+        });
+        alert.present();
+        
+    } 
+    showAlertCalle( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'calle'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('calle').innerHTML=data.username;
+                this.calleCot=data.username;
+        }
+        });
+        alert.present();
+        
+    } 
+    showAlertNoExt( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'exterior'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('noExt').innerHTML=data.username;
+                this.noExtCot=data.username;
+        }
+        });
+        alert.present();
+        
+    }
+    showAlertNoInt( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                  //type: 'number',   
+                  name: 'username',
+                  id: 'interior'      
+                }
+              ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('noInt').innerHTML=data.username;
+                this.noIntCot=data.username;
+        }
+        });
+        alert.present();
+        
+    }                          
     showAlertTarjeta( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
@@ -985,6 +1410,7 @@ export class AcquireProductPage {
                 //console.log("se ha dado la tarjeta"+(<HTMLInputElement>document.getElementById('noTarjetaModal')).value); 
                 tdc=(<HTMLInputElement>document.getElementById('noTarjetaModal')).value;
                 document.getElementById("noTarjeta").innerHTML=(<HTMLInputElement>document.getElementById('noTarjetaModal')).value;
+                this.noTarjetaCot=(<HTMLInputElement>document.getElementById('noTarjetaModal')).value;
                 this.http.get('https://lookup.binlist.net/'+tdc)
                 .map(res=> res.json())
                 .subscribe(data=>{
@@ -1011,27 +1437,34 @@ export class AcquireProductPage {
                     console.log("el scheme es" +scheme+"el nombre del carrier es "+bank+"el typee es "+type);
                     if (scheme==='MASTERCARD'){
                         document.getElementById("cvv").innerHTML="123";
+                        this.carrierCot='1';
                         this.master();
                     }
                     if (scheme==='AMEX'){
                         document.getElementById("cvv").innerHTML="1234";
+                        this.carrierCot='2';
                         this.amex();
                     } 
                     if (scheme==='VISA'){
                         document.getElementById("cvv").innerHTML="123";
+                        this.carrierCot='0';
                         this.visa();
                     }                                       
                     //conversion a espanol lo que devuelve el ws
                     if(type==='CREDIT'){
                         type='Crédito';
+                        this.tipoCot='CREDITO';
                     } 
                     else{
                         type='Débito';
+                        this.tipoCot='DEBITO';
                     }
                     //
                     //Inserción de los datos anteriores en la página
                     document.getElementById("type").innerHTML=type;
                     document.getElementById("bank").innerHTML=bank;
+                    this.bancoCot=bank;
+                    
                     
                 },err =>{
                     console.log(err);
@@ -1096,6 +1529,8 @@ export class AcquireProductPage {
             this.Edad=testRadioResult;
             document.getElementById("marcaF").innerHTML=valor.asegur;
             document.getElementById("primaF").innerHTML=valor.value;
+            this.aseguradoraCot=valor.asegur;
+            this.claveCot=valor.clave;
             var myAnchor = document.getElementById("imgF");
             var mySpan = document.createElement("IMG");
             mySpan.setAttribute("src", valor.img);
@@ -1118,6 +1553,8 @@ export class AcquireProductPage {
     
     datePickerNames:any;
     public datePicked: string ;
+    public vigencia: string ;
+    public datePickedBirth: string;
     private topTab = 'Cliente';
     private isClient:any;
     private comparaDetailShown: boolean = false;
@@ -1154,32 +1591,32 @@ export class AcquireProductPage {
     private prevPage:any;
 
     private userName = {name:'Miguel Ivan Hernández'};
-    private userNameModal = {name:'Miguel Ivan'};
-    private userNameModalP = {name:'Hernandez'};
-    private userNameModalM = {name:'Materno'};
+    private userNameModal = {name:''};
+    private userNameModalP = {name:''};
+    private userNameModalM = {name:''};
     private userCreditCard = {name:''};
-    private userEmail = {name:'mivan2021g@gmail.com'};
-    private userCellPhoneNumber: any = {name:'5529558232'}; //n
-    private userHomePhoneNumber: any = {name:'554655055'}; //
+    private userEmail = {name:''};
+    private userCellPhoneNumber: any = {name:''}; //n
+    private userHomePhoneNumber: any = {name:''}; //
     private userCvv: any = {name:'5529558232'}; //n
-    private userPostalCode = {name:'14390'}; //n
-    private userStreetName = {name:'Hda Montecillo'};
-    private userOutdoorNumber = {name:'128 b'};
-    private userInteriorNumber = {name:'12 a'};
+    private userPostalCode = {name:''}; //n
+    private userStreetName = {name:''};
+    private userOutdoorNumber = {name:''};
+    private userInteriorNumber = {name:''};
 
-    private userGender = {name:'Male'}; //d
+    private userGender = {name:''}; //d
     private userGenderList = ['Masculino','Femenino'];
-    private userRFC = {name:'EEEE000000111'}; //d
-    private userRFCList = ['EEEE000000111'];
-    private userLugarNac = {name:'CDMX'}; //d
-    private userLugarNacList = ['CDMX'];
-    private userNacionalidad = {name:'Mexicana'}; //d
-    private userNacionalidadList = ['Mexicana'];    
-    private userColony = {name:'Villa Coapa'}; //d
-    private userColonyList = ['Villa Coapa','Villa Coapa1','Villa Coapa2'];
-    private userState = {name:'Ciudad de México'}; //d
+    private userRFC = {name:''}; //d
+    private userRFCList = [''];
+    private userLugarNac = {name:''}; //d
+    private userLugarNacList = [''];
+    private userNacionalidad = {name:''}; //d
+    private userNacionalidadList = [''];    
+    private userColony = {name:''}; //d
+    private userColonyList = [];
+    private userState = {name:''}; //d
     private userStateList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
-    private userDelegation = {name:'Ciudad de México'}; //d
+    private userDelegation = {name:''}; //d
     private userDelegationList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
     private userBrand = {name:''}; // Seleccione la marca
     private userModel = {name:''}; //d Seleccione el modelo
@@ -1203,7 +1640,41 @@ export class AcquireProductPage {
         this.prevPage == "chat"? this.topTab ="Compara" : this.isClient=="true"?this.topTab ="Producto":this.topTab ="Producto";
         this.datePickerNames = this.localizationModal.getDatesNames();
     }
-
+    retrieveData(encodedString){
+        this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaDatosCli?param='+encodedString)
+        .map(res=> res.json())
+        .subscribe(data=>{
+            this.data = data;
+            document.getElementById('nombre').innerHTML=(JSON.stringify(data.Nombre)).replace(/"/g,'');
+            document.getElementById('paterno').innerHTML=(JSON.stringify(data.ApellidoPat)).replace(/"/g,'');
+            document.getElementById('materno').innerHTML=(JSON.stringify(data.ApellidoMat)).replace(/"/g,'');
+            document.getElementById('firstname').innerHTML=(JSON.stringify(data.FechaNacimiento)).replace(/"/g,'');
+            document.getElementById('genero').innerHTML=(JSON.stringify(data.Genero)).replace(/"/g,'');
+        },err =>{
+            console.log(err);
+        });         
+    }
+    crearCliente(){
+        if (this.generoCot==='Masculino')
+            this.generoCot='MASCULINO';
+        else    
+            this.generoCot='FEMENINO';
+        //llenar datos
+        console.log(           'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth);
+        var encodedString=btoa('nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento=MEXICO&cp=55120&calle=calleprueba&noExt=102&noInt=10&colonia=pruebacolonia&delegacion=Ecatepec&estado=Edo. de Mexico&telefono2=56565656&fechaNac='+this.datePickedBirth);
+        console.log('http://services.bunch.guru/WebService.asmx/CrearCliente?param='+encodedString);
+        this.http.get('http://services.bunch.guru/WebService.asmx/CrearCliente?param='+encodedString)
+        .map(res=> res.json())
+        .subscribe(data=>{
+            console.log("responde de los datos"+JSON.stringify(data));
+            this.idCliCot=(JSON.stringify(data.idCli).replace(/"/g,''));
+            this.idDirCot=(JSON.stringify(data.idDir).replace(/"/g,''));
+            this.idContCot=(JSON.stringify(data.idCont).replace(/"/g,''));
+            console.log('idcliCot'+this.idCliCot+'idDirCot'+this.idDirCot+'idContCot'+this.idContCot);
+        },err =>{
+            console.log(err);
+        }); 
+    }
     ionViewDidEnter(){
         if(localStorage.getItem("isClient") == "true"){
             setTimeout(()=>{
@@ -1234,12 +1705,14 @@ export class AcquireProductPage {
         if(tabName==='Cliente'){
             document.getElementById("steps").innerHTML="Paso 3 de 5";
         }       
-        if(tabName==='Tarjeta'){
-            document.getElementById("steps").innerHTML="Paso 4 de 5";
-        }   
         if(tabName==='Pago'){
+            document.getElementById("steps").innerHTML="Paso 4 de 5";
+        }
+        if(tabName==='Tarjeta'){
             document.getElementById("steps").innerHTML="Paso 5 de 5";
-        }                      
+            this.crearCliente();
+        }   
+                      
        //document.getElementById("nuevo").style.color = "green";
 
        var background_color='red !important';
@@ -1255,7 +1728,16 @@ export class AcquireProductPage {
     showComparaItemDetail(){
         this.comparaDetailShown = true;
     }
+    //para mandar el pago
     goPaymentSubmitedPage(){
+        //para las fechas de la vigencia
+        var encodedString='';
+        this.anioCot=this.vigencia.split('-')[0];
+        this.mesCot=this.vigencia.split('-')[1];
+        var consulta='usuario=Bunch&Password=BunCH2O18&data={"Aseguradora":"'+this.aseguradoraCot+'","Cliente":{"TipoPersona":"F","Nombre":"'+this.nombreCot+'","ApellidoPat":"'+this.apellidoPCot+'","ApellidoMat":"'+this.apellidoMCot+'","RFC":"'+this.rfcCot+'","FechaNacimiento":"'+this.datePickedBirth+'","Ocupacion":"EMPLEADO","CURP":null,"Direccion":{"Calle":"'+this.calleCot+'","NoExt":"'+this.calleCot+'","NoInt":"'+this.noIntCot+'","Colonia":"'+this.coloniaCot+'","CodPostal":"'+this.cpCot+'","Poblacion":"'+this.delegacionCot+'","Ciudad":"'+this.estadoCot+'","Pais":"MÉXICO"},"Edad":'+this.edadCot+',"Genero":"'+this.generoCot+'","Telefono":"'+this.telefonoCasaCot+'","Email":"'+this.emailCot+'"},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"'+this.noDeMotorCot+'","NoSerie":"'+this.noDeSerieCot+'","NoPlacas":"'+this.noDePlacasCot+'","Descripcion":"'+this.Descripcion+'","CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+this.claveCot+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":"'+this.tipoCot+'","NombreTarjeta":"'+this.titularCot+'","Banco":"'+this.bancoCot+'","NoTarjeta":"'+this.noTarjetaCot+'","MesExp":"'+this.mesCot+'","AnioExp":"'+this.anioCot+'","CodigoSeguridad":"'+this.cvvCot+'","NoClabe":null,"Carrier":'+this.carrierCot+'},"CodigoError":null,"urlRedireccion":null}&movimiento=emision&idcont='+this.idContCot+'&idcli='+this.idCliCot+'&iddir='+this.idDirCot;
+        console.log("se ha mandado el pago con los datos:"+consulta);
+        encodedString=btoa(consulta);
+        console.log("se ha mandado el pago con los datos en btoa:"+encodedString);
         this.navCtrl.push(PaymentSubmittedPage, {prevPage:this.prevPage}, {animate: true});
     }
     goToDocumentDetailPage(){
