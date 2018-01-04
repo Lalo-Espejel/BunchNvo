@@ -123,7 +123,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertTelefonoCasa('numInput', userHomePhoneNumber,[], isEnglish?'Input home number':'Ingrese número de teléfono de casa')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3 ? '1' : '.5') }" (tap)="showAlertTelefonoCasa('numInput', userHomePhoneNumber,[], isEnglish?'Input home number':'Ingrese número de teléfono de casa')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>Teléfono de casa</span>
@@ -136,7 +136,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>                        
-                        <ion-row class="item-wrapper" (tap)="showAlertTelefonoMovil('numInput', userCellPhoneNumber,[], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3 ? '1' : '.5') }" (tap)="showAlertTelefonoMovil('numInput', userCellPhoneNumber,[], isEnglish?'Input cell phone number':'Ingrese número de teléfono celular')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.cellPhone" | translate }}</span>
@@ -149,7 +149,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertRFC('textInput', userRFC, userRFCList, isEnglish?'Choose your ID':'Elegir RFC')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3 ? '1' : '.5') }" (tap)="showAlertRFC('textInput', userRFC, userRFCList, isEnglish?'Choose your ID':'Elegir RFC')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.RFC" | translate }}</span>
@@ -162,12 +162,12 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userNacionalidad, userNacionalidadList, isEnglish?'Choose your nationality':'Elegir tu nacionalidad')">
+                        <ion-row class="item-wrapper"  [ngStyle]="{ 'opacity': (isEnabledTipo3 ? '1' : '.5') }" (tap)="showAlertNacionalidad('textInput', userNacionalidad, userNacionalidadList, isEnglish?'Choose your nationality':'Elegir tu nacionalidad')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.nationality" | translate }}</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text">
+                                <ion-row align-items-start class="sub-text" id="nacionalidad">
                                     <span>{{userNacionalidad.name}}</span>
                                 </ion-row>
                             </ion-row>
@@ -175,7 +175,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertLugarDeNacimiento('textInput', userLugarNac, userLugarNacList, isEnglish?'Choose your place of birth':'Elegir tu lugar de nacimiento')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3 ? '1' : '.5') }" (tap)="showAlertLugarDeNacimiento('textInput', userLugarNac, userLugarNacList, isEnglish?'Choose your place of birth':'Elegir tu lugar de nacimiento')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.placeOfBirth" | translate }}</span>
@@ -188,7 +188,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>                                                  
-                        <ion-row class="item-wrapper" (tap)="showAlertCodigoPostal('numInput', userPostalCode, [], isEnglish?'Input postal code':'Ingrese código postal')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3Dir ? '1' : '.5') }" (tap)="showAlertCodigoPostal('numInput', userPostalCode, [], isEnglish?'Input postal code':'Ingrese código postal')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.postalCode" | translate }}</span>
@@ -201,7 +201,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertColony('radio', userColony, userColonyList, isEnglish?'Choose colony':'Elegir colonia')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3Dir ? '1' : '.5') }" (tap)="showAlertColony('radio', userColony, userColonyList, isEnglish?'Choose colony':'Elegir colonia')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.colony" | translate }}</span>
@@ -240,7 +240,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>                                               
-                        <ion-row class="item-wrapper" (tap)="showAlertCalle('textInput', userStreetName, [], isEnglish?'Input street name':'Ingrese el nombre de su calle')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3Dir ? '1' : '.5') }" (tap)="showAlertCalle('textInput', userStreetName, [], isEnglish?'Input street name':'Ingrese el nombre de su calle')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.street" | translate }}</span>
@@ -253,7 +253,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertNoExt('textInput', userOutdoorNumber, [], isEnglish?'Input outdoor number':'Ingrese número al aire libre')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3Dir ? '1' : '.5') }" (tap)="showAlertNoExt('textInput', userOutdoorNumber, [], isEnglish?'Input outdoor number':'Ingrese número exterior')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.outdoorNumber" | translate }}</span>
@@ -266,7 +266,7 @@
                                 <img src="assets/icon/bt-siguiente.png">
                             </ion-row>                            
                         </ion-row>
-                        <ion-row class="item-wrapper" (tap)="showAlertNoInt('textInput', userInteriorNumber, [], isEnglish?'Input interior number':'Ingrese número interior')">
+                        <ion-row class="item-wrapper" [ngStyle]="{ 'opacity': (isEnabledTipo3Dir ? '1' : '.5') }" (tap)="showAlertNoInt('textInput', userInteriorNumber, [], isEnglish?'Input interior number':'Ingrese número interior')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>{{ "AcquireProductPage.interiorNumber" | translate }}</span>
@@ -394,9 +394,9 @@
                                         <span>&nbsp;&nbsp;Carrier</span>
                                     </ion-row>
                             <div class = "button-bar">
-                                <a class = "tarjetas" ><img src="assets/img/Amex.svg" id="amex" (click)="amex()"></a>
-                                <a class = "tarjetas" ><img src="assets/img/MasterCard.svg" id="master"(click)="master()"></a>
-                                <a class = "tarjetas" ><img src="assets/img/Visa.svg" id= "visa" (click)="visa()"></a>
+                                <a class = "tarjetas" ><img src="assets/img/Amex.svg" id="amex" ></a>
+                                <a class = "tarjetas" ><img src="assets/img/MasterCard.svg" id="master"></a>
+                                <a class = "tarjetas" ><img src="assets/img/Visa.svg" id= "visa" ></a>
                              </div> 
                         </ion-row>
                         <ion-row class="item-wrapper" id="tarjeta">

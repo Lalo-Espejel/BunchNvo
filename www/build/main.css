@@ -25320,6 +25320,34 @@ ion-navbar.toolbar {
   font-size: 12px;
 }
 
+.definidaY .alert-message {
+  height: 40% !important;
+  max-height: 60%;
+}
+
+.definidaY .alert-radio-label {
+  font-family: RaleTitle;
+  white-space: normal !important;
+  font-size: 12px;
+}
+
+.definidaY .alert-wrapper {
+  min-width: 90%;
+  font-family: RaleTitle;
+}
+
+.definidaY .alert-head {
+  min-width: 100%;
+  background-color: #2492ff;
+  font-family: RaleTitle;
+  color: white;
+}
+
+.definidaY .alert-message {
+  font-size: 10px;
+  min-height: 70% !important;
+}
+
 acquire-product-page .mystyle {
   color: red;
 }

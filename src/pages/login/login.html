@@ -16,6 +16,7 @@
                <ion-input type="text" [placeholder]='"LoginPage.passwordInputPlaceholderText" | translate' class="pass" [(ngModel)]="pass"></ion-input>
             </div>
           </ion-list>
+            <p [ngStyle]="{ 'color': (isEnabled ? 'red' : 'black') }">{{message}}</p>
            <button ion-button class="form-btn" (click)="createAccount()">{{ "LoginPage.createAccaunText" | translate }}</button>
         </ion-col>
       </ion-row>

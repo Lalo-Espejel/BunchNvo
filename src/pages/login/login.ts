@@ -6,6 +6,7 @@ import { RecoveryPage } from '../recovery/recovery';
 import { RegistrerPage } from '../registrer/registrer';
 import { HomePage } from '../home/home';
 import { Http, Headers } from '@angular/http';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,11 +20,13 @@ import { Http, Headers } from '@angular/http';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private storage: Storage) {
   }
 
   email:string;
   pass:string;
+  message:string;
+  isEnabled:boolean;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -41,6 +44,7 @@ export class LoginPage {
     this.navCtrl.push(CarListPage, {animate: true});
   }
   goIntro = () => {
+    this.isEnabled=false;
     var encodedString = btoa("usuario="+this.email+"&password="+this.pass);
     console.log("el encoded para mandar"+encodedString);
     this.http.get('http://services.bunch.guru/WebService.asmx/Login?param='+encodedString)
@@ -48,10 +52,17 @@ export class LoginPage {
     .subscribe(data=>{
       console.log("esta es la resputa"+data);
       if(data===true){
-        this.navCtrl.push(IntroductionPage, {animate: true});
+        this.storage.set('name', this.email);
+        this.navCtrl.push(IntroductionPage, {animate: true});  
+      }
+      else{
+        this.isEnabled=true;
+        this.message='Verifica tu password';       
       }
     },err =>{
       console.log("el usuario no existe");
+      this.isEnabled=true;
+      this.message='El usuario no existe';
     });    
     
   }

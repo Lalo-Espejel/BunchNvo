@@ -35,6 +35,8 @@ export class AcquireProductPage {
     Edad:string;
     public userBrandList =  [];
     isEnabled:boolean;
+    isEnabledTipo3:boolean;
+    isEnabledTipo3Dir:boolean;
 
     aseguradoraCot:string;
     edadCot:string;
@@ -167,33 +169,35 @@ export class AcquireProductPage {
         });        
     }
     showAlertColony( value, mode, modelList = [], massage=""){
-        //this.alertSrv.showAlert(value, mode, modelList, massage);
-        var testRadioResult;
-        var testRadioOpen=false;
-        let alert = this.alertCtrl.create();
-        alert.setTitle(massage);
-        alert.setCssClass('definidaX');
-    
-        for (let item of modelList) {
-            alert.addInput({
-                 type: 'radio',
-                 label: item,
-                 value: item
+        if(this.isEnabledTipo3Dir==true){
+            //this.alertSrv.showAlert(value, mode, modelList, massage);
+            var testRadioResult;
+            var testRadioOpen=false;
+            let alert = this.alertCtrl.create();
+            alert.setTitle(massage);
+            alert.setCssClass('definidaX');
+        
+            for (let item of modelList) {
+                alert.addInput({
+                    type: 'radio',
+                    label: item,
+                    value: item
+                });
+            }
+        
+            alert.addButton('Cancelar');
+            alert.addButton({
+            text: 'OK',
+            handler: data => {
+                testRadioOpen = false;
+                testRadioResult = data;
+                console.log("se ha cicleado el valor de la colonia: "+testRadioResult);
+                document.getElementById("colonia").innerHTML=testRadioResult;
+                this.coloniaCot=testRadioResult;
+            }
             });
-         }
-    
-        alert.addButton('Cancelar');
-        alert.addButton({
-          text: 'OK',
-          handler: data => {
-            testRadioOpen = false;
-            testRadioResult = data;
-            console.log("se ha cicleado el valor de la colonia: "+testRadioResult);
-            document.getElementById("colonia").innerHTML=testRadioResult;
-            this.coloniaCot=testRadioResult;
+            alert.present();
         }
-        });
-        alert.present();
 
     }    
     showAlertModelo( value, mode, modelList = [], massage=""){
@@ -817,29 +821,54 @@ export class AcquireProductPage {
         });
         alert.present();
     } 
-   
-    showAlert( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'nombre'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('nombre').innerHTML=data.username;
+    showAlertNacionalidad( value, mode, modelList = [], massage=""){
+        if(this.isEnabledTipo3==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'nombre'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('nombre').innerHTML=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
+        
+    }   
+    showAlert( value, mode, modelList = [], massage=""){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'nombre'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('nombre').innerHTML=data.username;
+            }
+            });
+            alert.present();
         
     }
     showAlertTitular( value, mode, modelList = [], massage=""){
@@ -867,19 +896,37 @@ export class AcquireProductPage {
         alert.present();
         
     }   
-    tipoTres(status){
-        //this.alertSrv.showAlert(value, mode, modelList, massage);
+    tipoTres(valor){
         var testRadioOpen=false;
         var testRadioResult="";
+        var cont=0;
+        var contFinal=1;
+        console.log("las direcciones available" +JSON.stringify(valor));
         let alert = this.alertCtrl.create();
-        alert.setTitle('Deseas seleccionar una de las siguientes direcciones? Presiona no para agregar una nueva');
-        alert.setCssClass('definida');  
-        for (let Marca of this.userStateList) {
+        alert.setTitle('Selecciona la dirección deseada');
+        alert.setCssClass('definidaY');  
+        for (let key of valor) {         
             alert.addInput({
                  type: 'radio',
-                 label: Marca,
-                 value: Marca
+                 id: 'hola',
+                 label: contFinal+' CALLE:'+valor[cont].Calle+' NO EXT:'+valor[cont].NoExt+' NO INT:'+valor[cont].NoInt+' COLONIA:'+valor[cont].Colonia+' CÓDIGO POSTAL:'+valor[cont].CodPostal+' POBLACIÓN:'+valor[cont].Poblacion+' CIUDAD:'+valor[cont].Ciudad+' ',
+                 value: contFinal+' CALLE:'+valor[cont].Calle+' NO EXT:'+valor[cont].NoExt+' NO INT:'+valor[cont].NoInt+' COLONIA:'+valor[cont].Colonia+' CÓDIGO POSTAL:'+valor[cont].CodPostal+' POBLACIÓN:'+valor[cont].Poblacion+' CIUDAD:'+valor[cont].Ciudad+' ', 
+                 //contFinal+' CALLE:'+valor[cont].Calle+' NO EXT:'+valor[cont].NoExt+' NO INT:'+valor[cont].NoInt+' COLONIA:'+valor[cont].Colonia+' CÓDIGO POSTAL:'+valor[cont].CodPostal+' POBLACIÓN:'+valor[cont].Poblacion+' CIUDAD:'+valor[cont].Ciudad+' '
+                 //contFinal+' \nCALLE:'+valor[cont].Calle+' NO EXT:'+valor[cont].NoExt+' NO INT:'+valor[cont].NoInt+' COLONIA:'+valor[cont].Colonia+' CÓDIGO POSTAL:'+valor[cont].CodPostal+' POBLACIÓN:'+valor[cont].Poblacion+' CIUDAD:'+valor[cont].Ciudad+' ', 
+                 //contFinal+' <h1>CALLE:</h1>'+valor[cont].Calle+' <br>NO EXT:<br>'+valor[cont].NoExt+' <br>NO INT:<br>'+valor[cont].NoInt+' COLONIA:'+valor[cont].Colonia+' CÓDIGO POSTAL:'+valor[cont].CodPostal+' POBLACIÓN:'+valor[cont].Poblacion+' CIUDAD:'+valor[cont].Ciudad+' '
+                 //bueno contFinal+' CALLE:'+valor[cont].Calle+' NO EXT:'+valor[cont].NoExt+' NO INT:'+valor[cont].NoInt+' COLONIA:'+valor[cont].Colonia+' CÓDIGO POSTAL:'+valor[cont].CodPostal+' POBLACIÓN:'+valor[cont].Poblacion+' CIUDAD:'+valor[cont].Ciudad+' ', 
             });
+            cont++;
+            contFinal++;
+            if (cont===(valor.length-1)){
+                alert.addInput({
+                    type: 'radio',
+                    id: 'hola',
+                    label: 'Añadir nueva dirección', 
+                    value: 'Añadir nueva dirección',
+               });                
+                break;
+            }
         }   
         alert.addButton('Cancelar');
         alert.addButton({
@@ -888,136 +935,172 @@ export class AcquireProductPage {
                     testRadioOpen = false;
                     testRadioResult = data;
                     console.log("se ha cicleado el valor: "+testRadioResult);
+                    if(testRadioResult==='Añadir nueva dirección'){
+                        //do something
+                        this.isEnabledTipo3Dir=true;
+                        this.isEnabled=false;
+                        this.isEnabledTipo3=false;
+                        console.log('nueva direccion');
+                        this.retrieveData3();
+                    }
+                    else{
+                        this.isEnabledTipo3Dir=false;
+                        this.isEnabledTipo3=false;
+                        var splitStr=testRadioResult.split(/\s+/);
+                        var seleccion=splitStr[0];
+                        var seleccionNum =(parseInt(seleccion))-1; 
+                        this.retrieveData3();
+                        console.log("se ha encotrado una incidencia en la pos"+seleccion);
+                        document.getElementById("calle").innerHTML=valor[seleccionNum].Calle;
+                        document.getElementById("noExt").innerHTML=valor[seleccionNum].NoExt;
+                        document.getElementById("noInt").innerHTML=valor[seleccionNum].NoInt;
+                        document.getElementById("colonia").innerHTML=valor[seleccionNum].Colonia;
+                        document.getElementById("codigoPostal").innerHTML=valor[seleccionNum].CodPostal;
+                        document.getElementById("nacionalidad").innerHTML='Mexicana';
+                        document.getElementById("delegacion").innerHTML=valor[seleccionNum].Poblacion;
+                        document.getElementById("codigoPostal").innerHTML=valor[seleccionNum].CodPostal;
+                        document.getElementById("estado").innerHTML=valor[seleccionNum].Ciudad;
+
+
+                    }
                 }
         });
         alert.present();
     }        
     showAlertTelefonoCasa( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  type: 'tel',
-                  name: 'username',
-                  id: 'telefonoCasaModal'      
-                }
-              ]
-        });
-        document.getElementById('telefonoCasaModal').setAttribute('maxlength', '3');
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('telefonoCasaModal').innerHTML=data.username;
-                document.getElementById('telefonoCasaU').innerHTML=data.username;
-                this.telefonoCasaCot=data.username;
+        if(this.isEnabledTipo3==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    type: 'tel',
+                    name: 'username',
+                    id: 'telefonoCasaModal'      
+                    }
+                ]
+            });
+            document.getElementById('telefonoCasaModal').setAttribute('maxlength', '3');
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('telefonoCasaModal').innerHTML=data.username;
+                    document.getElementById('telefonoCasaU').innerHTML=data.username;
+                    this.telefonoCasaCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
         
     } 
     showAlertTelefonoMovil( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'nombre'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('telefonoMovilModal').innerHTML=data.username;
-                document.getElementById('telefonoMovilU').innerHTML=data.username;
-                this.movilCot=data.username;
-        }
-        });
-        alert.present();
-        
-    }        
-    showAlertRFC( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'nombre'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('rfc').innerHTML=data.username;
-                document.getElementById('rfcU').innerHTML=data.username;
-                this.rfcCot=data.username;
-        }
-        });
-        alert.present();
-        
-    }    
-    showAlertCodigoPostal( value, mode, modelList = [], massage=""){      
-        var status='';
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
+        if(this.isEnabledTipo3==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
                     //type: 'number',   
                     name: 'username',
                     id: 'nombre'      
-                }
+                    }
                 ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                var cont=0;
-                document.getElementById('codigoPostal').innerHTML=data.username;    
-                this.cpCot=data.username;          
-                var url2='http://services.bunch.guru/WebService.asmx/ConsultaCP?CPostal='+data.username;
-                console.log("ESTO ESTA MANDANDO para checar el cp: "+url2);
-                this.userColonyList=[];
-                this.http.get(url2)
-                .map(res=> res.json())  
-                .subscribe(data=>{
-                    console.log(data);
-                    document.getElementById('delegacion').innerHTML=JSON.stringify(data.Municipio).replace(/"/g,''); 
-                    this.delegacionCot=JSON.stringify(data.Municipio).replace(/"/g,'');
-                    document.getElementById('estado').innerHTML=JSON.stringify(data.Estado).replace(/"/g,''); 
-                    this.estadoCot=JSON.stringify(data.Estado).replace(/"/g,'');
-                    for (let key of data.Colonias ) {
-                        this.userColonyList.push(JSON.stringify(data.Colonias[cont].Colonia).replace(/"/g,''));
-                        cont++;
-                        console.log("las colonias avalaible" +this.userColonyList);
-                    } 
-
-                },err =>{
-                    console.log(err);
-                });                 
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('telefonoMovilModal').innerHTML=data.username;
+                    document.getElementById('telefonoMovilU').innerHTML=data.username;
+                    this.movilCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
+        
+    }        
+    showAlertRFC( value, mode, modelList = [], massage=""){
+        if(this.isEnabledTipo3==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'nombre'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('rfc').innerHTML=data.username;
+                    document.getElementById('rfcU').innerHTML=data.username;
+                    this.rfcCot=data.username;
+            }
+            });
+            alert.present();
+        }
+        
+    }    
+    showAlertCodigoPostal( value, mode, modelList = [], massage=""){   
+        if (this.isEnabledTipo3Dir==true){   
+            var status='';
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                        //type: 'number',   
+                        name: 'username',
+                        id: 'nombre'      
+                    }
+                    ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    var cont=0;
+                    document.getElementById('codigoPostal').innerHTML=data.username;    
+                    this.cpCot=data.username;          
+                    var url2='http://services.bunch.guru/WebService.asmx/ConsultaCP?CPostal='+data.username;
+                    console.log("ESTO ESTA MANDANDO para checar el cp: "+url2);
+                    this.userColonyList=[];
+                    this.http.get(url2)
+                    .map(res=> res.json())  
+                    .subscribe(data=>{
+                        console.log(data);
+                        document.getElementById('delegacion').innerHTML=JSON.stringify(data.Municipio).replace(/"/g,''); 
+                        this.delegacionCot=JSON.stringify(data.Municipio).replace(/"/g,'');
+                        document.getElementById('estado').innerHTML=JSON.stringify(data.Estado).replace(/"/g,''); 
+                        this.estadoCot=JSON.stringify(data.Estado).replace(/"/g,'');
+                        for (let key of data.Colonias ) {
+                            this.userColonyList.push(JSON.stringify(data.Colonias[cont].Colonia).replace(/"/g,''));
+                            cont++;
+                            console.log("las colonias avalaible" +this.userColonyList);
+                        } 
+
+                    },err =>{
+                        console.log(err);
+                    });                 
+            }
+            });
+            alert.present();
+        }    
         
     }     
     showAlertEmail( value, mode, modelList = [], massage=""){
-
+        var id='';
         var status='';
         let alert = this.alertCtrl.create({
             inputs: [
@@ -1045,20 +1128,67 @@ export class AcquireProductPage {
                 .subscribe(data=>{
                   console.log(data);
                   status=(JSON.stringify(data.status)).replace(/"/g,'');
+                  id=(JSON.stringify(data.id)).replace(/"/g,'');
                   if(status==='1'){
                     console.log("no existe, habilitar todos los campos");
                     this.isEnabled=true;
+                    this.isEnabledTipo3=true;
+                    this.isEnabledTipo3Dir=true;
                   }
                   if(status==='2'){
                     console.log("Existe, pero faltan datos. Completar los campos faltantes");
                     this.isEnabled=false;
-                    this.retrieveData(encodedString);
-                    this.tipoTres(status);//eliminar
+                    this.isEnabledTipo3=true;
+                    this.isEnabledTipo3Dir=true;
+                    this.retrieveData();
                   }
                   if(status==='3'){
                     console.log("Se cuenta con toda la info, sólo tener el campo del domicilio");
                     this.isEnabled=false;
-                    this.tipoTres(status);
+                    this.isEnabledTipo3=false;
+                    var cont=0;
+                    console.log("esto estoy recibiendo del id");
+                    var encodedString=btoa('id='+id);
+                    var url2='http://services.bunch.guru/WebService.asmx/ConsultarDirecciones?param='+encodedString;
+                    console.log("id encriptado" + encodedString);
+                   // this.userStateList=[];
+                    this.http.get(url2)
+                    .map(res=> res.json())  
+                    .subscribe(data=>{
+                        console.log(JSON.stringify(data));
+                        this.userStateList=[];
+                        for (let key of data.direccion ) {
+                            this.userStateList.push({ 
+                                Calle: JSON.stringify(data.direccion[cont].Calle).replace(/"/g,''),
+                                NoExt: JSON.stringify(data.direccion[cont].NoExt).replace(/"/g,''),
+                                NoInt: JSON.stringify(data.direccion[cont].NoInt).replace(/"/g,''),
+                                Colonia: JSON.stringify(data.direccion[cont].Colonia).replace(/"/g,''),
+                                CodPostal: JSON.stringify(data.direccion[cont].CodPostal).replace(/"/g,''),
+                                Poblacion: JSON.stringify(data.direccion[cont].Poblacion).replace(/"/g,''),
+                                Ciudad: JSON.stringify(data.direccion[cont].Ciudad).replace(/"/g,''),
+                                IdDir: JSON.stringify(data.direccion[cont].IdDir).replace(/"/g,'')
+                            });                               
+                            //this.userStateList.push(JSON.stringify(data.direccion[cont].Colonia).replace(/"/g,''),JSON.stringify(data.direccion[cont].CodPostal).replace(/"/g,''));
+                            cont++;
+                            console.log("esto se esta metiendo"+this.userStateList);
+                        } 
+                        this.userStateList.push({
+                            Calle: 'Añadir nueva dirección',
+                            NoExt: '',
+                            NoInt: '',
+                            Colonia: '',
+                            CodPostal: '',
+                            Poblacion: '',
+                            Ciudad: '',
+                            IdDir: ''
+                        });
+                        console.log("dire completas"+this.userStateList);
+                        this.tipoTres(this.userStateList);
+            
+                    },err =>{
+                        console.log(err);
+                    });               
+
                   }                                       
 
                 },err =>{
@@ -1187,37 +1317,41 @@ export class AcquireProductPage {
         
     }       
     showAlertLugarDeNacimiento( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'lugarNac'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('lugarNac').innerHTML=data.username;
-                this.lugarDeNacimientoCot=data.username;
+        if(this.isEnabledTipo3==true){
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'lugarNac'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('lugarNac').innerHTML=data.username;
+                    this.lugarDeNacimientoCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
         
     }     
     showAlertCvv( value, mode, modelList = [], massage=""){
         let alert = this.alertCtrl.create({
             inputs: [
                 {   
-                  //type: 'number',   
+                  type: 'number',   
                   name: 'username',
-                  id: 'cvvModal'      
+                  id: 'cvvModal',  
+                  min: 10,
+                  max:10    
                 }
               ]
         });
@@ -1312,78 +1446,87 @@ export class AcquireProductPage {
         
     } 
     showAlertCalle( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'calle'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('calle').innerHTML=data.username;
-                this.calleCot=data.username;
-        }
-        });
-        alert.present();
+        if(this.isEnabledTipo3Dir==true)
+        {
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'calle'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('calle').innerHTML=data.username;
+                    this.calleCot=data.username;
+            }
+            });
+            alert.present();
+        }    
         
     } 
     showAlertNoExt( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'exterior'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('noExt').innerHTML=data.username;
-                this.noExtCot=data.username;
+        if (this.isEnabledTipo3Dir==true)
+        {
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'exterior'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('noExt').innerHTML=data.username;
+                    this.noExtCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
         
     }
     showAlertNoInt( value, mode, modelList = [], massage=""){
-        let alert = this.alertCtrl.create({
-            inputs: [
-                {   
-                  //type: 'number',   
-                  name: 'username',
-                  id: 'interior'      
-                }
-              ]
-        });
-        alert.setTitle(massage);  
-        alert.setCssClass('definidaX'); 
-        alert.addButton('Cancelar');
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-                console.log(JSON.stringify(data)); //to see the object
-                console.log(data.username);
-                document.getElementById('noInt').innerHTML=data.username;
-                this.noIntCot=data.username;
+        if(this.isEnabledTipo3Dir==true)
+        {
+            let alert = this.alertCtrl.create({
+                inputs: [
+                    {   
+                    //type: 'number',   
+                    name: 'username',
+                    id: 'interior'      
+                    }
+                ]
+            });
+            alert.setTitle(massage);  
+            alert.setCssClass('definidaX'); 
+            alert.addButton('Cancelar');
+            alert.addButton({
+                text: 'OK',
+                handler: data => {
+                    console.log(JSON.stringify(data)); //to see the object
+                    console.log(data.username);
+                    document.getElementById('noInt').innerHTML=data.username;
+                    this.noIntCot=data.username;
+            }
+            });
+            alert.present();
         }
-        });
-        alert.present();
         
     }                          
     showAlertTarjeta( value, mode, modelList = [], massage=""){
@@ -1615,7 +1758,7 @@ export class AcquireProductPage {
     private userColony = {name:''}; //d
     private userColonyList = [];
     private userState = {name:''}; //d
-    private userStateList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
+    private userStateList = [];
     private userDelegation = {name:''}; //d
     private userDelegationList = ['Ciudad de México','Ciudad de México1','Ciudad de México2'];
     private userBrand = {name:''}; // Seleccione la marca
@@ -1640,7 +1783,9 @@ export class AcquireProductPage {
         this.prevPage == "chat"? this.topTab ="Compara" : this.isClient=="true"?this.topTab ="Producto":this.topTab ="Producto";
         this.datePickerNames = this.localizationModal.getDatesNames();
     }
-    retrieveData(encodedString){
+    retrieveData(){
+        var encodedString=btoa(this.emailCot);
+        console.log("esto se mandara a consultadatoscli"+encodedString);
         this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaDatosCli?param='+encodedString)
         .map(res=> res.json())
         .subscribe(data=>{
@@ -1654,6 +1799,26 @@ export class AcquireProductPage {
             console.log(err);
         });         
     }
+    retrieveData3(){
+        var encodedString=btoa(this.emailCot);
+        console.log("esto se mandara a consultadatoscli"+encodedString);
+        this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaDatosCli?param='+encodedString)
+        .map(res=> res.json())
+        .subscribe(data=>{
+            this.data = data;
+            document.getElementById('nombre').innerHTML=(JSON.stringify(data.Nombre)).replace(/"/g,'');
+            document.getElementById('paterno').innerHTML=(JSON.stringify(data.ApellidoPat)).replace(/"/g,'');
+            document.getElementById('materno').innerHTML=(JSON.stringify(data.ApellidoMat)).replace(/"/g,'');
+            document.getElementById('firstname').innerHTML=(JSON.stringify(data.FechaNacimiento)).replace(/"/g,'');
+            document.getElementById('genero').innerHTML=(JSON.stringify(data.Genero)).replace(/"/g,'');
+            document.getElementById('rfc').innerHTML=(JSON.stringify(data.RFC)).replace(/"/g,'');
+            document.getElementById('nacionalidad').innerHTML=(JSON.stringify(data.Nacionalidad)).replace(/"/g,'');
+            document.getElementById('lugarNac').innerHTML=(JSON.stringify(data.LugarNacimiento)).replace(/"/g,'');
+            document.getElementById('telefonoCasaU').innerHTML=(JSON.stringify(data.Telefono)).replace(/"/g,'');
+        },err =>{
+            console.log(err);
+        });         
+    }    
     crearCliente(){
         if (this.generoCot==='Masculino')
             this.generoCot='MASCULINO';

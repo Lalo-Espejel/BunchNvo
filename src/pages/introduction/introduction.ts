@@ -1,8 +1,10 @@
+import { Storage } from '@ionic/storage';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalizationModel } from '../../_helpers/localizationModel';
+
 
 
 /**
@@ -22,12 +24,16 @@ export class IntroductionPage {
               public platform: Platform,
               public splashScreen: SplashScreen,
               private localizationModal: LocalizationModel,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              private storage: Storage) {
       this.setAppLanguage();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntroductionPag');
+    this.storage.get('name').then((val) => {
+      console.log('Your age is', val);
+    });  
   }
 
   ionViewWillEnter(){
