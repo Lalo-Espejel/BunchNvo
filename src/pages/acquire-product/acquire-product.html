@@ -453,12 +453,12 @@
                 <!-- SECCION DE PRODUCTO -->
                 <ion-row class="cliente-tab" [hidden]="topTab != 'Producto'">
                     <ion-row [hidden] = "productoContinuarShown">
-                        <ion-row class="item-wrapper" (tap)="showAlert('textInput', userSerialNumber, [], isEnglish?'Input ZIP code':'Código Postal')">
+                        <ion-row class="item-wrapper" (tap)="showAlertCP2('textInput', userSerialNumber, [], isEnglish?'Input ZIP code':'Código Postal')">
                             <ion-row>
                                 <ion-row align-items-end class="main-text">
                                     <span>Código Postal</span>
                                 </ion-row>
-                                <ion-row align-items-start class="sub-text" id="CP">      
+                                <ion-row align-items-start class="sub-text" id="CP2">      
                                 </ion-row>
                             </ion-row>
                             <ion-row align-items-center class="arrow-button">

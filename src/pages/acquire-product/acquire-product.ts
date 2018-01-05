@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import {PaymentSubmittedPage} from "../payment-submited/payment-submited";
@@ -554,8 +555,12 @@ export class AcquireProductPage {
                 //console.log('se buscará ANA YOFO'+'http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion');
                 //this.http.get('http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion')
                 console.log("el atob antes"+':'+'usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion');
-                enStr=btoa('usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion');
                 console.log("el atob es"+enStr);
+                //checkpoint
+                this.storage.get('name').then((val) => {
+                var locale=val;
+                enStr=btoa('usuario=Bunch&Password=BunCH2O18&data='+myJSON+'&movimiento=cotizacion&idContVend='+locale);
+                console.log("enStr completa sería http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?param="+enStr)
                 this.http.get('http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?param='+enStr)
                 .map(res3=> res3.json())  
                 .subscribe(data3=>{
@@ -625,6 +630,7 @@ export class AcquireProductPage {
                   data9=(JSON.stringify(data9));*/
 
                 });
+            }); 
             }
             if(aseguradora==='AXA' && displayPrimaTotal!=="null" && !isNaN(displayPrimaTotalInt) && displayDanosMateriales!==null && displayDanosMateriales!=='undefined'){
                 this.comparaList.push({ 
@@ -1024,6 +1030,29 @@ export class AcquireProductPage {
         }
         
     }        
+    showAlertCP2( value, mode, modelList = [], massage=""){
+        let alert = this.alertCtrl.create({
+            inputs: [
+                {   
+                //type: 'number',   
+                name: 'username',
+                id: 'nombre'      
+                }
+            ]
+        });
+        alert.setTitle(massage);  
+        alert.setCssClass('definidaX'); 
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                console.log(JSON.stringify(data)); //to see the object
+                console.log(data.username);
+                document.getElementById('CP2').innerHTML=data.username;
+        }
+        });
+        alert.present();        
+    }   
     showAlertRFC( value, mode, modelList = [], massage=""){
         if(this.isEnabledTipo3==true){
             let alert = this.alertCtrl.create({
@@ -1051,7 +1080,7 @@ export class AcquireProductPage {
             alert.present();
         }
         
-    }    
+    }        
     showAlertCodigoPostal( value, mode, modelList = [], massage=""){   
         if (this.isEnabledTipo3Dir==true){   
             var status='';
@@ -1700,6 +1729,7 @@ export class AcquireProductPage {
     public datePickedBirth: string;
     private topTab = 'Cliente';
     private isClient:any;
+    private local:any;
     private comparaDetailShown: boolean = false;
     private productoContinuarShown: boolean = false;
     private underTabsTitile = localStorage.getItem("language") == "en"?'Car insurance':'Seguro de Auto';
@@ -1777,7 +1807,7 @@ export class AcquireProductPage {
     private userPlatesList = ['HEM987','HEM9','HE87'];
 
 
-    constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public alertSrv: AlertService, public localizationModal: LocalizationModel, public alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public alertSrv: AlertService, public localizationModal: LocalizationModel, public alertCtrl: AlertController, private storage: Storage) {
         this.prevPage = this.navParams.get("prevPage");
         this.isClient = localStorage.getItem("isClient");
         this.prevPage == "chat"? this.topTab ="Compara" : this.isClient=="true"?this.topTab ="Producto":this.topTab ="Producto";
@@ -1820,13 +1850,18 @@ export class AcquireProductPage {
         });         
     }    
     crearCliente(){
+        this.storage.get('name').then((val) => {
+            console.log('Your age is', val);
+            this.local=val;
+            console.log('Valor de local', this.local); 
         if (this.generoCot==='Masculino')
             this.generoCot='MASCULINO';
         else    
             this.generoCot='FEMENINO';
         //llenar datos
-        console.log(           'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth);
-        var encodedString=btoa('nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento=MEXICO&cp=55120&calle=calleprueba&noExt=102&noInt=10&colonia=pruebacolonia&delegacion=Ecatepec&estado=Edo. de Mexico&telefono2=56565656&fechaNac='+this.datePickedBirth);
+        console.log( 'para crearcliente'+'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth+'&idContVend='+this.local);
+        var encodedString=btoa(          'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth+'&idContVend='+this.local);
+        console.log("esto se mandará para crearCliente"+encodedString);
         console.log('http://services.bunch.guru/WebService.asmx/CrearCliente?param='+encodedString);
         this.http.get('http://services.bunch.guru/WebService.asmx/CrearCliente?param='+encodedString)
         .map(res=> res.json())
@@ -1838,6 +1873,7 @@ export class AcquireProductPage {
             console.log('idcliCot'+this.idCliCot+'idDirCot'+this.idDirCot+'idContCot'+this.idContCot);
         },err =>{
             console.log(err);
+        }); 
         }); 
     }
     ionViewDidEnter(){
@@ -1895,15 +1931,19 @@ export class AcquireProductPage {
     }
     //para mandar el pago
     goPaymentSubmitedPage(){
+        this.storage.get('name').then((val) => {
+            var locale=val;
         //para las fechas de la vigencia
         var encodedString='';
         this.anioCot=this.vigencia.split('-')[0];
         this.mesCot=this.vigencia.split('-')[1];
-        var consulta='usuario=Bunch&Password=BunCH2O18&data={"Aseguradora":"'+this.aseguradoraCot+'","Cliente":{"TipoPersona":"F","Nombre":"'+this.nombreCot+'","ApellidoPat":"'+this.apellidoPCot+'","ApellidoMat":"'+this.apellidoMCot+'","RFC":"'+this.rfcCot+'","FechaNacimiento":"'+this.datePickedBirth+'","Ocupacion":"EMPLEADO","CURP":null,"Direccion":{"Calle":"'+this.calleCot+'","NoExt":"'+this.calleCot+'","NoInt":"'+this.noIntCot+'","Colonia":"'+this.coloniaCot+'","CodPostal":"'+this.cpCot+'","Poblacion":"'+this.delegacionCot+'","Ciudad":"'+this.estadoCot+'","Pais":"MÉXICO"},"Edad":'+this.edadCot+',"Genero":"'+this.generoCot+'","Telefono":"'+this.telefonoCasaCot+'","Email":"'+this.emailCot+'"},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"'+this.noDeMotorCot+'","NoSerie":"'+this.noDeSerieCot+'","NoPlacas":"'+this.noDePlacasCot+'","Descripcion":"'+this.Descripcion+'","CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+this.claveCot+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":"'+this.tipoCot+'","NombreTarjeta":"'+this.titularCot+'","Banco":"'+this.bancoCot+'","NoTarjeta":"'+this.noTarjetaCot+'","MesExp":"'+this.mesCot+'","AnioExp":"'+this.anioCot+'","CodigoSeguridad":"'+this.cvvCot+'","NoClabe":null,"Carrier":'+this.carrierCot+'},"CodigoError":null,"urlRedireccion":null}&movimiento=emision&idcont='+this.idContCot+'&idcli='+this.idCliCot+'&iddir='+this.idDirCot;
+        //checkpoint
+        var consulta='usuario=Bunch&Password=BunCH2O18&data={"Aseguradora":"'+this.aseguradoraCot+'","Cliente":{"TipoPersona":"F","Nombre":"'+this.nombreCot+'","ApellidoPat":"'+this.apellidoPCot+'","ApellidoMat":"'+this.apellidoMCot+'","RFC":"'+this.rfcCot+'","FechaNacimiento":"'+this.datePickedBirth+'","Ocupacion":"EMPLEADO","CURP":null,"Direccion":{"Calle":"'+this.calleCot+'","NoExt":"'+this.calleCot+'","NoInt":"'+this.noIntCot+'","Colonia":"'+this.coloniaCot+'","CodPostal":"'+this.cpCot+'","Poblacion":"'+this.delegacionCot+'","Ciudad":"'+this.estadoCot+'","Pais":"MÉXICO"},"Edad":'+this.edadCot+',"Genero":"'+this.generoCot+'","Telefono":"'+this.telefonoCasaCot+'","Email":"'+this.emailCot+'"},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"'+this.noDeMotorCot+'","NoSerie":"'+this.noDeSerieCot+'","NoPlacas":"'+this.noDePlacasCot+'","Descripcion":"'+this.Descripcion+'","CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+this.claveCot+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":"'+this.tipoCot+'","NombreTarjeta":"'+this.titularCot+'","Banco":"'+this.bancoCot+'","NoTarjeta":"'+this.noTarjetaCot+'","MesExp":"'+this.mesCot+'","AnioExp":"'+this.anioCot+'","CodigoSeguridad":"'+this.cvvCot+'","NoClabe":null,"Carrier":'+this.carrierCot+'},"CodigoError":null,"urlRedireccion":null}&movimiento=emision&idContVend='+locale+'&idcont='+this.idContCot+'&idcli='+this.idCliCot+'&iddir='+this.idDirCot;
         console.log("se ha mandado el pago con los datos:"+consulta);
         encodedString=btoa(consulta);
         console.log("se ha mandado el pago con los datos en btoa:"+encodedString);
         this.navCtrl.push(PaymentSubmittedPage, {prevPage:this.prevPage}, {animate: true});
+        });
     }
     goToDocumentDetailPage(){
         this.navCtrl.push(DocumentDetailPage);

@@ -50,19 +50,21 @@ export class LoginPage {
     this.http.get('http://services.bunch.guru/WebService.asmx/Login?param='+encodedString)
     .map(res=> res.json())
     .subscribe(data=>{
-      console.log("esta es la resputa"+data);
-      if(data===true){
-        this.storage.set('name', this.email);
+      console.log("esta es la resputa"+JSON.stringify(data));
+      if(JSON.stringify(data.respuesta).replace(/"/g,'')==='true'){
+        this.storage.set('name', JSON.stringify(data.idContVend).replace(/"/g,''));
         this.navCtrl.push(IntroductionPage, {animate: true});  
       }
-      else{
+      if(JSON.stringify(data.respuesta).replace(/"/g,'')==='false'){
         this.isEnabled=true;
         this.message='Verifica tu password';       
       }
+      if(JSON.stringify(data.respuesta).replace(/"/g,'')==='No existe usuario'){
+        this.isEnabled=true;
+        this.message='El usuario no existe';      
+      }      
     },err =>{
       console.log("el usuario no existe");
-      this.isEnabled=true;
-      this.message='El usuario no existe';
     });    
     
   }

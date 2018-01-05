@@ -33,6 +33,8 @@ export class IntroductionPage {
     console.log('ionViewDidLoad IntroductionPag');
     this.storage.get('name').then((val) => {
       console.log('Your age is', val);
+      var local=val;
+      console.log('Valor de local', local);
     });  
   }
 
