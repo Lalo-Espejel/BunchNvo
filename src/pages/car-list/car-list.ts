@@ -2,11 +2,11 @@ import { AcquireProductPage } from './../acquire-product/acquire-product';
 import { TextingPage } from './../texting/texting';
 import { AdvertisementPage } from './../advertisement/advertisement';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
-import { NgFor } from '@angular/common';
-import { SoapService } from './soap.service';
+import { ChatNvoPage } from '../chat-nvo/chat-nvo';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 
 /**
@@ -17,59 +17,60 @@ import { SoapService } from './soap.service';
  */
 @Component({
   selector: 'page-car-list',
-  providers: [SoapService], 
   templateUrl: 'car-list.html'
 })
 export class CarListPage {
-    tab1Root = AcquireProductPage;
-    tab2Root = TextingPage;
-  url:string;
-  data:string;
-  constructor(public navCtrl: NavController, public http: Http) {
+    username:string='';
+    pass:string='';
+    mail:string='';
+    pass2:string='';
+    mail2:string='';
 
+  constructor(public navCtrl: NavController, public http: Http, public alertCtrl: AlertController, private angularFire: AngularFireAuth) {
+
+  }
+
+  showAlert(title:string, message:string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  loginUser(){
+      console.log("se creara la nueva sesión");
+      if(/^[a-zA-Z-0-9]+$/.test(this.username)){
+        this.navCtrl.push(ChatNvoPage, {
+            username: this.username
+        });
+      }
+      else{
+          this.showAlert("error","no está bien el suername");
+      }
   }
  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CarListPage');
-    this.loadCars();
+  registerUser(){
+    this.angularFire.auth.createUserWithEmailAndPassword(this.mail, this.pass);
   }
 
-loadCars(){
-     var xmlhttp = new XMLHttpRequest();
-     xmlhttp.open('POST', 'http://core.alimx.mx/webservice.asmx', true);
-     xmlhttp.setRequestHeader("Content-type", "text/xml; charset=utf-8");
-     // build SOAP request
-     var sr =
-         '<?xml version="1.0" encoding="utf-8"?>' +
-             '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">' +
-               '<soapenv:Header/> '+
-               '<soapenv:Body> '+  
-               '<tem:CotizacionEmisionJSON> '+
-               '<tem:usuario>AhorraSeguros</tem:usuario> '+
-               '<tem:Password>Ah0rraS3guros2017</tem:Password>' +
-               '<tem:data>{"Aseguradora":"ANA","Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"19/11/1988","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"04100","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":28,"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"AUDI","Modelo":"2016","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":"A3 AMBIENTE 3PTAS. AUT. | S-TRONIC 1.4L","CodMarca":"","CodDescripcion":"","CodUso":"","Clave":"G0060336","Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}</tem:data>'+
-               '<tem:movimiento>cotizacion</tem:movimiento>'+
-               '</tem:CotizacionEmisionJSON> '+
-               '</soapenv:Body> '+
-           '</soapenv:Envelope>';
+  signUser(){
+    this.angularFire.auth.signInWithEmailAndPassword(this.mail2,this.pass2)
+    .then(data=>{
+        console.log("esta es el email"+this.angularFire.auth.currentUser.email);
+        console.log("esta es el idToken"+this.angularFire.auth.currentUser.getIdToken);
+        console.log("esta es el Token"+this.angularFire.auth.currentUser.getToken);
+    })
+    .catch(error =>{
+        console.log("error"+error);
+    });
+  }
 
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {
-            if (xmlhttp.status == 200) {
-                var aseguradora="";
-                console.log(this.responseText);
-                var Data = JSON.parse(this.responseText);
-                console.log(Data);
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CarListPage');
+  }
 
-            }
-        }
-    }
-     // Send the POST request
-     xmlhttp.setRequestHeader('Content-Type', 'text/xml');
-     xmlhttp.send(sr);
-     // send request
-     // ...
- }
 
 }
 

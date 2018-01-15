@@ -26669,6 +26669,24 @@ page-chat .bot-button {
   border-radius: 16px;
 }
 
+page-chat-nvo .innerMessage {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #488aff;
+  margin: 5px;
+  color: white;
+  border-radius: 3px;
+}
+
+page-chat-nvo .username {
+  font-weight: bold;
+  font-size: 80%;
+}
+
+page-chat-nvo .message {
+  font-size: 120%;
+}
+
 cliente-product-detail-page ion-header .header-cls {
   min-height: 0 !important;
 }
@@ -27479,6 +27497,11 @@ page-login {
   overflow: hidden;
 }
 
+page-login .login-titleX {
+  font-size: 20px;
+  font-weight: 100;
+}
+
 page-login input.text-input.text-input-ios {
   padding: 0;
   width: 65%;
@@ -27624,6 +27647,7 @@ page-login .login-content .item-inner {
 }
 
 page-login .login-content .form-btn {
+  font-family: RaleNext;
   margin-top: 14px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -27637,6 +27661,7 @@ page-login .login-content .form-btn {
 }
 
 page-login .login-content .form-btnX {
+  font-family: RaleNext;
   margin-top: 30px;
   font-size: 14px;
   font-weight: 100;
@@ -27649,6 +27674,7 @@ page-login .login-content .form-btnX {
 }
 
 page-login .login-content .products-btn {
+  font-family: RaleNext;
   color: #ffffff;
   font-size: 0.8em;
   width: 90%;
@@ -27667,6 +27693,7 @@ page-login .login-content .list-md[inset] {
 }
 
 page-login .login-content .footer-warn {
+  font-family: RaleNext;
   margin-top: 20px;
   font-size: 10px;
   width: 100%;

@@ -52,9 +52,14 @@ import {LocalizationModel} from './../_helpers/localizationModel'
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {Http} from "@angular/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { ChatNvoPage } from '../pages/chat-nvo/chat-nvo';
 
-
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import { AngularFireAuthModule} from 'angularfire2/auth';
 
 
 @NgModule({
@@ -63,6 +68,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     HomePage,
     LoginPage,
     CarListPage,
+    ChatNvoPage,
     GetMarcasPage,
     GetModelosPage,
     GetBuscarPage,
@@ -97,6 +103,16 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
   ],
   imports: [
     BrowserModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp({
+    apiKey: "AIzaSyBmot1pSNHLy-BMsBnvimd5uNN9mY-7UNc",
+    authDomain: "bunch-4e74a.firebaseapp.com",
+    databaseURL: "https://bunch-4e74a.firebaseio.com",
+    projectId: "bunch-4e74a",
+    storageBucket: "bunch-4e74a.appspot.com",
+    messagingSenderId: "955010165229"
+    }),
+    AngularFireAuthModule,
     IonicModule.forRoot(MyApp ,{ scrollAssist: false, autoFocusAssist: false } ),
     IonicStorageModule.forRoot(),
     HttpModule,
@@ -114,6 +130,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     HomePage,
     LoginPage,
     CarListPage,
+    ChatNvoPage,
     GetMarcasPage,
     GetModelosPage,
     GetBuscarPage,

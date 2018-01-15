@@ -1,4 +1,8 @@
 page-login {
+  .login-titleX {
+    font-size: 20px;
+    font-weight: 100;
+  }
   input.text-input.text-input-ios{
 
     padding: 0;
@@ -137,6 +141,7 @@ page-login {
     }
 
     .form-btn {
+      font-family: RaleNext;
       margin-top:14px;
       margin-bottom: 10px;
       font-size: 14px;
@@ -148,6 +153,7 @@ page-login {
       height: auto; 
     }
     .form-btnX {
+      font-family: RaleNext;
       margin-top: 30px; 
       font-size: 14px;
       font-weight: 100;
@@ -159,6 +165,7 @@ page-login {
     }    
  
     .products-btn {
+      font-family: RaleNext;
       color: #ffffff;
       font-size: 0.8em;
       width: 90%;
@@ -177,6 +184,7 @@ page-login {
     }
 
     .footer-warn{
+      font-family: RaleNext;
       margin-top:20px;
       font-size: 10px;
       width: 100%;

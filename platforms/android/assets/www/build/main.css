@@ -25320,6 +25320,34 @@ ion-navbar.toolbar {
   font-size: 12px;
 }
 
+.definidaY .alert-message {
+  height: 40% !important;
+  max-height: 60%;
+}
+
+.definidaY .alert-radio-label {
+  font-family: RaleTitle;
+  white-space: normal !important;
+  font-size: 12px;
+}
+
+.definidaY .alert-wrapper {
+  min-width: 90%;
+  font-family: RaleTitle;
+}
+
+.definidaY .alert-head {
+  min-width: 100%;
+  background-color: #2492ff;
+  font-family: RaleTitle;
+  color: white;
+}
+
+.definidaY .alert-message {
+  font-size: 10px;
+  min-height: 70% !important;
+}
+
 acquire-product-page .mystyle {
   color: red;
 }
@@ -26639,6 +26667,24 @@ page-chat .bot-button {
   background-color: #09c;
   color: white;
   border-radius: 16px;
+}
+
+page-chat-nvo .innerMessage {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #488aff;
+  margin: 5px;
+  color: white;
+  border-radius: 3px;
+}
+
+page-chat-nvo .username {
+  font-weight: bold;
+  font-size: 80%;
+}
+
+page-chat-nvo .message {
+  font-size: 120%;
 }
 
 cliente-product-detail-page ion-header .header-cls {
