@@ -26423,6 +26423,62 @@ page-advertisement .publish-adv-btn {
   background: #2292c0;
 }
 
+page-buddychat .chat {
+  width: 320px;
+}
+
+page-buddychat .bubble {
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px #B2B2B2;
+  box-shadow: 0 0 6px #B2B2B2;
+  display: inline-block;
+  padding: 10px 18px;
+  position: relative;
+  vertical-align: top;
+}
+
+page-buddychat .bubble::before {
+  background-color: #F2F2F2;
+  content: "\00a0";
+  display: block;
+  height: 16px;
+  position: absolute;
+  top: 11px;
+  transform: rotate(29deg) skew(-35deg);
+  -moz-transform: rotate(29deg) skew(-35deg);
+  -ms-transform: rotate(29deg) skew(-35deg);
+  -o-transform: rotate(29deg) skew(-35deg);
+  -webkit-transform: rotate(29deg) skew(-35deg);
+  width: 20px;
+}
+
+page-buddychat .me {
+  float: left;
+  margin: 5px 45px 5px 20px;
+}
+
+page-buddychat .me::before {
+  -webkit-box-shadow: -2px 2px 2px 0 rgba(178, 178, 178, 0.4);
+  box-shadow: -2px 2px 2px 0 rgba(178, 178, 178, 0.4);
+  left: -9px;
+}
+
+page-buddychat .you {
+  float: right;
+  margin: 5px 20px 5px 45px;
+}
+
+page-buddychat .you::before {
+  -webkit-box-shadow: 2px -2px 2px 0 rgba(178, 178, 178, 0.4);
+  box-shadow: 2px -2px 2px 0 rgba(178, 178, 178, 0.4);
+  right: -9px;
+}
+
+page-buddychat .chatwindow {
+  padding-bottom: 70px;
+}
+
 page-chat ion-header .header-cls {
   min-height: 0 !important;
 }
@@ -27701,6 +27757,88 @@ page-login .login-content .footer-warn {
   padding-top: 10px;
 }
 
+page-login2 .background {
+  background-color: black;
+}
+
+page-login2 .scroll-content {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+page-login2 ion-card.card {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+page-login2 a, page-login2 p,
+page-login2 ion-card-header.card-header {
+  color: #fff !important;
+}
+
+page-login2 .list > .item-block:first-child {
+  border: medium none;
+}
+
+page-login2 .item {
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: medium none;
+}
+
+page-login2 .item .text-input {
+  color: #fff;
+}
+
+page-login2 .item input::-moz-placeholder {
+  color: #fff !important;
+}
+
+page-login2 .item input:-moz-placeholder {
+  color: #fff !important;
+}
+
+page-login2 .item *:-moz-placeholder {
+  color: #fff !important;
+}
+
+page-login2 .item *:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+page-login2 .item *::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+page-login2 .icon {
+  padding-right: 10px;
+}
+
+page-login2 .bottom {
+  bottom: 0;
+}
+
+page-login2 .input-cover {
+  position: static;
+}
+
 page-new-advertisement ion-header .header-cls {
   min-height: 0 !important;
 }
@@ -27993,94 +28131,6 @@ payment-submited-page .bunch-text {
 
 page-products {
   background-color: white;
-}
-
-page-profile ion-content {
-  background-color: #e6e6e6 !important;
-}
-
-page-profile ion-label {
-  font-size: 15px;
-}
-
-page-profile .tab-header-cls {
-  background-color: #2492ff;
-  background-position-y: 140px;
-  color: white;
-  margin: 0 auto;
-  background-size: cover;
-  min-height: 20px;
-  max-height: 70px;
-}
-
-page-profile .tab-header-cls div.divImg {
-  position: relative;
-  width: 25%;
-  height: 10%;
-}
-
-page-profile .tab-header-cls div.divImg img {
-  background-color: transparent;
-  height: 140px !important;
-}
-
-page-profile .tab-header-cls .titleForm {
-  width: 90%;
-  margin: 5px auto;
-  text-align: center;
-  color: white;
-}
-
-page-profile .tab-header-cls .item-inner {
-  border-bottom: none !important;
-}
-
-page-profile .publish-adv-btn {
-  border: 1px solid transparent !important;
-  border-radius: 10px !important;
-  background: #2292c0 !important;
-}
-
-page-profile .ionitem-cls {
-  border: 2px solid gainsboro !important;
-  border-radius: 10px !important;
-  margin: 10px auto;
-}
-
-page-profile .ionitem-cls .item-icon {
-  margin: 6px 0 0;
-  width: 30px;
-  height: 32px;
-}
-
-page-profile .ionitem-cls .item-inner {
-  border: none !important;
-}
-
-page-profile .ionitem-cls .chat-button {
-  width: 15%;
-  display: inline-block;
-  height: 100%;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-}
-
-page-profile .ionitem-cls .chat-button::after {
-  content: url("../assets/icon/bt-siguiente.png");
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 90%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  text-align: center;
-  line-height: 40px;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 page-purchase ion-header {
@@ -28738,6 +28788,88 @@ page-registrer .congrats-wrapp .prossedBtn {
 
 page-registrer #gender .slide-zoom {
   height: 100% !important;
+}
+
+page-signup .background {
+  background-image: url("../assets/bgimage.jpg");
+}
+
+page-signup .scroll-content {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+page-signup ion-card.card {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+page-signup a, page-signup p,
+page-signup ion-card-header.card-header {
+  color: #fff !important;
+}
+
+page-signup .list > .item-block:first-child {
+  border: medium none;
+}
+
+page-signup .item {
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: medium none;
+}
+
+page-signup .item .text-input {
+  color: #fff;
+}
+
+page-signup .item input::-moz-placeholder {
+  color: #fff !important;
+}
+
+page-signup .item input:-moz-placeholder {
+  color: #fff !important;
+}
+
+page-signup .item *:-moz-placeholder {
+  color: #fff !important;
+}
+
+page-signup .item *:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+page-signup .item *::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+page-signup .icon {
+  padding-right: 10px;
+}
+
+page-signup .bottom {
+  bottom: 0;
+}
+
+page-signup .input-cover {
+  position: static;
 }
 
 .tab-header-cls {

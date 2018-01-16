@@ -7,6 +7,7 @@ import { RegistrerPage } from '../registrer/registrer';
 import { HomePage } from '../home/home';
 import { Http, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { Login2Page } from '../login2/login2';
 
 /**
  * Generated class for the LoginPage page.
@@ -43,6 +44,9 @@ export class LoginPage {
   goCarList = () => {
     this.navCtrl.push(CarListPage, {animate: true});
   }
+  goCarList2 = () => {
+    this.navCtrl.push(Login2Page, {animate: true});
+  }  
   goIntro = () => {
     this.isEnabled=false;
     var encodedString = btoa("usuario="+this.email+"&password="+this.pass);

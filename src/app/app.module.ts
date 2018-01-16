@@ -1,3 +1,6 @@
+import { SignupPage } from './../pages/signup/signup';
+import { TabsPage } from './../pages/tabs/tabs';
+import { Login2Page } from './../pages/login2/login2';
 import { GetMarcasPage } from './../pages/get-marcas/get-marcas';
 import { GetModelosPage } from './../pages/get-modelos/get-modelos';
 import { GetBuscarPage } from './../pages/get-buscar/get-buscar';
@@ -61,6 +64,14 @@ import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 
+import { config } from './app.firebaseconfig';
+import { AuthProvider } from '../providers/auth/auth';
+import { UserProvider } from '../providers/user/user';
+import { RequestsProvider } from '../providers/requests/requests';
+import { ChatProvider } from '../providers/chat/chat';
+
+
+
 
 @NgModule({
   declarations: [
@@ -68,6 +79,9 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
     HomePage,
     LoginPage,
     CarListPage,
+    Login2Page,
+    TabsPage,
+    SignupPage,
     ChatNvoPage,
     GetMarcasPage,
     GetModelosPage,
@@ -113,7 +127,7 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
     messagingSenderId: "955010165229"
     }),
     AngularFireAuthModule,
-    IonicModule.forRoot(MyApp ,{ scrollAssist: false, autoFocusAssist: false } ),
+    IonicModule.forRoot(MyApp ,{ scrollAssist: false, autoFocusAssist: false, tabsPlacement: 'top' } ),
     IonicStorageModule.forRoot(),
     HttpModule,
     TranslateModule.forRoot({
@@ -130,6 +144,9 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
     HomePage,
     LoginPage,
     CarListPage,
+    Login2Page,
+    TabsPage,    
+    SignupPage,
     ChatNvoPage,
     GetMarcasPage,
     GetModelosPage,
@@ -169,9 +186,13 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
     LocalizationModel,
     AlertService,
     StatusBar,
+    AuthProvider,
     SplashScreen,
     DatePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider,
+    RequestsProvider,
+    ChatProvider,
 
   ]
 })
