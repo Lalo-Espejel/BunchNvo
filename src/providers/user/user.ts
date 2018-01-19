@@ -21,7 +21,7 @@ export class UserProvider {
         let userdata = snapshot.val();
         let temparr = [];
         for (var key in userdata) {
-          if (key != firebase.auth().currentUser.uid) {// reduce 1 loop. and current user will not show in search list 
+          if (key != firebase.auth().currentUser.uid) {
           temparr.push(userdata[key]);
           }
         }

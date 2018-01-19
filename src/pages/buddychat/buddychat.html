@@ -20,12 +20,9 @@
       <ion-avatar item-left *ngIf="item.sentby === buddy.uid">
         <img src="{{buddy.photoURL}}">
       </ion-avatar>
-      <div class="bubble me" *ngIf="item.sentby === buddy.uid">
+      <!--<div class="bubble me" *ngIf="item.sentby === buddy.uid">
         <h3>{{item.message}}</h3>
-      </div>
-      <ion-avatar item-right *ngIf="item.sentby != buddy.uid">
-        <img src="{{photoURL}}">
-      </ion-avatar>
+      </div>-->
       <div class="bubble you" *ngIf="item.sentby != buddy.uid">
         <h3>{{item.message}}</h3>
       </div>
@@ -35,7 +32,7 @@
 </ion-content>
 <ion-footer ion-fixed>    
   <ion-toolbar class="no-border" color="white">        
-    <ion-input [(ngModel)]="newmessage" placeholder="Write your message ..."></ion-input>  
+    <ion-input [(ngModel)]="newmessage" placeholder="Escribe tu mensaje ..."></ion-input>  
     <ion-buttons end>
       <button ion-button (click)="addmessage()">
         <ion-icon name="send" color="primary"></ion-icon>
