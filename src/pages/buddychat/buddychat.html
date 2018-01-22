@@ -17,12 +17,9 @@
 <div class = "chatwindow">
   <ion-list no-lines>
     <ion-item *ngFor = "let item of allmessages; let i = index" text-wrap>
-      <ion-avatar item-left *ngIf="item.sentby === buddy.uid">
-        <img src="{{buddy.photoURL}}">
-      </ion-avatar>
-      <!--<div class="bubble me" *ngIf="item.sentby === buddy.uid">
+      <div class="bubble me" *ngIf="item.sentby === buddy.uid">
         <h3>{{item.message}}</h3>
-      </div>-->
+      </div>
       <div class="bubble you" *ngIf="item.sentby != buddy.uid">
         <h3>{{item.message}}</h3>
       </div>
