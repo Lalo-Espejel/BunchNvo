@@ -127,7 +127,7 @@ import { ChatProvider } from '../providers/chat/chat';
     messagingSenderId: "955010165229"
     }),
     AngularFireAuthModule,
-    IonicModule.forRoot(MyApp ,{ scrollAssist: false, autoFocusAssist: false, tabsPlacement: 'top' } ),
+    IonicModule.forRoot(MyApp ,{ scrollAssist: false, autoFocusAssist: false } ),
     IonicStorageModule.forRoot(),
     HttpModule,
     TranslateModule.forRoot({

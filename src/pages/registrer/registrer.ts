@@ -6,6 +6,10 @@ import { LoginPage } from '../login/login';
 import { LocalizationModel } from '../../_helpers/localizationModel';
 import { Http, Headers } from '@angular/http';
 
+import { IonicPage, LoadingController, ToastController } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
+import { Console } from '@angular/core/src/console';
+
 /**
  * Generated class for the RegistrerPage page.
  *
@@ -19,6 +23,11 @@ import { Http, Headers } from '@angular/http';
   
 })
 export class RegistrerPage {
+  newuser = {
+    email: '',
+    password: '',
+    displayName: ''
+  }
   @ViewChild('prueba2') prueba2 ;
   @ViewChild('slides') slides: Slides;
   @ViewChild('name') nameHTML: any;
@@ -43,7 +52,8 @@ export class RegistrerPage {
               private kBoard: Keyboard,
               private platform: Platform,
               private localizationModal: LocalizationModel,
-              public http: Http) {
+              public http: Http, public userservice: UserProvider,
+              public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 
     this.datePicked = "Tap me"
     this.datePickerNames = this.localizationModal.getDatesNames();
@@ -155,6 +165,7 @@ export class RegistrerPage {
       console.log("esta es la fecha "+this.fechaUser);
   
       this.getUpdateContactoCuenta();
+      this.signup();
     }                   
     this.slides.lockSwipeToNext(false);
     this.slides.slideNext(300);
@@ -219,4 +230,34 @@ export class RegistrerPage {
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
   }
+
+  signup() {
+    this.newuser.displayName=this.nombreUser+' '+this.apellidoPUser+' '+this.apellidoMUser;
+    console.log("su nuevo alias sera: "+this.newuser.displayName);
+    var toaster = this.toastCtrl.create({
+      duration: 3000,
+      position: 'bottom'
+    });
+    if (this.newuser.email == '' || this.newuser.password == '' || this.newuser.displayName == '') {
+      toaster.setMessage('Se necesita llenar todos los campos');
+      toaster.present();
+    }
+    else if (this.newuser.password.length < 7) {
+      toaster.setMessage('El password deberá de ser de 6 caracteres');
+      toaster.present();
+    }
+    else {
+      let loader = this.loadingCtrl.create({
+        content: 'Actualizando'
+      });
+      loader.present();
+      this.userservice.adduser(this.newuser).then((res: any) => {
+        loader.dismiss();
+        if (res.success)
+          console.log("se ha creado una nueva cuenta");
+        else
+          alert('Error' + res);
+      })
+    }
+  }    
 }

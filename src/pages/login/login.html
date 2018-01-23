@@ -11,10 +11,10 @@
           <ion-list inset>
             <div class="login-title">{{ "LoginPage.loginTitle" | translate }}</div>
             <div class="divRow">
-               <ion-input type="text" [placeholder]='"LoginPage.userInputPlaceholderText" | translate' class="user" [(ngModel)]="email" ></ion-input>
+               <ion-input type="text" [placeholder]='"LoginPage.userInputPlaceholderText" | translate' class="user" [(ngModel)]="credentials.email"  ></ion-input>
             </div>
             <div class="divRow">
-               <ion-input type="text" [placeholder]='"LoginPage.passwordInputPlaceholderText" | translate' class="pass" [(ngModel)]="pass"></ion-input>
+               <ion-input type="text" [placeholder]='"LoginPage.passwordInputPlaceholderText" | translate' class="pass" [(ngModel)]="credentials.password"></ion-input>
             </div>
           </ion-list>
             <p [ngStyle]="{ 'color': (isEnabled ? 'red' : 'black') }">{{message}}</p>

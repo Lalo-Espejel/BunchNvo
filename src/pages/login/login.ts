@@ -9,6 +9,9 @@ import { Http, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { Login2Page } from '../login2/login2';
 
+import { AuthProvider } from '../../providers/auth/auth';
+import { usercreds } from '../../models/interfaces/usercreds';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -20,10 +23,9 @@ import { Login2Page } from '../login2/login2';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private storage: Storage) {
+  credentials = {} as usercreds;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private storage: Storage, public authservice: AuthProvider) {
   }
-
   email:string;
   pass:string;
   message:string;
@@ -48,6 +50,9 @@ export class LoginPage {
     this.navCtrl.push(Login2Page, {animate: true});
   }  
   goIntro = () => {
+    this.email=this.credentials.email;
+    this.pass=this.credentials.password;
+    console.log("esto se mandará:"+this.email+"pass:"+this.pass);
     this.isEnabled=false;
     var encodedString = btoa("usuario="+this.email+"&password="+this.pass);
     console.log("el encoded para mandar"+encodedString);
@@ -57,7 +62,7 @@ export class LoginPage {
       console.log("esta es la resputa"+JSON.stringify(data));
       if(JSON.stringify(data.respuesta).replace(/"/g,'')==='true'){
         this.storage.set('name', JSON.stringify(data.idContVend).replace(/"/g,''));
-        this.navCtrl.push(IntroductionPage, {animate: true});  
+        this.signin();
       }
       if(JSON.stringify(data.respuesta).replace(/"/g,'')==='false'){
         this.isEnabled=true;
@@ -72,5 +77,14 @@ export class LoginPage {
     });    
     
   }
+
+  signin() {
+    this.authservice.login(this.credentials).then((res: any) => {
+      if (!res.code)
+        this.navCtrl.push(IntroductionPage, {animate: true});  
+      else
+        alert(res);
+    })
+  }  
 
 }

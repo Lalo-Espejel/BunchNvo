@@ -42,7 +42,7 @@ export class UserProvider {
           this.firedata.child(this.afireauth.auth.currentUser.uid).set({
             uid: this.afireauth.auth.currentUser.uid,
             displayName: newuser.displayName,
-            photoURL: 'give a dummy placeholder url here'
+            //photoURL: 'give a dummy placeholder url here'
           }).then(() => {
             resolve({ success: true });
             }).catch((err) => {
