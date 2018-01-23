@@ -24,7 +24,7 @@
             <ion-label left>{{ "RegisterPage.firstSlide.emailLableText" | translate }}</ion-label>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailInputPlaceholderText" | translate}}</ion-label>
-              <ion-input type="email" ngModel name="email1" required email> </ion-input>
+              <ion-input type="email" ngModel name="email1" [(ngModel)]="newuser.email" required email> </ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="primary" stacked>{{ "RegisterPage.firstSlide.emailConfirmationInputPlaceholderText" | translate}}</ion-label>
@@ -46,7 +46,7 @@
             <ion-label left>Elije una nueva contraseña</ion-label>
             <ion-item>
               <ion-label color="primary" stacked>Contraseña</ion-label>
-              <ion-input type="text" ngModel name="password" required text> </ion-input>
+              <ion-input type="text" ngModel name="password" [(ngModel)]="newuser.password" required text> </ion-input>
             </ion-item>
             <ion-item>
               <ion-label color="primary" stacked>Confirma contraseña</ion-label>
