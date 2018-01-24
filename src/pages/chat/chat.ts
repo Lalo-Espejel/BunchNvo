@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { AcquireProductPage } from '../acquire-product/acquire-product';
-
+import { ViewChild, NgZone } from '@angular/core';
+import { IonicPage, Content } from 'ionic-angular';
+import { ChatProvider } from '../../providers/chat/chat';
+import firebase from 'firebase';
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html',
 })
 export class ChatPage {
+  @ViewChild('content') content: Content;
+  buddy: any;
+  newmessage;
+  allmessages = [];
+  photoURL;
 
   public chatBox: string;
   public type: string ="bitacora";
@@ -57,7 +65,20 @@ export class ChatPage {
     containerTexts:[]
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _event: Events) {
+  constructor(public chatservice: ChatProvider,
+    public events: Events, public zone: NgZone, 
+    public navCtrl: NavController, public navParams: NavParams, private _event: Events) {
+
+    this.buddy = this.chatservice.buddy;
+    //this.photoURL = firebase.auth().currentUser.photoURL;
+    this.scrollto();
+    this.events.subscribe('newmessage', () => {
+      this.allmessages = [];
+      this.zone.run(() => {
+        this.allmessages = this.chatservice.buddymessages;
+      })
+    })   
+
     let data = this.navParams.data;
     this.isClient = localStorage.getItem("isClient");
 
@@ -182,6 +203,23 @@ export class ChatPage {
   goToAcquireProduct(){
     this.navCtrl.push(AcquireProductPage, {prevPage:"chat"}, {animate: true});
   }
+
+  addmessage() {
+    this.chatservice.addnewmessage(this.newmessage).then(() => {
+      this.content.scrollToBottom();
+      this.newmessage = '';
+    })
+  }
+
+  ionViewDidEnter() {
+    this.chatservice.getbuddymessages();
+  }
+
+  scrollto() {
+    setTimeout(() => {
+      this.content.scrollToBottom();
+    }, 1000);
+  }  
 }
 
 

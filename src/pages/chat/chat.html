@@ -12,7 +12,23 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content #content padding>
+
+    <div class = "chatwindow">
+        <ion-list no-lines>
+          <ion-item *ngFor = "let item of allmessages; let i = index" text-wrap>
+            <div class="bubble me" *ngIf="item.sentby === buddy.uid">
+              <h3>{{item.message}}</h3>
+            </div>
+            <div class="bubble you" *ngIf="item.sentby != buddy.uid">
+              <h3>{{item.message}}</h3>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+
+
+
   <ion-list-header class="title-entrance-chat">{{chat.name}}</ion-list-header>
 
   <ion-segment [(ngModel)]="type" [hidden]="isClient == 'false'">
@@ -134,10 +150,21 @@
     </ion-row>
   </ion-row>
 </ion-content>
+<ion-footer ion-fixed>    
+  <ion-toolbar class="no-border" color="white">        
+    <ion-input [(ngModel)]="newmessage" placeholder="Escribe tu mensaje ..."></ion-input>  
+    <ion-buttons end>
+      <button ion-button (click)="addmessage()">
+        <ion-icon name="send" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-footer>
+<!--
  <ion-footer [hidden]="type != 'bitacora'" keyboard-attach>
     <ion-input type="text" [(ngModel)]="chatBox" class="footer-input" [placeholder]='"ChatPage.messgePlaceholderText" | translate' ></ion-input>
     <div style="width: 10%;" ><button (click)="send(chatBox)" class="chat-button" style="width: 100%;height: 100%;background: transparent;" ></button></div>
 
 </ion-footer>
      
-
+-->
