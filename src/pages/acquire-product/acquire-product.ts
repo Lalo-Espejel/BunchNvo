@@ -101,6 +101,7 @@ export class AcquireProductPage {
         document.getElementById("amex").style.opacity = ".5";
     }
     ionViewDidLoad(){
+        console.log('acquire-products!');
         this.isEnabled=true;
         var str="";
         var cont=0;
@@ -446,17 +447,29 @@ export class AcquireProductPage {
         var cpCot=document.getElementById('CP2').outerText
         console.log(document.getElementById('CP2').outerText);
         console.log(cpCot +" "+ anioFechaNac )
-        var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"01/01/'+anioFechaNac+'","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"'+cpCot+ '","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":'+this.Edad+',"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';
-          console.log('este sera el url a consultar '+'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion');
-          this.http.get('http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion')
+        var myJSON='{"Aseguradora":'+aseguradora+',"Cliente":{"TipoPersona":null,"Nombre":null,"ApellidoPat":null,"ApellidoMat":null,"RFC":null,"FechaNacimiento":"01/01/'+anioFechaNac+'","Ocupacion":null,"CURP":null,"Direccion":{"Calle":null,"NoExt":null,"NoInt":null,"Colonia":null,"CodPostal":"'+cpCot+ '","Poblacion":null,"Ciudad":null,"Pais":null},"Edad":'+this.Edad+',"Genero":"Masculino","Telefono":null,"Email":null},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"","NoSerie":"","NoPlacas":"","Descripcion":'+descripcionAseguradora+',"CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+clave+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":null,"NombreTarjeta":null,"Banco":null,"NoTarjeta":null,"MesExp":null,"AnioExp":null,"CodigoSeguridad":null,"NoClabe":null,"Carrier":0},"CodigoError":null,"urlRedireccion":null}';          
+          var urlConsulta = 'http://core.alimx.mx/webservice.asmx/CotizacionEmisionJSON?usuario=AhorraSeguros&password=Ah0rraS3guros2017&data='+myJSON+'&movimiento=cotizacion';
+          console.log('este sera el url a consultar', urlConsulta);
+          this.http.get(urlConsulta)
           .map(res2=> res2.json() )  
           .subscribe(data2=>{
-            data3 = data2.Coberturas[0].DanosMateriales;
-            data4 = data2.Coberturas[0].RoboTotal;
-            data5 = data2.Coberturas[0].RCPersonas;
-            data6 = data2.Coberturas[0].RC;
-            data7 = data2.Coberturas[0].DefensaJuridica;
-            data8 = data2.Coberturas[0].GastosMedicosOcupantes;
+
+            var data3 = '',
+                data4 = '',
+                data5 = '',
+                data6 = '',
+                data7 = '',
+                data8 = '',
+                coberturas = data2.Coberturas[0];
+            
+            if (coberturas != undefined) {                
+                data3 = coberturas.DanosMateriales;
+                data4 = coberturas.RoboTotal;
+                data5 = coberturas.RCPersonas;
+                data6 = coberturas.RC;
+                data7 = coberturas.DefensaJuridica;
+                data8 = coberturas.GastosMedicosOcupantes;
+            }
 
             displayDanosMateriales=(JSON.stringify(data3)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
             displayRoboTotal=(JSON.stringify(data4)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
@@ -575,7 +588,7 @@ export class AcquireProductPage {
                 this.http.get('http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?param='+enStr)
                 .map(res3=> res3.json())  
                 .subscribe(data3=>{
-                  console.log('debugg'+JSON.stringify(data3));
+                  console.log('debugg', data3);
 
                   //para la primatotal
                   primaAna= data3.Cotizacion.PrimaTotal;
@@ -716,16 +729,15 @@ export class AcquireProductPage {
                 this.http.get('http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?param='+enStr)
                 .map(res3=> res3.json())  
                 .subscribe(data3=>{
-                  console.log('debugg'+JSON.stringify(data3));
+                  console.log('debugg', data3);
 
                   //para la primatotal
                   primaGNP= data3.Cotizacion.PrimaTotal;
                   displayPrimaTotal = primaGNP.replace(/"|,|\$/g,'');
                   displayPrimaTotalInt=Math.ceil(parseInt(displayPrimaTotal));
                   displayPrimaTotal=displayPrimaTotalInt.toLocaleString();
-                  displayPrimaTotal='$'+displayPrimaTotal;
-
-                  displayDanosMateriales=(JSON.stringify(data3.Coberturas[0].DanosMateriales)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
+                  displayPrimaTotal='$'+displayPrimaTotal;                  
+                  displayDanosMateriales=(JSON.stringify(data3.Coberturas[0].DanosMateriales)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');                  
                   displayRoboTotal=(JSON.stringify(data3.Coberturas[0].RoboTotal)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
                   displayRCPersonas=(JSON.stringify(data3.Coberturas[0].RCPersonas)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-|D|-/g,'');
                   displayRC=(JSON.stringify(data3.Coberturas[0].RC)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA|No|aplica/g,'');
@@ -837,21 +849,38 @@ export class AcquireProductPage {
                 .timeout(500000)
                 .map(res3=> res3.json())  
                 .subscribe(data3=>{
-                  console.log('debugg'+JSON.stringify(data3));
+                  console.log('debugg HDI', data3);
 
                   //para la primatotal
-                  primaHDI= data3.Cotizacion.PrimaTotal;
+                  primaHDI = data3.Cotizacion.PrimaTotal || '';
                   displayPrimaTotal = primaHDI.replace(/"|,|\$/g,'');
                   displayPrimaTotalInt=Math.ceil(parseInt(displayPrimaTotal));
                   displayPrimaTotal=displayPrimaTotalInt.toLocaleString();
                   displayPrimaTotal='$'+displayPrimaTotal;
-
-                  displayDanosMateriales=(JSON.stringify(data3.Coberturas[0].DanosMateriales)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
-                  displayRoboTotal=(JSON.stringify(data3.Coberturas[0].RoboTotal)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
-                  displayRCPersonas=(JSON.stringify(data3.Coberturas[0].RCPersonas)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-|D|-/g,'');
-                  displayRC=(JSON.stringify(data3.Coberturas[0].RC)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA|No|aplica/g,'');
-                  displayDefensaJuridica=(JSON.stringify(data3.Coberturas[0].DefensaJuridica)).replace(/"|-N|-S|-D|GASTOS|ES|ASISTENCIA|LEGAL|PROVIAL|LEGALES/g,'');
-                  displayGastosMedicosOcupantes=(JSON.stringify(data3.Coberturas[0].GastosMedicosOcupantes)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS|OCUPANTES/g,'');
+                  
+                  var danosMateriales = '',
+                    roboTotal = '',
+                    rcPersonas = '',
+                    rc = '',
+                    defensaJuridica = '',
+                    gastosMedicosOcupantes = '';
+                  
+                  if (data3.Coberturas != undefined && data3.Coberturas.length) {
+                      var data3Coberturas = data3.Coberturas[0];
+                      danosMateriales = data3Coberturas.DanosMateriales;
+                      roboTotal = data3Coberturas.RoboTotal;
+                      rcPersonas = data3Coberturas.RCPersonas;
+                      rc = data3Coberturas.RC;
+                      defensaJuridica = data3Coberturas.DefensaJuridica;
+                      gastosMedicosOcupantes = data3Coberturas.GastosMedicosOcupantes;
+                  }
+                  
+                  displayDanosMateriales=(JSON.stringify(danosMateriales)).replace(/"|-N|-S|DAÑOS|MATERIALES/g,'');
+                  displayRoboTotal=(JSON.stringify(roboTotal)).replace(/"|-N|-S|ROBO|TOTAL/g,'');
+                  displayRCPersonas=(JSON.stringify(rcPersonas)).replace(/"|-N|-S|NRC|PERSONAS|RESPONSABILIDAD|CIVIL|PERSONAS|NO|APLICA|RC|-|D|-/g,'');
+                  displayRC=(JSON.stringify(rc)).replace(/"|-N|-S|-D|RESPONSABILIDAD|CIVIL|NO|APLICA|No|aplica/g,'');
+                  displayDefensaJuridica=(JSON.stringify(defensaJuridica)).replace(/"|-N|-S|-D|GASTOS|ES|ASISTENCIA|LEGAL|PROVIAL|LEGALES/g,'');
+                  displayGastosMedicosOcupantes=(JSON.stringify(gastosMedicosOcupantes)).replace(/"|-N|-S|-D|GASTOS|MÉDICOS|OCUPANTES/g,'');
 
                   displayDanosMaterialesD=displayDanosMateriales.split('-D')[1];
                   displayDanosMateriales=parseInt(displayDanosMateriales.split('-D')[0]).toLocaleString();
@@ -1301,6 +1330,7 @@ export class AcquireProductPage {
         
     }     
     showAlertEmail( value, mode, modelList = [], massage=""){
+        console.warn('showAlertEmail');
         var id='';
         var status='';
         let alert = this.alertCtrl.create({
@@ -1318,6 +1348,7 @@ export class AcquireProductPage {
         alert.addButton({
             text: 'OK',
             handler: data => {
+                console.log('showAlertEmail data', data);
                 document.getElementById('emailModal').innerHTML=data.username;
                 document.getElementById('emailU').innerHTML=data.username; 
                 this.emailCot=data.username;  
@@ -1327,7 +1358,7 @@ export class AcquireProductPage {
                 this.http.get(url2)
                 .map(res=> res.json())  
                 .subscribe(data=>{
-                  console.log(data);
+                  console.log('validarCliente', data);
                   status=(JSON.stringify(data.status)).replace(/"/g,'');
                   id=(JSON.stringify(data.id)).replace(/"/g,'');
                   if(status==='1'){
@@ -1353,26 +1384,20 @@ export class AcquireProductPage {
                     var url2='http://services.bunch.guru/WebService.asmx/ConsultarDirecciones?param='+encodedString;
                     console.log("id encriptado" + encodedString);
                    // this.userStateList=[];
+                    console.log(url2);
                     this.http.get(url2)
                     .map(res=> res.json())  
                     .subscribe(data=>{
-                        console.log(JSON.stringify(data));
-                        this.userStateList=[];
-                        for (let key of data.direccion ) {
-                            this.userStateList.push({ 
-                                Calle: JSON.stringify(data.direccion[cont].Calle).replace(/"/g,''),
-                                NoExt: JSON.stringify(data.direccion[cont].NoExt).replace(/"/g,''),
-                                NoInt: JSON.stringify(data.direccion[cont].NoInt).replace(/"/g,''),
-                                Colonia: JSON.stringify(data.direccion[cont].Colonia).replace(/"/g,''),
-                                CodPostal: JSON.stringify(data.direccion[cont].CodPostal).replace(/"/g,''),
-                                Poblacion: JSON.stringify(data.direccion[cont].Poblacion).replace(/"/g,''),
-                                Ciudad: JSON.stringify(data.direccion[cont].Ciudad).replace(/"/g,''),
-                                IdDir: JSON.stringify(data.direccion[cont].IdDir).replace(/"/g,'')
-                            });                               
-                            //this.userStateList.push(JSON.stringify(data.direccion[cont].Colonia).replace(/"/g,''),JSON.stringify(data.direccion[cont].CodPostal).replace(/"/g,''));
-                            cont++;
-                            console.log("esto se esta metiendo"+this.userStateList);
-                        } 
+
+                        console.log(data);                        
+                        data.direccion.forEach(function(e, i) {
+                            Object.keys(e).forEach(function(key) {
+                                if (e[key] == 'undefined') {
+                                    data.direccion[i][key] = '';
+                                }
+                            });
+                        });               
+                        this.userStateList = data.direccion;         
                         this.userStateList.push({
                             Calle: 'Añadir nueva dirección',
                             NoExt: '',
@@ -1382,10 +1407,10 @@ export class AcquireProductPage {
                             Poblacion: '',
                             Ciudad: '',
                             IdDir: ''
-                        });
-                        console.log("dire completas"+this.userStateList);
-                        this.tipoTres(this.userStateList);
-            
+                        });                        
+                        console.log('direcciones', this.userStateList);
+
+                        this.tipoTres(this.userStateList);            
                     },err =>{
                         console.log(err);
                     });               
@@ -1434,6 +1459,7 @@ export class AcquireProductPage {
 
     }   
     showAlertNombre( value, mode, modelList = [], massage=""){
+        console.warn('showAlertNombre');
         if (this.isEnabled==true){
             let alert = this.alertCtrl.create({
                 inputs: [
@@ -1450,6 +1476,7 @@ export class AcquireProductPage {
             alert.addButton({
                 text: 'OK',
                 handler: data => {
+                    console.warn(data);
                     console.log(JSON.stringify(data)); //to see the object
                     console.log(data.username);
                     document.getElementById('nombre').innerHTML=data.username;
@@ -1986,11 +2013,13 @@ export class AcquireProductPage {
         this.datePickerNames = this.localizationModal.getDatesNames();
     }
     retrieveData(){
+        console.log('retrieveData');
         var encodedString=btoa(this.emailCot);
         console.log("esto se mandara a consultadatoscli"+encodedString);
         this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaDatosCli?param='+encodedString)
         .map(res=> res.json())
         .subscribe(data=>{
+            console.log(data);
             this.data = data;
             document.getElementById('nombre').innerHTML=(JSON.stringify(data.Nombre)).replace(/"/g,'');
             document.getElementById('paterno').innerHTML=(JSON.stringify(data.ApellidoPat)).replace(/"/g,'');
@@ -2002,11 +2031,13 @@ export class AcquireProductPage {
         });         
     }
     retrieveData3(){
+        console.log('retrieveData3');
         var encodedString=btoa(this.emailCot);
         console.log("esto se mandara a consultadatoscli"+encodedString);
         this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaDatosCli?param='+encodedString)
         .map(res=> res.json())
         .subscribe(data=>{
+            console.log(data);
             this.data = data;
             document.getElementById('nombre').innerHTML=(JSON.stringify(data.Nombre)).replace(/"/g,'');
             document.getElementById('paterno').innerHTML=(JSON.stringify(data.ApellidoPat)).replace(/"/g,'');
@@ -2022,30 +2053,30 @@ export class AcquireProductPage {
         });         
     }    
     crearCliente(){
+        console.log('crearCliente');
         this.storage.get('name').then((val) => {
             console.log('Your age is', val);
-            this.local=val;
+            this.local = val;
             console.log('Valor de local', this.local); 
-        if (this.generoCot==='Masculino')
-            this.generoCot='MASCULINO';
-        else    
-            this.generoCot='FEMENINO';
-        //llenar datos
-        console.log( 'para crearcliente'+'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth+'&idContVend='+this.local);
-        var encodedString=btoa(          'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth+'&idContVend='+this.local);
-        console.log("esto se mandará para crearCliente"+encodedString);
-        console.log('http://services.bunch.guru/WebService.asmx/CrearCliente?param='+encodedString);
-        this.http.get('http://services.bunch.guru/WebService.asmx/CrearCliente?param='+encodedString)
-        .map(res=> res.json())
-        .subscribe(data=>{
-            console.log("responde de los datos"+JSON.stringify(data));
-            this.idCliCot=(JSON.stringify(data.idCli).replace(/"/g,''));
-            this.idDirCot=(JSON.stringify(data.idDir).replace(/"/g,''));
-            this.idContCot=(JSON.stringify(data.idCont).replace(/"/g,''));
-            console.log('idcliCot'+this.idCliCot+'idDirCot'+this.idDirCot+'idContCot'+this.idContCot);
-        },err =>{
-            console.log(err);
-        }); 
+            this.generoCot = (this.generoCot === 'Masculino') ? 'MASCULINO' : 'FEMENINO';
+            this.noIntCot = this.noIntCot || '';
+            let string = 'nombre='+this.nombreCot+'&app='+this.apellidoPCot+'&apm='+this.apellidoMCot+'&genero='+this.generoCot+'&edad='+this.edadCot+'&email='+this.emailCot+'&telefono='+this.movilCot+'&RFC='+this.rfcCot+'&nacionalidad=MEXICANA&lugNacimiento='+this.lugarDeNacimientoCot+'&cp='+this.cpCot+'&calle='+this.calleCot+'&noExt='+this.noExtCot+'&noInt='+this.noIntCot+'&colonia='+this.coloniaCot+'&delegacion='+this.delegacionCot+'&estado='+this.estadoCot+'&telefono2='+this.telefonoCasaCot+'&fechaNac='+this.datePickedBirth+'&idContVend='+this.local;
+            console.log('string', string);
+            var encodedString = btoa(string);
+            let url = `http://services.bunch.guru/WebService.asmx/CrearCliente?param=${encodedString}`;
+            console.log('url', url);            
+            this.http.get(url)
+            .map(res=> res.json())
+            .subscribe(data=>{
+                console.log(data);
+
+                this.idCliCot = data.idCli;
+                this.idDirCot = data.idDir;
+                this.idContCot = data.idCont;
+
+            },err =>{
+                console.log(err);
+            }); 
         }); 
     }
     ionViewDidEnter(){
@@ -2103,18 +2134,128 @@ export class AcquireProductPage {
     }
     //para mandar el pago
     goPaymentSubmitedPage(){
+        console.log('goPaymentSubmitedPage');
         this.storage.get('name').then((val) => {
-            var locale=val;
-        //para las fechas de la vigencia
-        var encodedString='';
-        this.anioCot=this.vigencia.split('-')[0];
-        this.mesCot=this.vigencia.split('-')[1];
-        //checkpoint
-        var consulta='usuario=Bunch&Password=BunCH2O18&data={"Aseguradora":"'+this.aseguradoraCot+'","Cliente":{"TipoPersona":"F","Nombre":"'+this.nombreCot+'","ApellidoPat":"'+this.apellidoPCot+'","ApellidoMat":"'+this.apellidoMCot+'","RFC":"'+this.rfcCot+'","FechaNacimiento":"'+this.datePickedBirth+'","Ocupacion":"EMPLEADO","CURP":null,"Direccion":{"Calle":"'+this.calleCot+'","NoExt":"'+this.calleCot+'","NoInt":"'+this.noIntCot+'","Colonia":"'+this.coloniaCot+'","CodPostal":"'+this.cpCot+'","Poblacion":"'+this.delegacionCot+'","Ciudad":"'+this.estadoCot+'","Pais":"MÉXICO"},"Edad":'+this.edadCot+',"Genero":"'+this.generoCot+'","Telefono":"'+this.telefonoCasaCot+'","Email":"'+this.emailCot+'"},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"'+this.noDeMotorCot+'","NoSerie":"'+this.noDeSerieCot+'","NoPlacas":"'+this.noDePlacasCot+'","Descripcion":"'+this.Descripcion+'","CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+this.claveCot+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":"'+this.tipoCot+'","NombreTarjeta":"'+this.titularCot+'","Banco":"'+this.bancoCot+'","NoTarjeta":"'+this.noTarjetaCot+'","MesExp":"'+this.mesCot+'","AnioExp":"'+this.anioCot+'","CodigoSeguridad":"'+this.cvvCot+'","NoClabe":null,"Carrier":'+this.carrierCot+'},"CodigoError":null,"urlRedireccion":null}&movimiento=emision&idContVend='+locale+'&idcont='+this.idContCot+'&idcli='+this.idCliCot+'&iddir='+this.idDirCot;
-        console.log("se ha mandado el pago con los datos:"+consulta);
-        encodedString=btoa(consulta);
-        console.log("se ha mandado el pago con los datos en btoa:"+encodedString);
-        this.navCtrl.push(PaymentSubmittedPage, {prevPage:this.prevPage}, {animate: true});
+            var locale = val;
+            //para las fechas de la vigencia            
+            var vigencia = this.vigencia.split('-');
+            this.anioCot = vigencia[0];
+            this.mesCot = vigencia[1];
+            //checkpoint
+            var consultaData = {
+                Aseguradora: this.aseguradoraCot,
+                Cliente:{
+                    TipoPersona: 'F',
+                    Nombre: this.nombreCot,
+                    ApellidoPat: this.apellidoPCot,
+                    ApellidoMat: this.apellidoMCot,
+                    RFC: this.rfcCot,
+                    FechaNacimiento: this.datePickedBirth,
+                    Ocupacion: 'EMPLEADO',
+                    CURP:null,
+                    Direccion:{
+                        Calle: this.calleCot,
+                        NoExt: this.noExtCot,
+                        NoInt: this.noIntCot,
+                        Colonia: this.coloniaCot,
+                        CodPostal: this.cpCot,
+                        Poblacion: this.delegacionCot,
+                        Ciudad: this.estadoCot,
+                        Pais: 'MÉXICO'
+                    },
+                    Edad: this.edadCot,
+                    Genero: this.generoCot,
+                    Telefono: this.telefonoCasaCot,
+                    Email: this.emailCot
+                },
+                Vehiculo:{
+                    Uso: 'PARTICULAR',
+                    Marca: this.Marca,
+                    Modelo: this.Modelo,
+                    NoMotor: this.noDeMotorCot,
+                    NoSerie: this.noDeSerieCot,
+                    NoPlacas: this.noDePlacasCot,
+                    Descripcion: this.Descripcion,
+                    CodMarca: '',
+                    CodDescripcion: '',
+                    CodUso: '',
+                    Clave: this.claveCot,
+                    Servicio: 'PARTICULAR'
+                },                
+                Coberturas:[],
+                Paquete: 'AMPLIA',
+                Descuento:null,
+                PeriodicidadDePago:0,
+                Cotizacion:{
+                    PrimaTotal:null,
+                    PrimaNeta:null,
+                    Derechos:null,
+                    Impuesto:null,
+                    Recargos:null,
+                    PrimerPago:null,
+                    PagosSubsecuentes:null,
+                    IDCotizacion:null,
+                    CotID:null,
+                    VerID:null,
+                    CotIncID:null,
+                    VerIncID:null,
+                    Resultado:null
+                },
+                Emision:{
+                    PrimaTotal:null,
+                    PrimaNeta:null,
+                    Derechos:null,
+                    Impuesto:null,
+                    Recargos:null,
+                    PrimerPago:null,
+                    PagosSubsecuentes:null,
+                    IDCotizacion:null,
+                    Terminal:null,
+                    Documento:null,
+                    Poliza:null,
+                    Resultado:null
+                },                
+                Pago:{
+                    MedioPago: this.tipoCot,
+                    NombreTarjeta: this.titularCot,
+                    Banco: this.bancoCot,
+                    NoTarjeta: this.noTarjetaCot,
+                    MesExp: this.mesCot,
+                    AnioExp: this.anioCot,
+                    CodigoSeguridad: this.cvvCot,
+                    NoClabe:null,
+                    Carrier: this.carrierCot,
+                },
+                CodigoError:null,
+                urlRedireccion:null
+            };
+            console.log('consultaData', consultaData);
+            
+            //var consulta = 'usuario=Bunch&Password=BunCH2O18&data={"Aseguradora":"'+this.aseguradoraCot+'","Cliente":{"TipoPersona":"F","Nombre":"'+this.nombreCot+'","ApellidoPat":"'+this.apellidoPCot+'","ApellidoMat":"'+this.apellidoMCot+'","RFC":"'+this.rfcCot+'","FechaNacimiento":"'+this.datePickedBirth+'","Ocupacion":"EMPLEADO","CURP":null,"Direccion":{"Calle":"'+this.calleCot+'","NoExt":"'+this.calleCot+'","NoInt":"'+this.noIntCot+'","Colonia":"'+this.coloniaCot+'","CodPostal":"'+this.cpCot+'","Poblacion":"'+this.delegacionCot+'","Ciudad":"'+this.estadoCot+'","Pais":"MÉXICO"},"Edad":'+this.edadCot+',"Genero":"'+this.generoCot+'","Telefono":"'+this.telefonoCasaCot+'","Email":"'+this.emailCot+'"},"Vehiculo":{"Uso":"PARTICULAR","Marca":"'+this.Marca+'","Modelo":"'+this.Modelo+'","NoMotor":"'+this.noDeMotorCot+'","NoSerie":"'+this.noDeSerieCot+'","NoPlacas":"'+this.noDePlacasCot+'","Descripcion":"'+this.Descripcion+'","CodMarca":"","CodDescripcion":"","CodUso":"","Clave":'+this.claveCot+',"Servicio":"PARTICULAR"},"Coberturas":[],"Paquete":"AMPLIA","Descuento":null,"PeriodicidadDePago":0,"Cotizacion":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"CotID":null,"VerID":null,"CotIncID":null,"VerIncID":null,"Resultado":null},"Emision":{"PrimaTotal":null,"PrimaNeta":null,"Derechos":null,"Impuesto":null,"Recargos":null,"PrimerPago":null,"PagosSubsecuentes":null,"IDCotizacion":null,"Terminal":null,"Documento":null,"Poliza":null,"Resultado":null},"Pago":{"MedioPago":"'+this.tipoCot+'","NombreTarjeta":"'+this.titularCot+'","Banco":"'+this.bancoCot+'","NoTarjeta":"'+this.noTarjetaCot+'","MesExp":"'+this.mesCot+'","AnioExp":"'+this.anioCot+'","CodigoSeguridad":"'+this.cvvCot+'","NoClabe":null,"Carrier":'+this.carrierCot+'},"CodigoError":null,"urlRedireccion":null}&movimiento=emision&idContVend='+locale+'&idcont='+this.idContCot+'&idcli='+this.idCliCot+'&iddir='+this.idDirCot;
+            var consulta = 'usuario=Bunch&Password=BunCH2O18&data=' + JSON.stringify(consultaData) + '&movimiento=emision&idContVend='+locale+'&idcont='+this.idContCot+'&idcli='+this.idCliCot+'&iddir='+this.idDirCot;
+            console.log("se ha mandado el pago con los datos:", consulta);
+            
+            var encodedString = '';
+            try {
+                encodedString = btoa(consulta);
+                console.log("se ha mandado el pago con los datos en btoa:", encodedString);
+            } catch(err) {
+                console.error('No pude encodear el string', err);
+            }         
+
+            if (encodedString != '') {
+                var urlRequest = 'http://services.bunch.guru/WebService.asmx/CotizacionEmisionJSON?param=' + encodedString;
+                console.log('urlRequest', urlRequest);
+
+                this.http.get(urlRequest)
+                .map(res=> res.json())
+                .subscribe(data=>{
+                    console.warn('success!', data);
+                    this.navCtrl.push(PaymentSubmittedPage, {prevPage:this.prevPage}, {animate: true});
+                },err =>{
+                    console.log(err);
+                });                 
+            }            
         });
     }
     goToDocumentDetailPage(){
