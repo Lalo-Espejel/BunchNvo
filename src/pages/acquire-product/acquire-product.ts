@@ -2137,6 +2137,7 @@ export class AcquireProductPage {
         console.log('goPaymentSubmitedPage');
         this.storage.get('name').then((val) => {
             var locale = val;
+            
             //para las fechas de la vigencia            
             var vigencia = this.vigencia.split('-');
             this.anioCot = vigencia[0];
