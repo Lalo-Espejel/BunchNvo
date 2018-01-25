@@ -29,61 +29,24 @@
 }
 
 page-statistics {
-    .histogram-wrap{
-        background: url(../assets/img/statistics_graph.png);
-        background-size: cover;
-        width: 115%;
-        height: 65%;
-        background-position-y: 0px;
-        padding: 0;
-        margin: -17px 0px 16px -18px;
-        color: white;
-        font-weight: 300;
-
-        .left-side{
-            width: 57%;
-            padding: 6% 0 0 6%;
-            .title{
-                width: 100%;
-            }
-            .value{
-                margin-top: -105px;
-                font-size: 40px;
-            }
+    .stat-row{
+        border: solid 1px #e1e1e1;
+        border-radius: 8px;
+        margin-bottom:16px;
+        .title{
+            font-weight: 600;
+            text-align: center;
         }
-        .right-side{
-            padding: 6% 0 0 6%;
-            ion-select{
-                max-width: 100% !important;
-            }
-            .select-icon-inner{
-                color: white;
-            }
-            .left-date{
-                width: 50%;
-                ion-row{
-                    width:100%;
-                }
-                .title{
-
-                }
-                .date{
-                    margin: -105px 0 0 0;
-                    font-size: 12px;
-                }
-            }
-            .right-date{
-                width: 50%;
-                ion-row{
-                    width:100%;
-                }.title{
-
-                 }
-                .date{
-                    margin: -105px 0 0 0;
-                    font-size: 12px;
-                }
-
+        .value{
+            font-weight: 700;
+            font-size: 50px;
+            text-align: center;
+        }
+        .icon-container{
+            text-align: right;
+            img{
+                width: 16px;
+                height: 16px;
             }
         }
     }

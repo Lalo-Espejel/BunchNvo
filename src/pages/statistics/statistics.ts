@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { StatisticProductsPage } from '../statistics/products/statistic-products';
+import { StatisticPricesPage } from '../statistics/prices/statistic-prices';
+import { Http, Headers } from '@angular/http';
 
 /**
  * Generated class for the StatisticsPage page.
@@ -13,7 +15,9 @@ import { StatisticProductsPage } from '../statistics/products/statistic-products
   templateUrl: 'statistics.html',
 })
 export class StatisticsPage {
-
+  ganancias:number;
+  cotizaciones:number;
+  polizas:number;
   private optionList:any;
   private containerTexts = [
     {
@@ -53,7 +57,7 @@ export class StatisticsPage {
   private compareValues: any;
   private botScale = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.optionList = [
       {nameOfProduct:"Chevrolet Aveo 2010", subNameOfProduct:"Seguro de Auto", companyLogo:"assets/icon/logo/logo-axa.png", companyName:"Amplia", companySubName:"Covertura", itemValue:"$6,050", itemSubValue:"Anual", conteinerTexts:[
         {
@@ -152,12 +156,26 @@ export class StatisticsPage {
     }
   }
 
-  ionViewDidLoad(){
-      console.log('ionViewDidLoad StatisticsPage');
+  ionViewDidLoad(){      
+      var _this = this;      
+      var encodedString = btoa('IdVend=150');      
+      _this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=' + encodedString)
+      .map(res=> res.json())
+      .subscribe(data=>{        
+        _this.ganancias = data.Ganancias.total;
+        _this.cotizaciones = data.Cotizaciones.total;
+        _this.polizas = data.Productos.length;
+      },err =>{
+        console.log('error');
+      });    
   }
 
   goToStatisticProductsPage(){
     this.navCtrl.push(StatisticProductsPage, {prevPage:"chat"}, {animate: true});
+  }
+
+  goToStatisticPricesPage(){
+    this.navCtrl.push(StatisticPricesPage, {prevPage:"chat"}, {animate: true});
   }
 
 }

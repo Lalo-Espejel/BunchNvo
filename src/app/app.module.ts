@@ -25,6 +25,7 @@ import { RecoveryPage } from '../pages/recovery/recovery';
 import { RegistrerPage } from '../pages/registrer/registrer';
 import { StatisticsPage } from './../pages/statistics/statistics';
 import { StatisticProductsPage } from './../pages/statistics/products/statistic-products';
+import { StatisticPricesPage } from './../pages/statistics/prices/statistic-prices';
 import { StatisticProductsDetailsPage } from './../pages/statistics/products-details/statistic-products-details';
 import { ProductsPage } from '../pages/products/products';
 import { AdvertisementPage } from './../pages/advertisement/advertisement';
@@ -97,8 +98,9 @@ import { ChatProvider } from '../providers/chat/chat';
     NotificationPage,
     TextingPage,
     ProfilePage,
-    StatisticsPage,
+    StatisticsPage,    
     StatisticProductsPage,
+    StatisticPricesPage,
     StatisticProductsDetailsPage,
     NotificationDetailPage,
     NewAdvertisementPage,
@@ -164,6 +166,7 @@ import { ChatProvider } from '../providers/chat/chat';
     ProfilePage,
     StatisticsPage,
     StatisticProductsPage,
+    StatisticPricesPage,
     StatisticProductsDetailsPage,
     NotificationDetailPage,
     FilterPage,
