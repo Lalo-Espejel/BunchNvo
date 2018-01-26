@@ -1,4 +1,11 @@
 page-chat {
+    //ion-avatar{
+    //    position: absolute;
+    //    margin-left: 30px;
+    //}  
+    .item-md{
+        background-color:  rgb(230,230,230);
+    }
     ion-header {
         .header-cls {
             min-height: 0 !important;
@@ -219,7 +226,7 @@ page-chat {
     }
     
     .bubble{
-        background-color: #F2F2F2;
+        background-color: white;
         border-radius: 5px;
         box-shadow: 0 0 6px #B2B2B2;
         display: inline-block;
@@ -229,7 +236,7 @@ page-chat {
     }
     
     .bubble::before {
-        background-color: #F2F2F2;
+        background-color: white;
         content: "\00a0";
         display: block;
         height: 16px;
@@ -265,6 +272,11 @@ page-chat {
     
     .chatwindow {
         padding-bottom: 70px;
+        background-color: transparent !important;
+    }    
+    .fondoChat {
+        padding-bottom: 70px;
+        background-color: transparent !important;
     }    
     
 }

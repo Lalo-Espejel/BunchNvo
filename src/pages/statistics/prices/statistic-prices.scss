@@ -1,4 +1,13 @@
 statistic-prices {
+  .ios, .md {   
+    .scroll-content {
+        background-color: map-get($colors, light);
+    }
+    ion-card-header {
+        font-weight: bold;
+    }
+  }
+  
   .stat-row{
     border: solid 1px #e1e1e1;
     border-radius: 8px;

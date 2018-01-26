@@ -1,6 +1,6 @@
 
 import { ChatPage } from './../chat/chat';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat/chat';
 import { RequestsProvider } from '../../providers/requests/requests';
@@ -10,12 +10,15 @@ import { RequestsProvider } from '../../providers/requests/requests';
   templateUrl: 'texting.html',
 })
 export class TextingPage {
+  buddy: any;
+  allmessages = [];
   myfriends;
   private prevPage: any;
   public chats: Array<{id: string, img: string, name: string, lastMessage: string, updated: string }>
 
 
-  constructor(public navCtrl: NavController, public events: Events, public requestservice: RequestsProvider, public navParams: NavParams, private _event: Events, public chatservice: ChatProvider) {
+  constructor(public zone: NgZone, public navCtrl: NavController, public events: Events, public requestservice: RequestsProvider, public navParams: NavParams, private _event: Events, public chatservice: ChatProvider) {
+    this.buddy = this.chatservice.buddy;
     this.chats = [
       { id: "0", img: "assets/icon/usuario-pendiente.png", name: "Miguel Hernández", lastMessage: "La anualidad 0 implica que no paga comisiones durante el año", updated: "14/06/16" },
       { id: "1", img: "assets/icon/usuario-rechazado.png", name: "Maricela Palma", lastMessage: "Ok gracias, ya tengo seguro", updated: "14/06/16" },
@@ -27,6 +30,14 @@ export class TextingPage {
       this._event.publish('chat:products');
     }
     this.updateFriends();
+    this.events.subscribe('newmessage', () => {
+      this.allmessages = [];
+      this.zone.run(() => {
+        this.allmessages = this.chatservice.buddymessages;
+        console.log("los mensajes"+this.allmessages);
+      })
+    })  
+    
   }
 
  public seeChat = (chat) => {
@@ -44,6 +55,9 @@ export class TextingPage {
       //console.log("encontramos al amigo"+JSON.stringify(this.myfriends[cont].displayName));  
       this.chats.push({id: "2", img: "assets/icon/usuario-espera.png", name: this.myfriends[cont].displayName, lastMessage: "Hola Nuevo", updated: "14/06/16"});
       cont++;
+      console.log("esto es palaba"+JSON.stringify(this.myfriends));
+      this.chatservice.initializebuddy(this.myfriends);
+      this.chatservice.getbuddymessages();
     }
     
   })
@@ -54,12 +68,11 @@ export class TextingPage {
   }
 
   public buddychat = (chat) => {
+    console.log("para buddy chat"+JSON.stringify(chat));
     this.chatservice.initializebuddy(chat);
     this.navCtrl.push(ChatPage, chat, { animate: true });
   }
-  //buddychat(buddy) {
-  //  this.chatservice.initializebuddy(buddy);
-  //  this.navCtrl.push('BuddychatPage');
-  //}
+
+  
 
 }

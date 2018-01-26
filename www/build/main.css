@@ -26479,6 +26479,10 @@ page-buddychat .chatwindow {
   padding-bottom: 70px;
 }
 
+page-chat .item-md {
+  background-color: #e6e6e6;
+}
+
 page-chat ion-header .header-cls {
   min-height: 0 !important;
 }
@@ -26730,7 +26734,7 @@ page-chat .chat {
 }
 
 page-chat .bubble {
-  background-color: #F2F2F2;
+  background-color: white;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 6px #B2B2B2;
   box-shadow: 0 0 6px #B2B2B2;
@@ -26741,7 +26745,7 @@ page-chat .bubble {
 }
 
 page-chat .bubble::before {
-  background-color: #F2F2F2;
+  background-color: white;
   content: "\00a0";
   display: block;
   height: 16px;
@@ -26779,6 +26783,12 @@ page-chat .you::before {
 
 page-chat .chatwindow {
   padding-bottom: 70px;
+  background-color: transparent !important;
+}
+
+page-chat .fondoChat {
+  padding-bottom: 70px;
+  background-color: transparent !important;
 }
 
 page-chat-nvo .innerMessage {
@@ -28959,68 +28969,30 @@ page-signup .input-cover {
   text-align: center;
 }
 
-page-statistics .histogram-wrap {
-  background: url(../assets/img/statistics_graph.png);
-  background-size: cover;
-  width: 115%;
-  height: 65%;
-  background-position-y: 0px;
-  padding: 0;
-  margin: -17px 0px 16px -18px;
-  color: white;
-  font-weight: 300;
+page-statistics .stat-row {
+  border: solid 1px #e1e1e1;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }
 
-page-statistics .histogram-wrap .left-side {
-  width: 57%;
-  padding: 6% 0 0 6%;
+page-statistics .stat-row .title {
+  font-weight: 600;
+  text-align: center;
 }
 
-page-statistics .histogram-wrap .left-side .title {
-  width: 100%;
+page-statistics .stat-row .value {
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
 }
 
-page-statistics .histogram-wrap .left-side .value {
-  margin-top: -105px;
-  font-size: 40px;
+page-statistics .stat-row .icon-container {
+  text-align: right;
 }
 
-page-statistics .histogram-wrap .right-side {
-  padding: 6% 0 0 6%;
-}
-
-page-statistics .histogram-wrap .right-side ion-select {
-  max-width: 100% !important;
-}
-
-page-statistics .histogram-wrap .right-side .select-icon-inner {
-  color: white;
-}
-
-page-statistics .histogram-wrap .right-side .left-date {
-  width: 50%;
-}
-
-page-statistics .histogram-wrap .right-side .left-date ion-row {
-  width: 100%;
-}
-
-page-statistics .histogram-wrap .right-side .left-date .date {
-  margin: -105px 0 0 0;
-  font-size: 12px;
-}
-
-page-statistics .histogram-wrap .right-side .right-date {
-  width: 50%;
-}
-
-page-statistics .histogram-wrap .right-side .right-date ion-row {
-  width: 100%;
-}
-
-page-statistics .histogram-wrap .right-side .right-date .date {
-  margin: -105px 0 0 0;
-  font-size: 12px;
+page-statistics .stat-row .icon-container img {
+  width: 16px;
+  height: 16px;
 }
 
 page-statistics .main-text {
@@ -29056,6 +29028,240 @@ page-statistics .arrow-button {
   width: 3% !important;
   padding-left: 0 !important;
   height: 100%;
+}
+
+statistic-prices .ios .scroll-content, statistic-prices .md .scroll-content {
+  background-color: #f4f4f4;
+}
+
+statistic-prices .ios ion-card-header, statistic-prices .md ion-card-header {
+  font-weight: bold;
+}
+
+statistic-prices .stat-row {
+  border: solid 1px #e1e1e1;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+statistic-prices .stat-row .title {
+  font-weight: 600;
+  text-align: center;
+}
+
+statistic-prices .stat-row .value {
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+}
+
+statistic-prices .stat-row .icon-container {
+  text-align: right;
+}
+
+statistic-prices .stat-row .icon-container img {
+  width: 16px;
+  height: 16px;
+}
+
+statistic-prices .histogram-wrap {
+  background: url(../assets/img/statistics_graph.png);
+  background-size: cover;
+  width: 115%;
+  height: 65%;
+  background-position-y: 0px;
+  padding: 0;
+  margin: 0px 0px 16px -18px;
+  color: white;
+  font-weight: 300;
+}
+
+statistic-prices .histogram-wrap .left-side {
+  width: 57%;
+  padding: 6% 0 0 6%;
+}
+
+statistic-prices .histogram-wrap .left-side .title {
+  width: 100%;
+}
+
+statistic-prices .histogram-wrap .left-side .value {
+  margin-top: -105px;
+  font-size: 40px;
+}
+
+statistic-prices .histogram-wrap .right-side {
+  padding: 6% 0 0 6%;
+}
+
+statistic-prices .histogram-wrap .right-side ion-select {
+  max-width: 100% !important;
+}
+
+statistic-prices .histogram-wrap .right-side .select-icon-inner {
+  color: white;
+}
+
+statistic-prices .histogram-wrap .right-side .left-date {
+  width: 50%;
+}
+
+statistic-prices .histogram-wrap .right-side .left-date ion-row {
+  width: 100%;
+}
+
+statistic-prices .histogram-wrap .right-side .left-date .date {
+  margin: -105px 0 0 0;
+  font-size: 12px;
+}
+
+statistic-prices .histogram-wrap .right-side .right-date {
+  width: 50%;
+}
+
+statistic-prices .histogram-wrap .right-side .right-date ion-row {
+  width: 100%;
+}
+
+statistic-prices .histogram-wrap .right-side .right-date .date {
+  margin: -105px 0 0 0;
+  font-size: 12px;
+}
+
+statistic-prices .scroll-content {
+  background-color: #eeeeee;
+}
+
+statistic-prices ion-header .header-cls {
+  min-height: 0 !important;
+}
+
+statistic-prices ion-header .backButton {
+  padding-left: 18px !important;
+}
+
+statistic-prices ion-header .titleStyle {
+  left: 0;
+  top: 0;
+  padding: 0 90px 1px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  pointer-events: none;
+  text-align: center;
+}
+
+statistic-prices ion-header button {
+  background: transparent !important;
+}
+
+statistic-prices ion-header button img {
+  height: auto !important;
+  max-height: 25px !important;
+  margin-top: 0 !important;
+}
+
+statistic-prices ion-header button img .image-left {
+  padding-left: 10px !important;
+}
+
+statistic-prices ion-header button img .image-right {
+  padding-right: 10px !important;
+}
+
+statistic-prices ion-header div {
+  margin: 0 !important;
+}
+
+statistic-prices .arrow-button {
+  width: 3% !important;
+  padding-left: 0 !important;
+}
+
+statistic-prices .main-text {
+  font-size: 18px;
+  font-weight: 600;
+  width: 100%;
+}
+
+statistic-prices .sub-text {
+  font-size: 12px;
+}
+
+statistic-prices .pago-tab .citation-wrap {
+  background-color: white;
+  margin: 10px 0;
+  border: solid 1px;
+  border-radius: 12px;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row {
+  padding: 10px;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .top-text-wrap {
+  width: 100%;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap {
+  width: 100%;
+  margin: 10px 0;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .main-text {
+  margin-top: 2px;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .sub-text {
+  margin-top: 0;
+  width: 100%;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .img-wrap {
+  width: 33%;
+  float: left;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .center-text-wrap {
+  width: 33%;
+  float: left;
+  border-left: solid 3px #09c;
+  border-right: solid 3px #09c;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .end-text-wrap {
+  width: 33%;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .button-details {
+  width: 95%;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text {
+  width: 100%;
+  color: #0099cc;
+  margin: 5px 0 -7px 0;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text .main-text {
+  color: #303030;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text .sub-text {
+  font-size: 14px;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text .paper-plane-icon {
+  font-size: 22px;
+  padding-right: 4px;
+}
+
+statistic-prices .pago-tab .citation-wrap .padding-row .main-text-title {
+  margin: 5px 0 10px 0;
 }
 
 statistic-products-page .scroll-content {
