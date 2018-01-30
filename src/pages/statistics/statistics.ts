@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { StatisticProductsPage } from '../statistics/products/statistic-products';
 import { StatisticPricesPage } from '../statistics/prices/statistic-prices';
+import { StatisticEarningsPage } from '../statistics/earnings/statistic-earnings';
 import { Http, Headers } from '@angular/http';
 
 /**
@@ -178,4 +179,7 @@ export class StatisticsPage {
     this.navCtrl.push(StatisticPricesPage, {prevPage:"chat"}, {animate: true});
   }
 
+  goToStatisticEarningsPage(){
+    this.navCtrl.push(StatisticEarningsPage, {prevPage:"chat"}, {animate: true});
+  }
 }
