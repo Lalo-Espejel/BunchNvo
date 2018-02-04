@@ -30,8 +30,10 @@
 
 page-statistics {
     .stat-row{
-        border: solid 1px #e1e1e1;
-        border-radius: 8px;
+        /*border: solid 1px #e1e1e1;*/
+        /*border-radius: 8px;*/    
+        border: 1px solid black;
+        background:white;
         margin-bottom:16px;
         .title{
             font-weight: 600;

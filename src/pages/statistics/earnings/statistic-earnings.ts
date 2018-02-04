@@ -91,12 +91,12 @@ export class StatisticEarningsPage {
                         borderJoinStyle: 'miter',
                         pointBorderColor: "rgba(77,186,192,1)",
                         pointBackgroundColor: "#fff",
-                        pointBorderWidth: 1,
+                        pointBorderWidth: 0, //1,
                         pointHoverRadius: 5,
                         pointHoverBackgroundColor: "rgba(77,186,192,1)",
                         pointHoverBorderColor: "rgba(220,220,220,1)",
                         pointHoverBorderWidth: 2,
-                        pointRadius: 1,
+                        pointRadius: 0, //1,
                         pointHitRadius: 10,
                         data: [65, 59, 80, 81, 56, 55, 40],
                         spanGaps: false,                        
@@ -104,16 +104,39 @@ export class StatisticEarningsPage {
                 ]
             },
             options: {
-                elements: { point: { radius: 0 } },
-                scales: {                    
-                    gridLines: {display: false},
-                    xAxes: [{gridLines: {display: false, lineWidth: 0}}],
-                    yAxes: [{gridLines: {drawBorder: false, display: false, lineWidth: 0, ticks: {display: false}}}],
-                    ticks: {display: false},
+                legend: {
+                    labels: {
+                        usePointStyle: true,
+                        fontSize: 0,
+                    }
                 },
-                /*scale: {
-                    ticks: {display: false}
-                },*/
+                elements: { point: { radius: 0 } },
+                scales: {
+                    xAxes: [
+                        {
+                            ticks: {
+                                //display: false
+                                //beginAtZero: true,
+                                //min: 0,
+                            },
+                            gridLines: {
+                                display: false,
+                                drawBorder: false,
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            ticks: {
+                                display: false
+                            },
+                            gridLines: {
+                                display: false,
+                                drawBorder: false,
+                            }
+                        }
+                    ] //, {gridLines: {display: false}}
+                },                
                 tooltips: {
                     displayColors: false,
                 }
