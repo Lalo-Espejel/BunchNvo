@@ -1,6 +1,7 @@
 import { Component, ViewChild  } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { StatisticProductsDetailsPage } from '../products-details/statistic-products-details';
+import { StatisticWeeksPage } from '../weeks/statistic-weeks';
 
 import { Chart } from 'chart.js';
 
@@ -63,6 +64,9 @@ export class StatisticPricesPage {
     goToStatisticsProductsDetailsPage(){
         this.navCtrl.push(StatisticProductsDetailsPage, {prevPage:"chat"}, {animate: true});
     }
+    goToStatisticWeeksPage(){
+        this.navCtrl.push(StatisticWeeksPage, {prevPage:"chat"}, {animate: true});
+      }
     public search = () => {
     }
 
