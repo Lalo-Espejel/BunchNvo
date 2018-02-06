@@ -158,8 +158,8 @@ export class StatisticsPage {
   }
 
   ionViewDidLoad(){      
-      var _this = this;      
-      var encodedString = btoa('IdVend=150');      
+      var _this = this;
+      var encodedString = btoa("IdVend=1&fecIni=01/01/2017&fecFin=01/01/2019");      
       _this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=' + encodedString)
       .map(res=> res.json())
       .subscribe(data=>{        
