@@ -116,6 +116,12 @@
     "StatisticProductsPage":{
       "titleText": "Productos"
     },
+    "StatisticPricesPage":{
+      "titleText": "Cotizaciones"
+    },
+    "StatisticEarningsPage":{
+      "titleText": "Ganancias"
+    },
     "StatisticDetailProductsPage":{
       "titleText": "Productos",
       "insurenceText": "Seguro",
