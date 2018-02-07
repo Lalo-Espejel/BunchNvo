@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { StatisticProductsDetailsPage } from '../products-details/statistic-products-details';
+import { Http, Headers } from '@angular/http';
 
 @Component({
     selector: 'statistic-products-page',
@@ -40,11 +41,11 @@ export class StatisticProductsPage {
         },
     ];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
 
         let data = this.navParams.data;
 
-        this.optionList = [
+        /*this.optionList = [
             {nameOfProduct:localStorage.getItem("language") == "en"?"Car insurance":"Seguro de Auto", subNameOfProduct:"Miguel Ivan Hernandez", companyLogo:"assets/icon/logo/logo-axa.png", companyName:"$12,500", companySubName:localStorage.getItem("language") == "en"?"Full payment":"Pago total", itemValue:"$2,500", itemSubValue: localStorage.getItem("language") == "en"?"Won":"Ganado", 
                 productDetails: {
                     mainText: "GNP - Volkswagen Jetta", 
@@ -66,7 +67,36 @@ export class StatisticProductsPage {
                     policyNumber: localStorage.getItem("language") == "en" ? "Policy 55555":"No. de  Póliza 55555"
                 }
             }
-        ];
+        ];*/        
+    }
+
+    ionViewDidLoad(){              
+        var t = this;
+        var encodedString = btoa("IdVend=1&fecIni=01/01/2017&fecFin=01/01/2019");      
+        this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=' + encodedString)
+        .map(res=> res.json())
+        .subscribe(data=>{                  
+            data.Productos.forEach(function(e) {
+                console.log(e);
+
+                t.optionList.push({
+                    nameOfProduct: e.ramo, 
+                    subNameOfProduct: e.cliente, 
+                    companyLogo: "assets/icon/logo/" + e.aseguradora + ".png", 
+                    companyName: e.ganancia, 
+                    companySubName: e.Periodicidad, 
+                    itemValue: e.total, 
+                    itemSubValue: e.Periodicidad, 
+                    productDetails: {
+                        mainText: e.descripcion, 
+                        subText: "Vigencia " + e.fInicio + " al " + e.fFin,
+                        policyNumber: "No. de  Póliza " + e.poliza
+                    }
+                });
+            });
+        },err =>{
+          console.log('error');
+        });    
     }
 
     goToStatisticsProductsDetailsPage(){
