@@ -135,6 +135,7 @@ export class StatisticProductsDetailsPage {
                 t.productDetail.primaTotal = e.total;
                 t.productDetail.periodicidad = e.Periodicidad;
                 t.productDetail.pago = e.pago;
+                t.productDetail.isInsuranceActive = t.isInsuranceActive(t.productDetail.fInicio, t.productDetail.fFin);
             });
         },err =>{
           console.log('error');
@@ -146,6 +147,24 @@ export class StatisticProductsDetailsPage {
         arr[0] = (arr[0].length == 1) ? '0' + arr[0] : arr[0];
         arr[1] = (arr[1].length == 1) ? '0' + arr[1] : arr[1];
         return `${arr[0]}-${arr[1]}-${arr[2]}`;
+    }
+
+    isInsuranceActive(inicio:string, fin:string):string { //inicio and fin must be in dd-mm-yyyy format
+        
+        let start = this.strDateToTimestamp(inicio),
+            end = this.strDateToTimestamp(fin),
+            now = +new Date(); //timestamp
+        
+        if (start <= now && now <= end) {
+            return 'Vigente';
+        } else {
+            return 'No vigente';
+        }
+    }
+
+    strDateToTimestamp(date:string):number { //date must be in dd-mm-yyyy format
+        let arr = date.split('-');        
+        return +new Date(+arr[2], +arr[1] - 1, +arr[0]); //timestamp        
     }
 
     public goBack = () => {
