@@ -130,8 +130,8 @@ export class StatisticProductsDetailsPage {
                 t.productDetail.aseguradora = e.aseguradora;
                 t.productDetail.policy = e.poliza;
                 t.productDetail.description = e.descripcion;
-                t.productDetail.fInicio = e.fInicio;
-                t.productDetail.fFin = e.fFin;
+                t.productDetail.fInicio = t.formatDate(e.fInicio);
+                t.productDetail.fFin = t.formatDate(e.fFin);
                 t.productDetail.primaTotal = e.total;
                 t.productDetail.periodicidad = e.Periodicidad;
                 t.productDetail.pago = e.pago;
@@ -139,6 +139,13 @@ export class StatisticProductsDetailsPage {
         },err =>{
           console.log('error');
         });    
+    }
+
+    formatDate(date:string) {
+        let arr = date.split('/');
+        arr[0] = (arr[0].length == 1) ? '0' + arr[0] : arr[0];
+        arr[1] = (arr[1].length == 1) ? '0' + arr[1] : arr[1];
+        return `${arr[0]}-${arr[1]}-${arr[2]}`;
     }
 
     public goBack = () => {
