@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
+//import { NgClass } from '@angular/common';
 // import { AcquireProductPage } from '../acquire-product/acquire-product';
 
 @Component({
@@ -136,6 +137,7 @@ export class StatisticProductsDetailsPage {
                 t.productDetail.periodicidad = e.Periodicidad;
                 t.productDetail.pago = e.pago;
                 t.productDetail.isInsuranceActive = t.isInsuranceActive(t.productDetail.fInicio, t.productDetail.fFin);
+                t.productDetail.circleIcon = (t.productDetail.isInsuranceActive.substr(0, 2) == 'No') ? 'red' : 'green';
             });
         },err =>{
           console.log('error');
