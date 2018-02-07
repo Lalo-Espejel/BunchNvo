@@ -134,21 +134,7 @@ export class StatisticProductsDetailsPage {
                 t.productDetail.fFin = e.fFin;
                 t.productDetail.primaTotal = e.total;
                 t.productDetail.periodicidad = e.Periodicidad;
-
-                /*t.optionList.push({
-                    nameOfProduct: e.ramo, 
-                    subNameOfProduct: e.cliente, 
-                    companyLogo: "assets/icon/logo/logo-" + e.aseguradora + ".png", 
-                    companyName: e.ganancia, 
-                    companySubName: e.Periodicidad, 
-                    itemValue: e.total, 
-                    itemSubValue: e.Periodicidad, 
-                    productDetails: {
-                        mainText: e.descripcion, 
-                        subText: "Vigencia " + e.fInicio + " al " + e.fFin,
-                        policyNumber: "No. de  Póliza " + e.poliza
-                    }
-                });*/
+                t.productDetail.pago = e.pago;
             });
         },err =>{
           console.log('error');
