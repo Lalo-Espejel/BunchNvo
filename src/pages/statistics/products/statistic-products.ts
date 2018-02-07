@@ -79,10 +79,12 @@ export class StatisticProductsPage {
             data.Productos.forEach(function(e) {
                 console.log(e);
 
+                e.aseguradora = 'ABA'.toLowerCase(); //for test purposes                
+
                 t.optionList.push({
                     nameOfProduct: e.ramo, 
                     subNameOfProduct: e.cliente, 
-                    companyLogo: "assets/icon/logo/" + e.aseguradora + ".png", 
+                    companyLogo: "assets/icon/logo/logo-" + e.aseguradora + ".png", 
                     companyName: e.ganancia, 
                     companySubName: e.Periodicidad, 
                     itemValue: e.total, 
