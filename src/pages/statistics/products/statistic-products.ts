@@ -91,7 +91,7 @@ export class StatisticProductsPage {
                     itemSubValue: e.Periodicidad, 
                     productDetails: {
                         mainText: e.descripcion, 
-                        subText: "Vigencia " + e.fInicio + " al " + e.fFin,
+                        subText: `Vigencia ${t.formatDate(e.fInicio)} al ${t.formatDate(e.fFin)}`,
                         policyNumber: "No. de  Póliza " + e.poliza
                     }
                 });
@@ -104,6 +104,14 @@ export class StatisticProductsPage {
     goToStatisticsProductsDetailsPage(){
         this.navCtrl.push(StatisticProductsDetailsPage, {prevPage:"chat"}, {animate: true});
     }
+
+    formatDate(date:string) {
+        let arr = date.split('/');
+        arr[0] = (arr[0].length == 1) ? '0' + arr[0] : arr[0];
+        arr[1] = (arr[1].length == 1) ? '0' + arr[1] : arr[1];
+        return `${arr[0]}/${arr[1]}/${arr[2]}`;
+    }
+
     public search = () => {
     }
 
