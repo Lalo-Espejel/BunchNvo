@@ -19,6 +19,9 @@ export class StatisticsPage {
   ganancias:number;
   cotizaciones:number;
   polizas:number;
+  private polizasCompare:string = 'equal';
+  private cotizacionesCompare:string = 'equal';
+  private gananciasCompare:string = 'equal';
   private optionList:any;
   private containerTexts = [
     {
@@ -159,17 +162,92 @@ export class StatisticsPage {
 
   ionViewDidLoad(){      
       var _this = this;
-      var encodedString = btoa("IdVend=1&fecIni=01/01/2017&fecFin=01/01/2019");      
+      let actualWeek = _this.getWeek();
+      console.log('actualWeek', actualWeek);
+      let encodedString = btoa(`IdVend=1&${actualWeek}`);      
       _this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=' + encodedString)
       .map(res=> res.json())
       .subscribe(data=>{        
-        _this.ganancias = data.Ganancias.total;
-        _this.cotizaciones = data.Cotizaciones.total;
+        _this.ganancias = +data.Ganancias.total;
+        _this.cotizaciones = +data.Cotizaciones.total;
         _this.polizas = data.Productos.length;
+
+        let pastWeek = _this.getWeek(-1);
+        console.log('pastWeek', pastWeek);
+        encodedString = btoa(`IdVend=1&${pastWeek}`);      
+        _this.http.get('http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=' + encodedString)
+        .map(res=> res.json())
+        .subscribe(pastWeekData=>{        
+          console.log('pastWeek', pastWeekData);
+          let pastWeekPolizas = pastWeekData.Productos.length,
+            pastWeekCotizaciones = Number(pastWeekData.Cotizaciones.total),
+            pastWeekGanancias = Number(pastWeekData.Ganancias.total);
+
+          if (_this.polizas > pastWeekPolizas) {
+            _this.polizasCompare = 'arrow-up';
+          } else if (_this.polizas < pastWeekPolizas) {
+            _this.polizasCompare = 'arrow-down';
+          }
+
+          if (_this.cotizaciones > pastWeekCotizaciones) {
+            _this.cotizacionesCompare = 'arrow-up';
+          } else if (_this.cotizaciones < pastWeekCotizaciones) {
+            _this.cotizacionesCompare = 'arrow-down';
+          }
+
+          if (_this.ganancias > pastWeekGanancias) {
+            _this.gananciasCompare = 'arrow-up';
+          } else if (_this.cotizaciones < pastWeekGanancias) {
+            _this.gananciasCompare = 'arrow-down';
+          }
+        },err =>{
+          console.log('error pastWeek');
+        });    
+
       },err =>{
         console.log('error');
       });    
   }
+
+  getWeek(week:number = 0):string {
+
+    let mondayTimestamp = new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)),
+      mondayDate = new Date(mondayTimestamp);      
+
+    if (week < 0) {      
+      mondayDate = new Date(new Date().setDate(mondayDate.getDate() - 7 * Math.abs(week)));
+    } else if (week > 0) {
+      mondayDate = new Date(new Date().setDate(mondayDate.getDate() + 7 * week));
+    }
+        
+    let sundayDate = new Date(new Date(mondayDate).setDate(mondayDate.getDate() + 6)),
+      start = this.formatDate(mondayDate),
+      end = this.formatDate(sundayDate);        
+
+    return `fecIni=${start}&fecFin=${end}`;
+  }
+
+  formatDate(date:Date) {
+    let day = ((date.getDate() + '').length == 1) ? '0' + date.getDate() : date.getDate(),
+      month = ((date.getMonth() + 1 + '').length == 1) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
+      year = date.getFullYear();    
+    
+      return `${month}/${day}/${year}`;
+  }
+
+  getPreviousMonday(){
+    var date = new Date();
+    var day = date.getDay();
+    var prevMonday;
+    if(date.getDay() == 0){
+        prevMonday = new Date().setDate(date.getDate() - 7);
+    }
+    else{
+        
+    }
+
+    return prevMonday;
+}
 
   goToStatisticProductsPage(){
     this.navCtrl.push(StatisticProductsPage, {prevPage:"chat"}, {animate: true});
