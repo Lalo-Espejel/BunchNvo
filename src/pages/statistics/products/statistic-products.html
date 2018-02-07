@@ -37,7 +37,7 @@
                         </ion-row>
                         <ion-row  class="center-text-wrap">
                             <ion-row justify-content-center class="main-text">
-                                <span>{{item.companyName}}</span>
+                                <span>${{item.companyName | number}}</span>
                             </ion-row>
                             <ion-row justify-content-center class="sub-text">
                                 <span>{{item.companySubName}}</span>
@@ -45,7 +45,7 @@
                         </ion-row>
                         <ion-row class="end-text-wrap">
                             <ion-row justify-content-center class="main-text">
-                                <span>{{item.itemValue}}</span>
+                                <span>${{item.itemValue | number}}</span>
                             </ion-row>
                             <ion-row justify-content-center class="sub-text">
                                 <span>{{item.itemSubValue}}</span>

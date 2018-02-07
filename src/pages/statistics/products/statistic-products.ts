@@ -85,9 +85,9 @@ export class StatisticProductsPage {
                     nameOfProduct: e.ramo, 
                     subNameOfProduct: e.cliente, 
                     companyLogo: "assets/icon/logo/logo-" + e.aseguradora + ".png", 
-                    companyName: e.ganancia, 
+                    companyName: +e.ganancia, 
                     companySubName: e.Periodicidad, 
-                    itemValue: e.total, 
+                    itemValue: +e.total, 
                     itemSubValue: e.Periodicidad, 
                     productDetails: {
                         mainText: e.descripcion, 
