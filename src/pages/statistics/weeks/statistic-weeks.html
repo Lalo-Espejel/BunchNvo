@@ -25,23 +25,14 @@
     </ion-row>
 
     <div id="weeksContainer">
-        <ion-row class="item">
+        <ion-row class="item" *ngFor="let week of weeks">
             <ion-col col-9>
-                25 de Dic - 1 de Ene
+                {{week.weekStr}}
             </ion-col>
             <ion-col col-3>
-                145
+                {{week.cotizaciones}}
             </ion-col>
-        </ion-row>
-
-        <ion-row class="item">
-            <ion-col col-9>
-                18 - 25 de Dic
-            </ion-col>
-            <ion-col col-3>
-                130
-            </ion-col>
-        </ion-row>
+        </ion-row>        
     </div>        
 </ion-content>
 
