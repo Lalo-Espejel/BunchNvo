@@ -18,6 +18,9 @@ export class StatisticPricesPage {
     doughnutChart: any;
     lineChart: any;
 
+    private weekInit:number = this.getWeekFirstDay();
+    private weekEnd:number = this.getWeekLastDay();
+    private monthName:string = this.getMonthName();
     private optionList:any =[];
     private containerTexts = [
         {
@@ -72,6 +75,95 @@ export class StatisticPricesPage {
 
     public goBack = () => {
         this.navCtrl.pop();
+    }
+    //Si week=0 entonces devuelve la semana actual, si week=-1 es la semana pasada, week=-2 es semana antepasada, week=2 es dentro de dos semanas and so on
+    getWeek(week:number = 0):string {
+
+        let mondayTimestamp = new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)),
+        mondayDate = new Date(mondayTimestamp);      
+
+        if (week < 0) {      
+        mondayDate = new Date(new Date().setDate(mondayDate.getDate() - 7 * Math.abs(week)));
+        } else if (week > 0) {
+        mondayDate = new Date(new Date().setDate(mondayDate.getDate() + 7 * week));
+        }
+            
+        let sundayDate = new Date(new Date(mondayDate).setDate(mondayDate.getDate() + 6)),
+        start = this.formatDate(mondayDate),
+        end = this.formatDate(sundayDate);        
+
+        return `fecIni=${start}&fecFin=${end}`;
+    }
+
+    getWeekFirstDay():number {
+        let getWeek = this.getWeek(),
+            fecIni = getWeek.substr(7, 10),
+            arr = fecIni.split('/');
+
+        return Number(arr[1]);
+    }
+
+    getMonthName():string {
+        let month = new Date().getMonth(),
+            name = '';
+        switch(month) {
+            case 0:
+                name = 'Enero';
+                break;
+            case 1:
+                name = 'Febrero';
+                break;
+            case 2:
+                name = 'Marzo';
+                break;
+            case 3:
+                name = 'Abril';
+                break;
+            case 4:
+                name = 'Mayo';
+                break;
+            case 5:
+                name = 'Junio';
+                break;
+            case 6:
+                name = 'Julio';
+                break;
+            case 7:
+                name = 'Agosto';
+                break;
+            case 8:
+                name = 'Septiembre';
+                break;
+            case 9:
+                name = 'Octubre';
+                break;
+            case 10:
+                name = 'Noviembre';
+                break;
+            case 11:
+                name = 'Diciembre';
+                break;
+        }
+
+        return name;
+    }
+
+    getWeekLastDay():number {
+        let getWeek = this.getWeek(),
+            fecEnd = getWeek.substring(getWeek.length - 10),
+            arr = fecEnd.split('/');
+
+        console.log('getWeek', getWeek, 'fecEnd', fecEnd, arr);
+            
+        return Number(arr[1]);
+    }
+
+    formatDate(date:Date) {
+        let day = ((date.getDate() + '').length == 1) ? '0' + date.getDate() : date.getDate(),
+        month = ((date.getMonth() + 1 + '').length == 1) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
+        year = date.getFullYear();    
+        
+        return `${month}/${day}/${year}`;
     }
     ionViewDidLoad() {        
  

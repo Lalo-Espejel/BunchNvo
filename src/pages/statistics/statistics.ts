@@ -209,6 +209,7 @@ export class StatisticsPage {
       });    
   }
 
+  //Si week=0 entonces devuelve la semana actual, si week=-1 es la semana pasada, week=-2 es semana antepasada, week=2 es dentro de dos semanas and so on
   getWeek(week:number = 0):string {
 
     let mondayTimestamp = new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)),
@@ -233,21 +234,7 @@ export class StatisticsPage {
       year = date.getFullYear();    
     
       return `${month}/${day}/${year}`;
-  }
-
-  getPreviousMonday(){
-    var date = new Date();
-    var day = date.getDay();
-    var prevMonday;
-    if(date.getDay() == 0){
-        prevMonday = new Date().setDate(date.getDate() - 7);
-    }
-    else{
-        
-    }
-
-    return prevMonday;
-}
+  }  
 
   goToStatisticProductsPage(){
     this.navCtrl.push(StatisticProductsPage, {prevPage:"chat"}, {animate: true});
