@@ -135,3 +135,21 @@
     }
 
 }
+.header-cls{
+    background: #3F92AF;    
+    height:60px;
+    .button-back{
+        color:#FAFCFD;
+    }    
+    .toolbar-background{
+        background: #3F92AF;        
+    }
+    .toolbar-title{
+        font-weight:bold;
+        color:#FAFCFD;
+        text-align: center;        
+    }
+}
+.content{
+    background:#F4F4F4;
+}

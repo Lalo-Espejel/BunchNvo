@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { StatisticProductsPage } from '../statistics/products/statistic-products';
 import { StatisticPricesPage } from '../statistics/prices/statistic-prices';
 import { StatisticEarningsPage } from '../statistics/earnings/statistic-earnings';
+import { StatisticClientsPage } from '../statistics/clients/statistic-clients';
 import { Http, Headers } from '@angular/http';
 
 /**
@@ -246,5 +247,9 @@ export class StatisticsPage {
 
   goToStatisticEarningsPage(){
     this.navCtrl.push(StatisticEarningsPage, {prevPage:"chat"}, {animate: true});
+  }
+
+  goToStatisticClientsPage(){
+    this.navCtrl.push(StatisticClientsPage, {prevPage:"chat"}, {animate: true});
   }
 }
