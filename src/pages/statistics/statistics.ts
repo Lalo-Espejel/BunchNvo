@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { StatisticProductsPage } from '../statistics/products/statistic-products';
-import { StatisticPricesPage } from '../statistics/prices/statistic-prices';
-import { StatisticEarningsPage } from '../statistics/earnings/statistic-earnings';
 import { StatisticWeekPage } from '../statistics/week/statistic-week';
 import { StatisticClientsPage } from '../statistics/clients/statistic-clients';
 import { Http, Headers } from '@angular/http';
@@ -242,18 +240,9 @@ export class StatisticsPage {
     this.navCtrl.push(StatisticProductsPage, {prevPage:"chat"}, {animate: true});
   }
 
-  goToStatisticWeekPage(option:string) {
-    console.log({option});
+  goToStatisticWeekPage(option:string) {    
     this.navCtrl.push(StatisticWeekPage, {prevPage:"chat", option: option}, {animate: true});
-  }
-
-  goToStatisticPricesPage(){
-    this.navCtrl.push(StatisticPricesPage, {prevPage:"chat"}, {animate: true});
-  }
-
-  goToStatisticEarningsPage(){
-    this.navCtrl.push(StatisticEarningsPage, {prevPage:"chat"}, {animate: true});
-  }
+  }  
 
   goToStatisticClientsPage(){
     this.navCtrl.push(StatisticClientsPage, {prevPage:"chat"}, {animate: true});

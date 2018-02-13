@@ -25,8 +25,6 @@ import { RecoveryPage } from '../pages/recovery/recovery';
 import { RegistrerPage } from '../pages/registrer/registrer';
 import { StatisticsPage } from './../pages/statistics/statistics';
 import { StatisticProductsPage } from './../pages/statistics/products/statistic-products';
-import { StatisticPricesPage } from './../pages/statistics/prices/statistic-prices';
-import { StatisticEarningsPage } from './../pages/statistics/earnings/statistic-earnings';
 import { StatisticClientsPage } from './../pages/statistics/clients/statistic-clients';
 import { StatisticWeekPage } from './../pages/statistics/week/statistic-week';
 import { StatisticWeeksPage } from './../pages/statistics/weeks/statistic-weeks';
@@ -103,9 +101,7 @@ import { ChatProvider } from '../providers/chat/chat';
     TextingPage,
     ProfilePage,
     StatisticsPage,    
-    StatisticProductsPage,
-    StatisticPricesPage,
-    StatisticEarningsPage,
+    StatisticProductsPage,    
     StatisticClientsPage,
     StatisticWeekPage,
     StatisticWeeksPage,
@@ -173,9 +169,7 @@ import { ChatProvider } from '../providers/chat/chat';
     TextingPage,
     ProfilePage,
     StatisticsPage,
-    StatisticProductsPage,
-    StatisticPricesPage,
-    StatisticEarningsPage,
+    StatisticProductsPage,    
     StatisticClientsPage,
     StatisticWeekPage,
     StatisticWeeksPage,
