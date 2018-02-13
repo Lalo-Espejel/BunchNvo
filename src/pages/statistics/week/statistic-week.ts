@@ -20,10 +20,16 @@ export class StatisticWeekPage {
     private monthName:string = this.getMonthName();    
     private totalEarnings:number = 0;
     private totalPrices:number = 0;
+    private selectedWeekGetWeek:string;
+    private weekStr:string = `${this.weekInit} al ${this.weekEnd} de ${this.monthName}`;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
         this.option = navParams.data.option;
         this.title = (this.option == 'earnings') ? 'Ganancias' : 'Cotizaciones';
+        if (navParams.data.selectedWeek != undefined) {            
+            this.selectedWeekGetWeek = navParams.data.selectedWeek.getWeek;
+            this.weekStr = navParams.data.selectedWeek.weekStr;
+        }
     }
 
     goToStatisticsProductsDetailsPage() {
@@ -113,9 +119,7 @@ export class StatisticWeekPage {
     getWeekLastDay():number {
         let getWeek = this.getWeek(),
             fecEnd = getWeek.substring(getWeek.length - 10),
-            arr = fecEnd.split('/');
-
-        console.log('getWeek', getWeek, 'fecEnd', fecEnd, arr);
+            arr = fecEnd.split('/');        
             
         return Number(arr[1]);
     }
@@ -143,27 +147,24 @@ export class StatisticWeekPage {
         return dates;
     };            
 
-    ionViewDidLoad() {        
+    ionViewDidLoad() {             
 
         var t = this;             
-        let actualWeek = this.getWeek(),        
+        let actualWeek = this.selectedWeekGetWeek || this.getWeek(),        
             fecIni = actualWeek.substr(7,10), // format mm/dd/yyyy
             fecEnd = actualWeek.substr(actualWeek.length - 10), // format mm/dd/yyyy
             fecIniArr = fecIni.split('/'),
             fecEndArr = fecEnd.split('/'),
             fecIniYear = +fecIniArr[2], fecIniMonth = +fecIniArr[0] -1, fecIniDay = +fecIniArr[1], fecEndYear = +fecEndArr[2], fecEndMonth = +fecEndArr[0] -1, fecEndDay = +fecEndArr[1],
             dates = this.getDates(new Date(fecIniYear, fecIniMonth, fecIniDay), new Date(fecEndYear, fecEndMonth, fecEndDay)),
-            formatedDates = [];
+            formatedDates = [];        
         
         dates.forEach((date, index, arr) => {
             formatedDates.push(t.formatDate(date));
             arr[index] = date.getDate().toString();            
         });
-
-        console.log({formatedDates});
-        var labels = dates;
-        console.log({labels});
         
+        var labels = dates;    
         var lineChartData = [];
         let encodedString, val;
 
