@@ -28,6 +28,7 @@ import { StatisticProductsPage } from './../pages/statistics/products/statistic-
 import { StatisticPricesPage } from './../pages/statistics/prices/statistic-prices';
 import { StatisticEarningsPage } from './../pages/statistics/earnings/statistic-earnings';
 import { StatisticClientsPage } from './../pages/statistics/clients/statistic-clients';
+import { StatisticWeekPage } from './../pages/statistics/week/statistic-week';
 import { StatisticWeeksPage } from './../pages/statistics/weeks/statistic-weeks';
 import { StatisticProductsDetailsPage } from './../pages/statistics/products-details/statistic-products-details';
 import { ProductsPage } from '../pages/products/products';
@@ -106,6 +107,7 @@ import { ChatProvider } from '../providers/chat/chat';
     StatisticPricesPage,
     StatisticEarningsPage,
     StatisticClientsPage,
+    StatisticWeekPage,
     StatisticWeeksPage,
     StatisticProductsDetailsPage,
     NotificationDetailPage,
@@ -175,6 +177,7 @@ import { ChatProvider } from '../providers/chat/chat';
     StatisticPricesPage,
     StatisticEarningsPage,
     StatisticClientsPage,
+    StatisticWeekPage,
     StatisticWeeksPage,
     StatisticProductsDetailsPage,
     NotificationDetailPage,

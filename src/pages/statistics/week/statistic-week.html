@@ -2,18 +2,18 @@
 
     <ion-toolbar>
         <ion-buttons left>
-            <button icon-only ion-button class="backButton" (tap)="goBack()">
-                <img src="assets/icon/bt-regresar-menu.png" class="image-left">
+            <button icon-only ion-button class="button-back" (tap)="goBack()">                
+                <ion-icon name="arrow-back"></ion-icon>
             </button>
         </ion-buttons>        
 
-        <ion-title class="titleStyle">{{ "StatisticsPage.StatisticEarningsPage.titleText" | translate }}</ion-title>
+        <ion-title>{{title}}</ion-title>
     </ion-toolbar>
 
 </ion-header>
 
 
-<ion-content style="background:lightgray;">
+<ion-content class="content">
     <ion-row id="weekCombo" (tap)="goToStatisticWeeksPage()">
         <ion-col col-1></ion-col>
         <ion-col col-10 id="weekComboTitle">Semana del {{weekInit}} al {{weekEnd}} de {{monthName}}</ion-col>
@@ -24,7 +24,7 @@
         <div id="notes">
             <ion-row>
                 <ion-col col-8>
-                    Ganancias
+                    {{title}}
                 </ion-col>
                 <!--<ion-col col-2>
                     From:

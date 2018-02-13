@@ -6,19 +6,25 @@ import { Chart } from 'chart.js';
 import { Http, Headers } from '@angular/http';
 
 @Component({
-    selector: 'statistic-earnings',
-    templateUrl: 'statistic-earnings.html',
+    selector: 'statistic-week',
+    templateUrl: 'statistic-week.html',
 })
-export class StatisticEarningsPage {    
+export class StatisticWeekPage {    
     @ViewChild('lineCanvas') lineCanvas;
      
     lineChart: any;
+    private title:string;
+    private option:string;
     private weekInit:number = this.getWeekFirstDay();
     private weekEnd:number = this.getWeekLastDay();
     private monthName:string = this.getMonthName();    
     private totalEarnings:number = 0;
+    private totalPrices:number = 0;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {}
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+        this.option = navParams.data.option;
+        this.title = (this.option == 'earnings') ? 'Ganancias' : 'Cotizaciones';
+    }
 
     goToStatisticsProductsDetailsPage() {
         this.navCtrl.push(StatisticProductsDetailsPage, {prevPage: 'chat'}, {animate: true});
@@ -137,7 +143,7 @@ export class StatisticEarningsPage {
         return dates;
     };            
 
-    ionViewDidLoad() {
+    ionViewDidLoad() {        
 
         var t = this;             
         let actualWeek = this.getWeek(),        
@@ -159,38 +165,49 @@ export class StatisticEarningsPage {
         console.log({labels});
         
         var lineChartData = [];
-        let encodedString;        
+        let encodedString, val;
 
         encodedString = btoa(`IdVend=1&fecIni=${formatedDates[0]}&fecFin=${formatedDates[0]}`)
-        t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-            lineChartData.push(+data.Ganancias.total);
+        t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {                        
+            val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+            lineChartData.push(val);
 
             encodedString = btoa(`IdVend=1&fecIni=${formatedDates[1]}&fecFin=${formatedDates[1]}`)
             t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-                lineChartData.push(+data.Ganancias.total);
+                val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+                lineChartData.push(val);
 
                 encodedString = btoa(`IdVend=1&fecIni=${formatedDates[2]}&fecFin=${formatedDates[2]}`)
                 t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-                    lineChartData.push(+data.Ganancias.total);
+                    val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+                    lineChartData.push(val);
 
                     encodedString = btoa(`IdVend=1&fecIni=${formatedDates[3]}&fecFin=${formatedDates[3]}`)
                     t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-                        lineChartData.push(+data.Ganancias.total);
+                        val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+                        lineChartData.push(val);
 
                         encodedString = btoa(`IdVend=1&fecIni=${formatedDates[4]}&fecFin=${formatedDates[4]}`)
                         t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-                            lineChartData.push(+data.Ganancias.total);
+                            val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+                            lineChartData.push(val);
 
                             encodedString = btoa(`IdVend=1&fecIni=${formatedDates[5]}&fecFin=${formatedDates[5]}`)
                             t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-                                lineChartData.push(+data.Ganancias.total);
+                                val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+                                lineChartData.push(val);
 
                                 encodedString = btoa(`IdVend=1&fecIni=${formatedDates[6]}&fecFin=${formatedDates[6]}`)
                                 t.http.get(`http://services.bunch.guru/WebService.asmx/ConsultaEstadisticas?param=${encodedString}`).map(res => res.json()).subscribe(data => {
-                                    lineChartData.push(+data.Ganancias.total);
+                                    val = (t.option == 'earnings') ? +data.Ganancias.total : +data.Cotizaciones.total;
+                                    lineChartData.push(val);
                                                                         
                                     //lineChartData = [65.2, 22, 11, 40, 23, 12, 44];
-                                    t.totalEarnings = lineChartData.reduce((prev, curr) => prev + curr);
+                                    if (t.option == 'earnings') {
+                                        t.totalEarnings = lineChartData.reduce((prev, curr) => prev + curr);
+                                    } else {
+                                        t.totalPrices = lineChartData.reduce((prev, curr) => prev + curr);
+                                    }
 
                                     t.lineChart = new Chart(t.lineCanvas.nativeElement, {
                                         type: 'line',            
