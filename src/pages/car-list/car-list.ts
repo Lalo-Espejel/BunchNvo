@@ -42,7 +42,7 @@ export class CarListPage {
   loginUser(){
       console.log("se creara la nueva sesión");
       if(/^[a-zA-Z-0-9]+$/.test(this.username)){
-        this.navCtrl.push(ChatNvoPage, {
+        this.navCtrl.push('ChatNvoPage', {
             username: this.username
         });
       }
