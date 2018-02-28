@@ -1,6 +1,6 @@
 import { Events } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import firebase from 'firebase';
 
@@ -22,9 +22,19 @@ export class ChatProvider {
         this.buddy = buddy;
     }
 
+    getDialogFlow(query:string) {
+        console.warn('getDialogFlow query', query);
+        const headers = new Headers({'Authorization': 'Bearer b81b31ae08324c4ab9a9dcd1bdd4d2df'});//.set('Authorization', );
+        return this.http.get(`https://api.dialogflow.com/v1/query?v=20170712&lang=es&query=${query}&sessionId=12345`, {headers}).map(response => response);
+            //.subscribe(data2=>{
+            /*.subscribe(data => {
+                return JSON.parse(data['_body']).result.fulfillment.messages[0].speech;                
+            },err =>{
+                console.error({err});
+            });*/
+    }
+
     getbuddymessages() {
-        console.log('getbuddymessages');
-        console.log('this.buddy', this.buddy);
         let temp;
         let buddyUid = this.buddy.uid || this.buddy[0].uid; //antes era: this.buddy.uid
         if (buddyUid != undefined) {
@@ -39,7 +49,7 @@ export class ChatProvider {
         }        
     }
 
-    addnewmessage(msg) {
+    addnewmessage(msg) {        
         if (this.buddy) {
             var promise = new Promise((resolve, reject) => {
                 this.firebuddychats.child(firebase.auth().currentUser.uid).child(this.buddy.uid).push({

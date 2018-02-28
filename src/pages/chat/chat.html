@@ -27,26 +27,26 @@
         </ion-segment-button>
     </ion-segment>
     
-    <div class="fondoChat" [hidden]="type != 'bitacora'">      
-
-            <ion-list no-lines>
-                <ion-item *ngFor = "let item of allmessages; let i = index" class="ionintem-cls" text-wrap>
-                    <div class="bubble me" *ngIf="item.sentby === buddy.uid">
-                    <ion-avatar  [hidden]="item.mine">
-                        <img src="assets/icon/usuario-chat-1.png">
-                    </ion-avatar>
-                    <h3 >{{item.message}}</h3>
-                    <p>{{item.timestamp | date:"dd/MM/yyyy 'a las' h:mma"}}</p>
-                    </div>
-                    <div class="bubble you" *ngIf="item.sentby != buddy.uid">
+    <div class="fondoChat" [hidden]="type != 'bitacora'">
+        
+        <ion-list no-lines>
+            <ion-item *ngFor = "let item of allmessages; let i = index" class="ionintem-cls" text-wrap>                
+                <div class="bubble me" *ngIf="item.sentby != buddy.uid">
                     <ion-avatar item-start [hidden]="item.mine">
                         <img src="assets/icon/usuario-chat-2.png">
                     </ion-avatar>              
                     <h3>{{item.message}}</h3>
                     <p>{{item.timestamp | date:"MM/dd/yyyy 'at' h:mma"}}</p>
-                    </div>
-                </ion-item>
-            </ion-list>
+                </div>
+                <div class="bubble you" *ngIf="item.sentby === buddy.uid">
+                    <ion-avatar  [hidden]="item.mine">
+                        <img src="assets/icon/usuario-chat-1.png">
+                    </ion-avatar>
+                    <h3>{{item.message}}</h3>
+                    <p>{{item.timestamp | date:"dd/MM/yyyy 'a las' h:mma"}}</p>
+                </div>
+            </ion-item>
+        </ion-list>
 
         <ion-list no-lines>
             <ion-item *ngFor = "let item of allmessages; let i = index" class="ionintem-cls" text-wrap></ion-item>

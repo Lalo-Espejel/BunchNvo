@@ -73,10 +73,11 @@ export class ChatPage {
     //this.photoURL = firebase.auth().currentUser.photoURL;
     this.scrollto();
     this.events.subscribe('newmessage', () => {
-      this.allmessages = [];
+      //this.allmessages = [];
       this.zone.run(() => {
         this.allmessages = this.chatservice.buddymessages;
-      })
+      });
+      console.log('this.allmessages', this.allmessages);
     })   
 
     let data = this.navParams.data;
@@ -213,6 +214,21 @@ export class ChatPage {
 
   ionViewDidEnter() {
     this.chatservice.getbuddymessages();
+  }
+
+  ionViewDidLoad() {
+    console.warn('ionViewDidLoad!');
+    //this.allmessages.push({'sentby':'otro', 'message': 'que onda', 'timestamp': +new Date()});
+    var t = this, query;
+    setTimeout(function() {
+      query = 'Cómo cancelo mi póliza?';
+      t.allmessages.push({'sentby':'otro', 'message': query, 'timestamp': +new Date()});
+      t.chatservice.getDialogFlow(query).subscribe(data => {
+        t.newmessage = JSON.parse(data['_body']).result.fulfillment.messages[0].speech;          
+      },err =>{
+          console.error({err});
+      });
+    }, 10000);
   }
 
   scrollto() {
