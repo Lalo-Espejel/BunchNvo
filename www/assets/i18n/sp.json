@@ -116,8 +116,14 @@
     "StatisticProductsPage":{
       "titleText": "Productos"
     },
+    "StatisticPricesPage":{
+      "titleText": "Cotizaciones"
+    },
+    "StatisticEarningsPage":{
+      "titleText": "Ganancias"
+    },
     "StatisticDetailProductsPage":{
-      "titleText": "Detalle del producto",
+      "titleText": "Productos",
       "insurenceText": "Seguro",
       "individulaCardsText": "Automoviles individuales",
       "vallidText": "Vigente",
@@ -129,7 +135,7 @@
       "paymentFrequency": "Periodicidad de pago",
       "countedText": "Contado",
       "wayToPayText": "Forma de pago",
-      "sendDownloadReminderText": "Enviar recordatorio de descarga"
+      "sendDownloadReminderText": "Reenviar Póliza"
     }
   },
   "ProfilePage":{

@@ -16,7 +16,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { DatePicker } from '@ionic-native/date-picker';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -48,30 +47,26 @@ import { PayPolicyPage } from '../pages/acquire-product/pay-policy/pay-policy';
 import { PaymentSubmittedPage } from '../pages/payment-submited/payment-submited';
 import { HelpCenterPage} from '../pages/help-center/help-center';
 import { ClienteProductDetailPage } from '../pages/client-mode/cliente-product-detail/cliente-product-detail';
-
-
 import { Localstorage } from './../_helpers/localstorage.controller';
 import { Constants } from './../_helpers/constants.controller';
-
 import {AlertService} from './../_helpers/alert.service'
 import {LocalizationModel} from './../_helpers/localizationModel'
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {Http} from "@angular/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { ChatNvoPage } from '../pages/chat-nvo/chat-nvo';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-
 import { config } from './app.firebaseconfig';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user';
 import { RequestsProvider } from '../providers/requests/requests';
 import { ChatProvider } from '../providers/chat/chat';
+import { Splash } from '../pages/splash/splash';
 
 
 
@@ -120,6 +115,7 @@ import { ChatProvider } from '../providers/chat/chat';
     ClienteProductDetailPage,
     DocumentDetailPage,
     PayPolicyPage,
+    Splash,
   ],
   imports: [
     BrowserModule,
@@ -188,6 +184,7 @@ import { ChatProvider } from '../providers/chat/chat';
     ClienteProductDetailPage,
     DocumentDetailPage,
     PayPolicyPage,
+    Splash,
   ],
   providers: [
     Constants,
@@ -202,7 +199,6 @@ import { ChatProvider } from '../providers/chat/chat';
     UserProvider,
     RequestsProvider,
     ChatProvider,
-
   ]
 })
 export class AppModule {}

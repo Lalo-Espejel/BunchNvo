@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Platform, Events, App } from 'ionic-angular';
+import { Platform, Events, App, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { IntroductionPage } from './../pages/introduction/introduction';
 import { HomePage } from '../pages/home/home';
 import { LocalizationModel } from '../_helpers/localizationModel';
+import { Splash } from '../pages/splash/splash';
 
 
 @Component({
@@ -19,9 +20,11 @@ export class MyApp {
               splashScreen: SplashScreen,
               private app: App,
               private events: Events,
-              public localizationModel: LocalizationModel) {
-    
+              public localizationModel: LocalizationModel, modalCtrl:ModalController) {
+    let splash = modalCtrl.create(Splash);
+    splash.present();
     platform.ready().then(() => {
+      
 
       this.events.subscribe('user:logout', () => {
         this.app.getRootNav().setRoot(LoginPage, null, { animate: true });
@@ -31,7 +34,9 @@ export class MyApp {
       this.localizationModel.setDefaultLanguage();
 
       statusBar.styleDefault();
+
     });
   }
+
 }
 

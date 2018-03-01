@@ -25348,6 +25348,36 @@ ion-navbar.toolbar {
   min-height: 70% !important;
 }
 
+.header-cls {
+  background: #3F92AF;
+  height: 60px;
+}
+
+.header-cls .button-back {
+  color: #FAFCFD;
+}
+
+.header-cls .toolbar-background {
+  background: #3F92AF;
+}
+
+.header-cls .toolbar-title {
+  font-weight: bold;
+  color: #FAFCFD;
+  text-align: center;
+}
+
+.content {
+  background: #F4F4F4;
+}
+
+.modal-wrapper {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 acquire-product-page .mystyle {
   color: red;
 }
@@ -28199,6 +28229,94 @@ page-products {
   background-color: white;
 }
 
+page-profile ion-content {
+  background-color: #e6e6e6 !important;
+}
+
+page-profile ion-label {
+  font-size: 15px;
+}
+
+page-profile .tab-header-cls {
+  background-color: #2492ff;
+  background-position-y: 140px;
+  color: white;
+  margin: 0 auto;
+  background-size: cover;
+  min-height: 20px;
+  max-height: 70px;
+}
+
+page-profile .tab-header-cls div.divImg {
+  position: relative;
+  width: 25%;
+  height: 10%;
+}
+
+page-profile .tab-header-cls div.divImg img {
+  background-color: transparent;
+  height: 140px !important;
+}
+
+page-profile .tab-header-cls .titleForm {
+  width: 90%;
+  margin: 5px auto;
+  text-align: center;
+  color: white;
+}
+
+page-profile .tab-header-cls .item-inner {
+  border-bottom: none !important;
+}
+
+page-profile .publish-adv-btn {
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  background: #2292c0 !important;
+}
+
+page-profile .ionitem-cls {
+  border: 2px solid gainsboro !important;
+  border-radius: 10px !important;
+  margin: 10px auto;
+}
+
+page-profile .ionitem-cls .item-icon {
+  margin: 6px 0 0;
+  width: 30px;
+  height: 32px;
+}
+
+page-profile .ionitem-cls .item-inner {
+  border: none !important;
+}
+
+page-profile .ionitem-cls .chat-button {
+  width: 15%;
+  display: inline-block;
+  height: 100%;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+page-profile .ionitem-cls .chat-button::after {
+  content: url("../assets/icon/bt-siguiente.png");
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 90%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  line-height: 40px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 page-purchase ion-header {
   min-height: 0 !important;
 }
@@ -28938,6 +29056,107 @@ page-signup .input-cover {
   position: static;
 }
 
+.ios video, .md video {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+}
+
+.ios page-splash .scroll-content, .md page-splash .scroll-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ios page-splash #bars, .md page-splash #bars {
+  height: 80%;
+}
+
+.ios page-splash #bars .cls-1, .md page-splash #bars .cls-1 {
+  opacity: 0;
+  -webkit-transform: rotate3d(1, 1, 0, 50deg);
+  transform: rotate3d(1, 1, 0, 50deg);
+  -webkit-animation: 1s 0.2s ease fadeInAndSpin;
+  animation: 1s 0.2s ease fadeInAndSpin;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.ios page-splash #bars .cls-2, .md page-splash #bars .cls-2 {
+  opacity: 0;
+  -webkit-transform: rotate3d(1, 1, 0, 50deg);
+  transform: rotate3d(1, 1, 0, 50deg);
+  -webkit-animation: 1s 0.4s ease fadeInAndSpin;
+  animation: 1s 0.4s ease fadeInAndSpin;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.ios page-splash #bars .cls-3, .md page-splash #bars .cls-3 {
+  opacity: 0;
+  -webkit-transform: rotate3d(1, 1, 0, 50deg);
+  transform: rotate3d(1, 1, 0, 50deg);
+  -webkit-animation: 1s 0.6s ease fadeInAndSpin;
+  animation: 1s 0.6s ease fadeInAndSpin;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.ios page-splash #bars .cls-4, .md page-splash #bars .cls-4 {
+  opacity: 0;
+  -webkit-transform: rotate3d(1, 1, 0, 50deg);
+  transform: rotate3d(1, 1, 0, 50deg);
+  -webkit-animation: 1s 0.8s ease fadeInAndSpin;
+  animation: 1s 0.8s ease fadeInAndSpin;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.ios page-splash #bars .cls-5, .ios page-splash #bars .cls-6, .md page-splash #bars .cls-5, .md page-splash #bars .cls-6 {
+  opacity: 0;
+  -webkit-animation: 2s 1.5s linear fadeIn;
+  animation: 2s 1.5s linear fadeIn;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeInAndSpin {
+  100% {
+    opacity: 1;
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+  }
+}
+
+@keyframes fadeInAndSpin {
+  100% {
+    opacity: 1;
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
 .tab-header-cls {
   background-color: #2492ff;
   background-position-y: 140px;
@@ -28970,8 +29189,10 @@ page-signup .input-cover {
 }
 
 page-statistics .stat-row {
-  border: solid 1px #e1e1e1;
-  border-radius: 8px;
+  /*border: solid 1px #e1e1e1;*/
+  /*border-radius: 8px;*/
+  border: 1px solid black;
+  background: white;
   margin-bottom: 16px;
 }
 
@@ -29030,238 +29251,61 @@ page-statistics .arrow-button {
   height: 100%;
 }
 
-statistic-prices .ios .scroll-content, statistic-prices .md .scroll-content {
-  background-color: #f4f4f4;
+statistic-clients .list {
+  padding-top: 22px;
 }
 
-statistic-prices .ios ion-card-header, statistic-prices .md ion-card-header {
-  font-weight: bold;
+statistic-clients .list .item {
+  height: 50px;
+  background: #FFFFFF;
+  border: 1px solid #C2C2C2;
+  border-radius: 4px;
+  padding: 0px !important;
+  margin: 0px !important;
 }
 
-statistic-prices .stat-row {
-  border: solid 1px #e1e1e1;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-statistic-prices .stat-row .title {
-  font-weight: 600;
-  text-align: center;
-}
-
-statistic-prices .stat-row .value {
-  font-weight: 700;
-  font-size: 50px;
-  text-align: center;
-}
-
-statistic-prices .stat-row .icon-container {
-  text-align: right;
-}
-
-statistic-prices .stat-row .icon-container img {
-  width: 16px;
-  height: 16px;
-}
-
-statistic-prices .histogram-wrap {
-  background: url(../assets/img/statistics_graph.png);
-  background-size: cover;
-  width: 115%;
-  height: 65%;
-  background-position-y: 0px;
+statistic-clients .list .item .col {
   padding: 0;
-  margin: 0px 0px 16px -18px;
-  color: white;
-  font-weight: 300;
+  margin: 0;
 }
 
-statistic-prices .histogram-wrap .left-side {
-  width: 57%;
-  padding: 6% 0 0 6%;
+statistic-clients .list .item .name {
+  height: 25px;
+  font-weight: bold;
+  color: #7C7C7C;
 }
 
-statistic-prices .histogram-wrap .left-side .title {
-  width: 100%;
+statistic-clients .list .item .name .col {
+  padding: 4px;
 }
 
-statistic-prices .histogram-wrap .left-side .value {
-  margin-top: -105px;
-  font-size: 40px;
+statistic-clients .list .item .email {
+  height: 25px;
+  font-size: 11px;
+  color: #7C7C7C;
 }
 
-statistic-prices .histogram-wrap .right-side {
-  padding: 6% 0 0 6%;
+statistic-clients .list .item .email .col {
+  padding: 4px;
 }
 
-statistic-prices .histogram-wrap .right-side ion-select {
-  max-width: 100% !important;
-}
-
-statistic-prices .histogram-wrap .right-side .select-icon-inner {
-  color: white;
-}
-
-statistic-prices .histogram-wrap .right-side .left-date {
-  width: 50%;
-}
-
-statistic-prices .histogram-wrap .right-side .left-date ion-row {
-  width: 100%;
-}
-
-statistic-prices .histogram-wrap .right-side .left-date .date {
-  margin: -105px 0 0 0;
-  font-size: 12px;
-}
-
-statistic-prices .histogram-wrap .right-side .right-date {
-  width: 50%;
-}
-
-statistic-prices .histogram-wrap .right-side .right-date ion-row {
-  width: 100%;
-}
-
-statistic-prices .histogram-wrap .right-side .right-date .date {
-  margin: -105px 0 0 0;
-  font-size: 12px;
-}
-
-statistic-prices .scroll-content {
-  background-color: #eeeeee;
-}
-
-statistic-prices ion-header .header-cls {
-  min-height: 0 !important;
-}
-
-statistic-prices ion-header .backButton {
-  padding-left: 18px !important;
-}
-
-statistic-prices ion-header .titleStyle {
-  left: 0;
-  top: 0;
-  padding: 0 90px 1px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  pointer-events: none;
-  text-align: center;
-}
-
-statistic-prices ion-header button {
-  background: transparent !important;
-}
-
-statistic-prices ion-header button img {
-  height: auto !important;
-  max-height: 25px !important;
-  margin-top: 0 !important;
-}
-
-statistic-prices ion-header button img .image-left {
-  padding-left: 10px !important;
-}
-
-statistic-prices ion-header button img .image-right {
-  padding-right: 10px !important;
-}
-
-statistic-prices ion-header div {
-  margin: 0 !important;
-}
-
-statistic-prices .arrow-button {
-  width: 3% !important;
-  padding-left: 0 !important;
-}
-
-statistic-prices .main-text {
-  font-size: 18px;
-  font-weight: 600;
-  width: 100%;
-}
-
-statistic-prices .sub-text {
-  font-size: 12px;
-}
-
-statistic-prices .pago-tab .citation-wrap {
-  background-color: white;
-  margin: 10px 0;
-  border: solid 1px;
-  border-radius: 12px;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row {
-  padding: 10px;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .top-text-wrap {
-  width: 100%;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap {
-  width: 100%;
-  margin: 10px 0;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .main-text {
-  margin-top: 2px;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .sub-text {
-  margin-top: 0;
-  width: 100%;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .img-wrap {
-  width: 33%;
-  float: left;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .center-text-wrap {
-  width: 33%;
-  float: left;
-  border-left: solid 3px #09c;
-  border-right: solid 3px #09c;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .company-wrap .end-text-wrap {
-  width: 33%;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .button-details {
+statistic-clients .list .item button {
   width: 95%;
+  height: 100%;
+  border-radius: 6px;
+  color: #F2F7E9;
+  background: #9BC153;
 }
 
-statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text {
-  width: 100%;
-  color: #0099cc;
-  margin: 5px 0 -7px 0;
+statistic-clients .list .item .buttons-container {
+  padding: 0px !important;
+  margin: 0px !important;
+  height: 50px;
 }
 
-statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text .main-text {
-  color: #303030;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text .sub-text {
-  font-size: 14px;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .continuar-text .paper-plane-icon {
-  font-size: 22px;
-  padding-right: 4px;
-}
-
-statistic-prices .pago-tab .citation-wrap .padding-row .main-text-title {
-  margin: 5px 0 10px 0;
+statistic-clients .list .item .buttons-container .col {
+  text-align: center;
+  padding: 3px;
 }
 
 statistic-products-page .scroll-content {
@@ -29491,7 +29535,14 @@ statistic-products-details-page .page-wrapper .circle-icon {
   width: 15px;
   height: 15px;
   border-radius: 50%;
+}
+
+statistic-products-details-page .page-wrapper .circle-icon.green {
   background-color: #2ec95c;
+}
+
+statistic-products-details-page .page-wrapper .circle-icon.red {
+  background-color: #c9332e;
 }
 
 statistic-products-details-page .page-wrapper .list {
@@ -29536,6 +29587,421 @@ statistic-products-details-page .page-wrapper .list .item .text-wrap .value {
 
 statistic-products-details-page .page-wrapper .list .item .arrow-button {
   height: 100%;
+}
+
+statistic-week .ios .scroll-content, statistic-week .md .scroll-content {
+  background-color: #f4f4f4;
+}
+
+statistic-week .ios ion-card-header, statistic-week .md ion-card-header {
+  font-weight: bold;
+}
+
+statistic-week #weekCombo {
+  padding: 8px;
+}
+
+statistic-week #weekCombo #weekComboTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+statistic-week #canvasContainer {
+  height: 246.5px;
+  width: 100%;
+  background: #0099CC;
+  margin-top: 10px;
+}
+
+statistic-week #canvasContainer #notes {
+  position: absolute;
+  width: 100%;
+  padding: 8px;
+  font-size: 12px;
+  color: white;
+}
+
+statistic-week #canvasContainer #notes #amount {
+  font-size: 24px;
+}
+
+statistic-week .stat-row {
+  border: solid 1px black;
+  margin-bottom: 16px;
+  background: white;
+}
+
+statistic-week .stat-row .title {
+  font-weight: 600;
+  text-align: center;
+}
+
+statistic-week .stat-row .value {
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+}
+
+statistic-week .stat-row .icon-container {
+  text-align: right;
+}
+
+statistic-week .stat-row .icon-container img {
+  width: 16px;
+  height: 16px;
+}
+
+statistic-week .histogram-wrap {
+  background: url(../assets/img/statistics_graph.png);
+  background-size: cover;
+  width: 115%;
+  height: 65%;
+  background-position-y: 0px;
+  padding: 0;
+  margin: 0px 0px 16px -18px;
+  color: white;
+  font-weight: 300;
+}
+
+statistic-week .histogram-wrap .left-side {
+  width: 57%;
+  padding: 6% 0 0 6%;
+}
+
+statistic-week .histogram-wrap .left-side .title {
+  width: 100%;
+}
+
+statistic-week .histogram-wrap .left-side .value {
+  margin-top: -105px;
+  font-size: 40px;
+}
+
+statistic-week .histogram-wrap .right-side {
+  padding: 6% 0 0 6%;
+}
+
+statistic-week .histogram-wrap .right-side ion-select {
+  max-width: 100% !important;
+}
+
+statistic-week .histogram-wrap .right-side .select-icon-inner {
+  color: white;
+}
+
+statistic-week .histogram-wrap .right-side .left-date {
+  width: 50%;
+}
+
+statistic-week .histogram-wrap .right-side .left-date ion-row {
+  width: 100%;
+}
+
+statistic-week .histogram-wrap .right-side .left-date .date {
+  margin: -105px 0 0 0;
+  font-size: 12px;
+}
+
+statistic-week .histogram-wrap .right-side .right-date {
+  width: 50%;
+}
+
+statistic-week .histogram-wrap .right-side .right-date ion-row {
+  width: 100%;
+}
+
+statistic-week .histogram-wrap .right-side .right-date .date {
+  margin: -105px 0 0 0;
+  font-size: 12px;
+}
+
+statistic-week .scroll-content {
+  background-color: #eeeeee;
+}
+
+statistic-week ion-header .header-cls {
+  min-height: 0 !important;
+}
+
+statistic-week ion-header .backButton {
+  padding-left: 18px !important;
+}
+
+statistic-week ion-header .titleStyle {
+  left: 0;
+  top: 0;
+  padding: 0 90px 1px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  pointer-events: none;
+  text-align: center;
+}
+
+statistic-week ion-header button {
+  background: transparent !important;
+}
+
+statistic-week ion-header button img {
+  height: auto !important;
+  max-height: 25px !important;
+  margin-top: 0 !important;
+}
+
+statistic-week ion-header button img .image-left {
+  padding-left: 10px !important;
+}
+
+statistic-week ion-header button img .image-right {
+  padding-right: 10px !important;
+}
+
+statistic-week ion-header div {
+  margin: 0 !important;
+}
+
+statistic-week .arrow-button {
+  width: 3% !important;
+  padding-left: 0 !important;
+}
+
+statistic-week .main-text {
+  font-size: 18px;
+  font-weight: 600;
+  width: 100%;
+}
+
+statistic-week .sub-text {
+  font-size: 12px;
+}
+
+statistic-week .pago-tab .citation-wrap {
+  background-color: white;
+  margin: 10px 0;
+  border: solid 1px;
+  border-radius: 12px;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row {
+  padding: 10px;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .top-text-wrap {
+  width: 100%;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .company-wrap {
+  width: 100%;
+  margin: 10px 0;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .company-wrap .main-text {
+  margin-top: 2px;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .company-wrap .sub-text {
+  margin-top: 0;
+  width: 100%;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .company-wrap .img-wrap {
+  width: 33%;
+  float: left;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .company-wrap .center-text-wrap {
+  width: 33%;
+  float: left;
+  border-left: solid 3px #09c;
+  border-right: solid 3px #09c;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .company-wrap .end-text-wrap {
+  width: 33%;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .button-details {
+  width: 95%;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .continuar-text {
+  width: 100%;
+  color: #0099cc;
+  margin: 5px 0 -7px 0;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .continuar-text .main-text {
+  color: #303030;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .continuar-text .sub-text {
+  font-size: 14px;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .continuar-text .paper-plane-icon {
+  font-size: 22px;
+  padding-right: 4px;
+}
+
+statistic-week .pago-tab .citation-wrap .padding-row .main-text-title {
+  margin: 5px 0 10px 0;
+}
+
+statistic-weeks .ios .scroll-content, statistic-weeks .md .scroll-content {
+  background-color: #f4f4f4;
+}
+
+statistic-weeks .ios ion-card-header, statistic-weeks .md ion-card-header {
+  font-weight: bold;
+}
+
+statistic-weeks #weeksContainer .item {
+  border: 1px solid gray;
+  background: white;
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 8px;
+}
+
+statistic-weeks .scroll-content {
+  background-color: #eeeeee;
+}
+
+statistic-weeks ion-header .header-cls {
+  min-height: 0 !important;
+}
+
+statistic-weeks ion-header .backButton {
+  padding-left: 18px !important;
+}
+
+statistic-weeks ion-header .titleStyle {
+  left: 0;
+  top: 0;
+  padding: 0 90px 1px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  pointer-events: none;
+  text-align: center;
+}
+
+statistic-weeks ion-header button {
+  background: transparent !important;
+}
+
+statistic-weeks ion-header button img {
+  height: auto !important;
+  max-height: 25px !important;
+  margin-top: 0 !important;
+}
+
+statistic-weeks ion-header button img .image-left {
+  padding-left: 10px !important;
+}
+
+statistic-weeks ion-header button img .image-right {
+  padding-right: 10px !important;
+}
+
+statistic-weeks ion-header div {
+  margin: 0 !important;
+}
+
+statistic-weeks .arrow-button {
+  width: 3% !important;
+  padding-left: 0 !important;
+}
+
+statistic-weeks .main-text {
+  font-size: 18px;
+  font-weight: 600;
+  width: 100%;
+}
+
+statistic-weeks .sub-text {
+  font-size: 12px;
+}
+
+statistic-weeks .pago-tab .citation-wrap {
+  background-color: white;
+  margin: 10px 0;
+  border: solid 1px;
+  border-radius: 12px;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row {
+  padding: 10px;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .top-text-wrap {
+  width: 100%;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .company-wrap {
+  width: 100%;
+  margin: 10px 0;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .company-wrap .main-text {
+  margin-top: 2px;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .company-wrap .sub-text {
+  margin-top: 0;
+  width: 100%;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .company-wrap .img-wrap {
+  width: 33%;
+  float: left;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .company-wrap .center-text-wrap {
+  width: 33%;
+  float: left;
+  border-left: solid 3px #09c;
+  border-right: solid 3px #09c;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .company-wrap .end-text-wrap {
+  width: 33%;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .button-details {
+  width: 95%;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .continuar-text {
+  width: 100%;
+  color: #0099cc;
+  margin: 5px 0 -7px 0;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .continuar-text .main-text {
+  color: #303030;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .continuar-text .sub-text {
+  font-size: 14px;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .continuar-text .paper-plane-icon {
+  font-size: 22px;
+  padding-right: 4px;
+}
+
+statistic-weeks .pago-tab .citation-wrap .padding-row .main-text-title {
+  margin: 5px 0 10px 0;
 }
 
 page-texting ion-content {
